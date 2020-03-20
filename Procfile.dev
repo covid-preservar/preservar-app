@@ -1,0 +1,4 @@
+postgres: pg_ctlcluster 12 preservar restart --foreground
+redis:    redis-server config/redis-dev.conf
+memcache: memcached -v
+worker:   bundle exec sidekiq
