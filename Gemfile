@@ -38,6 +38,10 @@ gem 'devise-i18n'
 gem 'slim-rails'
 gem 'redcarpet'
 
+# Backoffice
+gem 'administrate', '~> 0.13.0'
+
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'awesome_print'

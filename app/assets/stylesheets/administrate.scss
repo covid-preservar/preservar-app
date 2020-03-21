@@ -1,0 +1,29 @@
+// Custom styles for backoffice
+
+
+input[type="submit"].btn-link {
+  background-color: transparent;
+  color: #293f54;
+  display: block;
+  line-height: 1;
+  padding: 0.6em;
+  font-weight: normal;
+  text-decoration: underline;
+  width: 100%;
+  text-align: left;
+
+  &:hover {
+    color: #293f54;
+  }
+}
+
+form.btn-link {
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+  padding: 0;
+  margin-left: -0.6em;
+
+  &:hover {
+    background-color: #eaebeb;
+    border-radius: 4px;
+  }
+}
