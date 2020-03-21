@@ -13,6 +13,6 @@ html lang="#{I18n.locale}"
 
   body class="#{body_class} #{yield (:body_class)}"
       = render 'shared/navbar'
-      main.container-fluid.maincontent
+      main.maincontent
         = yield
       = render 'shared/footer'
