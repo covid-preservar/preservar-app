@@ -43,6 +43,9 @@ group :development, :test do
   gem 'awesome_print'
   gem 'dotenv-rails'
   gem 'faker'
+
+  gem 'rspec-rails', '~> 3.9.0'
+  gem 'factory_bot_rails'
 end
 
 group :development do
