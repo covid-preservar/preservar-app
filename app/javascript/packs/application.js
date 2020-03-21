@@ -4,6 +4,8 @@
 // that code so it'll be compiled.
 
 import $ from "jquery";
+window.$ = $;
+
 import "popper.js";
 import "bootstrap";
 import Rails from "@rails/ujs";

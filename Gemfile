@@ -33,6 +33,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bootstrap', '~> 4.4.1'
 gem 'simple_form'
 gem 'sidekiq', '~> 6.0.0'
+gem 'devise'
+gem 'devise-i18n'
 
 group :development, :test do
   gem 'pry-byebug'
