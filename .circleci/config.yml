@@ -66,7 +66,7 @@ jobs:
           name: Pre-install Chromedriver
           command: bundle exec rake webdrivers:chromedriver:update
       # Run the tests
-      - run: bundle exec bin/test
+      - run: bundle exec bin/rspec
 
       - store_artifacts:
           path: tmp/screenshots
