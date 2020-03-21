@@ -35,8 +35,12 @@ gem 'simple_form'
 gem 'sidekiq', '~> 6.0.0'
 gem 'devise'
 gem 'devise-i18n'
+gem 'rails-i18n', '~> 6.0.0'
 gem 'slim-rails'
 gem 'redcarpet'
+gem 'aasm'
+
+
 
 # Backoffice
 gem 'administrate', '~> 0.13.0'
