@@ -1,5 +1,7 @@
 # Preserva Backend
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/dd1b7d7ab2db9c83d0cd/maintainability)](https://codeclimate.com/github/covid-preservar/preservar-app/maintainability)
+
 ## Links uteis
 
 | Website | Url  |

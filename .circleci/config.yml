@@ -1,0 +1,77 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/preserva-app
+    docker:
+      - image: circleci/ruby:2.6.5-node-browsers
+        environment:
+          RAILS_ENV: test
+          HOSTNAME: localhost
+          PGHOST: localhost
+          PGUSER: preservar-app
+          BUNDLER_VERSION: 2.0.1
+          PARALLEL_WORKERS: 1
+      - image: circleci/postgres:10.6
+        environment:
+          POSTGRES_USER: preservar-app
+          POSTGRES_DB: preservar_test
+          POSTGRES_PASSWORD: ""
+    steps:
+      - checkout
+
+      - run: sudo apt install -y postgresql-client || true
+
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Install Bundler 2
+          command: gem install bundler
+      # Restore Cached Dependencies
+      - type: cache-restore
+        name: Restore bundle cache
+        key: bundle-preservar-app-{{ checksum "Gemfile.lock" }}
+      # Bundle install dependencies
+      - run: bundle install --path vendor/bundle
+      # Cache Dependencies
+      - type: cache-save
+        name: Store bundle cache
+        key: bundle-preservar-app-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Set up database
+          command: RAILS_LOG_LEVEL=info bundle exec rake db:setup
+
+      - run:
+          name: Pre-install Geckodriver
+          command: bundle exec rake webdrivers:geckodriver:update
+
+      - run:
+          name: Pre-install Chromedriver
+          command: bundle exec rake webdrivers:chromedriver:update
+      # Run the tests
+      - run: bundle exec bin/rspec
+
+      - store_artifacts:
+          path: tmp/screenshots
+          destination: capybara-screenshots
+
+      - store_artifacts:
+          path: log/test.log
+          destination: test.log
