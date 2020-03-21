@@ -35,6 +35,8 @@ gem 'simple_form'
 gem 'sidekiq', '~> 6.0.0'
 gem 'devise'
 gem 'devise-i18n'
+gem 'slim-rails'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'pry-byebug'
