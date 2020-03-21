@@ -28,7 +28,7 @@ namespace :db do
       user = User.new(email: user_hash[:email],
                       password: user_hash[:password],
                       password_confirmation: user_hash[:password])
-      user.skip_confirmation!
+      # user.skip_confirmation!
 
       user.save(validate: false)
     end
