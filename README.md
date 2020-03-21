@@ -5,7 +5,7 @@
 | Website | Url  |
 | :-----: | :--: |
 | Trello | https://trello.com/b/zpQaUrDr/preserva |
-| Figma | https://www.figma.com/proto/dvBM9mvf85fpcEg8zp8tCh/Preservar?node-id=2725%3A1&viewport=453%2C523%2C0.125&scaling=scale-down-width | 
+| Figma | https://www.figma.com/proto/dvBM9mvf85fpcEg8zp8tCh/Preservar?node-id=2725%3A1&viewport=453%2C523%2C0.125&scaling=scale-down-width |
 
 
 ## Requirements
@@ -17,6 +17,10 @@
 
 Copy `.env.example` file in the root of repository to `.env` and set the various environment variables
 needed to function.
+
+## Seeds
+
+`seeds.rb` is meant for DB seeds that will be used in production. For seeding the DB for development, use the `populate.rake` task.
 
 ## Procfile and Procfile.dev
 
