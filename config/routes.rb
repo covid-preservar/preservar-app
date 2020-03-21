@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root to: 'home#index'
 
@@ -6,6 +7,14 @@ Rails.application.routes.draw do
   get '/privacy', to: 'home#privacy', as: :privacy_path
 
   devise_for :admin_users, path: 'admin'
+
+  namespace :admin do
+    resources :users
+    resources :admin_users
+
+    root to: "users#index"
+  end
+
   authenticate :admin_user do
     require 'sidekiq/web'
     mount Sidekiq::Web => '/admin/sidekiq'
