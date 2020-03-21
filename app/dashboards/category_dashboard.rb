@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class UserDashboard < Administrate::BaseDashboard
+class CategoryDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,16 +9,9 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    email: Field::String,
-    encrypted_password: Field::String,
-    reset_password_token: Field::String,
-    reset_password_sent_at: Field::DateTime,
-    remember_created_at: Field::DateTime,
-    failed_attempts: Field::Number,
-    unlock_token: Field::String,
-    locked_at: Field::DateTime,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    name: Field::String,
+    name_plural: Field::String,
+    sellers: Field::HasMany,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,38 +21,25 @@ class UserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   id
-  email
-  created_at
+  name
+  sellers
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   id
-  email
-  encrypted_password
-  reset_password_token
-  reset_password_sent_at
-  remember_created_at
-  failed_attempts
-  unlock_token
-  locked_at
-  created_at
-  updated_at
+  name
+  name_plural
+  sellers
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  email
-  encrypted_password
-  reset_password_token
-  reset_password_sent_at
-  remember_created_at
-  failed_attempts
-  unlock_token
-  locked_at
+  name
+  name_plural
   ].freeze
 
   # COLLECTION_FILTERS
@@ -74,10 +54,10 @@ class UserDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how users are displayed
+  # Overwrite this method to customize how categories are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(user)
-  #   "User ##{user.id}"
-  # end
+  def display_resource(category)
+    category.name
+  end
 end
