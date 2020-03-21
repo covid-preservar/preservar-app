@@ -1,10 +1,8 @@
-version: 2.1
-orbs:
-  ruby: circleci/ruby@0.1.2
+version: 2
 
 jobs:
   build:
-    working_directory: ~/everytimezone-pro
+    working_directory: ~/preserva-app
     docker:
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
