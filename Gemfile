@@ -42,6 +42,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'awesome_print'
   gem 'dotenv-rails'
+  gem 'faker'
 end
 
 group :development do
