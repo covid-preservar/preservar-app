@@ -14,6 +14,8 @@
 
 - Ruby 2.6.5
 - PostgreSQL 12
+- Memcache
+- Redis
 
 ## Environment file
 
