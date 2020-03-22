@@ -40,6 +40,10 @@ gem 'redcarpet'
 # Backoffice
 gem 'administrate', '~> 0.13.0'
 
+group :production do
+  gem 'rollbar'
+  gem 'scout_apm'
+end
 
 group :development, :test do
   gem 'pry-byebug'

@@ -69,6 +69,7 @@ GEM
       momentjs-rails (~> 2.8)
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
+    ast (2.4.0)
     autoprefixer-rails (9.7.4)
       execjs
     awesome_print (1.8.0)
@@ -172,6 +173,8 @@ GEM
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    parser (2.7.0.5)
+      ast (~> 2.4.0)
     pg (1.2.3)
     pry (0.13.0)
       coderay (~> 1.1)
@@ -225,6 +228,7 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rollbar (2.24.0)
     rspec-core (3.9.1)
       rspec-support (~> 3.9.1)
     rspec-expectations (3.9.1)
@@ -255,6 +259,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    scout_apm (2.6.7)
+      parser
     selectize-rails (0.12.6)
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
@@ -344,9 +350,11 @@ DEPENDENCIES
   puma (~> 4.3.3)
   rails (~> 6.0.2)
   redcarpet
+  rollbar
   rspec-rails (~> 3.9.0)
   rspec-sidekiq
   sassc-rails (~> 2.1.0)
+  scout_apm
   selenium-webdriver
   sidekiq (~> 6.0.0)
   simple_form
