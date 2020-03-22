@@ -40,6 +40,9 @@ gem 'redcarpet'
 # Backoffice
 gem 'administrate', '~> 0.13.0'
 
+gem 'pry'
+gem 'faker'
+
 group :production do
   gem 'rollbar'
   gem 'scout_apm'
@@ -50,7 +53,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'awesome_print'
   gem 'dotenv-rails'
-  gem 'faker'
 
   gem 'rspec-rails', '~> 3.9.0'
   gem 'factory_bot_rails'
