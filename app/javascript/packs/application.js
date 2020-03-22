@@ -7,7 +7,7 @@ import $ from "jquery";
 window.$ = $;
 
 import "popper.js";
-import "bootstrap";
+import "../vendor/bootstrap";
 import Rails from "@rails/ujs";
 import Turbolinks from "turbolinks";
 
