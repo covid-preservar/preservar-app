@@ -13,7 +13,7 @@ html lang="#{I18n.locale}"
 
   body class="#{body_class} #{yield (:body_class)}"
     header id="header-main"
-      img id="logo" src="/assets/logo.svg" alt="Preserve"
+      = image_tag 'logo.svg', id: 'logo', alt: 'Preserve'
       a href="#" class="secondary-cta" Submeta o seu negócio
     .container
       = yield
