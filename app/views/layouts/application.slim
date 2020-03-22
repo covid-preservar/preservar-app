@@ -12,7 +12,7 @@ html lang="#{I18n.locale}"
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   body class="#{body_class} #{yield (:body_class)}"
-      = render 'shared/navbar'
+      / = render 'shared/navbar'
       main.maincontent
         = yield
       = render 'shared/footer'
