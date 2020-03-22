@@ -43,6 +43,7 @@ gem 'administrate', '~> 0.13.0'
 group :production do
   gem 'rollbar'
   gem 'scout_apm'
+  gem 'dalli'
 end
 
 group :development, :test do

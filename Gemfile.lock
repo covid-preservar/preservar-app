@@ -92,6 +92,7 @@ GEM
     concurrent-ruby (1.1.6)
     connection_pool (2.2.2)
     crass (1.0.6)
+    dalli (2.7.10)
     database_cleaner (1.8.3)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
@@ -335,6 +336,7 @@ DEPENDENCIES
   awesome_print
   bootsnap (>= 1.4.2)
   capybara (>= 2.15)
+  dalli
   database_cleaner
   devise
   devise-i18n
