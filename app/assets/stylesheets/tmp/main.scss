@@ -589,11 +589,11 @@ input[type="submit"]:hover,
   content: '';
   position: absolute;
   left: 0;
-  width: 80%;
+  width: 88%;
   top: 0;
   bottom: 10rem;
   background-color: var(--color-light-blue);
-  margin-left:  calc(-100vw / 2 + 1224px / 2);
+  margin-left:  calc(-100vw / 2 + 1112px / 2);
   margin-top: -16rem;
   z-index: -1;
 }

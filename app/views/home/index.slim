@@ -10,16 +10,12 @@ section#hero
         br
         | favorito
       p Compra um voucher para usares em qualquer altura, e ajuda a tua economia local a sobreviver ao COVID-19
-      form.search-form
-        input.input-location placeholder="" type="text" value="Porto" /
-        select
-          option Cinemas
-          option Museus
-          option selected="selected"  Restaurantes
-          option Teatros
-          option To do
-          option Zoos
-        input type="submit" value="Pesquisar" /
+      = form_tag "#", method: :get, class: 'search-form' do
+        = search_field_tag 'location', '', class:'input-location', placeholder:'Localidade'
+        = select_tag 'category', options_from_collection_for_select(@categories, :id, :name_plural), class:'form-control'
+        = submit_tag 'Pesquisar', class:'btn btn-primary'
+
+
       section#hero-stats.clearfix
         article.stat
           h2 400
