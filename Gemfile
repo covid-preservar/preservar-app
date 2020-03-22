@@ -42,9 +42,9 @@ gem 'administrate', '~> 0.13.0'
 
 gem 'pry'
 gem 'faker'
+gem 'rollbar'
 
 group :production do
-  gem 'rollbar'
   gem 'scout_apm'
   gem 'dalli'
 end

@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
   def index
+    @spinner_categories = Category.order("RANDOM()").limit(5)
     @categories = Category.with_sellers
     render :index, layout:'homepage'
   end
