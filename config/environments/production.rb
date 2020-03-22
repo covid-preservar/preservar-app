@@ -57,6 +57,11 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
+  config.cache_store = :dalli_store,
+                       ENV['MEMCACHEDCLOUD_SERVERS'].split(','),
+                       { username: ENV.fetch('MEMCACHEDCLOUD_USERNAME'),
+                         password: ENV.fetch('MEMCACHEDCLOUD_PASSWORD'),
+                         pool: ENV.fetch('RAILS_MAX_THREADS') { 5 } }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
