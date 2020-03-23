@@ -544,8 +544,14 @@ input[type="submit"]:hover,
   position: relative;
   margin-top: 4rem;
   padding: 4rem 0;
-  height: 21rem;
+  height: 24rem;
   border-top: 1px solid var(--color-light-blue);
+}
+
+#footer h3,
+#footer p {
+  font-size: calc(16rem/16);
+  line-height: calc(24/16);
 }
 
 #footer .xrow {
@@ -557,7 +563,7 @@ input[type="submit"]:hover,
   bottom: 2rem;
 }
 
-.small {
+#footer p.small {
   font-size: calc(14rem/16);
   line-height: calc(24/14);
 }
