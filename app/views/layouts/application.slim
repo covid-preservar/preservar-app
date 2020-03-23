@@ -17,4 +17,7 @@ html lang="#{I18n.locale}"
       = yield
     = render 'shared/footer'
 
+    - if ENV['HOSTNAME']&.ends_with? 'herokuapp.com'
+      = render 'shared/test_flag'
+
     = Gon::Base.render_data
