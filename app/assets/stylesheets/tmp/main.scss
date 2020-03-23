@@ -586,16 +586,16 @@ input[type="submit"]:hover,
 }
 
 #hero:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 88%;
-  top: 0;
-  bottom: 10rem;
-  background-color: var(--color-light-blue);
-  margin-left:  calc(-100vw / 2 + 1112px / 2);
-  margin-top: -16rem;
-  z-index: -1;
+  // content: '';
+  // position: absolute;
+  // left: 0;
+  // width: 88%;
+  // top: 0;
+  // bottom: 10rem;
+  // background-color: var(--color-light-blue);
+  // margin-left:  calc(-100vw / 2 + 1112px / 2);
+  // margin-top: -16rem;
+  // z-index: -1;
 }
 
 .stat {
