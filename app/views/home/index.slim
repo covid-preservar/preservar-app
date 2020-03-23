@@ -1,5 +1,5 @@
 section#hero
-  .row.clearfix
+  .xrow.clearfix
     #hero-text.xcol-6
       h1.spinner-wrapper
         | Preserve o seu
@@ -10,16 +10,8 @@ section#hero
         br
         | favorito
       p Compra um voucher para usares em qualquer altura, e ajuda a tua economia local a sobreviver ao COVID-19
-      form.search-form
-        input.input-location placeholder="" type="text" value="Porto" /
-        select
-          option Cinemas
-          option Museus
-          option selected="selected"  Restaurantes
-          option Teatros
-          option To do
-          option Zoos
-        input type="submit" value="Pesquisar" /
+      = render 'shared/search_form'
+
       section#hero-stats.clearfix
         article.stat
           h2 400
@@ -33,13 +25,14 @@ section#hero
     img#hero-img.xcol-5.xoffset-1 alt="Pessoa" src="/assets/hero-img.jpg" /
 
 section#how-it-works.section
-  #how-it-works-brief.row
+  #how-it-works-brief.xrow
     .xcol-6
       h2.section-separator Os seus locais preferidos precisam de ajuda
       p Por causa do Covid-19, os teus locais preferidos estão de portas fechadas. A maioria não vai aguentar mais de 1-2 meses sem clientes e vão ter de tomar decisões drásticas, como despedir o pessoal, ou abrir falência.
       p Tu podes ajudar.
-    img.xcol-6 alt="Hug" src="/assets/help.svg" /
-  #how-it-works-facts.row
+    = image_tag 'help.svg', alt: 'Hug', class:'xcol-6'
+
+  #how-it-works-facts.xrow
     .xcol-4.fact
       img alt="Voucher" src="/assets/icon-voucher.svg" /
       h3 Compra um voucher para usares no futuro
@@ -53,9 +46,9 @@ section#how-it-works.section
       h3 Parabéns, contribuíste para tua economia local!
       p Contribuíste para que os teus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
 section#support.section
-  .row
+  .xrow
     h2.xcol-6.section-separator Quem recebe o teu apoio
-  #support-people.row
+  #support-people.xrow
     .xcol-2.support-person
       img alt="Amélia" src="/assets/hero-img.jpg" /
       p A Amélia
@@ -87,9 +80,9 @@ section#support.section
       p Cozinheira
       p Sabores do Pátio
 section#press.section
-  .row
+  .xrow
     h2.xcol-6.section-separator Como visto em
-  #press-wrapper.row
+  #press-wrapper.xrow
     .xcol-2.press-logo
       img alt="Público" src="/assets/publico.svg" /
     .xcol-2.press-logo
@@ -103,21 +96,12 @@ section#press.section
     .xcol-2.press-logo
       img alt="Público" src="/assets/publico.svg" /
 section#businesses.section
-  .row
+  .xrow
     h2.xcol-6.section-separator Tem um estabelecimento? Comece a vender vouchers hoje.
-  .row
+  .xrow
     a.primary-cta Registe o seu local
 section#kicker.section
-  .row
+  .xrow
     h2.xcol-6.section-separator Está à espera de quê? Preserve o seu sítio preferido agora
-  .row
-    form.xcol-6.search-form
-      input.input-location placeholder="" type="text" value="Porto" /
-      select
-        option Cinemas
-        option Museus
-        option selected="selected"  Restaurantes
-        option Teatros
-        option To do
-        option Zoos
-      input type="submit" value="Pesquisar" /
+  .xrow
+    = render 'shared/search_form', locals: {extra_classes: 'xcol-6'}

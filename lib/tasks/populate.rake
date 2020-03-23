@@ -3,7 +3,7 @@ namespace :db do
   task :populate => :environment do
     require 'faker'
 
-    [AdminUser, User].each do |klass|
+    [AdminUser, User, Seller].each do |klass|
 
       query = "TRUNCATE TABLE #{klass.table_name} CASCADE"
       ActiveRecord::Base.connection.execute(query)
@@ -15,6 +15,8 @@ namespace :db do
       # when running populate.
       klass.reset_column_information
     end
+
+    Seller.create!(name: 'Tasca do Chico', category_id: 1, city: 'Lisboa')
 
     user_hashes = [
       { name: 'Joe User', email: 'joeuser@example.com', password: 'secret'}

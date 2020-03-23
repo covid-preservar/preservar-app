@@ -1,10 +1,19 @@
-class SellersController < Admin::ApplicationController
-  
-  def index
-    @spinner_categories = Category.order("RANDOM()").limit(5)
+class SellersController < ApplicationController
 
-    # @sellers = Seller.where(city: params[:city], category: params[:category])
-    @sellers = Seller.all
-    render :index, layout:'homepage'
+  def index
+    @city = params[:city]
+    @category = Category.find(params[:category])
+    @sellers = @category.sellers.where(city: params[:city])
+  end
+
+  def show
+    @seller = Seller.find(params[:id])
+    @city = @seller.city
+  end
+
+  private
+
+  def load_categories
+    @categories = Category.all
   end
 end

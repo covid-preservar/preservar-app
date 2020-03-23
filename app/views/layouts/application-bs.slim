@@ -8,13 +8,11 @@ html lang="#{I18n.locale}"
     meta charset="UTF-8"
     meta name='viewport' content="initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
 
-    = stylesheet_link_tag 'homepage', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   body class="#{body_class} #{yield (:body_class)}"
-    = yield :header
-    .xcontainer
-      = yield
-    = render 'shared/footer'
-
-    = Gon::Base.render_data
+      / = render 'shared/navbar'
+      main.maincontent
+        = yield
+      = render 'shared/footer'

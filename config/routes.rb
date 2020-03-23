@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   
   resources :sellers, only: [:index, :show]
 
+  resources :sellers, only: [:index, :show]
+
   get '/tos', to: 'home#tos', as: :tos_path
   get '/privacy', to: 'home#privacy', as: :privacy_path
 
@@ -27,6 +29,5 @@ Rails.application.routes.draw do
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
-    get 'design/:file' => 'dev/designs#design_route'
   end
 end
