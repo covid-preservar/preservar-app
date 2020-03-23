@@ -1,0 +1,67 @@
+@font-face {
+  font-family: 'GangsterGrotesk';
+  src: font-url('fonts/gangstergrotesk-light-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+        font-url('fonts/gangstergrotesk-light-webfont.woff') format('woff'); /* Pretty Modern Browsers */
+
+  font-weight: 300;
+  font-style: normal;
+ }
+
+ @font-face {
+  font-family: 'GangsterGrotesk';
+  src: font-url('gangstergrotesk-regular-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+        font-url('gangstergrotesk-regular-webfont.woff') format('woff'); /* Pretty Modern Browsers */
+
+  font-weight: normal;
+  font-style: normal;
+ }
+
+ @font-face {
+  font-family: 'GangsterGrotesk';
+  src: font-url('gangstergrotesk-bold-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+        font-url('gangstergrotesk-bold-webfont.woff') format('woff'); /* Pretty Modern Browsers */
+
+  font-weight: bold;
+  font-style: normal;
+}
+
+html {
+  font-family: "GangsterGrotesk", Helvetica, sans-serif;
+  color: #000000;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+  line-height: var(--h1-line-height);
+  font-weight: bold;
+  margin: 0;
+  color: var(--color-main-blue);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+  line-height: var(--h2-line-height);
+  font-weight: bold;
+  margin: 0;
+  color: var(--color-main-blue);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+  line-height: var(--h3-line-height);
+  font-weight: bold;
+  margin: 0;
+}
+
+p {
+  font-size: var(--p-font-size);
+  line-height: var(--p-line-height);
+  margin: 0;
+}
+
+.small {
+  font-size: calc(14rem/16);
+  line-height: calc(24/14);
+}

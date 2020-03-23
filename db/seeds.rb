@@ -8,7 +8,13 @@
 
 
 CATEGORIES = [
-  {name: 'Restaurante', name_plural: 'Restaurantes'}
+  {name: 'Restaurante', name_plural: 'Restaurantes'},
+  {name: 'Café', name_plural: 'Cafés' },
+  {name: 'Museu', name_plural: 'Museus' },
+  {name: 'Zoo', name_plural: 'Zoos' },
+  {name: 'Cabeleireiro', name_plural: 'Cabeleireiros' },
+  {name: 'Teatro', name_plural: 'Teatros' },
+  {name: 'Cinema', name_plural: 'Cinemas' }
 ]
 
 CATEGORIES.each do |c|
