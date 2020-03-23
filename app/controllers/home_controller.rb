@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     @spinner_categories = Category.order("RANDOM()").limit(5)
     # @categories = Category.with_sellers
     @categories = Category.all
+    gon.cities = Seller.distinct(:city).pluck(:city)
 
     render :index, layout:'homepage'
   end

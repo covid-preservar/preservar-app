@@ -452,13 +452,14 @@ a {
   color: var(--color-main-blue);
 }
 
-select {
+.select-input {
   background: image-url('icon-arrow-down.svg') #FFF right .5rem center no-repeat;
 }
 
 .input-location {
   background: image-url('icon-location.svg') #FFF left .5rem center no-repeat;
   padding-left: 2rem;
+  width: 100%;
 }
 
 input[type="submit"],
