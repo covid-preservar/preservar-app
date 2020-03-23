@@ -6,4 +6,10 @@
   height: 67vh;
   width: 75vw;
   z-index: -1;
+
+  @media only screen and (max-width: 375px) {
+    width: auto;
+    right: 0;
+    height: 40rem;
+  }
 }
