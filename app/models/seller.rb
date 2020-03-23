@@ -1,4 +1,5 @@
 class Seller < ApplicationRecord
+  DEFAULT_EUR_VALUES = [20, 30, 40, 50].map{|v| ["€#{v}",v]}
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]

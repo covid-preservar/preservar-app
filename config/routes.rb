@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :sellers, only: [:index, :show]
+  resources :vouchers, only: [:create, :show]
 
-  get '/tos', to: 'home#tos', as: :tos_path
-  get '/privacy', to: 'home#privacy', as: :privacy_path
+  get '/tos', to: 'home#tos', as: :tos
+  get '/privacy', to: 'home#privacy', as: :privacy
 
   devise_for :admin_users, path: 'admin'
 

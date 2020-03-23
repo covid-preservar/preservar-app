@@ -4,4 +4,5 @@ class Category < ApplicationRecord
   validates :name, :name_plural, presence: true
 
   scope :with_sellers, -> { where(id: Seller.distinct(:category_id))}
+  default_scope -> { order(name: :asc) }
 end
