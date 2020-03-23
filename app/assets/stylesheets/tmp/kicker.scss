@@ -1,45 +1,42 @@
-.kicker-bg {
-  background-color: var(--color-main-red);
-  position: absolute;
-  top: 0;
-  left: -2rem;
-  height: 27rem;
-  width: 69vw;
-  z-index: -1;
-
-  @media only screen and (max-width: 850px) {
-    width: auto;
-    right: -2rem;
-    height: 30rem;
-  }
-
-
-  @media only screen and (max-width: 375px) {
-    width: auto;
-    right: -2rem;
-    height: 40rem;
-  }
-}
-
 #kicker {
   position: relative;
   padding: 8rem 0;
-
-  h2 {
-    color: white;
-  }
-
-  h2:before {
-    background-color: white;
-  }
 
   .search-form {
     margin-top: 3rem;
   }
 
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 80%;
+    top: 0;
+    bottom: 0;
+    background-color: var(--color-main-yellow);
+    margin-left:  calc(-100vw / 2 + var(--grid-max-width) / 2);
+  }
+
+  @media only screen and (max-width: 1288px) {
+    &:before {
+      margin-left:  -10%;
+    }
+  }
+
   @media only screen and (max-width: 768px) {
     .search-form {
       width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    &:before {
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      bottom: 0;
     }
   }
 }

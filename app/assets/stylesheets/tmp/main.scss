@@ -364,6 +364,7 @@ textarea {
   --color-main-blue: #00093C;
   --color-light-blue: #EFF5FF;
   --color-main-red: #D12136;
+  --color-main-yellow: #FFBA02;
 
 
   --h1-font-size: calc(60rem/16);
@@ -434,7 +435,8 @@ img {
   max-width: 100%;
 }
 
-input, select {
+input:not([type="file"]),
+select {
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -442,9 +444,10 @@ input, select {
   outline: 0;
   border: 0;
   height: 3rem;
+  line-height: 3rem;
   padding: 0 1rem;
   background-color: white;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.09);
   border-radius: 0;
 }
 
@@ -471,6 +474,14 @@ input[type="submit"],
   line-height: 3rem;
   text-decoration: none;
   color: white;
+  border-radius: 0;
+  vertical-align: bottom;
+}
+
+.primary-cta {
+  display: block;
+  float: left; 
+  clear: left; 
 }
 
 input[type="submit"]:hover,
@@ -482,13 +493,15 @@ input[type="submit"]:hover,
 
 .secondary-cta {
   display: inline-block;
+  height: 3rem;
   padding: 0 1rem;
   border: 2px solid var(--color-main-blue);
   font-weight: bold;
   font-size: calc(17rem/16);
-  line-height: 3rem;
+  line-height: 2.8rem;
   text-decoration: none;
   color: var(--color-main-blue);
+  box-sizing: border-box;
 }
 
 .secondary-cta:hover {
@@ -529,7 +542,7 @@ input[type="submit"]:hover,
   position: relative;
   margin-top: 4rem;
   padding: 4rem 0;
-  height: 16rem;
+  height: 21rem;
   border-top: 1px solid var(--color-light-blue);
 }
 
@@ -545,6 +558,19 @@ input[type="submit"]:hover,
 .small {
   font-size: calc(14rem/16);
   line-height: calc(24/14);
+}
+
+#logo {
+  display: block;
+  float: left;
+  width: 192px;
+  height: 154px;
+  background: image-url('logo.svg') no-repeat;
+  
+}
+
+#logo:hover {
+  background-image: image-url('logo-home.svg');
 }
 
 
@@ -616,14 +642,6 @@ input[type="submit"]:hover,
 }
 
 
-
-
-@media only screen and (max-width: 1024px) {
-  #hero-stats {
-    margin-top: 4rem;
-  }
-}
-
 @media only screen and (max-width: 768px) {
   #hero-text {
     width: 100%;
@@ -661,13 +679,21 @@ input[type="submit"]:hover,
 
   #logo {
     width: 30%;
+    height: auto;
+    padding-bottom: 25%;
+    background-size: 100%;
   }
 
+  .primary-cta,
   .secondary-cta {
     font-size: calc(15rem/16);
     height: 2.5rem;
     line-height: 2.5rem;
     padding: 0 0.5rem;
+  }
+
+  .secondary-cta {
+    line-height: 2.3rem;
   }
 
   h1 {
@@ -738,8 +764,8 @@ input[type="submit"]:hover,
   }
 
   #footer {
-    margin-top: 0;
-    border: 0;
+    margin-top: 2rem;
+    padding-top: 2rem;
   }
 
   #footer .xcol-6 + .xcol-6 {
