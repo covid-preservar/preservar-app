@@ -37,6 +37,11 @@ gem 'devise-i18n'
 gem 'slim-rails'
 gem 'redcarpet'
 
+
+gem 'geocoder'
+gem 'maxminddb'
+gem 'hive_geoip2'
+
 # Backoffice
 gem 'administrate', '~> 0.13.0'
 

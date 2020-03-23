@@ -39,3 +39,4 @@ yarn-debug.log*
 # TODO Comment out this rule if environment variables can be committed
 .env
 /coverage/
+GeoLite2-City.mmdb

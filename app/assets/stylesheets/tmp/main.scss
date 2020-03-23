@@ -453,11 +453,12 @@ a {
 }
 
 select {
-  background: image-url('icon-arrow-down.svg') #FFF right 0.5rem center no-repeat;
+  background: image-url('icon-arrow-down.svg') #FFF right .5rem center no-repeat;
 }
 
 .input-location {
-  background: image-url('icon-location.svg') #FFF right 0.5rem center no-repeat;
+  background: image-url('icon-location.svg') #FFF left .5rem center no-repeat;
+  padding-left: 2rem;
 }
 
 input[type="submit"],
