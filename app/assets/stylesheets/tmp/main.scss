@@ -160,10 +160,9 @@ textarea {
 *** (C) ZACH COLE 2016
 **/
 
-
 .xcontainer {
   width: 100%;
-  max-width: calc(var(--grid-max-width) + 2*var(--grid-outer-padding));
+  max-width: calc(var(--grid-max-width) + 2 * var(--grid-outer-padding));
   padding: 0 var(--grid-outer-padding);
   margin: 0 auto;
   box-sizing: border-box;
@@ -247,9 +246,9 @@ textarea {
 }
 
 .xrow::after {
-	content: "";
-	display: table;
-	clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .hidden-sm {
@@ -354,28 +353,25 @@ textarea {
   }
 }
 
-
 /*
 * Base styles
 */
 
-
 :root {
-  --color-main-blue: #00093C;
-  --color-light-blue: #EFF5FF;
-  --color-main-red: #D12136;
-  --color-main-yellow: #FFBA02;
+  --color-main-blue: #00093c;
+  --color-light-blue: #eff5ff;
+  --color-main-red: #d12136;
+  --color-main-yellow: #ffba02;
 
+  --h1-font-size: calc(60rem / 16);
+  --h1-line-height: calc(64em / 60);
+  --h2-font-size: calc(36rem / 16);
+  --h2-line-height: calc(40em / 36);
+  --h3-font-size: calc(20rem / 16);
+  --h3-line-height: calc(24em / 16);
 
-  --h1-font-size: calc(60rem/16);
-  --h1-line-height: calc(64em/60);
-  --h2-font-size: calc(36rem/16);
-  --h2-line-height: calc(40em/36);
-  --h3-font-size: calc(20rem/16);
-  --h3-line-height: calc(24em/16);
-
-  --p-font-size: calc(20rem/16);
-  --p-line-height: calc(24/20);
+  --p-font-size: calc(20rem / 16);
+  --p-line-height: calc(24 / 20);
 
   --grid-max-width: 1224px;
   --grid-outer-padding: 32px;
@@ -456,11 +452,12 @@ a {
 }
 
 .select-input {
-  background: image-url('icon-arrow-down.svg') #FFF right .5rem center no-repeat;
+  background: image-url("icon-arrow-down.svg") #fff right 0.5rem center
+    no-repeat;
 }
 
 .input-location {
-  background: image-url('icon-location.svg') #FFF left .5rem center no-repeat;
+  background: image-url("icon-location.svg") #fff left 0.5rem center no-repeat;
   padding-left: 2rem;
   width: 100%;
 }
@@ -472,7 +469,7 @@ input[type="submit"],
   padding: 0 1rem;
   background: var(--color-main-blue);
   font-weight: bold;
-  font-size: calc(17rem/16);
+  font-size: calc(17rem / 16);
   line-height: 3rem;
   text-decoration: none;
   color: white;
@@ -482,13 +479,13 @@ input[type="submit"],
 
 .primary-cta {
   display: block;
-  float: left; 
-  clear: left; 
+  float: left;
+  clear: left;
 }
 
 input[type="submit"]:hover,
 .primary-cta:hover {
-  background: #00158A;
+  background: #00158a;
   color: white;
   cursor: pointer;
 }
@@ -499,7 +496,7 @@ input[type="submit"]:hover,
   padding: 0 1rem;
   border: 2px solid var(--color-main-blue);
   font-weight: bold;
-  font-size: calc(17rem/16);
+  font-size: calc(17rem / 16);
   line-height: 2.8rem;
   text-decoration: none;
   color: var(--color-main-blue);
@@ -517,7 +514,6 @@ input[type="submit"]:hover,
 
 #header-main .secondary-cta {
   float: right;
-
 }
 
 .search-form > * {
@@ -531,41 +527,12 @@ input[type="submit"]:hover,
 }
 
 .section-separator:before {
-  content: '';
+  content: "";
   position: absolute;
   top: -2rem;
   width: 100px;
   height: 4px;
   background: var(--color-main-blue);
-
-}
-
-#footer {
-  position: relative;
-  margin-top: 4rem;
-  padding: 4rem 0;
-  height: 24rem;
-  border-top: 1px solid var(--color-light-blue);
-}
-
-#footer h3,
-#footer p {
-  font-size: calc(16rem/16);
-  line-height: calc(24/16);
-}
-
-#footer .xrow {
-  position: static;
-}
-
-#footer .bottom {
-  position: absolute;
-  bottom: 2rem;
-}
-
-#footer p.small {
-  font-size: calc(14rem/16);
-  line-height: calc(24/14);
 }
 
 #logo {
@@ -573,21 +540,16 @@ input[type="submit"]:hover,
   float: left;
   width: 192px;
   height: 154px;
-  background: image-url('logo.svg') no-repeat;
-  
+  background: image-url("logo.svg") no-repeat;
 }
 
 #logo:hover {
-  background-image: image-url('logo-home.svg');
+  background-image: image-url("logo-home.svg");
 }
-
-
-
 
 /*
 * Homepage
 */
-
 
 .stat {
   float: left;
@@ -608,8 +570,8 @@ input[type="submit"]:hover,
 }
 
 .fact p {
-  font-size: calc(16rem/16);
-  line-height: calc(24/16);
+  font-size: calc(16rem / 16);
+  line-height: calc(24 / 16);
 }
 
 #support-people,
@@ -623,8 +585,8 @@ input[type="submit"]:hover,
 }
 
 .support-person p {
-  font-size: calc(16rem/16);
-  line-height: calc(24/16);
+  font-size: calc(16rem / 16);
+  line-height: calc(24 / 16);
   margin: 0;
 }
 
@@ -635,7 +597,7 @@ input[type="submit"]:hover,
 .press-logo {
   position: relative;
   height: 10rem;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   text-align: center;
 }
 
@@ -648,7 +610,6 @@ input[type="submit"]:hover,
 #businesses .primary-cta {
   margin-top: 2rem;
 }
-
 
 @media only screen and (max-width: 768px) {
   #hero-text {
@@ -664,24 +625,15 @@ input[type="submit"]:hover,
     position: absolute;
     right: 0;
   }
-
-  #footer {
-    height: auto;
-  }
-
-  #footer .bottom {
-    position: relative;
-    bottom: auto;
-  }
 }
 
 @media only screen and (max-width: 375px) {
   .xcontainer {
-    padding: 0 calc(var(--grid-outer-padding)/2);
+    padding: 0 calc(var(--grid-outer-padding) / 2);
   }
 
   #header-main {
-    padding: calc(var(--grid-outer-padding)/2);
+    padding: calc(var(--grid-outer-padding) / 2);
     margin-bottom: 2rem;
   }
 
@@ -694,7 +646,7 @@ input[type="submit"]:hover,
 
   .primary-cta,
   .secondary-cta {
-    font-size: calc(15rem/16);
+    font-size: calc(15rem / 16);
     height: 2.5rem;
     line-height: 2.5rem;
     padding: 0 0.5rem;
@@ -705,11 +657,9 @@ input[type="submit"]:hover,
   }
 
   h1 {
-    font-size: calc(36rem/16);
-    line-height: calc(40/36);
+    font-size: calc(36rem / 16);
+    line-height: calc(40 / 36);
   }
-
-
 
   .search-form > * {
     width: 100%;
@@ -755,7 +705,7 @@ input[type="submit"]:hover,
 
   .support-person {
     flex: 0 0 80%;
-    margin-right: calc(var(--grid-outer-padding)/2);
+    margin-right: calc(var(--grid-outer-padding) / 2);
   }
 
   .support-person img {
@@ -764,21 +714,10 @@ input[type="submit"]:hover,
 
   .press-logo {
     flex: 0 0 40%;
-    margin-right: calc(var(--grid-outer-padding)/2);
+    margin-right: calc(var(--grid-outer-padding) / 2);
   }
 
   [class^="xcol"] + [class^="xcol"] {
     margin-left: 0;
   }
-
-  #footer {
-    margin-top: 2rem;
-    padding-top: 2rem;
-  }
-
-  #footer .xcol-6 + .xcol-6 {
-    margin-top: 3rem;
-  }
 }
-
-
