@@ -1,0 +1,19 @@
+.search-form {
+  display: flex;
+  justify-content: flex-start;
+
+  .input-location {
+    background: image-url("icon-location.svg") #fff left 0.5rem center no-repeat;
+    padding-left: 2rem;
+    width: 100%;
+  }
+
+  .select-input {
+    background: image-url("icon-arrow-down.svg") #fff right 0.5rem center no-repeat;
+  }
+
+  & > * {
+    flex: 1;
+    margin-right: 1%;
+  }
+}
