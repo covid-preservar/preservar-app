@@ -26,6 +26,14 @@ needed to function.
 
 `seeds.rb` is meant for DB seeds that will be used in production. For seeding the DB for development, use the `populate.rake` task.
 
+## GeoLite Database
+
+IP Lookup uses the free GeoLite2 database. The heroku deployment has a buildpack to ensure the latest version and to keep the large file out of the repository.
+
+When setting up your local environment, download the database from [here](https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=gAZR7U6DdeZa70y9&suffix=tar.gz), unzip and place the `.mmdb` file in the `vendor` folder.
+
+
+
 ## Procfile and Procfile.dev
 
 > TL;DR: Run `foreman start` in one terminal and `rails server` in another.
