@@ -3,7 +3,7 @@ namespace :db do
   task :populate => :environment do
     require 'faker'
 
-    [AdminUser, User, Seller].each do |klass|
+    [AdminUser, Seller].each do |klass|
 
       query = "TRUNCATE TABLE #{klass.table_name} CASCADE"
       ActiveRecord::Base.connection.execute(query)
@@ -16,24 +16,14 @@ namespace :db do
       klass.reset_column_information
     end
 
-    Seller.create!(name: 'Tasca do Chico', category_id: 1, city: 'Lisboa')
-
-    user_hashes = [
-      { name: 'Joe User', email: 'joeuser@example.com', password: 'secret'}
-    ]
-
-
-    user_hashes.each do |user_hash|
-      next if User.find_by(email: user_hash[:email]).present?
-
-      puts "creating User: #{user_hash[:email]} ; PW: #{user_hash[:password]}"
-      user = User.new(email: user_hash[:email],
-                      password: user_hash[:password],
-                      password_confirmation: user_hash[:password])
-      # user.skip_confirmation!
-
-      user.save(validate: false)
-    end
+    Seller.create!(name: 'Tasca do Chico',
+                   category_id: 1,
+                   city: 'Lisboa',
+                   address:'R. Dr. José Ventura, 178')
+    Seller.create!(name: 'Café Central',
+                   category_id: 2,
+                   city: 'Lisboa',
+                   address:'Av. da República, 123')
 
     AdminUser.create!(email: 'admin@example.com', password: 'secret', confirmed_at: Time.now.utc)
   end
