@@ -615,22 +615,7 @@ input[type="submit"]:hover,
   margin-top: 2rem;
 }
 
-#kicker {
-  position: relative;
-  padding: 8rem 0;
-}
 
-#kicker h2 {
-  color: white;
-}
-
-#kicker h2:before {
-  background-color: white;
-}
-
-#kicker .search-form {
-  margin-top: 3rem;
-}
 
 
 @media only screen and (max-width: 1024px) {
@@ -652,10 +637,6 @@ input[type="submit"]:hover,
   #hero-img {
     position: absolute;
     right: 0;
-  }
-
-  #kicker .search-form {
-    width: 100%;
   }
 
   #footer {

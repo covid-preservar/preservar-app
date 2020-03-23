@@ -13,3 +13,26 @@
     height: 40rem;
   }
 }
+
+#kicker {
+  position: relative;
+  padding: 8rem 0;
+
+  h2 {
+    color: white;
+  }
+
+  h2:before {
+    background-color: white;
+  }
+
+  .search-form {
+    margin-top: 3rem;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .search-form {
+      width: 100%;
+    }
+  }
+}
