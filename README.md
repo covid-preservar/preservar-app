@@ -16,6 +16,7 @@
 - PostgreSQL 12
 - Memcache
 - Redis
+- libmaxminddb
 
 ## Environment file
 

@@ -1,0 +1,45 @@
+#footer {
+  position: relative;
+  margin-top: 4rem;
+  padding: 4rem 0;
+  height: 24rem;
+  border-top: 1px solid var(--color-light-blue);
+
+  h3,
+  p {
+    font-size: calc(16rem / 16);
+    line-height: calc(24 / 16);
+  }
+
+  .xrow {
+    position: static;
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 2rem;
+  }
+
+  p.small {
+    font-size: calc(14rem / 16);
+    line-height: calc(24 / 14);
+  }
+
+  @media only screen and (max-width: 768px) {
+    height: auto;
+
+    .bottom {
+      position: relative;
+      bottom: auto;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    margin-top: 2rem;
+    padding-top: 2rem;
+
+    .xcol-6 + .xcol-6 {
+      margin-top: 3rem;
+    }
+  }
+}
