@@ -11,7 +11,7 @@ html lang="#{I18n.locale}"
     = stylesheet_link_tag 'homepage', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
-  body class="#{body_class} #{yield (:body_class)}"
+  body class="#{} #{yield (:body_class)}"
     header id="header-main"
       = image_tag 'logo.svg', id: 'logo', alt: 'Preserve'
       a href="#" class="secondary-cta" Submeta o seu negócio

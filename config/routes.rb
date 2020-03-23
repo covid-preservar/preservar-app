@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'home#index'
+  
+  resources :sellers, only: [:index, :show]
 
   get '/tos', to: 'home#tos', as: :tos_path
   get '/privacy', to: 'home#privacy', as: :privacy_path
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
 
     root to: "users#index"
   end
+
 
   authenticate :admin_user do
     require 'sidekiq/web'

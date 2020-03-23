@@ -1,0 +1,141 @@
+#header-short {
+    position: relative;
+    height: 3.5rem;
+    padding: 0.5rem;
+    margin-bottom: 3rem;
+}
+
+#header-short:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 80%;
+    top: 0;
+    height: 30rem;
+    background-color: var(--color-light-blue);
+    margin-left: calc(-100vw / 2 + var(--grid-max-width) / 2);
+    z-index: -1;
+}
+
+#logo-small {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: url(../img/logo-small.svg) no-repeat;
+    float: left;
+}
+
+#logo-small:hover {
+    background-image: url(../img/logo-small-home.svg);
+}
+
+#header-short .search-form {
+    float: left;
+    width: 50%;
+    margin-left: 0.5rem;
+}
+
+#header-short .search-form>* {
+    display: block;
+    float: left;
+    width: 25%;
+    margin-left: 0;
+    height: 2.5rem;
+    line-height: 2.5rem;
+}
+
+#header-short .search-form>*+* {
+    margin-left: 0.5rem;
+}
+
+#header-short .secondary-cta {
+    float: right;
+    height: 2.5rem;
+    line-height: 2.5rem;
+}
+
+#places {
+    margin-top: 6rem;
+}
+
+#places-list {
+    margin-top: 3rem;
+}
+
+.place {
+    text-decoration: none;
+}
+
+.place h3,
+.place p {
+    font-size: calc(16rem/16);
+    line-height: calc(24/16);
+}
+
+.place h3 {
+    margin-top: 1rem;
+}
+
+.place p {
+    margin-top: 0;
+    opacity: 0.5;
+}
+
+.place:nth-child(4n+1) {
+    margin-left: 0;
+}
+
+.place:nth-child(n+5) {
+    margin-top: 3rem;
+}
+
+.place img {
+    transition: opacity 100ms ease-out;
+}
+
+.place .place-img-wrapper {
+    background-color: var(--color-main-blue);
+}
+
+.place:hover img {
+    opacity: 0.5;
+}
+
+@media only screen and (max-width: 1288px) {
+    #header-short:before {
+        margin-left: -10%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    #header-short .search-form {
+        width: 60%;
+    }
+    #header-short .search-form>* {
+        width: 30%;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    #header-short {
+        height: auto;
+    }
+    #header-short .search-form {
+        float: none;
+        margin-left: 0;
+        width: 100%;
+    }
+    #header-short .search-form>* {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 1rem;
+    }
+    #header-short .secondary-cta {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+    #logo-small {
+        float: none;
+    }
+    #places {}
+}

@@ -5,7 +5,7 @@ section#hero
         | Preserve o seu
         br
         #hero-ticker
-          - Category.all.each do |c|
+          - @spinner_categories.all.each do |c|
             span = c.name
         br
         | favorito
@@ -54,38 +54,15 @@ section#how-it-works.section
       p Contribuíste para que os teus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
 section#support.section
   .row
-    h2.xcol-6.section-separator Quem recebe o teu apoio
+    h2.xcol-6.section-separator #{@sellers.count} Resultados
   #support-people.row
-    .xcol-2.support-person
-      img alt="Amélia" src="/assets/hero-img.jpg" /
-      p A Amélia
-      p Cozinheira
-      p Sabores do Pátio
-    .xcol-2.support-person
-      img alt="Amélia" src="/assets/hero-img.jpg" /
-      p A Amélia
-      p Cozinheira
-      p Sabores do Pátio
-    .xcol-2.support-person
-      img alt="Amélia" src="/assets/hero-img.jpg" /
-      p A Amélia
-      p Cozinheira
-      p Sabores do Pátio
-    .xcol-2.support-person
-      img alt="Amélia" src="/assets/hero-img.jpg" /
-      p A Amélia
-      p Cozinheira
-      p Sabores do Pátio
-    .xcol-2.support-person
-      img alt="Amélia" src="/assets/hero-img.jpg" /
-      p A Amélia
-      p Cozinheira
-      p Sabores do Pátio
-    .xcol-2.support-person
-      img alt="Amélia" src="/assets/hero-img.jpg" /
-      p A Amélia
-      p Cozinheira
-      p Sabores do Pátio
+    - @sellers.all.each do |seller|
+      .xcol-2.support-person
+        img alt="Amélia" src="/assets/hero-img.jpg" /
+        p = seller.name
+        span = seller.category.name
+        span = " · "
+        span = "Porto"
 section#press.section
   .row
     h2.xcol-6.section-separator Como visto em
