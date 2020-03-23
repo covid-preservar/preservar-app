@@ -95,9 +95,6 @@
     background-color: var(--color-light-blue);
   }
 
-  input[type="radio"]:focus + .form-check-label {
-  }
-
   input[type="radio"]:checked + .form-check-label {
     background-color: var(--color-main-blue);
     color: white;
@@ -106,47 +103,50 @@
     input[type="number"] {
     width: 47.7272727273%;
   }
+
   .euro {
     position: relative;
+
+    input {
+      padding-left: 2.5rem;
+    }
+
+    &:after {
+      content: "€";
+      position: absolute;
+      left: 1rem;
+      line-height: 3rem;
+    }
   }
 
-  .euro input {
-    padding-left: 2.5rem;
-  }
+  #place-share {
+    & > *:not(h3) {
+      display: block;
+      margin-top: 1rem;
+    }
 
-  .euro:after {
-    content: "€";
-    position: absolute;
-    left: 1rem;
-    line-height: 3rem;
-  }
+    h3 {
+      margin-top: 1.5rem;
+    }
 
-  #place-share > *:not(h3) {
-    display: block;
-    margin-top: 1rem;
-  }
-
-  #place-share h3 {
-    margin-top: 1.5rem;
-  }
-
-  #place-share input {
-    width: 100%;
+    input {
+      width: 100%;
+    }
   }
 
   .link {
     position: relative;
-  }
 
-  .link:after {
-    content: "🔗";
-    position: absolute;
-    left: 1rem;
-    line-height: 3rem;
-  }
+    &:after {
+      content: "🔗";
+      position: absolute;
+      left: 1rem;
+      line-height: 3rem;
+    }
 
-  .link input {
-    padding-left: 3rem;
+    input {
+      padding-left: 3rem;
+    }
   }
 
   #share-box {
