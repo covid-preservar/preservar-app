@@ -75,6 +75,20 @@
     }
   }
 
+  @media only screen and (max-width: 667px) {
+    #hero-img {
+      display: none;
+    }
+
+    &:before {
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+    }
+  }
+
   @media only screen and (max-width: 375px) {
     #hero-text > h1,
     #hero-text > p {
@@ -85,20 +99,11 @@
       margin-top: 1rem;
     }
 
-    #hero-img {
-      display: none;
-    }
-
     .search-form {
       margin-top: 1rem;
     }
 
     &:before {
-      width: 100vw;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
       bottom: 17rem;
     }
   }
