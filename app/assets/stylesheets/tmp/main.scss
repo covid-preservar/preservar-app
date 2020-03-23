@@ -455,15 +455,6 @@ a {
   color: var(--color-main-blue);
 }
 
-.select-input {
-  background: image-url('icon-arrow-down.svg') #FFF right .5rem center no-repeat;
-}
-
-.input-location {
-  background: image-url('icon-location.svg') #FFF left .5rem center no-repeat;
-  padding-left: 2rem;
-  width: 100%;
-}
 
 input[type="submit"],
 .primary-cta {
@@ -478,19 +469,12 @@ input[type="submit"],
   color: white;
   border-radius: 0;
   vertical-align: bottom;
-}
 
-.primary-cta {
-  display: block;
-  float: left; 
-  clear: left; 
-}
-
-input[type="submit"]:hover,
-.primary-cta:hover {
-  background: #00158A;
-  color: white;
-  cursor: pointer;
+  &:hover {
+    background: #00158A;
+    color: white;
+    cursor: pointer;
+  }
 }
 
 .secondary-cta {
@@ -504,27 +488,12 @@ input[type="submit"]:hover,
   text-decoration: none;
   color: var(--color-main-blue);
   box-sizing: border-box;
+
+  &:hover {
+    background: var(--color-light-blue);
+  }
 }
 
-.secondary-cta:hover {
-  background: var(--color-light-blue);
-}
-
-#header-main {
-  padding: var(--grid-outer-padding);
-  position: relative;
-}
-
-#header-main .secondary-cta {
-  float: right;
-
-}
-
-.search-form > * {
-  display: inline-block;
-  width: 31%;
-  margin-left: 1%;
-}
 
 .section {
   margin-top: 10rem;
@@ -546,15 +515,15 @@ input[type="submit"]:hover,
   padding: 4rem 0;
   height: 21rem;
   border-top: 1px solid var(--color-light-blue);
-}
 
-#footer .xrow {
-  position: static;
-}
+  .xrow {
+    position: static;
+  }
 
-#footer .bottom {
-  position: absolute;
-  bottom: 2rem;
+  .bottom {
+    position: absolute;
+    bottom: 2rem;
+  }
 }
 
 .small {
@@ -568,7 +537,7 @@ input[type="submit"]:hover,
   width: 192px;
   height: 154px;
   background: image-url('logo.svg') no-repeat;
-  
+
 }
 
 #logo:hover {
@@ -672,11 +641,6 @@ input[type="submit"]:hover,
 @media only screen and (max-width: 375px) {
   .xcontainer {
     padding: 0 calc(var(--grid-outer-padding)/2);
-  }
-
-  #header-main {
-    padding: calc(var(--grid-outer-padding)/2);
-    margin-bottom: 2rem;
   }
 
   #logo {
