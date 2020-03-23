@@ -7,7 +7,7 @@ class SellersController < ApplicationController
   end
 
   def show
-    @seller = Seller.find(params[:id])
+    @seller = Seller.friendly.find(params[:id])
     @city = @seller.city
   end
 
