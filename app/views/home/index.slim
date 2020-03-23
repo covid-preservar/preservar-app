@@ -10,7 +10,7 @@ section#hero
         br
         | favorito
       p Compra um voucher para usares em qualquer altura, e ajuda a tua economia local a sobreviver ao COVID-19
-      = render 'search_form'
+      = render 'shared/search_form'
 
       section#hero-stats.clearfix
         article.stat
@@ -105,4 +105,4 @@ section#kicker.section
   .xrow
     h2.xcol-6.section-separator Está à espera de quê? Preserve o seu sítio preferido agora
   .xrow
-    = render 'search_form', locals: {extra_classes: 'xcol-6'}
+    = render 'shared/search_form', locals: {extra_classes: 'xcol-6'}

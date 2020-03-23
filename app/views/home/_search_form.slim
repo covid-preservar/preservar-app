@@ -1,5 +1,0 @@
-- extra_classes = local_assigns.dig(:locals, :extra_classes)
-= form_tag "#", method: :get, class: "search-form #{extra_classes}" do
-  = search_field_tag 'location', '', class:'input-location', placeholder:'Localidade'
-  = select_tag 'category', options_from_collection_for_select(@categories, :id, :name_plural), class:'form-control'
-  = submit_tag 'Pesquisar', class:'btn btn-primary'

@@ -12,9 +12,11 @@ html lang="#{I18n.locale}"
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   body class="#{body_class} #{yield (:body_class)}"
-    header id="header-main" class="clearfix"
-      a href="#" id="logo"
-      a href="#" class="secondary-cta" Submeta o seu negócio
+    header.header.header-main
+      a#logo href="#"
+      a.secondary-cta href="#" Submeta o seu negócio
     .xcontainer
       = yield
     = render 'shared/footer'
+
+    = Gon::Base.render_data
