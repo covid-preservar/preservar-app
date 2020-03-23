@@ -161,7 +161,7 @@ textarea {
 **/
 
 
-.container {
+.xcontainer {
   width: 100%;
   max-width: calc(var(--grid-max-width) + 2*var(--grid-outer-padding));
   padding: 0 var(--grid-outer-padding);
@@ -585,19 +585,6 @@ input[type="submit"]:hover,
   object-fit: cover;
 }
 
-#hero:before {
-  // content: '';
-  // position: absolute;
-  // left: 0;
-  // width: 88%;
-  // top: 0;
-  // bottom: 10rem;
-  // background-color: var(--color-light-blue);
-  // margin-left:  calc(-100vw / 2 + 1112px / 2);
-  // margin-top: -16rem;
-  // z-index: -1;
-}
-
 .stat {
   float: left;
   width: 33.3333%;
@@ -688,17 +675,12 @@ input[type="submit"]:hover,
 
 
 @media only screen and (max-width: 1288px) {
-  #kicker:before,
-  #hero:before {
+  #kicker:before {
     margin-left:  -10%;
   }
 }
 
 @media only screen and (max-width: 1024px) {
-  #hero:before {
-    bottom: 7rem;
-  }
-
   #hero-stats {
     margin-top: 4rem;
   }
@@ -734,7 +716,7 @@ input[type="submit"]:hover,
 }
 
 @media only screen and (max-width: 375px) {
-  .container {
+  .xcontainer {
     padding: 0 calc(var(--grid-outer-padding)/2);
   }
 
@@ -767,14 +749,6 @@ input[type="submit"]:hover,
     display: none;
   }
 
-  #hero:before {
-    width: 100vw;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    bottom: 17rem;
-  }
 
   h1 {
     font-size: calc(36rem/16);
