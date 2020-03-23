@@ -1,1 +1,37 @@
-$footer-height: 4rem;
+$footer-height: 16rem;
+
+
+:root {
+  --color-main-blue: #00093C;
+  --color-light-blue: #EFF5FF;
+  --color-main-red: #D12136;
+
+
+  --h1-font-size: calc(60rem/16);
+  --h1-line-height: calc(64em/60);
+  --h2-font-size: calc(36rem/16);
+  --h2-line-height: calc(40em/36);
+  --h3-font-size: calc(20rem/16);
+  --h3-line-height: calc(24em/16);
+
+  --p-font-size: calc(20rem/16);
+  --p-line-height: calc(24/20);
+
+  --grid-max-width: 1224px;
+  --grid-outer-padding: 32px;
+}
+
+// Bootstrap overrides
+
+$blue:    #00093C !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+

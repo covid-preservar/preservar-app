@@ -30,7 +30,6 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'bootstrap', '~> 4.4.1'
 gem 'simple_form'
 gem 'sidekiq', '~> 6.0.0'
 gem 'devise'
@@ -41,12 +40,19 @@ gem 'redcarpet'
 # Backoffice
 gem 'administrate', '~> 0.13.0'
 
+gem 'pry'
+gem 'faker'
+gem 'rollbar'
+
+group :production do
+  gem 'scout_apm'
+  gem 'dalli'
+end
 
 group :development, :test do
   gem 'pry-byebug'
   gem 'awesome_print'
   gem 'dotenv-rails'
-  gem 'faker'
 
   gem 'rspec-rails', '~> 3.9.0'
   gem 'factory_bot_rails'

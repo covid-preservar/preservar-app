@@ -1,6 +1,15 @@
-.footer {
+#footer {
+  position: relative;
+  padding: 4rem var(--grid-outer-padding);
   height: $footer-height;
-  padding: 1rem;
-  background-color: $gray-700;
-  color: $white;
+  border-top: 1px solid var(--color-light-blue);
+
+  .row {
+    height: $footer-height;
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 2rem;
+  }
 }
