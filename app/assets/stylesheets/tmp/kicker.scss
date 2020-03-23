@@ -1,0 +1,15 @@
+.kicker-bg {
+  background-color: var(--color-main-red);
+  position: absolute;
+  top: 0;
+  left: -2rem;
+  height: 27rem;
+  width: 69vw;
+  z-index: -1;
+
+  @media only screen and (max-width: 375px) {
+    width: auto;
+    right: -2rem;
+    height: 40rem;
+  }
+}
