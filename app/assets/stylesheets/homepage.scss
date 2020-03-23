@@ -1,9 +1,9 @@
 @import '0_Settings/!settings';
+@import 'bootstrap/bootstrap';
+@import '1_Components/!components';
 @import 'tmp/hero';
 @import 'tmp/kicker';
 @import 'tmp/main';
-@import 'bootstrap/bootstrap';
-@import '1_Components/!components';
 
 .spinner-wrapper {
   position: relative;
@@ -77,3 +77,12 @@
   }
 }
 
+@include media-breakpoint-down(xs) {
+  #footer {
+    padding: 4rem 1rem;
+
+    .col-sm + .col-sm {
+      margin-top: 4rem;
+    }
+  }
+}

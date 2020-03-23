@@ -3,9 +3,20 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 67vh;
+  height: 43rem;
   width: 75vw;
   z-index: -1;
+
+  @media only screen and (max-width: 850px) {
+    width: auto;
+    right: 0;
+    height: 50rem;
+  }
+
+  @media only screen and (max-width: 450px) {
+    height: 55rem;
+
+  }
 
   @media only screen and (max-width: 375px) {
     width: auto;
