@@ -1,7 +1,7 @@
 doctype 5
 html lang="#{I18n.locale}"
   head
-    title Preservar
+    title Preserve
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -13,8 +13,10 @@ html lang="#{I18n.locale}"
 
   body class="#{body_class} #{yield (:body_class)}"
     = yield :header
-    .xcontainer
-      = yield
+    = yield
     = render 'shared/footer'
+
+    - if ENV['HOSTNAME']&.ends_with? 'herokuapp.com'
+      = render 'shared/test_flag'
 
     = Gon::Base.render_data

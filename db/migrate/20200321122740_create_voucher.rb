@@ -4,7 +4,6 @@ class CreateVoucher < ActiveRecord::Migration[6.0]
       t.string :code
       t.integer :value
       t.references :seller
-      t.references :user
       t.string :state
       t.timestamps
     end

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Admin
   class SellersController < Admin::ApplicationController
     # Overwrite any of the RESTful controller actions to implement custom behavior
@@ -12,9 +13,9 @@ module Admin
     # This will be used to set the resource for the `show`, `edit`, and `update`
     # actions.
     #
-    # def find_resource(param)
-    #   Foo.find_by!(slug: param)
-    # end
+    def find_resource(param)
+      Seller.friendly.find(param)
+    end
 
     # The result of this lookup will be available as `requested_resource`
 

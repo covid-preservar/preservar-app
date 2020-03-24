@@ -5,7 +5,7 @@ section#hero
         | Preserve o seu
         br
         #hero-ticker
-          - Category.all.each do |c|
+          - @spinner_categories.each do |c|
             span = c.name
         br
         | favorito

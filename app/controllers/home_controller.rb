@@ -1,11 +1,11 @@
+# frozen_string_literal: true
 class HomeController < ApplicationController
   before_action :set_location
 
   def index
-    @spinner_categories = Category.order("name ASC").limit(5)
-    gon.cities = Seller.distinct(:city).pluck(:city)
-
-    render :index, layout:'homepage'
+    @spinner_categories = Category.order('RANDOM()').limit(5)
+    @category = Category.find(1)
+    render :index, layout: 'homepage'
   end
 
   def tos

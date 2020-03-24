@@ -23,12 +23,12 @@ class PhotoUploader < Shrine
     }
   end
 
-
   def generate_location(io, derivative: nil, **context)
-    type = context[:record].class.name.downcase if context[:record]
-    id = context[:record].id if context[:record]
-    attachment = context[:name] if context[:name]
+    type = context[:record]&.class&.name&.downcase
+    id = context[:record]&.id
+    attachment = context[:name]
     style = derivative == :original ? 'originals' : 'thumbs' if derivative.present?
+
     name = super # the default unique identifier
     hash = Digest::SHA1.hexdigest [type, id, attachment].compact.join('/')
 

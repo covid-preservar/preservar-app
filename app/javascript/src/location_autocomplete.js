@@ -10,8 +10,10 @@ function setup() {
 }
 
 function teardown() {
-  window.location_completers.forEach((completer) => completer.destroy());
-  window.location_completers = null;
+  if (window.location_completers) {
+    window.location_completers.forEach((completer) => completer.destroy());
+    window.location_completers = null;
+  }
 }
 
 document.addEventListener('DOMContentLoaded', setup, { once: true });
