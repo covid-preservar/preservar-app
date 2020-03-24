@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   before_action :set_location
 
   def index
-    @spinner_categories = Category.limit(5)
+    @spinner_categories = Category.order('RANDOM()').limit(5)
     @category = Category.find(1)
     render :index, layout: 'homepage'
   end
