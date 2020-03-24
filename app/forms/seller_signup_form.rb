@@ -75,8 +75,8 @@ class SellerSignupForm
   end
 
   def save
-    return true
     return false unless valid?
+
     seller.save!
     seller_user.save!
   rescue StandardError
