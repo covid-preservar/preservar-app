@@ -88,4 +88,16 @@ ActiveRecord::Schema.define(version: 2020_03_23_141825) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  create_table "vouchers", force: :cascade do |t|
+    t.string "code"
+    t.integer "value"
+    t.bigint "seller_id"
+    t.bigint "user_id"
+    t.string "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["seller_id"], name: "index_vouchers_on_seller_id"
+    t.index ["user_id"], name: "index_vouchers_on_user_id"
+  end
+
 end
