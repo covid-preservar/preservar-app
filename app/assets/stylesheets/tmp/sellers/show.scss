@@ -1,7 +1,7 @@
 .sellers-show {
   #place-back {
     position: absolute;
-    top: 4rem;
+    top: 6rem;
   }
 
   #place-hero {
@@ -22,26 +22,10 @@
     }
   }
 
-  #buy-voucher {
-    margin-top: 2rem;
-  }
-
   #new_voucher {
     position: relative;
-    padding: 4rem 0;
-    margin-top: 2rem;
-
-    &:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      background-color: var(--color-light-blue);
-      margin-left: calc(-100vw / 2 + var(--grid-max-width) / 2);
-      z-index: -1;
-    }
+    padding: 0;
+    margin-top: 4rem;
 
     input[type="submit"] {
       display: block;
@@ -119,21 +103,6 @@
     }
   }
 
-  #place-share {
-    & > *:not(h3) {
-      display: block;
-      margin-top: 1rem;
-    }
-
-    h3 {
-      margin-top: 1.5rem;
-    }
-
-    input {
-      width: 100%;
-    }
-  }
-
   .link {
     position: relative;
 
@@ -160,14 +129,19 @@
   }
 
   @media only screen and (max-width: 768px) {
-    #buy-voucher {
-      margin-top: 14rem;
-    }
 
-    #place-share,
     #new_voucher {
       width: 100%;
       margin-left: 0;
+    }
+
+    #place-back {
+      position: relative;
+      top: -2rem;
+    }
+
+    .sellers-show input[type="number"] {
+      width: 100%;
     }
   }
 
@@ -184,10 +158,6 @@
 
     #hero-img {
       margin-bottom: 2rem;
-    }
-
-    #buy-voucher {
-      margin-top: 8rem;
     }
   }
 }
