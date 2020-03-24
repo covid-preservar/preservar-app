@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_03_23_191647) do
     t.string "slug"
     t.string "address"
     t.jsonb "main_photo_data"
+    t.string "payment_api_key"
     t.index ["category_id"], name: "index_sellers_on_category_id"
     t.index ["city"], name: "index_sellers_on_city"
     t.index ["slug"], name: "index_sellers_on_slug", unique: true
@@ -76,12 +77,10 @@ ActiveRecord::Schema.define(version: 2020_03_23_191647) do
     t.string "code"
     t.integer "value"
     t.bigint "seller_id"
-    t.bigint "user_id"
     t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["seller_id"], name: "index_vouchers_on_seller_id"
-    t.index ["user_id"], name: "index_vouchers_on_user_id"
   end
 
 end
