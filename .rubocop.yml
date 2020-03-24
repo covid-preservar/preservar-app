@@ -4,6 +4,7 @@ require:
 
 AllCops:
   Exclude:
+    - '.pryrc'
     - 'bin/*'
     - 'config/**/*'
     - 'db/**/*'

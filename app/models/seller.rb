@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Seller < ApplicationRecord
-  DEFAULT_EUR_VALUES = [20, 30, 40, 50].map{ |v| ["€#{v}", v] }
+  DEFAULT_EUR_VALUES = [20, 30, 40, 50].map { |v| ["€#{v}", v] }
 
   extend FriendlyId
   friendly_id :slug_candidates, use: %i[slugged history]
