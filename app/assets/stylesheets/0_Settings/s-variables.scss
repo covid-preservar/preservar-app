@@ -35,3 +35,9 @@ $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
 
 
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1288px
+) !default;

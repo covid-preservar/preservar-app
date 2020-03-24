@@ -7,7 +7,9 @@ class Seller < ApplicationRecord
 
   include PhotoUploader::Attachment.new(:main_photo)
 
+
   belongs_to :category
+  has_one :seller_user, dependent: :destroy
   has_many :vouchers, dependent: :restrict_with_exception
 
   private

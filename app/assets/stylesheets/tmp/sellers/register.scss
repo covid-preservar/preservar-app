@@ -1,0 +1,28 @@
+.register-form-section {
+  margin-top: 2rem;
+}
+
+
+.new_seller_user {
+  margin-bottom: 5rem;
+
+  input,
+  select {
+    display: block;
+    width: 100%;
+  }
+
+  label {
+    display: block;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  input[type="submit"] {
+    margin-top: 2rem;
+  }
+}
+
+#eupago-register {
+  margin-top: 2rem;
+}

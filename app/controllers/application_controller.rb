@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :load_categories
   before_action :load_cities
 
+  # before_action :configure_permitted_parameters, if: :devise_controller?
+
   protected
 
   def body_class
@@ -24,4 +26,9 @@ class ApplicationController < ActionController::Base
   def load_cities
     gon.cities = Seller.distinct(:city).pluck(:city)
   end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :average_value_per_person])
+  end
+
 end

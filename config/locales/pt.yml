@@ -1,0 +1,27 @@
+pt:
+  simple_form:
+    "yes": 'Sim'
+    "no": 'Não'
+    required:
+      text: 'campo obrigatório'
+      mark: '*'
+    labels:
+      defaults:
+        password: 'Password'
+        password_confirmation: 'Confirmação de password'
+        email: 'E-mail'
+        category_id: 'Categoria'
+        name: 'Nome'
+  activemodel:
+    attributes:
+      seller_signup_form:
+        name: 'Nome'
+        category_id: 'Categoria'
+        password_confirmation: 'Confirmação de password'
+        vat_id: 'NIF'
+        iban: 'IBAN'
+        company_registration_code: 'Código de acesso'
+        contact_name: 'Nome'
+  errors:
+    messages:
+        invalid_vat: 'é inválido'

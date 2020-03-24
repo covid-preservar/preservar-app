@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   get '/tos', to: 'home#tos', as: :tos
   get '/privacy', to: 'home#privacy', as: :privacy
 
+  devise_for :seller_users,
+             path: 'comerciante',
+             controllers: { registrations: 'seller_users/registrations' },
+             path_names: { sign_up: 'registo' }
+
   devise_for :admin_users, path: 'admin'
 
   namespace :admin do
