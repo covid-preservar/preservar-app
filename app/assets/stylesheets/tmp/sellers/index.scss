@@ -1,0 +1,50 @@
+#places-container {
+    margin-top: 6rem;
+    .section-separator:before {
+        content: "";
+        position: absolute;
+        top: 8rem;
+        width: 100px;
+        height: 4px;
+        background: var(--color-main-blue);
+    }
+}
+
+#places-list {
+    margin-top: 2rem;
+}
+
+.place {
+    text-decoration: none;
+}
+
+.place h3,
+.place p {
+    font-size: calc(16rem/16);
+    line-height: calc(24/16);
+}
+
+.place h3 {
+    margin-top: 1rem;
+}
+
+.place p {
+    margin-top: 0;
+    opacity: 0.5;
+}
+
+.place {
+    margin: 1rem 0.5rem !important;
+}
+
+.place img {
+    transition: opacity 100ms ease-out;
+}
+
+.place .place-img-wrapper {
+    background-color: var(--color-main-blue);
+}
+
+.place:hover img {
+    opacity: 0.5;
+}

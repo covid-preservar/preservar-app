@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'home#index'
-
+  
   resources :sellers, only: [:index, :show]
   resources :vouchers, only: [:create, :show]
 
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
     root to: "users#index"
   end
+
 
   authenticate :admin_user do
     require 'sidekiq/web'

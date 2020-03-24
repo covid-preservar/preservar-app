@@ -1,3 +1,12 @@
-ul
-  - @sellers.each do |s|
-    li = link_to s.name, s
+section
+  = render 'sellers/header'
+
+section#places-container.container
+  .row
+    h2.xcol-6.section-separator #{@sellers.count} Resultados
+  #places-list.row
+    - @sellers.all.each do |seller|
+      .xcol-3.place
+        img alt="Amélia" src="/assets/place-img.jpg" /
+        h3 = seller.name
+        p #{seller.category.name} · #{seller.city}
