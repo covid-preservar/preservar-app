@@ -28,7 +28,7 @@
     margin-top: 4rem;
 
     input[type="submit"] {
-      display: block;
+      display: inline-block;
       margin-top: 2rem;
     }
 
@@ -52,6 +52,10 @@
       & + .form-check {
         margin-left: .75rem;
       }
+    }
+
+    .voucher-mb {
+      margin-left: 0.5rem;
     }
   }
 
@@ -140,7 +144,7 @@
       top: -2rem;
     }
 
-    .sellers-show input[type="number"] {
+    & input[type="number"] {
       width: 100%;
     }
   }

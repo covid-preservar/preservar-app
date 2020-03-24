@@ -16,6 +16,7 @@
         = f.input :value, as: :radio_buttons, collection: Seller::DEFAULT_EUR_VALUES, checked: 20, legend_tag: false
         = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}
         = f.submit 'Comprar voucher'
+        = image_tag 'icon-mb-faded.svg', alt: "Multibanco", class: 'voucher-mb'
         span
           ' Ao comprar, está a aceitar os
           => link_to 'Termos e Condições', tos_path, target:'_blank'
