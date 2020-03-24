@@ -12,9 +12,8 @@ class SellersController < ApplicationController
     @city = @seller.city
     @category = @seller.category
 
-    @other_sellers = Seller.where(city: @city).where.not(id: @seller.id).order('RANDOM()').limit(4)
-
     @show_back = request.referer&.starts_with?(sellers_url)
+    load_other_sellers
   end
 
   private
@@ -22,4 +21,17 @@ class SellersController < ApplicationController
   def load_categories
     @categories = Category.all
   end
+
+  def load_other_sellers
+    base_scope = Seller.where.not(id: @seller.id).order('RANDOM()').limit(4)
+    @other_sellers = base_scope.where(city: @city)
+    @other_sellers_local = true
+
+    if @other_sellers.none?
+      @other_sellers = base_scope.where(category: @seller.category)
+      @other_sellers_local = false
+    end
+
+  end
+
 end
