@@ -33,5 +33,4 @@ class SellersController < ApplicationController
     end
 
   end
-
 end
