@@ -1,4 +1,4 @@
-.sellers-index {
+.sellers.index {
   #places-container {
     margin-top: 6rem;
     .section-separator:before {
@@ -10,6 +10,9 @@
       background: var(--color-main-blue);
     }
   }
+}
+
+.sellers {
 
   #places-list {
     margin-top: 2rem;

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def body_class
-    "#{controller_name}-#{action_name}"
+    "#{controller_name} #{action_name}"
   end
   helper_method :body_class
 

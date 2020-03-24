@@ -44,6 +44,8 @@
   - if @other_sellers.any?
     .section
       .xrow.clearfix
-        h2.xcol-6.section-separator Outros locais na mesma área
+        h2.xcol-6.section-separator
+          ' Outros locais
+          = 'na mesma área' if @other_sellers_local
       #places-list.xrow.clearfix
         == render @other_sellers
