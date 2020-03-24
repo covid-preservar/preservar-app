@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Voucher < ApplicationRecord
   include AASM
 
@@ -16,13 +17,13 @@ class Voucher < ApplicationRecord
 
   belongs_to :seller
 
-  validates :code, presence: true, uniqueness: {allow_nil: true}, unless: :pending?
+  validates :code, presence: true, uniqueness: { allow_nil: true }, unless: :pending?
   validates :value, numericality: { minimum: 1 }
 
   attr_reader :custom_value
 
   def custom_value=(val)
-    self.value = val unless val.blank?
+    self.value = val if val.present?
   end
 
   private

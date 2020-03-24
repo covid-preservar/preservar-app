@@ -1,21 +1,22 @@
+# frozen_string_literal: true
 class Seller < ApplicationRecord
-  DEFAULT_EUR_VALUES = [20, 30, 40, 50].map{|v| ["€#{v}",v]}
+  DEFAULT_EUR_VALUES = [20, 30, 40, 50].map{ |v| ["€#{v}", v] }
 
   extend FriendlyId
-  friendly_id :slug_candidates, use: [:slugged, :history]
+  friendly_id :slug_candidates, use: %i[slugged history]
 
   include PhotoUploader::Attachment.new(:main_photo)
 
   belongs_to :category
-  has_many :vouchers
+  has_many :vouchers, dependent: :restrict_with_exception
 
   private
 
   def slug_candidates
     [
       :name,
-      [:name, :city],
-      [:name, :city, id],
+      %i[name city],
+      %i[name city id]
     ]
   end
 end

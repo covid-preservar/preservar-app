@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 # Kudos to https://gist.github.com/hopsoft/56ba6f55fe48ad7f8b90
 
 namespace :db do
-  desc "Dumps the database to db/APP_NAME.dump"
+  desc 'Dumps the database to db/APP_NAME.dump'
   task :dump => :environment do
     cmd = nil
     with_config do |app, host, db|
@@ -11,17 +12,17 @@ namespace :db do
     exec cmd
   end
 
-  desc "Restores the database dump at db/APP_NAME.dump."
+  desc 'Restores the database dump at db/APP_NAME.dump.'
   task :restore => :environment do
     cmd = nil
     with_config do |app, host, db|
       cmd = "pg_restore --verbose --host #{host} --clean --no-owner --no-acl --dbname #{db} '#{Rails.root}/db/#{app}.dump'"
     end
-    Rake::Task["db:drop"].invoke
-    Rake::Task["db:create"].invoke
+    Rake::Task['db:drop'].invoke
+    Rake::Task['db:create'].invoke
     puts cmd
     exec cmd
-    Rake::Task["db:environment:set"].invoke
+    Rake::Task['db:environment:set'].invoke
   end
 
   private

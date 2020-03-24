@@ -1,8 +1,8 @@
+# frozen_string_literal: true
 class VouchersController < ApplicationController
 
   def create
     @voucher = Voucher.new(voucher_params)
-    binding.pry
   end
 
   private

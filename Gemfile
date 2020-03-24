@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -37,7 +39,6 @@ gem 'rollbar'
 # Backoffice
 gem 'administrate', '~> 0.13.0'
 
-
 group :production do
   gem 'scout_apm'
   gem 'dalli'
@@ -58,7 +59,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener_web'
-  gem 'foreman', '= 0.86.0', :require => false
+  gem 'foreman', '= 0.86.0', require: false
 end
 
 group :test do

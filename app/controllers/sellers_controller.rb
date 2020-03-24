@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SellersController < ApplicationController
 
   def index
@@ -12,9 +13,7 @@ class SellersController < ApplicationController
 
     @other_sellers = Seller.where(city: @city).where.not(id: @seller.id).order('RANDOM()').limit(4)
 
-    if request.referrer&.starts_with? sellers_url
-      @show_back = true
-    end
+    @show_back = request.referer&.starts_with?(sellers_url)
   end
 
   private

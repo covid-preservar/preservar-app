@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require_relative 'boot'
 
 require 'rails'
@@ -28,7 +29,7 @@ module Preservar
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.i18n.available_locales = [:pt, :en]
+    config.i18n.available_locales = %i[pt en]
     config.i18n.default_locale = :pt
 
     config.generators do |g|

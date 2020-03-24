@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 COLORS = { production: "\001\e[1m\e[31m\002",
            development: "\001\e[1m\e[32m\002",
-           staging: "\001\e[1m\e[33m\002" }
+           staging: "\001\e[1m\e[33m\002" }.freeze
 
 if Object.const_defined?('Rails')
   prompt = case Rails.env
-    when 'development'
-      [COLORS[:development], 'dev']
-    when 'production'
-      ENV['HEROKU_APP_NAME'] =~ /qa|test/ ? [COLORS[:staging], ENV['HEROKU_APP_NAME']] : [COLORS[:production], 'PROD']
-    else
-      [COLORS[:staging], ENV['HEROKU_APP_NAME'] || 'pry']
-    end
+           when 'development'
+             [COLORS[:development], 'dev']
+           when 'production'
+             ENV['HEROKU_APP_NAME'].match?(/qa|test/) ? [COLORS[:staging], ENV['HEROKU_APP_NAME']] : [COLORS[:production], 'PROD']
+           else
+             [COLORS[:staging], ENV['HEROKU_APP_NAME'] || 'pry']
+  end
 else
   prompt = [COLORS[:development], 'pry']
 end

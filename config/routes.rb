@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'home#index'
-  
+
   resources :sellers, only: [:index, :show]
   resources :vouchers, only: [:create, :show]
 
@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   devise_for :admin_users, path: 'admin'
 
   namespace :admin do
-    resources :users
     resources :admin_users
     resources :categories
     resources :sellers

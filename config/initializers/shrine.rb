@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'shrine'
 
 # if Rails.env.production?

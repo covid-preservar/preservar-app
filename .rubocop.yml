@@ -1,0 +1,77 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'lib/tasks/*'
+    - 'node_modules/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 100
+
+Style/RescueModifier:
+  Enabled: false
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+Metrics/MethodLength:
+  Max: 15
+
+Style/FormatStringToken:
+  Enabled: false
+
+Layout/MultilineOperationIndentation:
+  Enabled: false
+
+Style/BracesAroundHashParameters:
+  Enabled: false
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Rails/OutputSafety:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Rails/Blank:
+  UnlessPresent: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Style/ParallelAssignment:
+  Enabled: false
+
+Performance/UnfreezeString:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
