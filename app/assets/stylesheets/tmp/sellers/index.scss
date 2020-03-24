@@ -13,10 +13,14 @@
 
   #places-list {
     margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .place {
     text-decoration: none;
+    flex: 0 1 calc(25% - 1rem);
+    margin-right: 1rem;
 
     h3,
     p {
@@ -53,14 +57,23 @@
       margin-top: 3rem;
     }
   }
-
-  @media only screen and (max-width: 375px) {
+  @media only screen and (max-width: 768px) {
     .place {
       margin-top: 3rem;
+      flex-basis: calc(33% - 1rem);
+    }
+
+  }
+  @media only screen and (max-width: 414px) {
+    .place {
+      margin-top: 3rem;
+      flex: 1 1 100%;
+      width: 100%;
     }
 
     #places-list {
       margin-top: 0;
     }
   }
+
 }
