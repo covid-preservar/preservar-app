@@ -571,65 +571,10 @@ img {
   max-width: 100%;
 }
 
-input:not([type="file"]),
-select {
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: 0;
-  border: 0;
-  height: 3rem;
-  line-height: 3rem;
-  padding: 0 1rem;
-  background-color: white;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.09);
-  border-radius: 0;
-}
 
 a {
   color: var(--color-main-blue);
 }
-
-
-input[type="submit"],
-.primary-cta {
-  display: inline-block;
-  height: 3rem;
-  padding: 0 1rem;
-  background: var(--color-main-blue);
-  font-weight: bold;
-  font-size: calc(17rem / 16);
-  line-height: 3rem;
-  text-decoration: none;
-  color: white;
-  border-radius: 0;
-  vertical-align: bottom;
-
-  &:hover {
-    background: #00158A;
-    color: white;
-    cursor: pointer;
-  }
-}
-
-.secondary-cta {
-  display: inline-block;
-  height: 3rem;
-  padding: 0 1rem;
-  border: 2px solid var(--color-main-blue);
-  font-weight: bold;
-  font-size: calc(17rem / 16);
-  line-height: 2.8rem;
-  text-decoration: none;
-  color: var(--color-main-blue);
-  box-sizing: border-box;
-
-  &:hover {
-    background: var(--color-light-blue);
-  }
-}
-
 
 .section {
   margin-top: 10rem;

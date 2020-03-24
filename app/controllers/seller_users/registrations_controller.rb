@@ -10,18 +10,12 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
     @form = SellerSignupForm.new(signup_params)
     if @form.save
       user = @form.seller_user
-      if user.active_for_authentication?
-        set_flash_message! :notice, :signed_up
-        sign_up(resource_name, user)
-        redirect_to after_sign_up_path_for(user)
-      else
-        set_flash_message! :notice, :"signed_up_but_#{user.inactive_message}"
-        expire_data_after_sign_in!
-        redirect_to after_inactive_sign_up_path_for(user)
-      end
+
+      set_flash_message! :notice, :"signed_up_but_#{user.inactive_message}"
+      expire_data_after_sign_in!
+
     else
-      flash.now[:alert] = 'Please review the problems below.'
-      clean_up_passwords resource
+      # clean_up_passwords resource
       set_minimum_password_length
       render :new
     end
@@ -40,6 +34,9 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
                                         :eni_name,
                                         :company_registration_code,
                                         :password,
-                                        :password_confirmation)
+                                        :password_confirmation,
+                                        :is_company,
+                                        :contact_name,
+                                        :company_name)
   end
 end

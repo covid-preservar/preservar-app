@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_115859) do
     t.string "vat_id"
     t.string "iban"
     t.string "contact_name"
+    t.string "company_name"
     t.string "company_registration_code"
     t.index ["category_id"], name: "index_sellers_on_category_id"
     t.index ["city"], name: "index_sellers_on_city"

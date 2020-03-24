@@ -20,9 +20,22 @@ import '../src/location_autocomplete';
 import '../src/new_voucher_form';
 import '../src/smooth_scroll';
 
+import SellerForm from "../src/seller_registration_form";
+window.SellerForm = SellerForm;
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+function setup() {
+  if ($('body').is('.registrations.new') && !window.registration_form) {
+    window.registration_form = new SellerForm();
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', setup, { once: true });
+document.addEventListener('turbolinks:load', setup, { once: true });
+document.addEventListener("turbolinks:render", setup);

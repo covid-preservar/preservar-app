@@ -7,9 +7,11 @@ class SellerSignupForm
                 :average_value_per_person,
                 :email,
                 :password,
+                :is_company,
                 :vat_id,
                 :iban,
                 :contact_name,
+                :company_name,
                 :company_registration_code,
                 :password,
                 :password_confirmation,
@@ -27,7 +29,9 @@ class SellerSignupForm
 
   validates :vat_id, valvat: true
   validates :company_registration_code,
-            format: { with: /\d{4}-\d{4}-\d{4}/ }
+            format: { with: /\d{4}-\d{4}-\d{4}/ },
+            if: :is_company
+  validates :company_name, presence: true, if: :is_company
 
   validate :validate_iban
   validate :validate_vat_id
@@ -44,6 +48,7 @@ class SellerSignupForm
     @iban ||= seller_user&.seller&.iban
     @contact_name ||= seller_user&.seller&.contact_name
     @company_registration_code ||= seller_user&.seller&.company_registration_code
+    @is_company = @is_company == 'false' ? false : true
   end
 
   def category
@@ -65,10 +70,12 @@ class SellerSignupForm
                            vat_id: vat_id,
                            iban: iban,
                            contact_name: contact_name,
+                           company_name: company_name,
                            company_registration_code: company_registration_code)
   end
 
   def save
+    return true
     return false unless valid?
     seller.save!
     seller_user.save!

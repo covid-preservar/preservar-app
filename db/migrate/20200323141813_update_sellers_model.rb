@@ -7,6 +7,7 @@ class UpdateSellersModel < ActiveRecord::Migration[6.0]
     add_column :sellers, :vat_id, :string
     add_column :sellers, :iban, :string
     add_column :sellers, :contact_name, :string
+    add_column :sellers, :company_name, :string
     add_column :sellers, :company_registration_code, :string
 
     add_index :sellers, :slug, unique: true
