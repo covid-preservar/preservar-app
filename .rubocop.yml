@@ -22,13 +22,13 @@ Rails/SkipsModelValidations:
 Naming/AccessorMethodName:
   Enabled: false
 
-Layout/LineLength:
+Metrics/LineLength:
   Max: 100
 
 Style/RescueModifier:
   Enabled: false
 
-Layout/EndAlignment:
+Lint/EndAlignment:
   EnforcedStyleAlignWith: variable
 
 Metrics/MethodLength:
@@ -42,9 +42,6 @@ Layout/MultilineOperationIndentation:
 
 Style/BracesAroundHashParameters:
   Enabled: false
-
-Layout/FirstHashElementIndentation:
-  EnforcedStyle: consistent
 
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -60,9 +57,6 @@ Style/EmptyMethod:
 
 Rails/Blank:
   UnlessPresent: false
-
-Naming/MemoizedInstanceVariableName:
-  Enabled: false
 
 Style/ParallelAssignment:
   Enabled: false
