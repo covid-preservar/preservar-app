@@ -6,6 +6,11 @@ class SellersController < ApplicationController
     @sellers = @category.sellers.where(city: params[:city])
   end
 
+  def show
+    @seller = Seller.find(params[:id])
+    @city = @seller.city
+  end
+
   private
 
   def load_categories

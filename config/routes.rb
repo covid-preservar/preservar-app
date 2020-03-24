@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'home#index'
-
+  
   resources :sellers, only: [:index, :show]
 
   get '/tos', to: 'home#tos', as: :tos_path
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
+
   authenticate :admin_user do
     require 'sidekiq/web'
     mount Sidekiq::Web => '/admin/sidekiq'
@@ -26,6 +27,5 @@ Rails.application.routes.draw do
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'
-    get 'design/:file' => 'dev/designs#design_route'
   end
 end
