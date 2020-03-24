@@ -33,7 +33,7 @@ gem 'aws-sdk-s3'
 gem 'geocoder'
 gem 'maxminddb'
 gem 'pry'
-gem 'faker'
+gem 'faker', require: false
 gem 'rollbar'
 
 # Backoffice

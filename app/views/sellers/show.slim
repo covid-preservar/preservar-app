@@ -1,7 +1,7 @@
 - content_for :header do
   = render 'header'
 
-#place-hero
+#place-hero.xcontainer
   - if @show_back
     = link_to '&slarr; Voltar à pesquisa'.html_safe, request.referrer, id:'place-back'
   .xrow
@@ -46,5 +46,4 @@
       .xrow.clearfix
         h2.xcol-6.section-separator Outros locais na mesma área
       #places-list.xrow.clearfix
-        - @other_sellers.each do |seller|
-          == render seller
+        == render @other_sellers

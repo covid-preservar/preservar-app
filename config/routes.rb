@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :sellers
 
-    root to: "users#index"
+    root to: "sellers#index"
   end
 
 

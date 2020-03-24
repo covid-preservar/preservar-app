@@ -10,6 +10,7 @@ class SellersController < ApplicationController
   def show
     @seller = Seller.friendly.find(params[:id])
     @city = @seller.city
+    @category = @seller.category
 
     @other_sellers = Seller.where(city: @city).where.not(id: @seller.id).order('RANDOM()').limit(4)
 

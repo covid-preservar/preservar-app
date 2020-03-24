@@ -18,8 +18,7 @@ class ApplicationController < ActionController::Base
   private
 
   def load_categories
-    # @categories = Category.with_sellers
-    @categories = Category.all
+    @categories = Category.with_sellers
   end
 
   def load_cities
