@@ -49,13 +49,6 @@
       opacity: 0.5;
     }
 
-    &:nth-child(4n + 1) {
-      margin-left: 0;
-    }
-
-    &:nth-child(n + 5) {
-      margin-top: 3rem;
-    }
   }
   @media only screen and (max-width: 768px) {
     .place {
