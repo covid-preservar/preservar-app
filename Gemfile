@@ -38,7 +38,7 @@ gem 'shrine'
 gem 'sidekiq', '~> 6.0.0'
 gem 'simple_form'
 gem 'slim-rails'
-gem 'valvat', require: 'valvat/local'
+gem 'valvat'
 
 # Backoffice
 gem 'administrate', '~> 0.13.0'
