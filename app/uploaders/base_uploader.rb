@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class BaseUploader < Shrine
   plugin :validation_helpers
   plugin :remove_invalid

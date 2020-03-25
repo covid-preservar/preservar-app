@@ -16,12 +16,11 @@ class SellersController < ApplicationController
     load_other_sellers
   end
 
-
   # temporary page for seller registration success
   # until we have a seller login area
   def register_success
-  end
 
+  end
 
   private
 
@@ -38,6 +37,5 @@ class SellersController < ApplicationController
       @other_sellers = base_scope.where(category: @seller.category)
       @other_sellers_local = false
     end
-
   end
 end
