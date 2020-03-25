@@ -35,6 +35,7 @@ gem 'maxminddb'
 gem 'pry'
 gem 'faker', require: false
 gem 'rollbar'
+gem 'mailjet'
 
 # Backoffice
 gem 'administrate', '~> 0.13.0'
