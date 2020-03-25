@@ -11,35 +11,34 @@
         => @seller.category.name
         ' &middot;
         = @seller.address
-      a.primary-cta.smooth-scroll href='#buy-voucher' Comprar voucher
+      = simple_form_for Voucher.new, remote: true do |f|
+        h3 Selecciona um valor
+        = f.input :value, as: :radio_buttons, collection: Seller::DEFAULT_EUR_VALUES, checked: 20, legend_tag: false
+        = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}
+        = f.submit 'Comprar voucher'
+        = image_tag 'icon-mb-faded.svg', alt: "Multibanco", class: 'voucher-mb'
+        span
+          ' Ao comprar, está a aceitar os
+          => link_to 'Termos e Condições', tos_path, target:'_blank'
+          ' e a
+          => link_to 'Politica de Privacidade', privacy_path, target:'_blank'
 
     = image_tag 'place-img.jpg', class: 'xcol-5 xoffset-1', id: 'hero-img'
 
-  section#buy-voucher.section
+  section#place-share.section
     .xrow
-      h2.xcol-6.section-separator Escolha como quer ajudar
+      h2.xcol-6.section-separator Partilha com os teus amigos, o pequeno contributo de muitos vai longe
     .xrow
-      .xcol-7
-        = simple_form_for Voucher.new, remote: true do |f|
-          p Selecciona um valor
-          = f.input :value, as: :radio_buttons, collection: Seller::DEFAULT_EUR_VALUES, checked: 20, legend_tag: false
-          = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}
-          = f.submit 'Comprar voucher'
-          span
-            ' Ao comprares, estás a aceitar os
-            => link_to 'Termos e Condições', tos_path, target:'_blank'
-            ' e a
-            => link_to 'Politica de Privacidade', privacy_path, target:'_blank'
+      /! To do: add this page URL
+      iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&appId=101419673290370&width=110&height=28" style="border:none;overflow:hidden" width="110"
+      a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet
+      script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
+      .link
+        input disabled='true' type="text" value=seller_url
 
 
       #place-share.xcol-5
-        h3.xcol-5.offset-1 Partilha com os teus amigos, o pequeno contributo de muitos vai longe
-        /! To do: add this page URL
-        iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&appId=101419673290370&width=110&height=28" style="border:none;overflow:hidden" width="110"
-        a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet
-        script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
-        .link
-          input disabled='true' type="text" value=seller_url
+        
 
   - if @other_sellers.any?
     .section

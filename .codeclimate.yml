@@ -1,6 +1,7 @@
 plugins:
   rubocop:
     enabled: true
+    channel: rubocop-0-79
   brakeman:
     enabled: true
   bundler-audit:
@@ -13,7 +14,5 @@ plugins:
     enabled: true
     config:
       score_threshold: 20.0
-  reek:
-    enabled: true
   scss-lint:
     enabled: true

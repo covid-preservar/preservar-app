@@ -667,24 +667,40 @@ a {
 
 @media only screen and (max-width: 768px) {
   #hero-text {
-    width: 100%;
-  }
-
-  #hero-text > h1,
-  #hero-text > p {
     width: 50%;
   }
 
   #hero-img {
     position: absolute;
     right: 0;
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .xcontainer {
+    padding: 0 calc(var(--grid-outer-padding) / 2);
+  }
+
+  #hero-img {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin-bottom: 2rem;
+    margin-left: 0;
+  }
+
+  #place-hero .xrow {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  #hero-text {
+    width: 100%;
   }
 }
 
 @media only screen and (max-width: 375px) {
-  .xcontainer {
-    padding: 0 calc(var(--grid-outer-padding) / 2);
-  }
 
   #logo {
     width: 30%;
@@ -708,12 +724,6 @@ a {
   h1 {
     font-size: calc(36rem / 16);
     line-height: calc(40 / 36);
-  }
-
-  .search-form > * {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 1rem;
   }
 
   .stat {
