@@ -7,7 +7,6 @@ class Seller < ApplicationRecord
 
   include PhotoUploader::Attachment.new(:main_photo)
 
-
   belongs_to :category
   has_one :seller_user, dependent: :destroy
   has_many :vouchers, dependent: :restrict_with_exception
@@ -17,8 +16,8 @@ class Seller < ApplicationRecord
   def slug_candidates
     [
       :name,
-      %i[name city],
-      %i[name city id]
+      %i[name area],
+      %i[name area id]
     ]
   end
 end

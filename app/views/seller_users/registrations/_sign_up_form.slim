@@ -11,25 +11,15 @@
 
   .register-form-section
     h3 Sobre si
+    = f.input :contact_name, placeholder: 'Nome', label: 'O seu nome'
     = f.input :email, placeholder: 'E-mail', required: true
     = f.input :password, placeholder:"Password"
     = f.input :password_confirmation, placeholder:"Password"
 
   .register-form-section
     h3 Sobre a empresa
-    = f.input :is_company,
-              collection: [['Empresa', true],['ENI', false]],
-              as: :radio_buttons,
-              wrapper: :horizontal_collection_inline,
-              label: false
-
     = f.input :vat_id, placeholder: 'NIF', label: 'NIF'
     = f.input :iban, placeholder: 'IBAN', label: 'IBAN'
-    = f.input :contact_name, placeholder: 'Nome', label: 'O seu nome'
-    #company-data
-      = f.input :company_name, placeholder: 'Nome', label: 'Nome da empresa', required: true
-      = f.input :company_registration_code, placeholder: '1111-2222-3333', label: 'O seu código de acesso à certidão permanente', required: true
-      / TODO - document upload
-      / label for="document"  Documento que comprove a incorporação da empresa (por motivos de verificação)
-      / input name="document" type="file" value=("Upload documento") /
+    = f.input :company_name, placeholder: 'Nome', label: 'Nome da empresa (Ou nome completo se for Empresário em Nome Individual)', required: true
+    = f.input :company_registration_code, placeholder: '1111-2222-3333', label: 'Código de acesso à certidão permanente (se for empresa)', required: true
   = f.button :submit, 'Registar'

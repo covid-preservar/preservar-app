@@ -11,9 +11,8 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
     if @form.save
       user = @form.seller_user
 
-      set_flash_message! :notice, :"signed_up_but_#{user.inactive_message}"
       expire_data_after_sign_in!
-
+      redirect_to register_success_path
     else
       # clean_up_passwords resource
       set_minimum_password_length
@@ -31,11 +30,9 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
                                         :password,
                                         :vat_id,
                                         :iban,
-                                        :eni_name,
                                         :company_registration_code,
                                         :password,
                                         :password_confirmation,
-                                        :is_company,
                                         :contact_name,
                                         :company_name)
   end

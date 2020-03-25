@@ -4,17 +4,24 @@ class SellersController < ApplicationController
   def index
     @city = params[:city]
     @category = Category.find(params[:category])
-    @sellers = @category.sellers.where(city: params[:city])
+    @sellers = @category.sellers.where(area: params[:city])
   end
 
   def show
     @seller = Seller.friendly.find(params[:id])
-    @city = @seller.city
+    @city = @seller.area
     @category = @seller.category
 
-    @show_back = request.referer&.starts_with?(sellers_url)
+    @show_back = URI.parse(request.referer).path == sellers_path
     load_other_sellers
   end
+
+
+  # temporary page for seller registration success
+  # until we have a seller login area
+  def register_success
+  end
+
 
   private
 
@@ -24,7 +31,7 @@ class SellersController < ApplicationController
 
   def load_other_sellers
     base_scope = Seller.where.not(id: @seller.id).order('RANDOM()').limit(4)
-    @other_sellers = base_scope.where(city: @city)
+    @other_sellers = base_scope.where(area: @city)
     @other_sellers_local = true
 
     if @other_sellers.none?

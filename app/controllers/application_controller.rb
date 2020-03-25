@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_cities
-    gon.cities = Seller.distinct(:city).pluck(:city)
+    gon.cities = Seller.distinct(:area).pluck(:area)
   end
 
   def configure_permitted_parameters

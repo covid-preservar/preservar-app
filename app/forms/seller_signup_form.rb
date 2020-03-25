@@ -26,18 +26,19 @@ class SellerSignupForm
             :password,
             :password_confirmation, presence: true
 
-
   validates :vat_id, valvat: true
   validates :company_registration_code,
-            format: { with: /\d{4}-\d{4}-\d{4}/ },
-            if: :is_company
-  validates :company_name, presence: true, if: :is_company
+            format: { with: /\d{4}-\d{4}-\d{4}/, allow_nil: true }
+
+  validates :company_name, presence: true
+
+  validates :average_value_per_person, numericality: { min: 1 , allow_nil: true}
 
   validate :validate_iban
   validate :validate_vat_id
 
   def initialize(attributes = {})
-    super
+    super(attributes.reject{|_,v| v.blank?})
     @name ||= seller_user&.seller&.name
     @email ||= seller_user.email
     @category_id ||= seller_user&.seller&.category_id
@@ -47,8 +48,8 @@ class SellerSignupForm
     @vat_id ||= seller_user&.seller&.vat_id
     @iban ||= seller_user&.seller&.iban
     @contact_name ||= seller_user&.seller&.contact_name
+    @company_name ||= seller_user&.seller&.company_name
     @company_registration_code ||= seller_user&.seller&.company_registration_code
-    @is_company = @is_company == 'false' ? false : true
   end
 
   def category

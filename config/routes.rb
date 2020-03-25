@@ -13,6 +13,9 @@ Rails.application.routes.draw do
              controllers: { registrations: 'seller_users/registrations' },
              path_names: { sign_up: 'registo' }
 
+  # TEMP - Until the seller login area is built
+  get '/comerciante/bem-vindo', to: 'sellers#register_success', as: :register_success
+
   devise_for :admin_users, path: 'admin'
 
   namespace :admin do

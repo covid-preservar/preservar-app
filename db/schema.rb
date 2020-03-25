@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_24_115859) do
+ActiveRecord::Schema.define(version: 2020_03_25_124621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,12 @@ ActiveRecord::Schema.define(version: 2020_03_24_115859) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "district"
+    t.string "area"
+    t.string "aliases", default: [], array: true
+  end
+
   create_table "seller_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -77,9 +83,10 @@ ActiveRecord::Schema.define(version: 2020_03_24_115859) do
     t.integer "average_value_per_person"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "city", null: false
+    t.string "area", null: false
     t.string "slug"
     t.string "address"
+    t.string "postal_code"
     t.jsonb "main_photo_data"
     t.string "payment_api_key"
     t.string "vat_id"
@@ -87,8 +94,8 @@ ActiveRecord::Schema.define(version: 2020_03_24_115859) do
     t.string "contact_name"
     t.string "company_name"
     t.string "company_registration_code"
+    t.index ["area"], name: "index_sellers_on_area"
     t.index ["category_id"], name: "index_sellers_on_category_id"
-    t.index ["city"], name: "index_sellers_on_city"
     t.index ["slug"], name: "index_sellers_on_slug", unique: true
   end
 

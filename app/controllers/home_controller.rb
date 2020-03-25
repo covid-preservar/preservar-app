@@ -18,6 +18,7 @@ class HomeController < ApplicationController
 
   def set_location
     location = request.location
-    @city = location&.city.presence || location&.state.presence || 'Lisboa'
+    detected_city = location&.city.presence || location&.state.presence
+    @city = Location.find_location(detected_city) || 'Grande Lisboa'
   end
 end

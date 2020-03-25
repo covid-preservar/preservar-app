@@ -16,21 +16,21 @@ namespace :db do
       klass.reset_column_information
     end
     seller_hash = [
-      { name: 'Tasca do Chico', category_id: 1, city: 'Lisboa' },
-      { name: 'Tasca do Manel', category_id: 1, city: 'Lisboa' },
-      { name: 'Winery', category_id: 1, city: 'Porto' },
-      { name: 'Restaurante do Carlos', category_id: 1, city: 'Porto' },
-      { name: 'Bifanas', category_id: 1, city: 'Porto' },
-      { name: 'Cachorros', category_id: 1, city: 'Porto' },
-      { name: 'Green smoothies', category_id: 2, city: 'Porto' },
-      { name: 'Zero Zero', category_id: 1, city: 'Lisboa' },
-      { name: 'Suma Suma', category_id: 1, city: 'Porto' }
+      { name: 'Tasca do Chico', category_id: 1, area: 'Grande Lisboa' },
+      { name: 'Tasca do Manel', category_id: 1, area: 'Grande Lisboa' },
+      { name: 'Winery', category_id: 1, area: 'Grande Porto' },
+      { name: 'Restaurante do Carlos', category_id: 1, area: 'Grande Porto' },
+      { name: 'Bifanas', category_id: 1, area: 'Grande Porto' },
+      { name: 'Cachorros', category_id: 1, area: 'Grande Porto' },
+      { name: 'Green smoothies', category_id: 2, area: 'Grande Porto' },
+      { name: 'Zero Zero', category_id: 1, area: 'Grande Lisboa' },
+      { name: 'Suma Suma', category_id: 1, area: 'Grande Porto' }
 
     ]
 
-    seed_cities = %w[Lisboa Porto Coimbra Faro]
+    seed_cities = ['Grande Lisboa', 'Grande Porto', 'Coimbra', 'Faro']
     20.times do
-      seller_hash << { name: Faker::Company.name, category_id: 1+rand(Category.count), city: seed_cities.sample }
+      seller_hash << { name: Faker::Company.name, category_id: 1+rand(Category.count), area: seed_cities.sample }
     end
 
     seller_hash.each do |seller_hash|

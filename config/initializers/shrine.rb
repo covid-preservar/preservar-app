@@ -31,12 +31,12 @@ require 'shrine'
 #     store: Shrine::Storage::Memory.new,
 #   }
 # else
-#   require 'shrine/storage/file_system'
+  require 'shrine/storage/file_system'
 
-#   Shrine.storages = {
-#     cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/cache'), # temporary
-#     store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads')        # permanent
-#   }
+  Shrine.storages = {
+    cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/cache'), # temporary
+    store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads')        # permanent
+  }
 # end
 
 Shrine.plugin :activerecord

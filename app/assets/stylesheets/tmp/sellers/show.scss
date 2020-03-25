@@ -99,11 +99,12 @@
       padding-left: 2.5rem;
     }
 
-    &:after {
+    &:before {
       content: "€";
       position: absolute;
       left: 1rem;
       line-height: 3rem;
+      z-index: 1;
     }
   }
 
