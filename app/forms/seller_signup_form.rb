@@ -6,6 +6,7 @@ class SellerSignupForm
   attr_accessor :name,
                 :district,
                 :area,
+                :address,
                 :category_id,
                 :average_value_per_person,
                 :email,
@@ -37,22 +38,26 @@ class SellerSignupForm
   validates :average_value_per_person, numericality: { min: 1, allow_nil: true }
 
   validate :validate_iban
-  validate :validate_vat_id
 
   def initialize(attributes = {})
     super(attributes.reject{ |_, v| v.blank? })
     @name ||= seller_user&.seller&.name
     @area ||= seller_user&.seller&.area
+    @address ||= seller_user&.seller&.address
     @email ||= seller_user.email
     @category_id ||= seller_user&.seller&.category_id
     @average_value_per_person ||= seller_user&.seller&.average_value_per_person
     @password ||= seller_user.password
     @password_confirmation ||= seller_user.password_confirmation
-    @vat_id ||= seller_user&.seller&.vat_id
     @iban ||= seller_user&.seller&.iban
     @contact_name ||= seller_user&.seller&.contact_name
     @company_name ||= seller_user&.seller&.company_name
     @company_registration_code ||= seller_user&.seller&.company_registration_code
+
+    @vat_id ||= seller_user&.seller&.vat_id
+    if @vat_id.match?(/\A\d{9}/)
+      @vat_id = 'PT' + @vat_id
+    end
   end
 
   def category
@@ -69,6 +74,7 @@ class SellerSignupForm
   def seller
     @seller ||= Seller.new(name: name,
                            area: area,
+                           address: address,
                            category_id: category_id,
                            average_value_per_person: average_value_per_person,
                            vat_id: vat_id,

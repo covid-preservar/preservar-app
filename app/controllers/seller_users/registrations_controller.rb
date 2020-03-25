@@ -28,6 +28,7 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
     params.require(:seller_user).permit(:name,
                                         :district,
                                         :area,
+                                        :address,
                                         :category_id,
                                         :average_value_per_person,
                                         :email,

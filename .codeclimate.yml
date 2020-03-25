@@ -19,4 +19,4 @@ plugins:
 exclude_patterns:
   - "spec/"
   - "!spec/support/helpers"
-  - "app/assets/stylesheets/bootstrap"
+  - "app/assets/stylesheets/bootstrap/"

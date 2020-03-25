@@ -2,10 +2,11 @@
 
   .register-form-section
     h3 Sobre o estabelecimento
-    = f.input :name, label: 'Nome público do estabelecimento'
+    = f.input :name, label: 'Nome público do estabelecimento', hint: 'Este é o nome que vai ser visível na plataforma.'
     = f.input :category_id, collection: Category.all, include_blank: 'Categoria'
     = f.input :district, collection: Location.all_districts, label: 'Distrito'
     = f.input :area, label: 'Zona/Concelho', collection: Location.for_district(@form.district).map(&:area), selected: @form.area
+    = f.input :address, label: 'Morada', hint: 'Rua e número'
     = f.input :average_value_per_person,
               label: 'Preço médio por pessoa (se aplicável)',
               placeholder: 'Valor médio',
@@ -20,8 +21,8 @@
 
   .register-form-section
     h3 Sobre a empresa
-    = f.input :vat_id, placeholder: 'NIF', label: 'NIF', required: true
+    = f.input :vat_id, placeholder: 'PT999999999', label: 'NIF', required: true
     = f.input :iban, placeholder: 'IBAN', label: 'IBAN', required: true
-    = f.input :company_name, placeholder: 'Nome', label: 'Nome da empresa (Ou nome completo se for Empresário em Nome Individual)', required: true
-    = f.input :company_registration_code, placeholder: '1111-2222-3333', label: 'Código de acesso à certidão permanente (se for empresa)', required: true
+    = f.input :company_name, placeholder: 'Nome', label: 'Nome da empresa', hint:'Ou nome completo se for Empresário em Nome Individual', required: true
+    = f.input :company_registration_code, placeholder: '1111-2222-3333', label: 'Código de acesso à certidão permanente', hint: 'Se for empresa', required: true
   = f.button :submit, 'Registar'
