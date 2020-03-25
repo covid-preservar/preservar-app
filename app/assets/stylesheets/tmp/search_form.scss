@@ -4,12 +4,13 @@
 
   .input-location {
     background: image-url("icon-location.svg") #fff left 0.5rem center no-repeat;
-    padding-left: 2rem;
+    padding-left: 2rem !important;
     width: 100%;
+    height: 100%;
   }
 
   .select-input {
-    background: image-url("icon-arrow-down.svg") #fff right 0.5rem center no-repeat;
+    background: image-url("icon-arrow-down.svg") #fff right .5rem center no-repeat;
   }
 
   & > * {
