@@ -3,19 +3,20 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
   def new
     super do
       @form = SellerSignupForm.new(seller_user: resource)
+
+      gon.locations = Location.grouped_areas
     end
   end
 
   def create
     @form = SellerSignupForm.new(signup_params)
     if @form.save
-      user = @form.seller_user
-
       expire_data_after_sign_in!
       redirect_to register_success_path
     else
       # clean_up_passwords resource
       set_minimum_password_length
+      gon.locations = Location.grouped_areas
       render :new
     end
   end
@@ -24,6 +25,8 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
 
   def signup_params
     params.require(:seller_user).permit(:name,
+                                        :district,
+                                        :area,
                                         :category_id,
                                         :average_value_per_person,
                                         :email,

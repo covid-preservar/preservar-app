@@ -3,6 +3,8 @@ class SellerSignupForm
   include ActiveModel::AttributeMethods
 
   attr_accessor :name,
+                :district,
+                :area,
                 :category_id,
                 :average_value_per_person,
                 :email,
@@ -40,6 +42,7 @@ class SellerSignupForm
   def initialize(attributes = {})
     super(attributes.reject{|_,v| v.blank?})
     @name ||= seller_user&.seller&.name
+    @area ||= seller_user&.seller&.area
     @email ||= seller_user.email
     @category_id ||= seller_user&.seller&.category_id
     @average_value_per_person ||= seller_user&.seller&.average_value_per_person
@@ -66,6 +69,7 @@ class SellerSignupForm
 
   def seller
     @seller ||= Seller.new(name: name,
+                           area: area,
                            category_id: category_id,
                            average_value_per_person: average_value_per_person,
                            vat_id: vat_id,
@@ -76,6 +80,7 @@ class SellerSignupForm
   end
 
   def save
+    binding.pry
     return false unless valid?
 
     seller.save!

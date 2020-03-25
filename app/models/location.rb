@@ -1,5 +1,6 @@
 class Location < ApplicationRecord
 
+  scope :for_district, -> (district) { where(district: district)}
 
   def self.find_location(string)
     where(area: string).or(
@@ -9,4 +10,11 @@ class Location < ApplicationRecord
     ).first
   end
 
+  def self.all_districts
+    distinct(:district).pluck(:district).sort
+  end
+
+  def self.grouped_areas
+    all.group_by(&:district).transform_values{|v| v.map(&:area)}
+  end
 end
