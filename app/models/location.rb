@@ -1,12 +1,12 @@
+# frozen_string_literal: true
 class Location < ApplicationRecord
-
   scope :for_district, -> (district) { where(district: district)}
 
   def self.find_location(string)
     where(area: string).or(
       where(district: string)
     ).or(
-      where("? = ANY(aliases)", string)
+      where('? = ANY(aliases)', string)
     ).first
   end
 

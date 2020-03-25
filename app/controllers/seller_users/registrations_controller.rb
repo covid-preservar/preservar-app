@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SellerUsers::RegistrationsController < Devise::RegistrationsController
 
   def new

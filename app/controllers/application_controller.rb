@@ -26,9 +26,4 @@ class ApplicationController < ActionController::Base
   def load_cities
     gon.cities = Seller.distinct(:area).pluck(:area)
   end
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :average_value_per_person])
-  end
-
 end
