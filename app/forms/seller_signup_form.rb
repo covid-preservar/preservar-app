@@ -58,7 +58,7 @@ class SellerSignupForm
     @company_registration_code ||= seller_user&.seller&.company_registration_code
 
     @vat_id ||= seller_user&.seller&.vat_id
-    @vat_id = 'PT' + @vat_id if @vat_id&.match?(/\A\d{9}/)
+    @vat_id = 'PT' + @vat_id if @vat_id&.match?(/\A\d{9}\z/)
   end
 
   def category

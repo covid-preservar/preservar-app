@@ -1,0 +1,18 @@
+= simple_form_for @voucher,
+                      url: voucher_payments_path(@voucher),
+                      method: :post, remote: true,
+                      html: {class:'voucher_payment'} do |f|
+      = f.input :email, label:'Email para receber o voucher', placeholder: 'Email'
+
+      .payment-methods
+        = f.collection_radio_buttons :payment_method,
+                                      Voucher::PAYMENT_METHODS,
+                                      :itself, :itself,
+                                      item_wrapper_tag: nil,
+                                      checked: f.object.payment_method do |b|
+          = b.label class: "method method-#{b.object.downcase}"
+            = b.radio_button class:'payment-method-radio'
+            = image_tag "logo-#{b.object.downcase}.svg"
+
+      = f.input :payment_phone, placeholder: '9xxxxxxxx'
+      = f.submit 'Pagar', class: 'button'

@@ -11,8 +11,9 @@ class SellersController < ApplicationController
     @seller = Seller.friendly.find(params[:id])
     @city = @seller.area
     @category = @seller.category
+    @voucher = @seller.vouchers.new
 
-    @show_back = URI.parse(request.referer).path == sellers_path
+    @show_back = request.referer.present? && URI.parse(request.referer).path == sellers_path
     load_other_sellers
   end
 

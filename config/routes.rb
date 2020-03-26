@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :sellers, only: [:index, :show]
-  resources :vouchers, only: [:create, :show]
+  resources :vouchers, only: [:create, :show] do
+    resources :payments, only: [:new, :create]
+  end
+
 
   get '/tos', to: 'home#tos', as: :tos
   get '/privacy', to: 'home#privacy', as: :privacy
