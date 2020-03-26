@@ -28,8 +28,8 @@ header.main-content__header role="banner"
     = button_to 'Publish', publish_admin_seller_path(page.resource), class: "button", method: :patch
 section.main-content__body
   dl
-    dt#avatar.attribute-label
-      | Avatar
+    dt#photo.attribute-label
+      | Photo
     dd.attribute-data
       - if page.resource.main_photo.present?
         = image_tag page.resource.main_photo_url(:small, public: true)

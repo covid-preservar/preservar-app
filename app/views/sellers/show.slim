@@ -23,7 +23,7 @@
           ' e a
           => link_to 'Politica de Privacidade', privacy_path, target:'_blank'
 
-    = image_tag @seller.main_photo_url(:large) || 'place-img.jpg', class: 'xcol-5 xoffset-1', id: 'hero-img'
+    = image_tag @seller.main_photo_url(:large, public: true) || 'place-img.jpg', class: 'xcol-5 xoffset-1', id: 'hero-img'
   section#place-share.section
     .xrow
       h2.xcol-6.section-separator Partilha com os teus amigos, o pequeno contributo de muitos vai longe

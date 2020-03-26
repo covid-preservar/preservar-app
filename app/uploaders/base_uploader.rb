@@ -7,7 +7,7 @@ class BaseUploader < Shrine
     type = context[:record]&.class&.name&.downcase
     id = context[:record]&.id
     attachment = context[:name]
-    style = derivative == :original ? 'originals' : 'thumbs' if derivative.present?
+    style = derivative == :original ? 'originals' : derivative if derivative.present?
 
     name = super # the default unique identifier
     hash = Digest::SHA1.hexdigest [type, id, attachment].compact.join('/')
