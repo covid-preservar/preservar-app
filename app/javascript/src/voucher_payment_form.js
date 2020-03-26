@@ -1,5 +1,9 @@
 export default class SellerForm {
   constructor() {
+    if (!$('.payment-method-radio:checked').val()) {
+      $('.voucher_payment_phone').hide();
+    }
+
     if ($('.payment-method-radio:checked').val() == 'MBW') {
       $('.voucher_payment_phone').show();
       $('.method-mbw').addClass('selected');

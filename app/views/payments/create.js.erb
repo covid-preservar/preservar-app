@@ -1,1 +1,7 @@
-alert('This is where the payment modal shows')
+$('#paymentModal').remove()
+$('body').append('<%= j(render partial:"modal")%>')
+$('#paymentModal').modal()
+$("#paymentModal").on('shown.bs.modal', function () {
+    $("#paymentModal .modal").css('display', 'block');
+
+})

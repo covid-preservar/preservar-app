@@ -102,7 +102,8 @@
     .xrow
       h2.xcol-6.section-separator Tem um estabelecimento? Comece a vender vouchers hoje.
     .xrow
-      a.primary-cta Registe o seu local
+      = link_to 'Registe o seu local', new_seller_user_registration_path, class: 'primary-cta'
+
   section#kicker.section
     .xrow
       h2.xcol-6.section-separator Está à espera de quê? Preserve o seu sítio preferido agora
