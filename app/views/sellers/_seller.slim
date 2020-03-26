@@ -1,6 +1,6 @@
 a.place href=seller_path(seller)
   .place-img-wrapper
-    = image_tag 'place-img.jpg', alt: 'Avô Arnaldo'
+    = image_tag seller.main_photo_url(:small) || 'place-img.jpg', alt: 'Avô Arnaldo'
   h3 = seller.name
   p
     => seller.category.name

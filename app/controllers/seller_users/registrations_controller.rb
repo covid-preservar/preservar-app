@@ -31,6 +31,7 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
                                         :district,
                                         :area,
                                         :address,
+                                        :main_photo,
                                         :category_id,
                                         :average_value_per_person,
                                         :email,

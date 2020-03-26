@@ -9,6 +9,7 @@ class SellerSignupForm
                 :address,
                 :category_id,
                 :average_value_per_person,
+                :main_photo,
                 :email,
                 :is_company,
                 :vat_id,
@@ -21,19 +22,21 @@ class SellerSignupForm
 
   attr_writer :seller, :seller_user
 
-  validates :name, :contact_name, presence: true
+  validates :name,
+            :address,
+            :contact_name,
+            :password,
+            :password_confirmation,
+            :category_id,
+            :main_photo,
+            :company_name,
+            :iban, presence: true
 
   validates :email, format: { with: Devise.email_regexp }
-
-  validates :category_id,
-            :password,
-            :password_confirmation, presence: true
 
   validates :vat_id, valvat: true
   validates :company_registration_code,
             format: { with: /\d{4}-\d{4}-\d{4}/, allow_nil: true }
-
-  validates :company_name, presence: true
 
   validates :average_value_per_person, numericality: { min: 1, allow_nil: true }
 
@@ -81,7 +84,9 @@ class SellerSignupForm
                            iban: iban,
                            contact_name: contact_name,
                            company_name: company_name,
-                           company_registration_code: company_registration_code)
+                           company_registration_code: company_registration_code,
+                           main_photo: main_photo
+                          )
   end
 
   def save
@@ -89,8 +94,9 @@ class SellerSignupForm
 
     seller.save!
     seller_user.save!
-  rescue StandardError
+  rescue StandardError => e
     copy_errors
+    binding.pry
     false
   end
 

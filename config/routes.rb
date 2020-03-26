@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :admin_users
     resources :categories
     resources :sellers
+    resources :seller_users
 
     root to: "sellers#index"
   end

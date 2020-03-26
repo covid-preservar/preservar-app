@@ -15,6 +15,7 @@ pt:
   activemodel:
     attributes:
       seller_signup_form:
+        email: 'E-mail'
         name: 'Nome'
         category_id: 'Categoria'
         password_confirmation: 'Confirmação de password'
@@ -22,6 +23,10 @@ pt:
         iban: 'IBAN'
         company_registration_code: 'Código de acesso'
         contact_name: 'Nome'
+        main_photo: 'Fotografia'
+        address: 'Morada'
+        area: 'Zona/Concelho'
+        company_name: 'Nome da empresa'
   errors:
     messages:
         invalid_vat: 'é inválido'

@@ -41,3 +41,4 @@ yarn-debug.log*
 /coverage/
 GeoLite2-City.mmdb
 rubocop.html
+public/uploads
