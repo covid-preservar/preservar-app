@@ -19,7 +19,7 @@ class SellerDashboard < Administrate::BaseDashboard
     area: Field::String,
     slug: Field::String,
     address: Field::String,
-    postal_code: Field::String,
+    published: Field::Boolean,
     main_photo_data: Field::String.with_options(searchable: false),
     payment_api_key: Field::String,
     vat_id: Field::String,
@@ -40,12 +40,14 @@ class SellerDashboard < Administrate::BaseDashboard
     name
     category
     area
+    published
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    published
     category
     seller_user
     vouchers
@@ -56,7 +58,6 @@ class SellerDashboard < Administrate::BaseDashboard
     area
     slug
     address
-    postal_code
     main_photo_data
     payment_api_key
     vat_id
@@ -78,7 +79,7 @@ class SellerDashboard < Administrate::BaseDashboard
     area
     slug
     address
-    postal_code
+    published
     main_photo
     payment_api_key
     vat_id

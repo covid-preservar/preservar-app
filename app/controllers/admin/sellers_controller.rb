@@ -9,12 +9,26 @@ module Admin
     #   send_foo_updated_email(requested_resource)
     # end
 
+    def publish
+      if requested_resource.can_publish?
+        requested_resource.update(published: true)
+      else
+        flash[:alert] = "Can't publish. Seller needs photo and payment API key"
+      end
+      redirect_to [:admin, requested_resource]
+    end
+
+    def unpublish
+      requested_resource.update(published: false)
+      redirect_to [:admin, requested_resource]
+    end
+
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
     # actions.
     #
     def find_resource(param)
-      Seller.friendly.find(param)
+      Seller.unscoped.friendly.find(param)
     end
 
     # The result of this lookup will be available as `requested_resource`
@@ -22,13 +36,9 @@ module Admin
     # Override this if you have certain roles that require a subset
     # this will be used to set the records shown on the `index` action.
     #
-    # def scoped_resource
-    #   if current_user.super_admin?
-    #     resource_class
-    #   else
-    #     resource_class.with_less_stuff
-    #   end
-    # end
+    def scoped_resource
+      resource_class.unscoped
+    end
 
     # Override `resource_params` if you want to transform the submitted
     # data before it's persisted. For example, the following would turn all

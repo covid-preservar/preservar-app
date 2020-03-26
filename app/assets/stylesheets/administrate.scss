@@ -26,3 +26,13 @@ form.btn-link {
     border-radius: 4px;
   }
 }
+
+
+.button_to {
+  display: inline-block;
+}
+
+.button + .button,
+.button + .button_to {
+  margin-left: .5rem;
+}

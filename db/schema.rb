@@ -86,7 +86,6 @@ ActiveRecord::Schema.define(version: 2020_03_25_124621) do
     t.string "area", null: false
     t.string "slug"
     t.string "address"
-    t.string "postal_code"
     t.jsonb "main_photo_data"
     t.string "payment_api_key"
     t.string "vat_id"
@@ -94,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_03_25_124621) do
     t.string "contact_name"
     t.string "company_name"
     t.string "company_registration_code"
+    t.boolean "published", default: false
     t.index ["area"], name: "index_sellers_on_area"
     t.index ["category_id"], name: "index_sellers_on_category_id"
     t.index ["slug"], name: "index_sellers_on_slug", unique: true

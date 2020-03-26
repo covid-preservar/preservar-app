@@ -3,7 +3,7 @@ namespace :db do
   task :populate => :environment do
     require 'faker'
 
-    [AdminUser, Seller].each do |klass|
+    [AdminUser, Seller, SellerUser].each do |klass|
 
       query = "TRUNCATE TABLE #{klass.table_name} CASCADE"
       ActiveRecord::Base.connection.execute(query)
@@ -34,11 +34,12 @@ namespace :db do
     end
 
     seller_hash.each do |seller_hash|
-      next if Seller.find_by(name: seller_hash[:name]).present?
+      next if Seller.unscoped.find_by(name: seller_hash[:name]).present?
 
       puts 'Creating seller...'
       params = seller_hash.merge(address: "#{Faker::Address.street_name}, #{Faker::Address.building_number}",
-                                 seller_user: SellerUser.new(email: Faker::Internet.email, password:'secret'))
+                                 seller_user: SellerUser.new(email: Faker::Internet.email, password:'secret'),
+                                 published: true)
       Seller.create!(params)
     end
 

@@ -25,18 +25,19 @@ header.main-content__header role="banner"
         [:edit, namespace, page.resource],
         class: "button",
       ) if valid_action?(:edit) && show_action?(:edit, page.resource)
-
+    = button_to 'Publish', publish_admin_seller_path(page.resource), class: "button", method: :patch
 section.main-content__body
   dl
     dt#avatar.attribute-label
       | Avatar
     dd.attribute-data
-      = image_tag page.resource.main_photo_url(:small, public: true)
-      br
-      => link_to 'Small photo', page.resource.main_photo_url(:small, public: true), target: '_blank'
-      ' |
-      = link_to 'Large photo', page.resource.main_photo_url(:large, public: true), target: '_blank'
-    - page.attributes.reject{|attr| attr.name == 'avatar_data'}.each do |attribute|
+      - if page.resource.main_photo.present?
+        = image_tag page.resource.main_photo_url(:small, public: true)
+        br
+        => link_to 'Small photo', page.resource.main_photo_url(:small, public: true), target: '_blank'
+        ' |
+        = link_to 'Large photo', page.resource.main_photo_url(:large, public: true), target: '_blank'
+    - page.attributes.reject{|attr| attr.name == 'main_photo_data'}.each do |attribute|
       dt.attribute-label id="#{attribute.name}"
         = t("helpers.label.#{resource_name}.#{attribute.name}",
             default: attribute.name.titleize)

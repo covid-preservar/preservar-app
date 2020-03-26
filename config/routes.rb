@@ -21,7 +21,12 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :admin_users
     resources :categories
-    resources :sellers
+    resources :sellers do
+      member do
+        patch :publish
+        patch :unpublish
+      end
+    end
     resources :seller_users
 
     root to: "sellers#index"
