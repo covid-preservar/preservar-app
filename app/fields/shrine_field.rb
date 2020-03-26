@@ -1,4 +1,4 @@
-
+# frozen_string_literal: true
 class ShrineField < Administrate::Field::Base
   def url
     data.try(:url).to_s

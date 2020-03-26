@@ -40,7 +40,7 @@ namespace :db do
       params = seller_hash.merge(address: "#{Faker::Address.street_name}, #{Faker::Address.building_number}",
                                  seller_user: SellerUser.new(email: Faker::Internet.email, password:'secret'),
                                  published: true)
-      Seller.create!(params)
+      Seller.new(params).save(validate: false)
     end
 
     AdminUser.create!(email: 'admin@example.com', password: 'secret', confirmed_at: Time.now.utc)

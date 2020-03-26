@@ -16,9 +16,6 @@ Layout/EmptyLinesAroundClassBody:
 Layout/EmptyLineAfterMagicComment:
   Enabled: false
 
-Rails/SkipsModelValidations:
-  Enabled: false
-
 Naming/AccessorMethodName:
   Enabled: false
 
@@ -49,19 +46,10 @@ Style/ClassAndModuleChildren:
 Style/AndOr:
   EnforcedStyle: conditionals
 
-Rails/OutputSafety:
-  Enabled: false
-
 Style/EmptyMethod:
   Enabled: false
 
-Rails/Blank:
-  UnlessPresent: false
-
 Style/ParallelAssignment:
-  Enabled: false
-
-Performance/UnfreezeString:
   Enabled: false
 
 Bundler/OrderedGems:

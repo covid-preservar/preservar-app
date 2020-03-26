@@ -43,7 +43,7 @@ class SellerSignupForm
   validate :validate_iban
 
   def initialize(attributes = {})
-    super(attributes.reject{ |_, v| v.blank? })
+    super(attributes.reject { |_, v| v.blank? })
     @name ||= seller_user&.seller&.name
     @area ||= seller_user&.seller&.area
     @address ||= seller_user&.seller&.address
@@ -58,9 +58,7 @@ class SellerSignupForm
     @company_registration_code ||= seller_user&.seller&.company_registration_code
 
     @vat_id ||= seller_user&.seller&.vat_id
-    if @vat_id&.match?(/\A\d{9}/)
-      @vat_id = 'PT' + @vat_id
-    end
+    @vat_id = 'PT' + @vat_id if @vat_id&.match?(/\A\d{9}/)
   end
 
   def category
@@ -94,9 +92,8 @@ class SellerSignupForm
 
     seller.save!
     seller_user.save!
-  rescue StandardError => e
+  rescue StandardError
     copy_errors
-    binding.pry
     false
   end
 
