@@ -3,11 +3,15 @@ class Voucher < ApplicationRecord
   include AASM
 
   aasm column: :state do
-    state :pending, initial: true
-    state :paid, :redeemed
+    state :created, initial: true
+    state :pending_payment, :paid, :redeemed
+
+    event :start_payment do
+      transitions from: :created, to: :pending_payment
+    end
 
     event :payment_success do
-      transitions from: :pending, to: :paid, after: :generate_code
+      transitions from: :pending_payment, to: :paid, after: :generate_code
     end
 
     event :redeemed do
@@ -16,8 +20,9 @@ class Voucher < ApplicationRecord
   end
 
   belongs_to :seller
+  has_one :payment
 
-  validates :code, presence: true, uniqueness: { allow_nil: true }, unless: :pending?
+  validates :code, presence: true, uniqueness: { allow_nil: true }, if: :paid?
   validates :value, numericality: { minimum: 1 }
 
   attr_reader :custom_value

@@ -11,8 +11,10 @@
         => @seller.category.name
         ' &middot;
         = @seller.address
-      = simple_form_for Voucher.new, remote: true do |f|
+
+      = simple_form_for @voucher do |f|
         h3 Selecciona um valor
+        = f.input_field :seller_id, as: :hidden
         = f.input :value, as: :radio_buttons, collection: Seller::DEFAULT_EUR_VALUES, checked: 20, legend_tag: false
         = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}
         = f.submit 'Comprar voucher'
