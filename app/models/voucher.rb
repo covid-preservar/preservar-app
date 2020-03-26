@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Voucher < ApplicationRecord
-  PAYMENT_METHODS = %w[MB MBW]
+  PAYMENT_METHODS = %w[MB MBW].freeze
 
   include AASM
 
@@ -26,10 +26,12 @@ class Voucher < ApplicationRecord
   validates :code, presence: true, uniqueness: { allow_nil: true }, if: :paid?
   validates :email, format: { with: Devise.email_regexp }, if: :pending_payment?
   validates :value, numericality: { minimum: 1 }
+  validates :payment_method, presence: true,
+                             inclusion: { in: PAYMENT_METHODS },
+                             if: :pending_payment?
 
-  validates :payment_method, presence: true, inclusion: { in: PAYMENT_METHODS }, if: :pending_payment?
   validates :payment_identifier, presence: true, if: :pending_payment?
-  validates :payment_phone, format: { with: /\d{9}/}, if: :requires_phone?
+  validates :payment_phone, format: { with: /\A\d{9}\z/ }, if: :requires_phone?
 
   attr_reader :custom_value
 

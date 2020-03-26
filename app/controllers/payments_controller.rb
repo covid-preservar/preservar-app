@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PaymentsController < ApplicationController
 
   def new
@@ -13,11 +14,9 @@ class PaymentsController < ApplicationController
     if @voucher.start_payment!
       # Open modal here
     else
-      binding.pry
       render :new
     end
   end
-
 
   private
 
