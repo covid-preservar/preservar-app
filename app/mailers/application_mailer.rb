@@ -5,11 +5,12 @@ class ApplicationMailer < ActionMailer::Base
 
   def seller_signup(seller)
     @seller = seller
-    mail to: 'pedro@codecreations.tech', subject: 'Bem vindo ao Preserve!'
+    mail to: seller.seller_user.email, subject: 'Bem vindo ao Preserve!'
   end
 
-  def foo
-    mail to: 'pedro@codecreations.tech', subject: test
+  def seller_signup_notify_internal(seller)
+    @seller = seller
+    mail to: ENV['EUPAGO_EMAIL'], cc:'info@preserve.pt', subject: '[PRESERVE] Novo Registo'
   end
 
 end

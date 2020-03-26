@@ -1,0 +1,30 @@
+h2 Novo registo de comerciante
+
+table
+  tbody
+    tr
+      td
+        strong Nome de contacto:
+      td =< @seller.contact_name
+    tr
+      td
+        strong E-mail:
+      td =< @seller.seller_user.email
+    tr
+      td
+        strong Nome da empresa / ENI:
+      td =< @seller.company_name
+    tr
+      td
+        strong NIF:
+      td =< @seller.vat_id
+    tr
+      td
+        strong IBAN:
+      td =< @seller.iban
+    tr
+      td
+        strong Codigo Certidão Permanente:
+      td =< @seller.company_registration_code
+
+

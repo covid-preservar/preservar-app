@@ -13,7 +13,7 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
     @form = SellerSignupForm.new(signup_params)
     if @form.save
       ApplicationMailer.seller_signup(@form.seller).deliver_later
-
+      ApplicationMailer.seller_signup_notify_internal(@form.seller).deliver_later
       expire_data_after_sign_in!
       redirect_to register_success_path
     else
