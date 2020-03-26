@@ -37,8 +37,9 @@ namespace :db do
       next if Seller.find_by(name: seller_hash[:name]).present?
 
       puts 'Creating seller...'
-
-      Seller.create!(seller_hash.merge(address: "#{Faker::Address.street_name}, #{Faker::Address.building_number}" ))
+      params = seller_hash.merge(address: "#{Faker::Address.street_name}, #{Faker::Address.building_number}",
+                                 seller_user: SellerUser.new(email: Faker::Internet.email, password:'secret'))
+      Seller.create!(params)
     end
 
     AdminUser.create!(email: 'admin@example.com', password: 'secret', confirmed_at: Time.now.utc)

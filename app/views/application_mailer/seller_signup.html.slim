@@ -1,0 +1,29 @@
+h1
+  ' Parabéns
+  = @seller.name
+  | , acabou de se registar no Preserve!
+
+h1 O que acontece a seguir?
+p
+  ' Brevemente, irá ser contactado pela Eupago,
+  ' o nosso parceiro de pagamentos que precisa de
+  ' 1) verificar a sua legitimidade e
+  ' 2) pedir-lhe mais dados, como o NIB ou o IBAN, para que possa começar vender.
+
+p
+  ' Assim que o seu negócio for aceite,
+  ' aparece automaticamente na nossa plataforma, pronto para vender.
+
+h1 E depois? Partilhe com os seus fãs.
+p
+  ' Quanto mais barulho fizer, mais apoios vai ter.
+  ' Partilhe nas redes sociais do seu estabelecimento,
+  ' nas suas próprias redes sociais, copie o link e partilhe no seu Whatsapp,
+  ' ou qualquer outra forma que prefira.
+= image_tag 'https://assets.preserve.pt/email_assets/email-share.gif'
+
+h1 Precisa de ajuda?
+
+p
+ ' Envie um e-mail para
+ = mail_to 'info@preserve.pt'

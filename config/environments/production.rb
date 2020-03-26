@@ -69,6 +69,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "preservar_production"
   config.active_job.queue_adapter = :sidekiq
 
+  config.action_mailer.delivery_method = :mailjet_api
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: ENV.fetch('HOSTNAME') }
   Rails.application.routes.default_url_options = { host: ENV.fetch('HOSTNAME') }
