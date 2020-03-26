@@ -1,0 +1,18 @@
+default: &default
+  :concurrency: 2
+  :logfile: ./log/sidekiq.log
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  :concurrency: 10
+
+:queues:
+  # - [high, 4]
+  - [default, 3]
+  - [low, 2]
+  - [mailers, 1]

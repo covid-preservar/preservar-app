@@ -12,6 +12,8 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
   def create
     @form = SellerSignupForm.new(signup_params)
     if @form.save
+      ApplicationMailer.seller_signup(@form.seller).deliver_later
+
       expire_data_after_sign_in!
       redirect_to register_success_path
     else
