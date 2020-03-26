@@ -1,3 +1,4 @@
 header.header.header-main
   a#logo href="/"
-  = link_to 'Submeta o seu negócio', new_seller_user_registration_path, class: 'secondary-cta'
+  - if request.path == root_path
+    = link_to 'Submeta o seu negócio', new_seller_user_registration_path, class: 'secondary-cta'

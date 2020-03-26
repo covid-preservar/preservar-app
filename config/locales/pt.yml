@@ -12,6 +12,10 @@ pt:
         email: 'E-mail'
         category_id: 'Categoria'
         name: 'Nome'
+  activerecord:
+    attributes:
+      voucher:
+        payment_phone: 'Número de Telemóvel'
   activemodel:
     attributes:
       seller_signup_form:

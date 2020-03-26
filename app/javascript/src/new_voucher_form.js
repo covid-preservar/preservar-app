@@ -1,5 +1,3 @@
-
-
 function setup() {
   if ($('#new_voucher').length > 0) {
     $('#voucher_custom_value').on('input', (ev) => {

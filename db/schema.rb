@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_152214) do
+ActiveRecord::Schema.define(version: 2020_03_26_160330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,16 +63,6 @@ ActiveRecord::Schema.define(version: 2020_03_26_152214) do
     t.string "aliases", default: [], array: true
   end
 
-  create_table "payments", force: :cascade do |t|
-    t.bigint "voucher_id"
-    t.string "identifier"
-    t.integer "amount"
-    t.string "method"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["voucher_id"], name: "index_payments_on_voucher_id"
-  end
-
   create_table "seller_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -116,6 +106,10 @@ ActiveRecord::Schema.define(version: 2020_03_26_152214) do
     t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
+    t.string "payment_identifier"
+    t.string "payment_method"
+    t.string "payment_phone"
     t.index ["seller_id"], name: "index_vouchers_on_seller_id"
   end
 

@@ -23,6 +23,10 @@ import '../src/smooth_scroll';
 import SellerForm from "../src/seller_registration_form";
 window.SellerForm = SellerForm;
 
+import VoucherPaymentForm from "../src/voucher_payment_form";
+window.VoucherPaymentForm = VoucherPaymentForm;
+
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -32,6 +36,10 @@ window.SellerForm = SellerForm;
 function setup() {
   if ($('body').is('.registrations.new') && !window.registration_form) {
     window.registration_form = new SellerForm();
+  }
+
+  if ($('body').is('.payments') && !window.voucher_payment_form) {
+    window.voucher_payment_form = new VoucherPaymentForm();
   }
 }
 

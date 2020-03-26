@@ -1,0 +1,52 @@
+.payments {
+
+  .payment-methods {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: .5rem 0;
+
+    .method {
+      height: 140px;
+      width: 140px;
+      border: 2px solid #000;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      + .method {
+        margin-left: .5rem;
+      }
+
+      input {
+        display: none;
+      }
+
+      &.selected {
+        background-color: var(--color-light-blue);
+      }
+    }
+
+    .button {
+      width: 140px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      justify-content: space-between;
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    .payment-methods {
+      .method {
+        height: 175px;
+        width: 175px;
+      }
+    }
+
+    .button {
+      width: 175px;
+    }
+  }
+}

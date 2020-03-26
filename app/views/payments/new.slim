@@ -1,5 +1,21 @@
+- content_for :header do
+  = render 'shared/header'
+
+
+
+.container
+  section#hero.row
+    #hero-text.col-sm-12.col-md-12.col-lg-6
+      h1 Escolha como deseja pagar
+      br
+
 .container
   .row
-    .col-6
-      h1 Escolha como deseja pagar
-      = simple_form_for [@payment.voucher, @payment] do |f|
+    .col-sm-12.col-md-6.col-lg-4#form-wrapper
+      = render 'form'
+  br
+  small
+    ' Ao comprar, está a aceitar os
+    => link_to 'Termos e Condições', tos_path, target:'_blank'
+    ' e a
+    => link_to 'Politica de Privacidade', privacy_path, target:'_blank'

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 class Voucher < ApplicationRecord
+  PAYMENT_METHODS = %w[MB MBW]
+
   include AASM
 
   aasm column: :state do
@@ -7,7 +9,7 @@ class Voucher < ApplicationRecord
     state :pending_payment, :paid, :redeemed
 
     event :start_payment do
-      transitions from: :created, to: :pending_payment
+      transitions from: :created, to: :pending_payment, after: :generate_identifier
     end
 
     event :payment_success do
@@ -20,10 +22,14 @@ class Voucher < ApplicationRecord
   end
 
   belongs_to :seller
-  has_one :payment
 
   validates :code, presence: true, uniqueness: { allow_nil: true }, if: :paid?
+  validates :email, format: { with: Devise.email_regexp }, if: :pending_payment?
   validates :value, numericality: { minimum: 1 }
+
+  validates :payment_method, presence: true, inclusion: { in: PAYMENT_METHODS }, if: :pending_payment?
+  validates :payment_identifier, presence: true, if: :pending_payment?
+  validates :payment_phone, format: { with: /\d{9}/}, if: :requires_phone?
 
   attr_reader :custom_value
 
@@ -35,5 +41,13 @@ class Voucher < ApplicationRecord
 
   def generate_code
     self.code = SecureRandom.hex(4).upcase
+  end
+
+  def generate_identifier
+    self.payment_identifier = "s#{seller_id}v#{id}_#{payment_method.downcase}_#{Time.now.to_i}"
+  end
+
+  def requires_phone?
+    pending_payment? && payment_method == 'MBW'
   end
 end
