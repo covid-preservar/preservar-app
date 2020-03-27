@@ -21,4 +21,7 @@
               = mail_to 'info@preserve.pt'
 
         .modal-footer
-         button.primary-cta type="button" data-dismiss="modal" Fechar
+          - if @payment_request.success
+            = link_to 'Fechar', thank_you_voucher_path(@voucher), class:'primary-cta'
+          - else
+            button.primary-cta type="button" data-dismiss="modal" Fechar

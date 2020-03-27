@@ -117,25 +117,6 @@
     }
   }
 
-  .link {
-    position: relative;
-
-    &:after {
-      content: "🔗";
-      position: absolute;
-      left: 1rem;
-      line-height: 3rem;
-    }
-
-    input {
-      padding-left: 3rem;
-    }
-  }
-
-  #share-box {
-    margin-top: 2rem;
-  }
-
   @media only screen and (max-width: 1288px) {
     #new_voucher:before {
       margin-left: -10%;
@@ -172,6 +153,45 @@
 
     #hero-img {
       margin-bottom: 2rem;
+    }
+  }
+}
+
+
+
+#share-box,
+#place-share {
+  margin-top: 2rem;
+}
+
+#place-share {
+  &  > *:not(h3) {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+  }
+
+  input {
+    width: 100%;
+  }
+
+
+  .link {
+    position: relative;
+
+    &:after {
+      content: "🔗";
+      position: absolute;
+      left: 1rem;
+      line-height: 3rem;
+    }
+
+    input {
+      padding-left: 3rem;
+      color: $black;
     }
   }
 }

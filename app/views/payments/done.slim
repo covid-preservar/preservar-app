@@ -1,0 +1,35 @@
+- content_for :header do
+  = render 'shared/header'
+
+.xcontainer
+  section#hero.xrow
+    #hero-text.xcol-6
+      - if @voucher.paid?
+        h1
+          | Parabéns!
+          br
+          ' Acabou de apoiar o
+          = @voucher.seller.name
+        p Enviámos o voucher para o seu email.
+      - else
+        h1
+          | HEADING - PAGAMENTO EM CURSO
+          br
+          = @voucher.seller.name
+        p NEED COPY - quando o pagamento estiver concluido enviamos o voucher para o seu email.
+    = image_tag 'help.svg', alt: 'Pessoa', class:'xcol-5'
+
+  section#place-share.xcol-5
+    .xrow
+      h3
+        ' Os seus amigos são essenciais nesta luta.
+        ' Partilhe e junte os seus amigos para apoiar o
+        = @voucher.seller.name
+    / TODO: add this page URL
+    iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&appId=101419673290370&width=110&height=28" style="border:none;overflow:hidden" width="110"
+    a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet
+    script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
+    .link
+      input disabled='true' type="text" value=seller_url
+
+  == render 'sellers/other_sellers'

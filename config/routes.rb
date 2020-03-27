@@ -21,7 +21,10 @@ Rails.application.routes.draw do
     resources :sellers, only: [:index, :show]
     resources :vouchers, only: [:create, :show] do
       resources :payments, only: [:new, :create]
+
+      get '/obrigado', to: 'payments#done', as: :thank_you, on: :member
     end
+
   end
 
   get '/tos', to: 'home#tos', as: :tos

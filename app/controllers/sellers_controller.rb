@@ -14,7 +14,7 @@ class SellersController < ApplicationController
     @voucher = @seller.vouchers.new
 
     @show_back = request.referer.present? && URI.parse(request.referer).path == sellers_path
-    load_other_sellers
+    @other_sellers = OtherSellersQuery.for_seller(@seller)
   end
 
   # temporary page for seller registration success
@@ -27,16 +27,5 @@ class SellersController < ApplicationController
 
   def load_categories
     @categories = Category.all
-  end
-
-  def load_other_sellers
-    base_scope = Seller.where.not(id: @seller.id).order('RANDOM()').limit(4)
-    @other_sellers = base_scope.where(area: @city)
-    @other_sellers_local = true
-
-    if @other_sellers.none?
-      @other_sellers = base_scope.where(category: @seller.category)
-      @other_sellers_local = false
-    end
   end
 end

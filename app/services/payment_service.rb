@@ -91,8 +91,8 @@ class PaymentService
   end
 
   def get_error(response)
-    state = RESPONSES[result['estado']]
-    message = result['resposta']
+    state = RESPONSES[response['estado']]
+    message = response['resposta']
     OpenStruct.new(success: false, state: state, message: message)
   end
 end

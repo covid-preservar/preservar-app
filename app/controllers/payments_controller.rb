@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 class PaymentsController < ApplicationController
+  before_action :load_and_check_voucher
+  before_action :ensure_voucher_state, only: %i[new create]
 
   def new
-    @voucher = Voucher.find(params[:voucher_id])
-
-    redirect_to(@voucher.seller, alert: 'Operação inválida') unless @voucher.created?
   end
 
   def create
-    @voucher = Voucher.find(params[:voucher_id])
     @voucher.assign_attributes(payment_params)
 
     if @voucher.start_payment!
@@ -23,9 +21,27 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def done
+    @other_sellers = OtherSellersQuery.for_seller(@voucher.seller)
+  end
+
   private
 
   def payment_params
     params.require(:voucher).permit(:email, :payment_method, :payment_phone)
+  end
+
+  def load_and_check_voucher
+    @voucher = Voucher.find(params[:voucher_id] || params[:id])
+
+    unless cookies.encrypted[:uuid] == @voucher.cookie_uuid
+      redirect_to(@voucher.seller, alert: 'Operação inválida') and return
+    end
+  end
+
+  def ensure_voucher_state
+    unless @voucher.created?
+      redirect_to(@voucher.seller, alert: 'Operação inválida') and return
+    end
   end
 end
