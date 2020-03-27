@@ -16,16 +16,17 @@
         p Compra um voucher para usares em qualquer altura, e ajuda a tua economia local a sobreviver ao COVID-19
         = render 'shared/search_form'
 
-        section#hero-stats.clearfix
-          article.stat
-            h2 400
-            p Locais
-          article.stat
-            h2 10,310
-            p Vouchers vendidos
-          article.stat
-            h2 €206,200
-            p Angariados
+        /!
+          section#hero-stats.clearfix
+            article.stat
+              h2 400
+              p Locais
+            article.stat
+              h2 10,310
+              p Vouchers vendidos
+            article.stat
+              h2 €206,200
+              p Angariados
       = image_tag 'hero-img.jpg', alt:'Pessoa', id:'hero-img', class:'xcol-5 xoffset-1'
   section#how-it-works.section
     #how-it-works-brief.xrow
@@ -48,56 +49,68 @@
         = image_tag 'icon-heart.svg', alt: 'Heart'
         h3 Parabéns, contribuiu para sua economia local!
         p Contribuiu para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
-  section#support.section
-    .xrow
-      h2.xcol-6.section-separator Quem recebe o seu apoio
-    #support-people.xrow
-      .xcol-2.support-person
-        = image_tag 'hero-img.jpg', alt:'Amélia'
-        p A Amélia
-        p Cozinheira
-        p Sabores do Pátio
-      .xcol-2.support-person
-        = image_tag 'hero-img.jpg', alt:'Amélia'
-        p A Amélia
-        p Cozinheira
-        p Sabores do Pátio
-      .xcol-2.support-person
-        = image_tag 'hero-img.jpg', alt:'Amélia'
-        p A Amélia
-        p Cozinheira
-        p Sabores do Pátio
-      .xcol-2.support-person
-        = image_tag 'hero-img.jpg', alt:'Amélia'
-        p A Amélia
-        p Cozinheira
-        p Sabores do Pátio
-      .xcol-2.support-person
-        = image_tag 'hero-img.jpg', alt:'Amélia'
-        p A Amélia
-        p Cozinheira
-        p Sabores do Pátio
-      .xcol-2.support-person
-        = image_tag 'hero-img.jpg', alt:'Amélia'
-        p A Amélia
-        p Cozinheira
-        p Sabores do Pátio
-  section#press.section
-    .xrow
-      h2.xcol-6.section-separator Como visto em
-    #press-wrapper.xrow
-      .xcol-2.press-logo
-        = image_tag 'publico.svg', alt: 'Público'
-      .xcol-2.press-logo
-        = image_tag 'publico.svg', alt: 'Público'
-      .xcol-2.press-logo
-        = image_tag 'publico.svg', alt: 'Público'
-      .xcol-2.press-logo
-        = image_tag 'publico.svg', alt: 'Público'
-      .xcol-2.press-logo
-        = image_tag 'publico.svg', alt: 'Público'
-      .xcol-2.press-logo
-        = image_tag 'publico.svg', alt: 'Público'
+  
+  section#places-container.section
+  .xrow
+    h2.xcol-6.section-separator Quem recebe o seu apoio
+  
+  #places-list.xrow.home-list
+    == render @sellers
+
+  /!
+    section#support.section
+      .xrow
+        h2.xcol-6.section-separator Quem recebe o seu apoio
+
+      #support-people.xrow
+        .xcol-2.support-person
+          = image_tag 'hero-img.jpg', alt:'Amélia'
+          p A Amélia
+          p Cozinheira
+          p Sabores do Pátio
+        .xcol-2.support-person
+          = image_tag 'hero-img.jpg', alt:'Amélia'
+          p A Amélia
+          p Cozinheira
+          p Sabores do Pátio
+        .xcol-2.support-person
+          = image_tag 'hero-img.jpg', alt:'Amélia'
+          p A Amélia
+          p Cozinheira
+          p Sabores do Pátio
+        .xcol-2.support-person
+          = image_tag 'hero-img.jpg', alt:'Amélia'
+          p A Amélia
+          p Cozinheira
+          p Sabores do Pátio
+        .xcol-2.support-person
+          = image_tag 'hero-img.jpg', alt:'Amélia'
+          p A Amélia
+          p Cozinheira
+          p Sabores do Pátio
+        .xcol-2.support-person
+          = image_tag 'hero-img.jpg', alt:'Amélia'
+          p A Amélia
+          p Cozinheira
+          p Sabores do Pátio
+
+  /!
+    section#press.section
+      .xrow
+        h2.xcol-6.section-separator Como visto em
+      #press-wrapper.xrow
+        .xcol-2.press-logo
+          = image_tag 'publico.svg', alt: 'Público'
+        .xcol-2.press-logo
+          = image_tag 'publico.svg', alt: 'Público'
+        .xcol-2.press-logo
+          = image_tag 'publico.svg', alt: 'Público'
+        .xcol-2.press-logo
+          = image_tag 'publico.svg', alt: 'Público'
+        .xcol-2.press-logo
+          = image_tag 'publico.svg', alt: 'Público'
+        .xcol-2.press-logo
+          = image_tag 'publico.svg', alt: 'Público'
   section#businesses.section
     .xrow
       h2.xcol-6.section-separator Tem um estabelecimento? Comece a vender vouchers hoje.

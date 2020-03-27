@@ -20,75 +20,95 @@
   }
 }
 
-.sellers {
+#places-list {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-  #places-list {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+#places-list.home-list {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  width: 100vw;
+  position: relative;
+  left: 0;
+  right: 50%;
+  margin-right: -50vw;
+  flex-direction: row;
+
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+
+  &::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
   }
 
   .place {
-    text-decoration: none;
-    flex: 0 1 calc(25% - 1rem);
+    flex: 0 0 15rem;
     margin-right: 1rem;
-
-    h3,
-    p {
-      font-size: calc(16rem / 16);
-      line-height: calc(24 / 16);
-    }
-
-    h3 {
-      margin-top: 1rem;
-    }
-
-    p {
-      margin-top: 0;
-      opacity: 0.5;
-    }
-
-    img {
-      transition: opacity 100ms ease-out;
-    }
-
-    .place-img-wrapper {
-      background-color: var(--color-main-blue);
-    }
-
-    &:hover img {
-      opacity: 0.5;
-    }
-
   }
-  @media only screen and (max-width: 768px) {
-    .place {
-      margin-top: 3rem;
-      flex-basis: calc(33% - 1rem);
-    }
+}
 
+.place {
+  text-decoration: none;
+  flex: 0 1 calc(25% - 1rem);
+  margin-right: 1rem;
+
+  h3,
+  p {
+    font-size: calc(16rem / 16);
+    line-height: calc(24 / 16);
   }
-  @media only screen and (max-width: 414px) {
-    .place {
-      margin-top: 3rem;
-      flex: 1 1 100%;
-      width: 100%;
-      margin-right: 0;
-    }
 
-    #places-container .place:first-child {
-      margin-top: 0;
-    }
+  h3 {
+    margin-top: 1rem;
+  }
 
-    .place img {
-      object-fit: cover;
-      width: 100%;
-      height: 50vw;
-    }
+  p {
+    margin-top: 0;
+    opacity: 0.5;
+  }
 
-    #places-list {
-      margin-top: 0;
-    }
+  img {
+    transition: opacity 100ms ease-out;
+  }
+
+  .place-img-wrapper {
+    background-color: var(--color-main-blue);
+  }
+
+  &:hover img {
+    opacity: 0.5;
+  }
+
+}
+@media only screen and (max-width: 768px) {
+  .place {
+    margin-top: 3rem;
+    flex-basis: calc(33% - 1rem);
+  }
+
+}
+@media only screen and (max-width: 414px) {
+  .place {
+    margin-top: 3rem;
+    flex: 1 1 100%;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  #places-container .place:first-child {
+    margin-top: 0;
+  }
+
+  .place img {
+    object-fit: cover;
+    width: 100%;
+    height: 50vw;
+  }
+
+  #places-list {
+    margin-top: 0;
+    flex-direction: column;
   }
 }

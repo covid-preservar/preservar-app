@@ -5,6 +5,7 @@ class HomeController < ApplicationController
   def index
     @spinner_categories = Category.order('RANDOM()').limit(5)
     @category = Category.find(1)
+    @sellers = @category.sellers.order("RANDOM()").limit(20)
     render :index
   end
 
