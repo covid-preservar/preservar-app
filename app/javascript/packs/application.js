@@ -19,6 +19,7 @@ Turbolinks.start();
 import '../src/location_autocomplete';
 import '../src/new_voucher_form';
 import '../src/smooth_scroll';
+import '../src/analytics';
 
 import SellerForm from "../src/seller_registration_form";
 window.SellerForm = SellerForm;
