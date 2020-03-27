@@ -13,4 +13,8 @@ class ApplicationMailer < ActionMailer::Base
     mail to: ENV['EUPAGO_EMAIL'], cc:'info@preserve.pt', subject: '[PRESERVE] Novo Registo'
   end
 
+  def voucher_email(voucher)
+    @voucher = voucher
+    mail to: @voucher.email, subject: "O seu voucher Preserve.pt"
+  end
 end

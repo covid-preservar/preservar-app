@@ -1,0 +1,47 @@
+h1
+  ' Parabéns, acabou de apoiar o
+  = @voucher.seller.name
+  | !
+
+p
+  | Olá :)
+  br
+  ' Obrigado por ter decidido ajudar o
+  => @voucher.seller.name
+  | a ultrapassar este momento difícil.
+  br
+  | Este voucher não tem data limite, pode usá-lo quando lhe for mais conveniente.
+  br
+  Se necessitar de fatura, contacte o estabelecimento directamente ou peça no momento de uso.
+
+h3 Detalhes do voucher
+p
+  strong
+    ' Número do voucher:
+    = @voucher.code
+
+table
+  tbody
+    tr
+      td
+        strong Email
+      td = @voucher.email
+    tr
+      td
+        strong Valor
+      td = number_to_currency @voucher.value, locale: :pt
+    tr
+      td
+        strong Estabelecimento
+      td = @voucher.seller.name
+
+
+
+br
+h1 Como utilizar este voucher?
+p Simplesmente mostre este email no seu telemóvel. Também pode imprimir o email.
+
+h1 Precisa de ajuda?
+p
+ ' Envie um e-mail para
+ = mail_to 'info@preserve.pt'
