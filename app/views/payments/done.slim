@@ -4,13 +4,16 @@
 .xcontainer
   section#hero.xrow
     #hero-text.xcol-6
-        h1
-          | Obrigado!
-          br
-          small  O seu pagamento está a ser processado.
-        p
-          ' Receberá o seu voucher por email quando o seu pagamento
-          ' for processado ou feito, dependendo do método de pagamento.
+      h1
+        | Obrigado!
+        br
+        small  O seu pagamento está a ser processado.
+      p
+        ' Receberá o seu voucher por email quando o seu pagamento
+        ' for processado ou feito, dependendo do método de pagamento.
+      br
+      = link_to 'Voltar ao início'.html_safe, root_path, class:'secondary-cta'
+
     = image_tag 'help.svg', alt: 'Pessoa', class:'xcol-5'
 
   section#place-share.xcol-5
