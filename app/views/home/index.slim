@@ -14,7 +14,8 @@
           br
           | favorito
         p Compra um voucher para usares em qualquer altura, e ajuda a tua economia local a sobreviver ao COVID-19
-        / = render 'shared/search_form'
+        - if @sellers.any?
+          = render 'shared/search_form'
 
         / section#hero-stats.clearfix
         /   article.stat
@@ -79,8 +80,9 @@
     .xrow
       = link_to 'Registe o seu local', new_seller_user_registration_path, class: 'primary-cta'
 
-  / section#kicker.section
-  /   .xrow
-  /     h2.xcol-6.section-separator Está à espera de quê? Preserve o seu sítio preferido agora
-  /   .xrow
-  /     = render 'shared/search_form', locals: {extra_classes: 'xcol-6'}
+  - if @sellers.any?
+    section#kicker.section
+      .xrow
+        h2.xcol-6.section-separator Está à espera de quê? Preserve o seu sítio preferido agora
+      .xrow
+        = render 'shared/search_form', locals: {extra_classes: 'xcol-6'}
