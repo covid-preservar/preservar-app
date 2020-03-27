@@ -1,0 +1,16 @@
+.logo
+  = image_tag "logo-mbw.svg"
+
+p.instructions.text-center
+  ' Para efectuar o pagamento consulte a sua aplicação MB WAY
+table.payment-info
+  tbody
+    tr
+      th Nº Telemovel
+      td = @payment_request.phone
+    tr
+      th Referencia
+      td = @payment_request.ref
+    tr
+      th Valor
+      td = number_to_currency @payment_request.value, locale: :pt

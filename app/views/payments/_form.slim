@@ -9,7 +9,7 @@
                                       Voucher::PAYMENT_METHODS,
                                       :itself, :itself,
                                       item_wrapper_tag: nil,
-                                      checked: f.object.payment_method do |b|
+                                      checked: f.object.payment_method || 'MB' do |b|
           = b.label class: "method method-#{b.object.downcase}"
             = b.radio_button class:'payment-method-radio'
             = image_tag "logo-#{b.object.downcase}.svg"

@@ -50,3 +50,34 @@
     }
   }
 }
+
+#paymentModal {
+
+  .logo {
+    text-align: center;
+  }
+
+  .payment-info {
+    margin: 2rem auto;
+
+    th {
+      text-align: left;
+      min-width: 8rem;
+    }
+
+    td {
+      text-align: right;
+    }
+  }
+
+  .instructions {
+    font-size: 1rem;
+    margin: 2rem auto;
+  }
+
+  @include media-breakpoint-up(sm) {
+    .instructions {
+      max-width: 80%;
+    }
+  }
+}

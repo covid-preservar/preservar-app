@@ -2,4 +2,24 @@
   .modal role="dialog" tabindex="-1"
     .modal-dialog.modal-dialog-scrollable.modal-lg role="document"
       .modal-content
-        iframe#foobar
+        .modal-header
+          h5.modal-title
+          button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+        .modal-body
+          - if @payment_request.success
+            = render @partial
+          - else
+            p
+              | Ocorreu um erro:
+              blockquote
+                = @payment_request.state
+                br
+                = @payment_request.message
+
+              ' Por favor tente mais tarde ou contacte
+              = mail_to 'info@preserve.pt'
+
+
+        .modal-footer
+         button.btn.btn-secondary type="button" data-dismiss="modal" Close

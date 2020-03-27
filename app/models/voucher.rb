@@ -12,6 +12,10 @@ class Voucher < ApplicationRecord
       transitions from: :created, to: :pending_payment, after: :generate_identifier
     end
 
+    event :reset_payment do
+      transitions from: :pending_payment, to: :created
+    end
+
     event :payment_success do
       transitions from: :pending_payment, to: :paid, after: :generate_code
     end

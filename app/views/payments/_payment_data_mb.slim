@@ -1,0 +1,22 @@
+.logo
+  = image_tag "logo-mb.svg"
+
+p.instructions
+  ' Para pagar esta encomenda através da Rede de Caixas Automáticas Multibanco
+  ' ou do seu serviço de Homebanking utilzando os seguintes dados:
+table.payment-info
+  tbody
+    tr
+      th Entidade
+      td = @payment_request.entity
+    tr
+      th Referencia
+      td = @payment_request.ref
+    tr
+      th Valor
+      td = number_to_currency @payment_request.value, locale: :pt
+
+p.instructions
+  | O talão emitido pela caixa automática faz de prova de pagamento.
+  br
+  | Conserve-o.
