@@ -8,7 +8,6 @@ class SellerSignupForm
                 :area,
                 :address,
                 :category_id,
-                :average_value_per_person,
                 :main_photo,
                 :email,
                 :is_company,
@@ -38,8 +37,6 @@ class SellerSignupForm
   validates :company_registration_code,
             format: { with: /\d{4}-\d{4}-\d{4}/, allow_nil: true }
 
-  validates :average_value_per_person, numericality: { min: 1, allow_nil: true }
-
   validate :validate_iban
 
   def initialize(attributes = {})
@@ -49,7 +46,6 @@ class SellerSignupForm
     @address ||= seller_user&.seller&.address
     @email ||= seller_user.email
     @category_id ||= seller_user&.seller&.category_id
-    @average_value_per_person ||= seller_user&.seller&.average_value_per_person
     @password ||= seller_user.password
     @password_confirmation ||= seller_user.password_confirmation
     @iban ||= seller_user&.seller&.iban
@@ -77,7 +73,6 @@ class SellerSignupForm
                            area: area,
                            address: address,
                            category_id: category_id,
-                           average_value_per_person: average_value_per_person,
                            vat_id: vat_id,
                            iban: iban,
                            contact_name: contact_name,

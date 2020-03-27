@@ -4,6 +4,8 @@
 #place-hero.xcontainer
   - if @show_back
     = link_to '&slarr; Voltar à pesquisa'.html_safe, request.referrer, id:'place-back'
+  - else
+    = link_to '&slarr; Voltar ao início'.html_safe, root_path, id:'place-back'
   .xrow
     #hero-text.xcol-6
       h1 = @seller.name
@@ -13,7 +15,7 @@
         = @seller.address
 
       = simple_form_for @voucher do |f|
-        h3 Selecciona um valor
+        h3 Apoie este local, seleccion o valor do voucher
         = f.input_field :seller_id, as: :hidden
         = f.input :value, as: :radio_buttons, collection: Seller::DEFAULT_EUR_VALUES, checked: 20, legend_tag: false
         = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}
@@ -40,7 +42,6 @@
 
       #place-share.xcol-5
 
-
   - if @other_sellers.any?
     .section
       .xrow.clearfix
@@ -49,3 +50,9 @@
           = 'na mesma área' if @other_sellers_local
       #places-list.xrow.clearfix
         == render @other_sellers
+
+    section#kicker.section
+      .xrow
+        h2.xcol-6.section-separator Pesquise mais locais
+      .xrow
+        = render 'shared/search_form', locals: {extra_classes: 'xcol-6'}

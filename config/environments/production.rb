@@ -123,4 +123,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   config.hosts << ENV.fetch('HOSTNAME')
+  config.hosts << "www.#{ENV.fetch('HOSTNAME')}"
+  config.hosts << "#{ENV.fetch('HEROKU_APP_NAME') { 'eztz-prod' }}.herokuapp.com"
+
 end

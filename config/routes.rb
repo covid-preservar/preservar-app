@@ -1,12 +1,28 @@
 Rails.application.routes.draw do
+  # redirect www -> root (in production only)
+  constraints(subdomain: 'www')do
+    get '/', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}")
+    get '*path', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}/%{path}")
+  end
+
+  # redirect herokuapp (in production only)
+  if Rails.env.production? && !ENV.fetch('HOSTNAME').ends_with?('herokuapp.com')
+    constraints(host: "#{ENV.fetch('HEROKU_APP_NAME') { 'preserve-prod' }}.herokuapp.com") do
+      get '/', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}")
+      get '*path', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}/%{path}")
+    end
+  end
+
 
   root to: 'home#index'
 
-  resources :sellers, only: [:index, :show]
-  resources :vouchers, only: [:create, :show] do
-    resources :payments, only: [:new, :create]
+  # During pre-release this should not be enabled in production
+  if !Rails.env.production? || ENV['HOSTNAME'] != 'preserve.pt'
+    resources :sellers, only: [:index, :show]
+    resources :vouchers, only: [:create, :show] do
+      resources :payments, only: [:new, :create]
+    end
   end
-
 
   get '/tos', to: 'home#tos', as: :tos
   get '/privacy', to: 'home#privacy', as: :privacy

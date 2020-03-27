@@ -42,3 +42,4 @@ yarn-debug.log*
 GeoLite2-City.mmdb
 rubocop.html
 public/uploads
+.DS_Store
