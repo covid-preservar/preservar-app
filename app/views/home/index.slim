@@ -14,7 +14,7 @@
           br
           | favorito
         p Compra um voucher para usares em qualquer altura, e ajuda a tua economia local a sobreviver ao COVID-19
-        = render 'shared/search_form'
+        / = render 'shared/search_form'
 
         / section#hero-stats.clearfix
         /   article.stat
@@ -49,12 +49,13 @@
         h3 Parabéns, contribuiu para sua economia local!
         p Contribuiu para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
 
-  section#places-container.section
-    .xrow
-      h2.xcol-6.section-separator Quem recebe o seu apoio
+  - if @sellers.any?
+    section#places-container.section
+      .xrow
+        h2.xcol-6.section-separator Quem recebe o seu apoio
 
-  #places-list.xrow.home-list
-    == render @sellers
+    #places-list.xrow.home-list
+      == render @sellers
 
   / section#press.section
   /   .xrow
@@ -76,9 +77,10 @@
     .xrow
       h2.xcol-6.section-separator Tem um estabelecimento? Comece a vender vouchers hoje.
     .xrow
-      a.primary-cta Registe o seu local
-  section#kicker.section
-    .xrow
-      h2.xcol-6.section-separator Está à espera de quê? Preserve o seu sítio preferido agora
-    .xrow
-      = render 'shared/search_form', locals: {extra_classes: 'xcol-6'}
+      = link_to 'Registe o seu local', new_seller_user_registration_path, class: 'primary-cta'
+
+  / section#kicker.section
+  /   .xrow
+  /     h2.xcol-6.section-separator Está à espera de quê? Preserve o seu sítio preferido agora
+  /   .xrow
+  /     = render 'shared/search_form', locals: {extra_classes: 'xcol-6'}
