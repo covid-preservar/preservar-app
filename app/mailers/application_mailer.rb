@@ -17,4 +17,9 @@ class ApplicationMailer < ActionMailer::Base
     @voucher = voucher
     mail to: @voucher.email, subject: "O seu voucher Preserve.pt"
   end
+
+  # def seller_voucher_email(voucher)
+  #   @voucher = voucher
+  #   mail to: @voucher.seller.seller_user.email, subject: "TO-DO"
+  # end
 end

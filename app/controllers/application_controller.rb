@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 class ApplicationController < ActionController::Base
   before_action :set_locale
-  before_action :load_categories
-  before_action :load_cities
+  before_action :load_categories, unless: -> { request.xhr? }
+  before_action :load_cities, unless: -> { request.xhr? }
 
   # before_action :configure_permitted_parameters, if: :devise_controller?
 

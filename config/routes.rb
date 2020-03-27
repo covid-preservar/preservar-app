@@ -24,7 +24,6 @@ Rails.application.routes.draw do
 
       get '/obrigado', to: 'payments#done', as: :thank_you, on: :member
     end
-
   end
 
   get '/tos', to: 'home#tos', as: :tos
@@ -37,6 +36,10 @@ Rails.application.routes.draw do
 
   # TEMP - Until the seller login area is built
   get '/comerciante/bem-vindo', to: 'sellers#register_success', as: :register_success
+
+  namespace :webhooks do
+    post 'payment/eupago', to:'eu_pago#webhook'
+  end
 
   devise_for :admin_users, path: 'admin'
 

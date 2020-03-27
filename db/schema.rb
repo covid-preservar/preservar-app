@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_160450) do
     t.string "payment_method"
     t.string "payment_phone"
     t.string "cookie_uuid"
+    t.index ["payment_identifier"], name: "index_vouchers_on_payment_identifier"
     t.index ["seller_id"], name: "index_vouchers_on_seller_id"
   end
 
