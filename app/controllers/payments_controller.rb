@@ -9,23 +9,15 @@ class PaymentsController < ApplicationController
 
   def create
     @voucher = Voucher.find(params[:voucher_id])
-
     @voucher.assign_attributes(payment_params)
-    if @voucher.start_payment!
-      # @payment_request = PaymentService.new(@voucher).request_payment
-      # TEMP - To help design content
-      @payment_request = PaymentService.new(@voucher).fake_mb_payment
-      # @payment_request = PaymentService.new(@voucher).fake_mbw_payment
-      @voucher.reset_payment!
-      # ENDTEMP - To help design content
 
+    if @voucher.start_payment!
+      @payment_request = PaymentService.new(@voucher).request_payment
       if @payment_request.success
         @partial = "payment_data_#{@voucher.payment_method.downcase}"
       else
-
         @voucher.reset_payment!
       end
-
     else
       render :new
     end

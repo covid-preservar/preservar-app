@@ -35,25 +35,6 @@ class PaymentService
     end
   end
 
-  # TEMP - To help design content
-  def fake_mb_payment
-    OpenStruct.new(
-      success: true,
-      entity: '81662',
-      ref: '000005161',
-      value: "20.00000"
-    )
-  end
-
-  def fake_mbw_payment
-    OpenStruct.new(
-      success: true,
-      phone: '961234567',
-      ref: '000005161',
-      value: "20.00000"
-    )
-  end
-
   private
 
   def process_mb
