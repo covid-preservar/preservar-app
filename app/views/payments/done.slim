@@ -4,19 +4,13 @@
 .xcontainer
   section#hero.xrow
     #hero-text.xcol-6
-      - if @voucher.paid?
         h1
-          | Parabéns!
+          | Obrigado!
           br
-          ' Acabou de apoiar o
-          = @voucher.seller.name
-        p Enviámos o voucher para o seu email.
-      - else
-        h1
-          | HEADING - PAGAMENTO EM CURSO
-          br
-          = @voucher.seller.name
-        p NEED COPY - quando o pagamento estiver concluido enviamos o voucher para o seu email.
+          small  O seu pagamento está a ser processado.
+        p
+          ' Receberá o seu voucher por email quando o seu pagamento
+          ' for processado ou feito, dependendo do método de pagamento.
     = image_tag 'help.svg', alt: 'Pessoa', class:'xcol-5'
 
   section#place-share.xcol-5
@@ -30,6 +24,6 @@
     a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet
     script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
     .link
-      input disabled='true' type="text" value=seller_url
+      input disabled='true' type="text" value=seller_url(@voucher.seller)
 
   == render 'sellers/other_sellers'
