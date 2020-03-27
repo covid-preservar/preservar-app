@@ -14,7 +14,6 @@ class SellerDashboard < Administrate::BaseDashboard
     vouchers: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    average_value_per_person: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     area: Field::String,
@@ -53,7 +52,6 @@ class SellerDashboard < Administrate::BaseDashboard
     seller_user
     vouchers
     name
-    average_value_per_person
     created_at
     updated_at
     area
@@ -76,7 +74,6 @@ class SellerDashboard < Administrate::BaseDashboard
     seller_user
     vouchers
     name
-    average_value_per_person
     area
     slug
     address

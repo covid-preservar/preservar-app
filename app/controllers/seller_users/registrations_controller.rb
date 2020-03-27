@@ -33,7 +33,6 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
                                         :address,
                                         :main_photo,
                                         :category_id,
-                                        :average_value_per_person,
                                         :email,
                                         :password,
                                         :vat_id,

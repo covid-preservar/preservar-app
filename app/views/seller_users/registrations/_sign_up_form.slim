@@ -8,10 +8,6 @@
     = f.input :area, collection: Location.for_district(@form.district).map(&:area), selected: @form.area
     = f.input :address, hint: 'Rua e número'
     = f.input :main_photo, as: :file, hint: 'Formato JPG, max. 10Mb'
-    = f.input :average_value_per_person,
-              label: 'Preço médio por pessoa (se aplicável)',
-              placeholder: 'Valor médio',
-              as: :integer
 
   .register-form-section
     h3 Sobre si

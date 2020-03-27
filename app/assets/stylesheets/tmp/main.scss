@@ -504,11 +504,11 @@ textarea {
   --color-main-yellow: #ffba02;
 
   --h1-font-size: calc(60rem / 16);
-  --h1-line-height: calc(64em / 60);
+  --h1-line-height: calc(64 / 60);
   --h2-font-size: calc(36rem / 16);
-  --h2-line-height: calc(40em / 36);
+  --h2-line-height: calc(40 / 36);
   --h3-font-size: calc(20rem / 16);
-  --h3-line-height: calc(24em / 16);
+  --h3-line-height: calc(24 / 20);
 
   --p-font-size: calc(20rem / 16);
   --p-line-height: calc(24 / 20);
@@ -628,6 +628,10 @@ a {
   line-height: calc(24 / 16);
 }
 
+.fact h3 {
+  margin-top: 1rem;
+}
+
 #support-people,
 #press-wrapper {
   margin-top: 3rem;
@@ -724,6 +728,11 @@ a {
   h1 {
     font-size: calc(36rem / 16);
     line-height: calc(40 / 36);
+  }
+
+  h2 {
+    font-size: calc(24rem / 16);
+    line-height: calc(32 / 24);
   }
 
   .stat {
