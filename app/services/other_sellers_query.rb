@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class OtherSellersQuery
 
   def self.for_seller(seller)

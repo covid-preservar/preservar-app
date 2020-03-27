@@ -40,51 +40,26 @@ class PaymentService
   def process_mb
     url = ENDPOINT + '/multibanco/create'
 
-    params = {
-      chave: api_key,
-      valor: value,
-      id: identifier,
-      data_inicio: Date.today,
-      data_fim: 2.days.from_now.to_date,
-      per_dup: '0'
-    }
-
+    params = build_mb_params
     result = RestClient.post url, params
     result = JSON.parse result.body
 
     if result['sucesso'] && result['estado'].zero?
-      OpenStruct.new(
-        success: true,
-        entity: result['entidade'],
-        ref: result['referencia'],
-        value: result['valor']
-      )
+      build_mb_response(result)
     else
       get_error(result)
     end
-
   end
 
   def process_mbw
     url = ENDPOINT + '/mbway/create'
-    params = {
-      chave: api_key,
-      valor: value,
-      id: identifier,
-      alias: payment_phone,
-      descricao: "Voucher para #{seller_name}",
-    }
+    params = build_mbw_params
 
     result = RestClient.post url, params
     result = JSON.parse result.body
 
     if result['sucesso'] && result['estado'].zero?
-      OpenStruct.new(
-        success: true,
-        ref: result['referencia'],
-        value: result['valor'],
-        phone: result['alias'].split('#').last
-      )
+      build_mbw_response(result)
     else
       get_error(result)
     end
@@ -95,4 +70,44 @@ class PaymentService
     message = response['resposta']
     OpenStruct.new(success: false, state: state, message: message)
   end
+
+  def build_mb_params
+    {
+      chave: api_key,
+      valor: value,
+      id: identifier,
+      data_inicio: Date.today,
+      data_fim: 2.days.from_now.to_date,
+      per_dup: '0'
+    }
+  end
+
+  def build_mb_response(result)
+    OpenStruct.new(
+      success: true,
+      entity: result['entidade'],
+      ref: result['referencia'],
+      value: result['valor']
+    )
+  end
+
+  def build_mbw_params
+    {
+      chave: api_key,
+      valor: value,
+      id: identifier,
+      alias: payment_phone,
+      descricao: "Voucher para #{seller_name}"
+    }
+  end
+
+  def build_mbw_response(result)
+    OpenStruct.new(
+      success: true,
+      ref: result['referencia'],
+      value: result['valor'],
+      phone: result['alias'].split('#').last
+    )
+  end
+
 end
