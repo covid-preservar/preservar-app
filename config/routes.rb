@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       end
     end
     resources :seller_users
+    resources :vouchers
 
     root to: "sellers#index"
   end
