@@ -670,9 +670,7 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-  #hero-text {
-    width: 50%;
-  }
+
 
   #hero-img {
     position: absolute;
@@ -704,14 +702,7 @@ a {
   }
 }
 
-@media only screen and (max-width: 375px) {
-
-  #logo {
-    width: 30%;
-    height: auto;
-    padding-bottom: 25%;
-    background-size: 100%;
-  }
+@media only screen and (max-width: 414px) {
 
   .primary-cta,
   .secondary-cta {
@@ -723,6 +714,17 @@ a {
 
   .secondary-cta {
     line-height: 2.3rem;
+  }
+
+}
+
+@media only screen and (max-width: 375px) {
+
+  #logo {
+    width: 30%;
+    height: auto;
+    padding-bottom: 25%;
+    background-size: 100%;
   }
 
   h1 {
