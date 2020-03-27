@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class Webhooks::EuPagoController < ActionController::Base
-  skip_before_action :verify_authenticity_token
 
   # PARAMS
   # valor=93.32

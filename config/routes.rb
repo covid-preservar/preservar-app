@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   get '/comerciante/bem-vindo', to: 'sellers#register_success', as: :register_success
 
   namespace :webhooks do
-    post 'payment/eupago', to:'eu_pago#webhook'
+    get 'payment/eupago', to:'eu_pago#webhook'
   end
 
   devise_for :admin_users, path: 'admin'
