@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   # During pre-release this should not be enabled in production
-  if !Rails.env.production? || ENV['HOSTNAME'] == 'preserve.pt'
+  if !Rails.env.production? || ENV['HOSTNAME'] != 'preserve.pt'
     resources :sellers, only: [:index, :show]
     resources :vouchers, only: [:create, :show] do
       resources :payments, only: [:new, :create]
