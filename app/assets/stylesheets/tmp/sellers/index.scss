@@ -9,6 +9,14 @@
       height: 4px;
       background: var(--color-main-blue);
     }
+
+    @media only screen and (max-width: 375px) {
+      margin-top: 0;
+
+      & .xrow:first-child {
+        display: none;
+      }
+    }
   }
 }
 
@@ -18,6 +26,7 @@
     margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
   }
 
   .place {
@@ -65,11 +74,21 @@
       margin-top: 3rem;
       flex: 1 1 100%;
       width: 100%;
+      margin-right: 0;
+    }
+
+    #places-container .place:first-child {
+      margin-top: 0;
+    }
+
+    .place img {
+      object-fit: cover;
+      width: 100%;
+      height: 50vw;
     }
 
     #places-list {
       margin-top: 0;
     }
   }
-
 }
