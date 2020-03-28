@@ -21,7 +21,7 @@ html lang="#{I18n.locale}"
     - set_meta_tags canonical: "https://#{ENV['HOSTNAME']}#{request.path}",
                     description: 'Os seus locais preferidos precisam de ajuda.',
                     og: { url: :canonical,
-                          type: :website,
+                          type: 'website',
                           description: :description,
                           image: 'https://assets.preserve.pt/social/banner.jpg'},
                     twitter: { card: :summary_large_image,

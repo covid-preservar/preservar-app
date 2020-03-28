@@ -1,4 +1,5 @@
 - title "#{@category.name_plural} em #{@city}"
+- set_meta_tags og: { title: :full_title, site_name: :site}, twitter: { title: :full_title }
 
 - content_for :header do
   = render 'sellers/header'
