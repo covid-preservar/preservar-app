@@ -9,14 +9,18 @@ class VoucherDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user: Field::BelongsTo,
     seller: Field::BelongsTo,
     id: Field::Number,
     code: Field::String,
     value: Field::Number,
     state: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    updated_at: Field::DateTime,
+    email: Field::String,
+    payment_identifier: Field::String,
+    payment_method: Field::String,
+    payment_phone: Field::String,
+    cookie_uuid: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -26,33 +30,43 @@ class VoucherDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    code
-    user
     seller
+    email
+    code
+    value
+    state
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    code
-    user
     seller
+    email
     value
+    code
     state
     created_at
     updated_at
+    payment_identifier
+    payment_method
+    payment_phone
+    cookie_uuid
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    user
     seller
     code
     value
     state
+    email
+    payment_identifier
+    payment_method
+    payment_phone
+    cookie_uuid
   ].freeze
 
   # COLLECTION_FILTERS

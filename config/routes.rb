@@ -52,7 +52,7 @@ Rails.application.routes.draw do
         patch :unpublish
       end
     end
-    resources :seller_users
+    resources :seller_users, except: [:destroy]
     resources :vouchers
 
     root to: "sellers#index"
