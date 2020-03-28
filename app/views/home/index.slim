@@ -1,6 +1,10 @@
 - content_for :header do
   = render 'shared/header'
-- set_meta_tags og: { title: :full_title, site_name: :site}, twitter: { title: :full_title }
+
+
+- set_meta_tags title: nil,
+                og: { title: 'Preserve os seus locais preferidos', site_name: :site},
+                twitter: { title: 'Preserve os seus locais preferidos' }
 
 .xcontainer
   section#hero

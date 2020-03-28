@@ -19,7 +19,7 @@ html lang="#{I18n.locale}"
       meta id='google-analytics-id' data-value=ENV['GOOGLE_ANALYTICS_ID']
 
     - set_meta_tags canonical: "https://#{ENV['HOSTNAME']}#{request.path}",
-                    description: 'Os seus locais preferidos precisam de ajuda.',
+                    description: 'Os seus locais preferidos estão em risco de fechar devido ao Covid-19 e precisam da sua ajuda.',
                     og: { url: :canonical,
                           type: 'website',
                           description: :description,
