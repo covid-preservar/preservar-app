@@ -5,12 +5,14 @@
   section#hero.xrow
     #hero-text.xcol-6
       h1
-        | Obrigado!
-        br
-        small  O seu pagamento está a ser processado.
+        => @voucher.seller.name
+        | agradece!
+      h2
+        small
+          | O seu pagamento está a ser processado.
       p
-        ' Receberá o seu voucher por email quando o seu pagamento
-        ' for processado ou feito, dependendo do método de pagamento.
+        ' Receberá o seu voucher por email quando o pagamento
+        ' for processado.
       br
       = link_to 'Voltar ao início'.html_safe, root_path, class:'secondary-cta'
 
@@ -19,9 +21,8 @@
   section#place-share.xcol-5
     .xrow
       h3
-        ' Os seus amigos são essenciais nesta luta.
-        ' Partilhe e junte os seus amigos para apoiar o
-        = @voucher.seller.name
+        ' Partilhe com os seus amigos, o pequeno contributo de muitos vai longe.
+
     / TODO: add this page URL
     iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&appId=101419673290370&width=110&height=28" style="border:none;overflow:hidden" width="110"
     a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet

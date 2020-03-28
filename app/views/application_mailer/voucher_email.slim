@@ -1,18 +1,20 @@
 h1
-  ' Parabéns, acabou de apoiar o
-  = @voucher.seller.name
-  | !
+  ' Parabéns pelo seu apoio.
+  br
+  => @voucher.seller.name
+  | agradece!
 
 p
   | Olá :)
   br
-  ' Obrigado por ter decidido ajudar o
-  => @voucher.seller.name
-  | a ultrapassar este momento difícil.
+  br
+  ' Obrigado pelo seu apoio, que ajuda a ultrapassarmos este momento difícil.
+  br
   br
   | Este voucher não tem data limite, pode usá-lo quando lhe for mais conveniente.
   br
-  Se necessitar de fatura, contacte o estabelecimento directamente ou peça no momento de uso.
+  br
+  | Para receber a sua factura, contacte o estabelecimento directamente ou peça-a no momento da sua visita.
 
 h3 Detalhes do voucher
 p
