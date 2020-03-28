@@ -12,9 +12,6 @@ class HomeController < ApplicationController
   def tos
   end
 
-  def privacy
-  end
-
   private
 
   def set_location
