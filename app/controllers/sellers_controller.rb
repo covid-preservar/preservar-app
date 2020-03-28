@@ -9,6 +9,9 @@ class SellersController < ApplicationController
 
   def show
     @seller = Seller.friendly.find(params[:id])
+
+    redirect_to(@seller) and return if seller_url(@seller) != request.url
+
     @city = @seller.area
     @category = @seller.category
     @voucher = @seller.vouchers.new
