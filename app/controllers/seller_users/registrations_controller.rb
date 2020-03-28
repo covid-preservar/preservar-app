@@ -17,7 +17,7 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
       expire_data_after_sign_in!
       redirect_to register_success_path
     else
-      # clean_up_passwords resource
+      clean_up_passwords resource
       set_minimum_password_length
       gon.locations = Location.grouped_areas
       render :new

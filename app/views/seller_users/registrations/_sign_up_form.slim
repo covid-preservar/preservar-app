@@ -1,4 +1,4 @@
-= simple_form_for(@form, as: resource_name, url: registration_path(resource_name), remote: true) do |f|
+= simple_form_for(@form, as: resource_name, url: registration_path(resource_name), remote: true, validate: true) do |f|
 
   .register-form-section
     h3 Sobre o estabelecimento
@@ -7,7 +7,7 @@
     = f.input :district, collection: Location.all_districts, label: 'Distrito'
     = f.input :area, collection: Location.for_district(@form.district).map(&:area), selected: @form.area
     = f.input :address, hint: 'Rua e número'
-    = f.hidden_field :main_photo, value: @form.cached_main_photo_data
+    = f.hidden_field :main_photo, value: @form.cached_main_photo_data, id:nil
     = f.input :main_photo, as: :file, hint: 'Formato JPG, max. 10Mb'
 
   .register-form-section

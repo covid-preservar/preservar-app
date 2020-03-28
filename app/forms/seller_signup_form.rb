@@ -34,6 +34,10 @@ class SellerSignupForm
 
   validates :email, format: { with: Devise.email_regexp }
 
+  validates :password, presence: true,
+                       confirmation: true,
+                       length: { within: Devise.password_length}
+
   validates :vat_id, valvat: true
   validates :company_registration_code,
             format: { with: /\d{4}-\d{4}-\d{4}/, allow_nil: true }
