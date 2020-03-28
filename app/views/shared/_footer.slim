@@ -1,20 +1,21 @@
-footer#footer
-  .xrow.xcontainer
-    .xcol-6
-      = image_tag 'logo.svg', alt: 'Preserve'
-      = image_tag 'logo-tech4covid.svg', alt: 'tech4COVID', id: 'tech4covid', class: 'bottom'
-    .xcol-6
-      h3 Feito em Portugal, em resposta às dificuldades que o Covid-19 criou no comércio local, por:
-      p.small Ana Besteiro, Ana Gomes, Daniela Pereira, Filipe Gonçalves, Fábio Silva, Francisco Viana, Hugo Barreto, João Magalhães, Joana Mota, José Airosa, Maria Castro, Maria João Ribeiro, Patrick Sardinha, Pedro Moreira, Ricardo Gonçalves, Telmo Santos e toda a comunidade tech4Covid.
-      p
-        ' Desenvolvido no âmbito da
-        a href="https://tech4covid19.org/" target="_blank" tech4COVID19
-        '  com o grande apoio da
-        a href="https://www.eupago.pt/" target="_blank" eupago
-        | .
-      p.bottom
-        => link_to 'Termos e Condições', tos_path
-        '  &middot;
-        => link_to 'Politica de Privacidade', privacy_path
-        '  &middot;
-        = mail_to 'info@preserve.pt'
+- cache ENV['HEROKU_SLUG_COMMIT'] do
+  footer#footer
+    .xrow.xcontainer
+      .xcol-6
+        = image_tag 'logo.svg', alt: 'Preserve'
+        = image_tag 'logo-tech4covid.svg', alt: 'tech4COVID', id: 'tech4covid', class: 'bottom'
+      .xcol-6
+        h3 Feito em Portugal, em resposta às dificuldades que o Covid-19 criou no comércio local, por:
+        p.small Ana Besteiro, Ana Gomes, Daniela Pereira, Filipe Gonçalves, Fábio Silva, Francisco Viana, Hugo Barreto, João Magalhães, Joana Mota, José Airosa, Maria Castro, Maria João Ribeiro, Patrick Sardinha, Pedro Moreira, Ricardo Gonçalves, Telmo Santos e toda a comunidade tech4Covid.
+        p
+          ' Desenvolvido no âmbito da
+          a href="https://tech4covid19.org/" target="_blank" tech4COVID19
+          '  com o grande apoio da
+          a href="https://www.eupago.pt/" target="_blank" eupago
+          | .
+        p.bottom
+          => link_to 'Termos e Condições', tos_path
+          '  &middot;
+          => link_to 'Politica de Privacidade', privacy_path
+          '  &middot;
+          = mail_to 'info@preserve.pt'
