@@ -2,9 +2,9 @@
 class SellersController < ApplicationController
 
   def index
-    @city = params[:city]
-    @category = Category.find(params[:category])
-    @sellers = @category.sellers.where(area: params[:city])
+    @city = params[:city] || 'Grande Lisboa'
+    @category = Category.find(params[:category] || 1)
+    @sellers = @category.sellers.where(area: @city)
   end
 
   def show

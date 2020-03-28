@@ -1,7 +1,6 @@
 doctype 5
 html lang="#{I18n.locale}"
   head
-    title Preserve
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -18,6 +17,18 @@ html lang="#{I18n.locale}"
     - if Rails.env.production? && ENV['GOOGLE_ANALYTICS_ID'].present?
       script async='async' src="https://www.googletagmanager.com/gtag/js?id=#{ENV['GOOGLE_ANALYTICS_ID']}"
       meta id='google-analytics-id' data-value=ENV['GOOGLE_ANALYTICS_ID']
+
+    - set_meta_tags canonical: "https://#{ENV['HOSTNAME']}#{request.path}",
+                    description: 'Os seus locais preferidos precisam de ajuda.',
+                    og: { url: :canonical,
+                          type: :website,
+                          description: :description,
+                          image: 'https://assets.preserve.pt/email_assets/logo-mail.png'},
+                    twitter: { card: :summary_large_image,
+                               image: 'https://assets.preserve.pt/email_assets/logo-mail.png',
+                               description: :description }
+
+    = display_meta_tags site: 'Preserve'
 
   body class="#{body_class} #{yield (:body_class)}"
     = yield :header
