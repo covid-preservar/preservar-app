@@ -10,7 +10,7 @@ class ApplicationMailer < ActionMailer::Base
 
   def seller_signup_notify_internal(seller_id)
     @seller = Seller.unscoped.find(seller_id)
-    mail to:ENV['EUPAGO_EMAIL'], cc:'info@preserve.pt', subject:'[tech4covid19] Novo Registo'
+    mail to:ENV['EUPAGO_EMAIL'], cc:'eupago@preserve.pt', subject:'[tech4covid19] Novo Registo'
   end
 
   def voucher_email(voucher_id)
