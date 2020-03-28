@@ -1,0 +1,18 @@
+doctype 5
+html lang="#{I18n.locale}"
+  head
+    title Preserve
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    meta charset="UTF-8"
+    meta name='viewport' content="initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+  body class="#{body_class} #{yield (:body_class)} devise"
+    = render 'admin/navbar'
+    .container
+      h2 Preserve.pt Backoffice
+      br
+      = yield
