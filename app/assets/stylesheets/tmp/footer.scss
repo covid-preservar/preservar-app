@@ -32,14 +32,25 @@
       position: relative;
       bottom: auto;
     }
+
+    .xcol-6 + .xcol-6 {
+      margin-top: 3rem;
+    }
   }
 
   @media only screen and (max-width: 375px) {
     margin-top: 2rem;
     padding-top: 2rem;
+  }
+}
 
-    .xcol-6 + .xcol-6 {
-      margin-top: 3rem;
-    }
+#tech4covid {
+  height: 2.5rem;
+  left: var(--grid-outer-padding);
+
+  @media only screen and (max-width: 768px) {
+    display: block;
+    margin-top: 2rem; 
+    left: auto;
   }
 }
