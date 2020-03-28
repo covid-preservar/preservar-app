@@ -601,6 +601,10 @@ a {
   background-image: image-url("logo-home.svg");
 }
 
+.content * + h3 {
+  margin-top: 3rem;
+}
+
 /*
 * Homepage
 */

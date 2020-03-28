@@ -12,6 +12,6 @@ footer#footer
         a href="https://www.eupago.pt/" target="_blank" eupago
         | .
       p.bottom
-        a href="#" Termos e Condições
-        |  ·
+        => link_to 'Termos e Condições', tos_path
+        '  &middot;
         = mail_to 'info@preserve.pt'
