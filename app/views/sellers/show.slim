@@ -1,3 +1,5 @@
+- title @seller.name
+- set_meta_tags og: { title: :full_title, site_name: :site}, twitter: { title: :full_title }
 - content_for :header do
   = render 'header'
 
@@ -17,7 +19,7 @@
           = @seller.address
 
         = simple_form_for @voucher do |f|
-          h3 Apoie este local, seleccion o valor do voucher
+          h3 Apoie este local, seleccione o valor do voucher
           = f.input_field :seller_id, as: :hidden
           = f.input :value, as: :radio_buttons, collection: Seller::DEFAULT_EUR_VALUES, checked: 20, legend_tag: false
           = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}
@@ -30,17 +32,16 @@
             => link_to 'Politica de Privacidade', privacy_path, target:'_blank'
 
       = image_tag @seller.main_photo_url(:large, public: true) || 'place-img.jpg', class: 'xcol-5 xoffset-1', id: 'hero-img'
-
-    section#place-share.section
-      .xrow
-        h2.xcol-6.section-separator Partilha com os teus amigos, o pequeno contributo de muitos vai longe
-      .xrow
-        / TODO: add this page URL
-        iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&appId=101419673290370&width=110&height=28" style="border:none;overflow:hidden" width="110"
-        a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet
-        script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
-        .link
-          input disabled='true' type="text" value=seller_url(@seller)
+  section#place-share.section
+    .xrow
+      h2.xcol-6.section-separator Partilhe com os seus amigos, o pequeno contributo de muitos vai longe.
+    .xrow
+      / TODO: add this page URL
+      iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=large&appId=101419673290370&width=110&height=28" style="border:none;overflow:hidden" width="110"
+      a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet
+      script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
+      .link
+        input disabled='true' type="text" value=seller_url(@seller)
 
   == render 'other_sellers'
 

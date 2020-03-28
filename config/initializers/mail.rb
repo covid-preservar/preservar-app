@@ -8,7 +8,7 @@ if ENV['DEBUGMAIL_USER'].present?
         authentication: :plain,
         enable_starttls_auto: true
   }
-  ActionMailer::Base.delivery_method ||= :smtp
+  ActionMailer::Base.delivery_method = :smtp
 
 else
   Mailjet.configure do |config|
@@ -16,5 +16,5 @@ else
       config.secret_key = ENV["MAILJET_SECRET_KEY"]
       config.api_version = "v3.1"
   end
-  ActionMailer::Base.delivery_method ||= :mailjet_api
+  ActionMailer::Base.delivery_method = :mailjet_api
 end
