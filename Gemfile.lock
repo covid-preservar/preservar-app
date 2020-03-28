@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/mailjet/mailjet-gem.git
+  revision: 98cc7323881ae3dc7a482e4a8d11efd9d4321410
+  specs:
+    mailjet (1.5.4)
+      activesupport (>= 3.1.0)
+      rack (>= 1.4.0)
+      rest-client
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -227,13 +236,11 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    mailjet (1.5.4)
-      activesupport (>= 3.1.0)
-      rack (>= 1.4.0)
-      rest-client
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     maxminddb (0.1.22)
+    meta-tags (2.13.0)
+      actionpack (>= 3.2.0, < 6.1)
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
@@ -479,8 +486,9 @@ DEPENDENCIES
   image_processing (~> 1.0)
   letter_opener_web
   listen (>= 3.0.5, < 3.2)
-  mailjet
+  mailjet!
   maxminddb
+  meta-tags
   pg
   premailer-rails
   pry
