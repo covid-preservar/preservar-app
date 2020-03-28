@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 class ApplicationController < ActionController::Base
+  # Simple HTTP auth to keep users from
+  # accidentaly using the test app and bots from indexing it
+   http_basic_authenticate_with name: ENV["HTTP_USER"],
+                               password: ENV["HTTP_PASSWORD"],
+                               if: -> { ENV["HTTP_AUTH"].present? }
+
   before_action :set_locale
   before_action :load_categories, unless: -> { request.xhr? }
   before_action :load_cities, unless: -> { request.xhr? }
