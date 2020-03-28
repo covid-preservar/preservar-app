@@ -4,12 +4,11 @@
 - content_for :header do
   = render 'sellers/header'
 
-- cache @sellers do
-  section#places-container.xcontainer
-    .xrow
-      h2.xcol-6.section-separator
-        => @sellers.count
-        | Resultados
+section#places-container.xcontainer
+  .xrow
+    h2.xcol-6.section-separator
+      => @sellers.count
+      | Resultados
 
-    #places-list.xrow
-      == render @sellers
+  #places-list.xrow
+    == render @sellers
