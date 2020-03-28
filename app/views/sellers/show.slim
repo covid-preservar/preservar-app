@@ -24,6 +24,8 @@
         span
           ' Ao comprar, está a aceitar os
           => link_to 'Termos e Condições', tos_path, target:'_blank'
+          ' e a
+          => link_to 'Politica de Privacidade', privacy_path, target:'_blank'
 
     = image_tag @seller.main_photo_url(:large, public: true) || 'place-img.jpg', class: 'xcol-5 xoffset-1', id: 'hero-img'
   section#place-share.section

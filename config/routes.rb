@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   get '/tos', to: 'home#tos', as: :tos
+  get '/privacy', to: 'home#privacy', as: :privacy
 
   devise_for :seller_users,
              path: 'comerciante',

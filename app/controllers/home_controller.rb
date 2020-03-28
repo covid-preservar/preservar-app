@@ -15,6 +15,9 @@ class HomeController < ApplicationController
   def privacy
   end
 
+  def privacy
+  end
+
   private
 
   def set_location
