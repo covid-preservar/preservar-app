@@ -2,6 +2,7 @@
 class BaseUploader < Shrine
   plugin :validation_helpers
   plugin :remove_invalid
+  plugin :cached_attachment_data
 
   def generate_location(io, derivative: nil, **context)
     type = context[:record]&.class&.name&.downcase

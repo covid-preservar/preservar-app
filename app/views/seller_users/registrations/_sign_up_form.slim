@@ -7,6 +7,7 @@
     = f.input :district, collection: Location.all_districts, label: 'Distrito'
     = f.input :area, collection: Location.for_district(@form.district).map(&:area), selected: @form.area
     = f.input :address, hint: 'Rua e número'
+    = f.hidden_field :main_photo, value: @form.cached_main_photo_data
     = f.input :main_photo, as: :file, hint: 'Formato JPG, max. 10Mb'
 
   .register-form-section

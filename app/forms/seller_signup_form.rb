@@ -9,6 +9,7 @@ class SellerSignupForm
                 :address,
                 :category_id,
                 :main_photo,
+                :cached_main_photo_data,
                 :email,
                 :is_company,
                 :vat_id,
@@ -55,6 +56,8 @@ class SellerSignupForm
 
     @vat_id ||= seller_user&.seller&.vat_id
     @vat_id = 'PT' + @vat_id if @vat_id&.match?(/\A\d{9}\z/)
+
+    @cached_main_photo_data = seller.cached_main_photo_data
   end
 
   def category
