@@ -4,7 +4,7 @@ class SellersController < ApplicationController
   def index
     @city = params[:city] || 'Grande Lisboa'
     @category = Category.find(params[:category] || 1)
-    @sellers = @category.sellers.where(area: @city)
+    @sellers = @category.sellers.where(area: @city).sorted
   end
 
   def show

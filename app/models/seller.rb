@@ -11,6 +11,7 @@ class Seller < ApplicationRecord
   has_one :seller_user, dependent: :destroy
   has_many :vouchers, dependent: :restrict_with_exception
 
+  scope :sorted, -> { order(name: :asc) }
   default_scope -> { where(published: true) }
 
   validates :payment_api_key, presence: true, if: :published?

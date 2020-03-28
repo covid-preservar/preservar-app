@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_160450) do
+ActiveRecord::Schema.define(version: 2020_03_28_200124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_160450) do
     t.boolean "published", default: false
     t.index ["area"], name: "index_sellers_on_area"
     t.index ["category_id"], name: "index_sellers_on_category_id"
+    t.index ["name"], name: "index_sellers_on_name"
     t.index ["slug"], name: "index_sellers_on_slug", unique: true
   end
 
