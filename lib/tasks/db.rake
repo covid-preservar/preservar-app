@@ -25,6 +25,16 @@ namespace :db do
     Rake::Task['db:environment:set'].invoke
   end
 
+  desc "Heroku release phase"
+  task :release_phase  => :environment do
+    # If no tables, skip this. Otherwise, run migrations
+    puts 'Running release phase script'
+    if ActiveRecord::Base.connection.tables.any?
+      puts 'Release phase - Migrating DB'
+      Rake::Task["db:migrate"].invoke
+    end
+  end
+
   private
 
   def with_config
