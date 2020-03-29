@@ -1,6 +1,22 @@
+.form-control {
+  box-sizing: border-box;
+  appearance: none;
+  outline: 0;
+  border: 0;
+  height: 3rem;
+  line-height: 3rem;
+  padding: 0 1rem;
+  background-color: $white;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, .09);
+  border-radius: 0;
+}
 
-input:not([type="file"], [type="radio"], [type="submit"]),
 select {
+  background: image-url('icon-arrow-down.svg') $white right .5rem center no-repeat;
+}
+
+input:not(.form-control):not([type="file"], [type="radio"], [type="submit"]),
+select:not(.form-control) {
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -10,28 +26,14 @@ select {
   height: 3rem;
   line-height: 3rem;
   padding: 0 1rem;
-  background-color: white;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.09);
+  background-color: $white;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, .09);
   border-radius: 0;
 }
 
-select {
-  background: image-url("icon-arrow-down.svg") #fff right .5rem center no-repeat;
-}
-
-::-webkit-input-placeholder {
-  color: #000;
-  opacity: 0.3;
-}
-
-:-ms-input-placeholder {
-  color: #000;
-  opacity: 0.3;
-}
-
 ::placeholder {
-  color: #000;
-  opacity: 0.3;
+  color: $black;
+  opacity: .3;
 }
 
 input[type="submit"],
@@ -44,14 +46,14 @@ input[type="submit"],
   font-size: calc(17rem / 16);
   line-height: 3rem;
   text-decoration: none;
-  color: white;
+  color: $white;
   border-radius: 0;
   vertical-align: bottom;
   border: 0;
 
   &:hover {
-    background: #00158A;
-    color: white;
+    background: $primary-cta-hover-bg;
+    color: $white;
     cursor: pointer;
   }
 }

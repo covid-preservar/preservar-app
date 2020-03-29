@@ -9,8 +9,7 @@
 }
 
 #register-form {
-  input:not([type="file"], [type="radio"], [type="submit"]),
-  select {
+  .form-control {
     box-shadow: none;
     background-color: var(--color-light-blue);
     width: 100%;
