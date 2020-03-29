@@ -24,6 +24,8 @@ class SellerSignupForm
 
   validates :name,
             :address,
+            :district,
+            :area,
             :contact_name,
             :password,
             :password_confirmation,
