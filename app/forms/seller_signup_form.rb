@@ -38,7 +38,7 @@ class SellerSignupForm
 
   validates :password, presence: true,
                        confirmation: true,
-                       length: { within: Devise.password_length}
+                       length: { within: Devise.password_length }
 
   validates :vat_id, valvat: true
   validates :company_registration_code,
