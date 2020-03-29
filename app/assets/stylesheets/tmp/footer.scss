@@ -2,7 +2,7 @@
   position: relative;
   margin-top: 4rem;
   padding: 4rem 0;
-  height: 24rem;
+  min-height: 24rem;
   border-top: 1px solid var(--color-light-blue);
 
   h3,
@@ -11,13 +11,15 @@
     line-height: calc(24 / 16);
   }
 
-  .xrow {
-    position: static;
+  .row {
+    margin: 0 16px;
   }
 
-  .bottom {
-    position: absolute;
-    bottom: 2rem;
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 
   p.small {
@@ -25,32 +27,43 @@
     line-height: calc(24 / 14);
   }
 
-  @media only screen and (max-width: 768px) {
-    height: auto;
+  @media only screen and (max-width: 767px) {
 
-    .bottom {
-      position: relative;
-      bottom: auto;
+    .footer-section {
+      &:first-child {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      img.top {
+        margin-right: 2.5rem;
+      }
+
+      & + .footer-section {
+        margin-top: 3rem;
+      }
     }
+  }
 
-    .xcol-6 + .xcol-6 {
-      margin-top: 3rem;
+  @media only screen and (max-width: 481px) {
+    .footer-section {
+      #tech4covid {
+        margin-top: 2.5rem;
+      }
     }
   }
 
   @media only screen and (max-width: 375px) {
     margin-top: 2rem;
     padding-top: 2rem;
+
+    .row {
+      margin: 0;
+    }
   }
 }
 
 #tech4covid {
   height: 2.5rem;
-  left: var(--grid-outer-padding);
-
-  @media only screen and (max-width: 768px) {
-    display: block;
-    margin-top: 2rem; 
-    left: auto;
-  }
 }
