@@ -1,4 +1,4 @@
-- cache ENV['HEROKU_SLUG_COMMIT'] do
+- cache [:footer, ENV['HEROKU_SLUG_COMMIT']] do
   footer#footer.xcontainer
     .row
       .col-md-6.col-12.footer-section
