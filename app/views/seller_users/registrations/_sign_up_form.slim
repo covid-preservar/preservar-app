@@ -2,11 +2,11 @@
 
   .register-form-section
     h3 Sobre o estabelecimento
-    = f.input :name, label: 'Nome público do estabelecimento', hint: 'Este é o nome que vai ser visível na plataforma.'
-    = f.input :category_id, collection: Category.all, include_blank: 'Categoria'
+    = f.input :name, label: 'Nome público do estabelecimento', hint: 'Este é o nome que vai ser visível na plataforma.', placeholder: 'Nome'
+    = f.input :category_id, collection: Category.all
     = f.input :district, collection: Location.all_districts, label: 'Distrito'
     = f.input :area, collection: Location.for_district(@form.district).map(&:area), selected: @form.area
-    = f.input :address, hint: 'Rua e número'
+    = f.input :address, hint: 'Rua e número', placeholder: 'Morada'
     = f.hidden_field :main_photo, value: @form.cached_main_photo_data
     = f.input :main_photo, as: :file, hint: 'Formato JPG, max. 10Mb'
 
@@ -14,8 +14,8 @@
     h3 Sobre si
     = f.input :contact_name, placeholder: 'Nome', label: 'O seu nome'
     = f.input :email, placeholder: 'E-mail', required: true
-    = f.input :password, placeholder:"Password"
-    = f.input :password_confirmation, placeholder:"Password"
+    = f.input :password, placeholder:"Password", hint: "Mínimo 6 caracteres"
+    = f.input :password_confirmation, placeholder:"Password", hint: "Mínimo 6 caracteres"
 
   .register-form-section
     h3 Sobre a empresa
