@@ -15,6 +15,25 @@ select {
   border-radius: 0;
 }
 
+select {
+  background: image-url("icon-arrow-down.svg") #fff right .5rem center no-repeat;
+}
+
+::-webkit-input-placeholder {
+  color: #000;
+  opacity: 0.3;
+}
+
+:-ms-input-placeholder {
+  color: #000;
+  opacity: 0.3;
+}
+
+::placeholder {
+  color: #000;
+  opacity: 0.3;
+}
+
 input[type="submit"],
 .primary-cta {
   display: inline-block;
