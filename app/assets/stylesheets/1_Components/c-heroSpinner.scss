@@ -15,17 +15,6 @@
     }
   }
 
-  &:after {
-    content: '';
-    width: 100%;
-    height: 9px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background-image: image-url('underline.svg');
-    background-repeat: no-repeat;
-  }
-
   span {
     display: inline-block;
     position: absolute;
