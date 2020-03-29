@@ -34,7 +34,7 @@
         /     p Angariados
       = image_tag 'hero-img.jpg', alt:'Pessoa', id:'hero-img', class:'xcol-5 xoffset-1'
 
-  - cache ENV['HEROKU_SLUG_COMMIT'] do
+  - cache [:how_it_works, ENV['HEROKU_SLUG_COMMIT']] do
     section#how-it-works.section
       #how-it-works-brief.xrow
         .xcol-6
@@ -66,7 +66,7 @@
       #places-list.xrow.home-list
         == render @sellers
 
-  / - cache ENV['HEROKU_SLUG_COMMIT'] do
+  / - cache [:press, ENV['HEROKU_SLUG_COMMIT']] do
   /   section#press.section
   /     .xrow
   /       h2.xcol-6.section-separator Como visto em
@@ -84,7 +84,7 @@
   /       .xcol-2.press-logo
   /         = image_tag 'publico.svg', alt: 'Público'
 
-  - cache ENV['HEROKU_SLUG_COMMIT'] do
+  - cache [:businesses, ENV['HEROKU_SLUG_COMMIT']] do
     section#businesses.section
       .xrow
         h2.xcol-6.section-separator Tem um estabelecimento? Comece a vender vouchers hoje.

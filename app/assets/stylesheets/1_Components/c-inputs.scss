@@ -1,18 +1,37 @@
-
-input:not([type="file"], [type="radio"], [type="submit"]),
-select {
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+.form-control {
   appearance: none;
-  outline: 0;
+  background-color: $white;
   border: 0;
+  border-radius: 0;
+  box-shadow: $input-box-shadow;
+  box-sizing: border-box;
   height: 3rem;
   line-height: 3rem;
+  outline: 0;
   padding: 0 1rem;
-  background-color: white;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.09);
+}
+
+select {
+  background: image-url('icon-arrow-down.svg') $white right .5rem center no-repeat;
+}
+
+input:not(.form-control):not([type="file"], [type="radio"], [type="submit"]),
+select:not(.form-control) {
+  appearance: none;
+  background-color: $white;
   border-radius: 0;
+  border: 0;
+  box-shadow: $input-box-shadow;
+  box-sizing: border-box;
+  height: 3rem;
+  line-height: 3rem;
+  outline: 0;
+  padding: 0 1rem;
+}
+
+::placeholder {
+  color: $black;
+  opacity: .3;
 }
 
 input[type="submit"],
@@ -25,14 +44,14 @@ input[type="submit"],
   font-size: calc(17rem / 16);
   line-height: 3rem;
   text-decoration: none;
-  color: white;
+  color: $white;
   border-radius: 0;
   vertical-align: bottom;
   border: 0;
 
   &:hover {
-    background: #00158A;
-    color: white;
+    background: $primary-cta-hover-bg;
+    color: $white;
     cursor: pointer;
   }
 }
