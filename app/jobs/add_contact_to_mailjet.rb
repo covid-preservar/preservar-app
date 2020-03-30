@@ -1,4 +1,4 @@
-class AddContactToMailJet < ApplicationJob
+class AddContactToMailjet < ApplicationJob
   queue_as :default
 
   # Add a contact to a mailjet contact list.
