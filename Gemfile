@@ -18,14 +18,13 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'aasm'
 gem 'aws-sdk-s3'
+gem 'countries'
 gem 'devise-i18n'
 gem 'devise'
-gem 'countries'
 gem 'faker', require: false
 gem 'friendly_id'
 gem 'geocoder'
 gem 'gon'
-gem 'ibandit'
 gem 'image_optim'
 gem 'image_processing', '~> 1.0'
 gem 'maxminddb'
@@ -39,9 +38,13 @@ gem 'redcarpet'
 gem 'rollbar'
 gem 'shrine'
 gem 'sidekiq', '~> 6.0.0'
-gem 'simple_form'
 gem 'slim-rails'
 gem 'valvat'
+
+# Forms and validations - order matters here
+gem 'simple_form'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 
 # Backoffice
 gem 'administrate', '~> 0.13.0'

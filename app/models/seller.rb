@@ -14,6 +14,7 @@ class Seller < ApplicationRecord
   scope :sorted, -> { order(name: :asc) }
   default_scope -> { where(published: true) }
 
+  validates :area, :address, presence: true
   validates :payment_api_key, presence: true, if: :published?
 
   def can_publish?

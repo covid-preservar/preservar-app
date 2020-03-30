@@ -24,8 +24,6 @@ pt:
         category_id: 'Categoria'
         password_confirmation: 'Confirmação de password'
         vat_id: 'NIF'
-        iban: 'IBAN'
-        company_registration_code: 'Código de acesso'
         contact_name: 'Nome'
         main_photo: 'Fotografia'
         address: 'Morada'
