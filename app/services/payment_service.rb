@@ -76,9 +76,9 @@ class PaymentService
       chave: api_key,
       valor: value,
       id: identifier,
-      data_inicio: Date.today,
-      data_fim: 2.days.from_now.to_date,
-      per_dup: '0'
+      data_inicio: Date.today.to_s,
+      data_fim: 2.days.from_now.to_date.to_s,
+      per_dup: '1'
     }
   end
 
