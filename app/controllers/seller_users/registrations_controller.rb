@@ -16,7 +16,7 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
       ApplicationMailer.seller_signup_notify_internal(@form.seller.id).deliver_later
 
       if ENV["MAILJET_CONTACT_LIST_ID"].present?
-        AddContactToMailJet.perform_later(@form.seller.id)
+        AddContactToMailjet.perform_later(@form.seller.id)
       end
       expire_data_after_sign_in!
       redirect_to register_success_path
