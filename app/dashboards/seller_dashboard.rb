@@ -23,10 +23,8 @@ class SellerDashboard < Administrate::BaseDashboard
     main_photo_data: Field::String.with_options(searchable: false),
     payment_api_key: Field::String,
     vat_id: Field::String,
-    iban: Field::String,
     contact_name: Field::String,
     company_name: Field::String,
-    company_registration_code: Field::String,
     main_photo: ShrineField
   }.freeze
 
@@ -60,10 +58,8 @@ class SellerDashboard < Administrate::BaseDashboard
     main_photo_data
     payment_api_key
     vat_id
-    iban
     contact_name
     company_name
-    company_registration_code
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -81,10 +77,8 @@ class SellerDashboard < Administrate::BaseDashboard
     main_photo
     payment_api_key
     vat_id
-    iban
     contact_name
     company_name
-    company_registration_code
   ].freeze
 
   # COLLECTION_FILTERS

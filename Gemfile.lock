@@ -194,8 +194,6 @@ GEM
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
     i18n_data (0.10.0)
-    ibandit (1.0.1)
-      i18n
     image_optim (0.26.5)
       exifr (~> 1.2, >= 1.2.2)
       fspath (~> 3.0)
@@ -495,7 +493,6 @@ DEPENDENCIES
   friendly_id
   geocoder
   gon
-  ibandit
   image_optim
   image_optim_pack
   image_processing (~> 1.0)

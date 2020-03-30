@@ -25,7 +25,6 @@ gem 'faker', require: false
 gem 'friendly_id'
 gem 'geocoder'
 gem 'gon'
-gem 'ibandit'
 gem 'image_optim'
 gem 'image_processing', '~> 1.0'
 gem 'maxminddb'
