@@ -20,3 +20,4 @@ exclude_patterns:
   - "spec/"
   - "!spec/support/helpers"
   - "app/assets/stylesheets/bootstrap/"
+  - "app/javascript/vendor/"
