@@ -3,11 +3,11 @@ class PaymentService
 
   ENDPOINT = ENV['PAYMENT_ENDPOINT']
   RESPONSES = {
-    0 => 'Sucesso',
-    -7 => 'Serviço Inativo',
-    -8 => 'Referência Inválida',
-    -9 => 'Valores Incorretos',
-    -10 => 'Chave Inválida'
+    '0' => 'Sucesso',
+    '-7' => 'Serviço Inativo',
+    '-8' => 'Referência Inválida',
+    '-9' => 'Valores Incorretos',
+    '-10' => 'Chave Inválida'
   }.freeze
 
   attr_accessor :api_key,
@@ -94,7 +94,7 @@ class PaymentService
   def build_mbw_params
     {
       chave: api_key,
-      valor: value,
+      valor: value.to_f,
       id: identifier,
       alias: payment_phone,
       descricao: "Voucher para #{seller_name}"
