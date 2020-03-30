@@ -125,4 +125,6 @@ Rails.application.configure do
   config.hosts << "www.#{ENV.fetch('HOSTNAME')}"
   config.hosts << "#{ENV.fetch('HEROKU_APP_NAME') { 'eztz-prod' }}.herokuapp.com"
 
+
+  config.session_store :cookie_store, key: '_preserve_session', expire_after: 2.weeks
 end
