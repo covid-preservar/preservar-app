@@ -10,7 +10,7 @@ class AddContactToMailjet < ApplicationJob
 
     # Add the email to Mailjet
     response = RestClient.post(base_url + "/contact",
-                               {email: seller.email}.to_json,
+                               {email: seller.seller_user.email}.to_json,
                                content_type: :json)
     response = JSON.parse response.body
     contact_id = response.fetch('Data')&.first&.fetch('ID')
