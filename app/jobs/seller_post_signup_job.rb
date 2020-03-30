@@ -1,11 +1,28 @@
-class AddContactToMailjet < ApplicationJob
+class SellerPostSignupJob < ApplicationJob
   queue_as :default
+
+  def perform(seller_id)
+    seller = Seller.unscoped.find(seller_id)
+
+    # We must do this first.
+    # If we send the mail first, the contact gets auto-added
+    # The API errors if we try to add again, and
+    # we don't have an ID to add to the list or add the metadata.
+    # Crappy API design and a useless gem on top of it.
+    if ENV["MAILJET_CONTACT_LIST_ID"].present?
+      add_to_mailjet(seller)
+    end
+
+    ApplicationMailer.seller_signup(@form.seller).deliver_now
+    ApplicationMailer.seller_signup_notify_internal(@form.seller).deliver_now
+  end
+
+  private
 
   # Add a contact to a mailjet contact list.
   # Mailjet's gem is horribly broken and useless,
   # so we have to go low-level and use rest-client directly
-  def perform(seller_id)
-    seller = Seller.unscoped.find(seller_id)
+  def add_to_mailjet(seller)
     base_url = "https://#{ENV["MAILJET_API_KEY"]}:#{ENV["MAILJET_SECRET_KEY"]}@api.mailjet.com/v3/REST"
 
     # Add the email to Mailjet

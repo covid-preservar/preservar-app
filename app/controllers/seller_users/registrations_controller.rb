@@ -12,12 +12,8 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
   def create
     @form = SellerSignupForm.new(signup_params)
     if @form.save
-      ApplicationMailer.seller_signup(@form.seller.id).deliver_later
-      ApplicationMailer.seller_signup_notify_internal(@form.seller.id).deliver_later
+      SellerPostSignupJob.perform_later(@form.seller.id)
 
-      if ENV["MAILJET_CONTACT_LIST_ID"].present?
-        AddContactToMailjet.perform_later(@form.seller.id)
-      end
       expire_data_after_sign_in!
       redirect_to register_success_path
     else
