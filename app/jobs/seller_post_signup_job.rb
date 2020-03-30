@@ -13,8 +13,8 @@ class SellerPostSignupJob < ApplicationJob
       add_to_mailjet(seller)
     end
 
-    ApplicationMailer.seller_signup(@form.seller).deliver_now
-    ApplicationMailer.seller_signup_notify_internal(@form.seller).deliver_now
+    ApplicationMailer.seller_signup(seller).deliver_now
+    ApplicationMailer.seller_signup_notify_internal(seller).deliver_now
   end
 
   private
