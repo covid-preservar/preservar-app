@@ -16,14 +16,11 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  # During pre-release this should not be enabled in production
-  if !Rails.env.production? || ENV['HOSTNAME'] != 'preserve.pt'
-    resources :sellers, only: [:index, :show]
-    resources :vouchers, only: [:create, :show] do
-      resources :payments, only: [:new, :create]
+  resources :sellers, only: [:index, :show]
+  resources :vouchers, only: [:create, :show] do
+    resources :payments, only: [:new, :create]
 
-      get '/obrigado', to: 'payments#done', as: :thank_you, on: :member
-    end
+    get '/obrigado', to: 'payments#done', as: :thank_you, on: :member
   end
 
   get '/tos', to: 'home#tos', as: :tos
