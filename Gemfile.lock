@@ -108,6 +108,9 @@ GEM
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     builder (3.2.4)
+    bullet (6.1.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.1.1)
     capybara (3.31.0)
       addressable
@@ -441,6 +444,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.6)
     unicode_utils (1.4.0)
+    uniform_notifier (1.13.0)
     valvat (0.9.1)
       savon (>= 2.3.0)
     warden (1.2.8)
@@ -478,6 +482,7 @@ DEPENDENCIES
   awesome_print
   aws-sdk-s3
   bootsnap (>= 1.4.2)
+  bullet
   capybara (>= 2.15)
   client_side_validations
   client_side_validations-simple_form

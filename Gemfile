@@ -70,6 +70,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener_web'
   gem 'foreman', '= 0.86.0', require: false
+  gem 'bullet'
 end
 
 group :test do

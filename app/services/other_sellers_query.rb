@@ -2,7 +2,7 @@
 class OtherSellersQuery
 
   def self.for_seller(seller)
-    base_scope = Seller.where.not(id: seller.id).order('RANDOM()').limit(4)
+    base_scope = Seller.where.not(id: seller.id).includes([:category]).order('RANDOM()').limit(4)
     other_sellers = base_scope.where(area: seller.area)
     local = true
 

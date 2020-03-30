@@ -8,7 +8,7 @@ class SellersController < ApplicationController
   end
 
   def show
-    @seller = Seller.friendly.find(params[:id])
+    @seller = Seller.includes([:category]).friendly.find(params[:id])
 
     redirect_to(@seller) and return if seller_url(@seller) != request.url
 
