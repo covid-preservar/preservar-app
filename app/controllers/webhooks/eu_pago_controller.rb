@@ -16,6 +16,12 @@ class Webhooks::EuPagoController < ActionController::Base
 
   def webhook
     voucher = Voucher.find_by(payment_identifier: params[:identificador])
+
+    unless voucher.present?
+      Rollbar.warning('Payment Webhook: Not found', params: params)
+      render(status: :unprocessable_entity, plain: 'No payment found for that identifier') and return
+    end
+
     value = params[:valor].to_f.round
 
     if voucher.seller.payment_api_key != params[:chave_api]

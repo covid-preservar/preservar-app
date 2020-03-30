@@ -74,7 +74,7 @@ class PaymentService
   def build_mb_params
     {
       chave: api_key,
-      valor: value,
+      valor: value.to_f,
       id: identifier,
       data_inicio: Date.today.to_s,
       data_fim: 2.days.from_now.to_date.to_s,
