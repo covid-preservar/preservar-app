@@ -46,7 +46,7 @@ class Voucher < ApplicationRecord
   private
 
   def generate_code
-    self.code = SecureRandom.hex(4).upcase
+    self.code = SecureRandom.hex(3).upcase
   end
 
   def generate_identifier
