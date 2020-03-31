@@ -15,9 +15,12 @@ class Webhooks::EuPagoController < ActionController::Base
   # local=Porto
 
   def webhook
+    notification = PaymentNotification.create(data: params)
+
     voucher = Voucher.find_by(payment_identifier: params[:identificador])
 
     unless voucher.present?
+      notification.update status: 'id_not_found'
       Rollbar.warning('Payment Webhook: Not found', params: params)
       render(status: :unprocessable_entity, plain: 'No payment found for that identifier') and return
     end
@@ -25,29 +28,35 @@ class Webhooks::EuPagoController < ActionController::Base
     value = params[:valor].to_f.round
 
     if voucher.seller.payment_api_key != params[:chave_api]
+      notification.update status: 'bad_api_key'
       Rollbar.warning('Payment Webhook: API Key mismatch', params: params, expected: voucher.seller.payment_api_key)
       render(status: :unprocessable_entity, plain: 'API Key mismatch') and return
     end
 
     if voucher.value != value
+      notification.update status: 'bad_value'
       Rollbar.warning('Payment Webhook: Value mismatch', params: params, expected: voucher.value)
       render(status: :unprocessable_entity, plain: 'Payment value mismatch') and return
     end
 
     if voucher.pending_payment?
+      notification.update status: 'ok'
       voucher.payment_success!
       ApplicationMailer.voucher_email(voucher.id).deliver_later
       ApplicationMailer.seller_voucher_email(voucher.id).deliver_later
+    else
+      notification.update status: "voucher_state_was_#{voucher.state}"
+      render(status: :unprocessable_entity, plain: 'Voucher state does not allow this operation') and return
     end
 
     head :ok
   end
 
-  private
+  # private
 
-  def payment_params
-    params.slice(:valor, :referencia, :transacao,
-                 :identificador, :chave_api, :data,
-                 :entidade).permit!
-  end
+  # def payment_params
+  #   params.slice(:valor, :referencia, :transacao,
+  #                :identificador, :chave_api, :data,
+  #                :entidade).permit!
+  # end
 end
