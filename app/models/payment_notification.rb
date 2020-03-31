@@ -1,0 +1,3 @@
+class PaymentNotification < ApplicationRecord
+
+end

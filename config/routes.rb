@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :admin_users
     resources :categories
+    resources :payment_notifications
     resources :sellers do
       member do
         patch :publish
