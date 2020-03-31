@@ -1,0 +1,28 @@
+h1
+  ' Acabou de vender um voucher!
+
+h3 Detalhes do voucher
+p
+  strong
+    ' Número do voucher:
+    = @voucher.code
+
+table
+  tbody
+    tr
+      td
+        strong Valor
+      td = number_to_currency @voucher.value, locale: :pt
+    tr
+      td
+        strong Email do comprador
+      td = @voucher.email
+
+br
+br
+p Brevemente teremos uma área de comerciante onde poderá consultar todos os vouchers vendidos.
+
+h1 Precisa de ajuda?
+p
+ ' Envie um e-mail para
+ = mail_to 'info@preserve.pt'

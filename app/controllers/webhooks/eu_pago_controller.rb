@@ -37,7 +37,7 @@ class Webhooks::EuPagoController < ActionController::Base
     if voucher.pending_payment?
       voucher.payment_success!
       ApplicationMailer.voucher_email(voucher.id).deliver_later
-      # ApplicationMailer.seller_voucher_email(voucher).deliver_later
+      ApplicationMailer.seller_voucher_email(voucher.id).deliver_later
     end
 
     head :ok
