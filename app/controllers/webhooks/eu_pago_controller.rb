@@ -44,6 +44,9 @@ class Webhooks::EuPagoController < ActionController::Base
       voucher.payment_success!
       ApplicationMailer.voucher_email(voucher.id).deliver_later
       ApplicationMailer.seller_voucher_email(voucher.id).deliver_later
+    else
+      notification.update status: "voucher_state_was_#{voucher.state}"
+      render(status: :unprocessable_entity, plain: 'Voucher state does not allow this operation') and return
     end
 
     head :ok
