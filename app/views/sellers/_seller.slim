@@ -1,7 +1,7 @@
 - cache seller do
   a.place href=seller_path(seller)
     .place-img-wrapper
-      = image_tag seller.main_photo_url(:small, public: true) || 'place-img.jpg', alt: 'Avô Arnaldo'
+      = image_tag seller.main_photo_url(:small, public: true)
     h3 = seller.name
     p
       => seller.category.name

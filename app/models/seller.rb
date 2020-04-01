@@ -8,7 +8,7 @@ class Seller < ApplicationRecord
   include PhotoUploader::Attachment.new(:main_photo)
 
   belongs_to :category
-  has_one :seller_user, dependent: :destroy
+  belongs_to :seller_user
   has_many :vouchers, dependent: :restrict_with_exception
 
   scope :sorted, -> { order(name: :asc) }
@@ -16,7 +16,7 @@ class Seller < ApplicationRecord
 
   validates :area, :address, presence: true
   validates :payment_api_key, presence: true, if: :published?
-  validates :seller_user, presence: true, if: :published?
+  validates :main_photo, presence: true, if: :published?
 
   def can_publish?
     payment_api_key.present? && main_photo.present?

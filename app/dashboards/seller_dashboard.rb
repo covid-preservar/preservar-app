@@ -10,7 +10,7 @@ class SellerDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     category: Field::BelongsTo,
-    seller_user: Field::HasOne,
+    seller_user: Field::BelongsTo,
     vouchers: Field::HasMany,
     id: Field::Number,
     name: Field::String,
@@ -66,6 +66,7 @@ class SellerDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    seller_user
     category
     name
     area

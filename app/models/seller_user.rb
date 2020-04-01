@@ -5,6 +5,5 @@ class SellerUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :seller, -> { unscoped }
-  accepts_nested_attributes_for :seller
+  has_many :sellers
 end

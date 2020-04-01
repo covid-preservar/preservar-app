@@ -41,17 +41,6 @@ class SellerSignupForm
 
   def initialize(attributes = {})
     super(attributes.reject { |_, v| v.blank? })
-    @name ||= seller_user&.seller&.name
-    @area ||= seller_user&.seller&.area
-    @address ||= seller_user&.seller&.address
-    @email ||= seller_user.email
-    @category_id ||= seller_user&.seller&.category_id
-    @password ||= seller_user.password
-    @password_confirmation ||= seller_user.password_confirmation
-    @contact_name ||= seller_user&.seller&.contact_name
-    @company_name ||= seller_user&.seller&.company_name
-
-    @vat_id ||= seller_user&.seller&.vat_id
     @vat_id = 'PT' + @vat_id if @vat_id&.match?(/\A\d{9}\z/)
 
     @cached_main_photo_data = seller.cached_main_photo_data
@@ -64,8 +53,7 @@ class SellerSignupForm
   def seller_user
     @seller_user ||= SellerUser.new(email: email,
                                     password: password,
-                                    password_confirmation: password_confirmation,
-                                    seller: seller)
+                                    password_confirmation: password_confirmation)
   end
 
   def seller
@@ -76,14 +64,15 @@ class SellerSignupForm
                            vat_id: vat_id,
                            contact_name: contact_name,
                            company_name: company_name,
-                           main_photo: main_photo)
+                           main_photo: main_photo,
+                           seller_user: seller_user)
   end
 
   def save
     return false unless valid?
 
-    seller.save!
     seller_user.save!
+    seller.save!
   rescue StandardError
     copy_errors
     false

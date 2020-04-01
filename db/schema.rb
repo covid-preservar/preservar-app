@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_102349) do
+ActiveRecord::Schema.define(version: 2020_04_01_110407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,12 +76,12 @@ ActiveRecord::Schema.define(version: 2020_03_31_102349) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.bigint "seller_id", null: false
+    t.bigint "old_seller_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_seller_users_on_email", unique: true
+    t.index ["old_seller_id"], name: "index_seller_users_on_old_seller_id"
     t.index ["reset_password_token"], name: "index_seller_users_on_reset_password_token", unique: true
-    t.index ["seller_id"], name: "index_seller_users_on_seller_id"
   end
 
   create_table "sellers", force: :cascade do |t|
@@ -98,9 +98,11 @@ ActiveRecord::Schema.define(version: 2020_03_31_102349) do
     t.string "contact_name"
     t.string "company_name"
     t.boolean "published", default: false
+    t.bigint "seller_user_id"
     t.index ["area"], name: "index_sellers_on_area"
     t.index ["category_id"], name: "index_sellers_on_category_id"
     t.index ["name"], name: "index_sellers_on_name"
+    t.index ["seller_user_id"], name: "index_sellers_on_seller_user_id"
     t.index ["slug"], name: "index_sellers_on_slug", unique: true
   end
 
