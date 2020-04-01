@@ -2,7 +2,7 @@ class SellerPostSignupJob < ApplicationJob
   queue_as :default
 
   def perform(seller_id)
-    seller = Seller.unscoped.find(seller_id)
+    seller = Seller.find(seller_id)
 
     # We must do this first.
     # If we send the mail first, the contact gets auto-added

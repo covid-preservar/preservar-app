@@ -67,8 +67,6 @@ class SellerDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     category
-    seller_user
-    vouchers
     name
     area
     slug

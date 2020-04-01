@@ -6,7 +6,7 @@ class ApplicationMailerPreview < ActionMailer::Preview
   end
 
   def seller_signup_notify_internal
-    ApplicationMailer.seller_signup_notify_internal(Seller.unscoped.first.id)
+    ApplicationMailer.seller_signup_notify_internal(Seller.first.id)
   end
 
   def voucher_email

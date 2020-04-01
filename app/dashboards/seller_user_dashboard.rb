@@ -50,9 +50,6 @@ class SellerUserDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     seller
     email
-    reset_password_token
-    reset_password_sent_at
-    remember_created_at
   ].freeze
 
   # COLLECTION_FILTERS

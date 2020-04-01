@@ -4,11 +4,11 @@ class SellersController < ApplicationController
   def index
     @city = params[:city] || 'Grande Lisboa'
     @category = Category.find(params[:category] || 1)
-    @sellers = @category.sellers.where(area: @city).sorted
+    @sellers = @category.sellers.published.where(area: @city).sorted
   end
 
   def show
-    @seller = Seller.includes([:category]).friendly.find(params[:id])
+    @seller = Seller.published.includes([:category]).friendly.find(params[:id])
 
     redirect_to(@seller) and return if seller_url(@seller) != request.url
 

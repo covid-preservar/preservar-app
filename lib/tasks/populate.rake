@@ -34,7 +34,7 @@ namespace :db do
     end
 
     seller_hash.each do |seller_hash|
-      next if Seller.unscoped.find_by(name: seller_hash[:name]).present?
+      next if Seller.find_by(name: seller_hash[:name]).present?
 
       puts 'Creating seller...'
       params = seller_hash.merge(address: "#{Faker::Address.street_name}, #{Faker::Address.building_number}",

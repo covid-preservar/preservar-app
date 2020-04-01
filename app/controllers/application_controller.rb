@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_cities
-    gon.cities = Seller.distinct(:area).pluck(:area)
+    gon.cities = Seller.published.distinct(:area).pluck(:area)
   end
 
   def set_devise_layout

@@ -69,15 +69,14 @@ class SellerSignupForm
   end
 
   def seller
-    @seller ||= Seller.unscoped.new(name: name,
-                                    area: area,
-                                    address: address,
-                                    category_id: category_id,
-                                    vat_id: vat_id,
-                                    contact_name: contact_name,
-                                    company_name: company_name,
-                                    main_photo: main_photo
-                                    )
+    @seller ||= Seller.new(name: name,
+                           area: area,
+                           address: address,
+                           category_id: category_id,
+                           vat_id: vat_id,
+                           contact_name: contact_name,
+                           company_name: company_name,
+                           main_photo: main_photo)
   end
 
   def save

@@ -12,10 +12,11 @@ class Seller < ApplicationRecord
   has_many :vouchers, dependent: :restrict_with_exception
 
   scope :sorted, -> { order(name: :asc) }
-  default_scope -> { where(published: true) }
+  scope :published, -> { where(published: true) }
 
   validates :area, :address, presence: true
   validates :payment_api_key, presence: true, if: :published?
+  validates :seller_user, presence: true, if: :published?
 
   def can_publish?
     payment_api_key.present? && main_photo.present?
