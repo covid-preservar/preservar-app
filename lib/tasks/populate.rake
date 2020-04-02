@@ -39,7 +39,8 @@ namespace :db do
       puts 'Creating seller...'
       params = seller_hash.merge(address: "#{Faker::Address.street_name}, #{Faker::Address.building_number}",
                                  seller_user: SellerUser.new(email: Faker::Internet.email, password:'secret'),
-                                 published: true, payment_api_key:'demo-86fa-c41b-05e8-ad5')
+                                 published: true, payment_api_key:'demo-86fa-c41b-05e8-ad5',
+                                 main_photo: Rack::Test::UploadedFile.new('spec/files/place-img.jpg', 'image/jpg'))
       Seller.new(params).save(validate: false)
     end
 
