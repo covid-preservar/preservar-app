@@ -22,7 +22,7 @@ class PaymentsController < ApplicationController
   end
 
   def done
-    @other_sellers = OtherSellersQuery.for_seller(@voucher.seller)
+    @other_places = OtherPlacesQuery.for_place(@voucher.place)
   end
 
   private
