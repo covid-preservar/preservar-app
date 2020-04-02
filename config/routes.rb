@@ -16,11 +16,13 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :places, only: [:index, :show]
-  resources :vouchers, only: [:create, :show] do
-    resources :payments, only: [:new, :create]
+  if ENV['HOSTNAME'] != 'preserve.pt'
+    resources :places, only: [:index, :show]
+    resources :vouchers, only: [:create, :show] do
+      resources :payments, only: [:new, :create]
 
-    get '/obrigado', to: 'payments#done', as: :thank_you, on: :member
+      get '/obrigado', to: 'payments#done', as: :thank_you, on: :member
+    end
   end
 
   get '/tos', to: 'home#tos', as: :tos
