@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_100754) do
+ActiveRecord::Schema.define(version: 2020_04_02_132343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,17 +44,6 @@ ActiveRecord::Schema.define(version: 2020_04_02_100754) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "name_plural"
-  end
-
-  create_table "friendly_id_slugs", force: :cascade do |t|
-    t.string "slug", null: false
-    t.integer "sluggable_id", null: false
-    t.string "sluggable_type", limit: 50
-    t.string "scope"
-    t.datetime "created_at"
-    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -100,25 +89,14 @@ ActiveRecord::Schema.define(version: 2020_04_02_100754) do
   end
 
   create_table "sellers", force: :cascade do |t|
-    t.string "name"
-    t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "area", null: false
-    t.string "slug"
-    t.string "address"
-    t.jsonb "main_photo_data"
     t.string "payment_api_key"
     t.string "vat_id"
     t.string "contact_name"
     t.string "company_name"
-    t.boolean "published", default: false
     t.bigint "seller_user_id"
-    t.index ["area"], name: "index_sellers_on_area"
-    t.index ["category_id"], name: "index_sellers_on_category_id"
-    t.index ["name"], name: "index_sellers_on_name"
     t.index ["seller_user_id"], name: "index_sellers_on_seller_user_id"
-    t.index ["slug"], name: "index_sellers_on_slug", unique: true
   end
 
   create_table "vouchers", force: :cascade do |t|
