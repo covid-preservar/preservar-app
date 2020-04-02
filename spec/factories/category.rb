@@ -2,6 +2,6 @@
 FactoryBot.define do
   factory :category do
     name { Faker::Restaurant.type }
-    name_plural {name.pluralize }
+    name_plural { name.pluralize }
   end
 end

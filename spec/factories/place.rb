@@ -12,5 +12,4 @@ FactoryBot.define do
       main_photo { Rack::Test::UploadedFile.new('spec/files/place-img.jpg', 'image/jpg') }
     end
   end
-
 end

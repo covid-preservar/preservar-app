@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_100754) do
     t.bigint "category_id"
     t.datetime "created_at", precision: 6
     t.datetime "updated_at", precision: 6
-    t.string "area"
+    t.string "area", null: false
     t.string "slug"
     t.string "address"
     t.jsonb "main_photo_data"
@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_100754) do
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "area", null: false
+    t.string "area"
     t.string "slug"
     t.string "address"
     t.jsonb "main_photo_data"

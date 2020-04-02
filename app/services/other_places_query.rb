@@ -2,7 +2,12 @@
 class OtherPlacesQuery
 
   def self.for_place(place)
-    base_scope = Place.published.where.not(id: place.id).includes([:category]).order('RANDOM()').limit(4)
+    base_scope = Place.published
+                      .where.not(id: place.id)
+                      .includes([:category])
+                      .order('RANDOM()')
+                      .limit(4)
+
     other_places = base_scope.where(area: place.area)
     local = true
 
