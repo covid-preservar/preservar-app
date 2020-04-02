@@ -17,7 +17,7 @@ class SellerDashboard < Administrate::BaseDashboard
     payment_api_key: Field::String,
     vat_id: Field::String,
     contact_name: Field::String,
-    company_name: Field::String,
+    company_name: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES

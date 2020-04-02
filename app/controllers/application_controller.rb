@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
   # Simple HTTP auth to keep users from
   # accidentaly using the test app and bots from indexing it
-   http_basic_authenticate_with name: ENV["HTTP_USER"],
+  http_basic_authenticate_with name: ENV["HTTP_USER"],
                                password: ENV["HTTP_PASSWORD"],
                                if: -> { ENV["HTTP_AUTH"].present? }
 
