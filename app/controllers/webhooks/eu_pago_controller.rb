@@ -30,8 +30,8 @@ class Webhooks::EuPagoController < ActionController::Base
     if voucher.place.seller.payment_api_key != params[:chave_api]
       notification.update status: 'bad_api_key'
       Rollbar.warning('Payment Webhook: API Key mismatch',
-                       params: params,
-                       expected: voucher.place.seller.payment_api_key)
+                      params: params,
+                      expected: voucher.place.seller.payment_api_key)
       render(status: :unprocessable_entity, plain: 'API Key mismatch') and return
     end
 
