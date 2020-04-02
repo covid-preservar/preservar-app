@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_01_110407) do
+ActiveRecord::Schema.define(version: 2020_04_02_100754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,21 @@ ActiveRecord::Schema.define(version: 2020_04_01_110407) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "places", force: :cascade do |t|
+    t.string "name"
+    t.bigint "category_id"
+    t.datetime "created_at", precision: 6
+    t.datetime "updated_at", precision: 6
+    t.string "area"
+    t.string "slug"
+    t.string "address"
+    t.jsonb "main_photo_data"
+    t.boolean "published"
+    t.bigint "seller_id"
+    t.index ["seller_id"], name: "index_places_on_seller_id"
+    t.index ["slug"], name: "index_places_on_slug", unique: true
+  end
+
   create_table "seller_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -109,7 +124,7 @@ ActiveRecord::Schema.define(version: 2020_04_01_110407) do
   create_table "vouchers", force: :cascade do |t|
     t.string "code"
     t.integer "value"
-    t.bigint "seller_id"
+    t.bigint "place_id"
     t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -119,7 +134,7 @@ ActiveRecord::Schema.define(version: 2020_04_01_110407) do
     t.string "payment_phone"
     t.string "cookie_uuid"
     t.index ["payment_identifier"], name: "index_vouchers_on_payment_identifier"
-    t.index ["seller_id"], name: "index_vouchers_on_seller_id"
+    t.index ["place_id"], name: "index_vouchers_on_place_id"
   end
 
 end

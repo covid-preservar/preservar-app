@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :sellers, only: [:index, :show]
+  resources :places, only: [:index, :show]
   resources :vouchers, only: [:create, :show] do
     resources :payments, only: [:new, :create]
 
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
              path_names: { sign_up: 'registo' }
 
   # TEMP - Until the seller login area is built
-  get '/comerciante/bem-vindo', to: 'sellers#register_success', as: :register_success
+  get '/comerciante/bem-vindo', to: 'places#register_success', as: :register_success
 
   namespace :webhooks do
     get 'payment/eupago', to:'eu_pago#webhook'
@@ -44,7 +44,8 @@ Rails.application.routes.draw do
     resources :admin_users
     resources :categories
     resources :payment_notifications
-    resources :sellers do
+    resources :sellers
+    resources :places do
       member do
         patch :publish
         patch :unpublish
@@ -53,7 +54,7 @@ Rails.application.routes.draw do
     resources :seller_users, except: [:destroy]
     resources :vouchers
 
-    root to: "sellers#index"
+    root to: "places#index"
   end
 
 

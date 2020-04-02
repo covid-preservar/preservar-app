@@ -27,11 +27,11 @@ class ApplicationController < ActionController::Base
   private
 
   def load_categories
-    @categories = Category.with_sellers
+    @categories = Category.with_places
   end
 
   def load_cities
-    gon.cities = Seller.published.distinct(:area).pluck(:area)
+    gon.cities = Place.published.distinct(:area).pluck(:area)
   end
 
   def set_devise_layout

@@ -18,12 +18,12 @@ class PaymentService
                 :seller_name
 
   def initialize(voucher)
-    @api_key = voucher.seller.payment_api_key
+    @api_key = voucher.place.seller.payment_api_key
     @method = voucher.payment_method
     @payment_phone = voucher.payment_phone
     @value = voucher.value
     @identifier = voucher.payment_identifier
-    @seller_name = voucher.seller.name
+    @seller_name = voucher.place.name
   end
 
   def request_payment

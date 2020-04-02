@@ -3,7 +3,7 @@ namespace :db do
   task :populate => :environment do
     require 'faker'
 
-    [AdminUser, Seller, SellerUser].each do |klass|
+    [AdminUser, Seller, SellerUser, Place].each do |klass|
 
       query = "TRUNCATE TABLE #{klass.table_name} CASCADE"
       ActiveRecord::Base.connection.execute(query)
@@ -15,7 +15,7 @@ namespace :db do
       # when running populate.
       klass.reset_column_information
     end
-    seller_hash = [
+    place_hashes = [
       { name: 'Tasca do Chico', category_id: 1, area: 'Grande Lisboa' },
       { name: 'Tasca do Manel', category_id: 1, area: 'Grande Lisboa' },
       { name: 'Winery', category_id: 1, area: 'Grande Porto' },
@@ -25,24 +25,29 @@ namespace :db do
       { name: 'Green smoothies', category_id: 2, area: 'Grande Porto' },
       { name: 'Zero Zero', category_id: 1, area: 'Grande Lisboa' },
       { name: 'Suma Suma', category_id: 1, area: 'Grande Porto' }
-
     ]
 
     seed_cities = ['Grande Lisboa', 'Grande Porto', 'Coimbra', 'Faro']
     20.times do
-      seller_hash << { name: Faker::Company.name, category_id: 1+rand(Category.count), area: seed_cities.sample }
+      place_hashes << { name: Faker::Company.name, category_id: 1+rand(Category.count), area: seed_cities.sample }
     end
 
 
-    seller_hash.each do |seller_hash|
-      next if Seller.find_by(name: seller_hash[:name]).present?
+    place_hashes.each do |place_hash|
+      next if Place.find_by(name: place_hash[:name]).present?
 
-      puts 'Creating seller...'
-      params = seller_hash.merge(address: "#{Faker::Address.street_name}, #{Faker::Address.building_number}",
-                                 seller_user: SellerUser.new(email: Faker::Internet.email, password:'secret'),
-                                 published: true, payment_api_key:'demo-86fa-c41b-05e8-ad5',
-                                 main_photo: Rack::Test::UploadedFile.new('spec/files/place-img.jpg', 'image/jpg'))
-      Seller.new(params).save(validate: false)
+      puts 'Creating place...'
+      seller = Seller.create!(payment_api_key:'demo-86fa-c41b-05e8-ad5',
+                              company_name: Faker::Company.name,
+                              contact_name: Faker::Name.name,
+                              vat_id: '999999999',
+                              seller_user: SellerUser.new(email: Faker::Internet.email, password:'secret'))
+
+      params = place_hash.merge(address: "#{Faker::Address.street_name}, #{Faker::Address.building_number}",
+                                published: true,
+                                main_photo: Rack::Test::UploadedFile.new('spec/files/place-img.jpg', 'image/jpg'))
+
+      seller.places.create!(params)
     end
 
     AdminUser.create!(email: 'admin@example.com', password: 'secret', confirmed_at: Time.now.utc)

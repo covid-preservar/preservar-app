@@ -7,13 +7,13 @@ class VouchersController < ApplicationController
       cookies.encrypted[:uuid] = { value: voucher.cookie_uuid, expires: 1.hour }
       redirect_to new_voucher_payment_path(voucher)
     else
-      redirect_to voucher.seller
+      redirect_to voucher.place
     end
   end
 
   private
 
   def voucher_params
-    params.require(:voucher).permit(:value, :custom_value, :seller_id)
+    params.require(:voucher).permit(:value, :custom_value, :place_id)
   end
 end

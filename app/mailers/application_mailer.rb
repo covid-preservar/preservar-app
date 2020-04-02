@@ -20,6 +20,6 @@ class ApplicationMailer < ActionMailer::Base
 
   def seller_voucher_email(voucher_id)
     @voucher = Voucher.find(voucher_id)
-    mail to: @voucher.seller.seller_user.email, subject: "TO-DO"
+    mail to: @voucher.place.seller.seller_user.email, subject: "TO-DO"
   end
 end

@@ -18,7 +18,7 @@ class SellerSignupForm
                 :password,
                 :password_confirmation
 
-  attr_writer :seller, :seller_user
+  attr_writer :seller, :seller_user, :place
 
   validates :name,
             :address,
@@ -43,7 +43,7 @@ class SellerSignupForm
     super(attributes.reject { |_, v| v.blank? })
     @vat_id = 'PT' + @vat_id if @vat_id&.match?(/\A\d{9}\z/)
 
-    @cached_main_photo_data = seller.cached_main_photo_data
+    @cached_main_photo_data = place.cached_main_photo_data
   end
 
   def category
@@ -57,15 +57,18 @@ class SellerSignupForm
   end
 
   def seller
-    @seller ||= Seller.new(name: name,
-                           area: area,
-                           address: address,
-                           category_id: category_id,
-                           vat_id: vat_id,
+    @seller ||= Seller.new(vat_id: vat_id,
                            contact_name: contact_name,
                            company_name: company_name,
-                           main_photo: main_photo,
                            seller_user: seller_user)
+  end
+
+  def place
+    @place ||= Place.new(name: name,
+                         area: area,
+                         address: address,
+                         category_id: category_id,
+                         main_photo: main_photo)
   end
 
   def save
@@ -73,6 +76,7 @@ class SellerSignupForm
 
     seller_user.save!
     seller.save!
+    place.save!
   rescue StandardError
     copy_errors
     false
@@ -81,11 +85,10 @@ class SellerSignupForm
   private
 
   def copy_errors
-    seller_user.errors.each do |attribute, error|
-      errors.add(attribute, error)
-    end
-    seller.errors.each do |attribute, error|
-      errors.add(attribute, error)
+    [seller_user, seller, place].each do |model|
+      model.errors.each do |attribute, error|
+        errors.add(attribute, error)
+      end
     end
   end
 
