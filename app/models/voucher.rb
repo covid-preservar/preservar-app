@@ -50,7 +50,7 @@ class Voucher < ApplicationRecord
   end
 
   def generate_identifier
-    self.payment_identifier = "s#{seller_id}v#{id}_#{payment_method.downcase}_#{Time.now.to_i}"
+    self.payment_identifier = "s#{place_id}s#{place.seller_id}v#{id}_#{payment_method.downcase}_#{Time.now.to_i}"
   end
 
   def requires_phone?
