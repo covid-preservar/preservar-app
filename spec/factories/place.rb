@@ -6,10 +6,10 @@ FactoryBot.define do
     category
     address { "#{Faker::Address.street_name}, #{Faker::Address.building_number}" }
     area { Location.all.sample }
+    main_photo { Rack::Test::UploadedFile.new('spec/files/place-img.jpg', 'image/jpg') }
 
     factory :published_place do
       published { true }
-      main_photo { Rack::Test::UploadedFile.new('spec/files/place-img.jpg', 'image/jpg') }
     end
   end
 end

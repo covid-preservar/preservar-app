@@ -13,12 +13,4 @@ RSpec.describe Place, type: :model do
     place.seller.payment_api_key = nil
     expect(place).not_to be_valid
   end
-
-  it 'cannot be published without a photo' do
-    place = create(:published_place)
-    expect(place).to be_valid
-
-    place.update main_photo: nil
-    expect(place).not_to be_valid
-  end
 end
