@@ -35,7 +35,8 @@ class SellerPostSignupJob < ApplicationJob
     # Set contact metadata
     params = [{ name: :nome_pessoa, value: seller.contact_name},
               { name: :nome_estabelecimento, value: seller.places.first.name},
-              { name: :tipo, value: seller.places.first.category.name}]
+              { name: :tipo, value: seller.places.first.category.name},
+              { name: :link_detalhe, value: place_url(seller.places.first)}]
 
     RestClient.put(base_url + "/contactdata/#{contact_id}",
                    {'Data': params}.to_json,
