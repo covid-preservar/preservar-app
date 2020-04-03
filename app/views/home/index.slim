@@ -19,8 +19,8 @@
           br
           | favorito
         p Compre um voucher para usar em qualquer altura, e ajude a sua economia local a sobreviver ao COVID-19
-        / - if @sellers.any?
-        /   = render 'shared/search_form'
+        - if @sellers.any?
+          = render 'shared/search_form'
 
         / section#hero-stats.clearfix
         /   article.stat
