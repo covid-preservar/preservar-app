@@ -14,7 +14,7 @@
 
   #hero-text {
     h1 + p {
-      opacity: 0.5;
+      opacity: .5;
     }
 
     .primary-cta {
@@ -89,7 +89,7 @@
   }
 
   input[type="number"]:focus {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .09);
   }
 
   .selected {
@@ -97,10 +97,10 @@
       //border: 2px solid var(--color-main-blue);
       background-color: var(--color-main-blue);
       color: white;
-    } 
+    }
 
     &:before {
-      color: white;      
+      color: white;
     }
   }
 
@@ -184,7 +184,8 @@
 }
 
 #place-share {
-  iframe, .link {
+  iframe,
+  .link {
     display: block;
     margin-top: 1rem;
   }
