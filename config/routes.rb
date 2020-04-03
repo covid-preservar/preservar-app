@@ -23,10 +23,6 @@ Rails.application.routes.draw do
 
       get '/obrigado', to: 'payments#done', as: :thank_you, on: :member
     end
-  else
-    # TEMP CODE TO ALLOW GIF CAPTURE
-    resources :places, only: [:index, :show]
-    resources :vouchers, only: [:create]
   end
 
   get '/tos', to: 'home#tos', as: :tos
