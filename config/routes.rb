@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     end
   else
     # TEMP CODE TO ALLOW GIF CAPTURE
-    resources :places, only: [:show]
+    resources :places, only: [:index, :show]
   end
 
   get '/tos', to: 'home#tos', as: :tos
