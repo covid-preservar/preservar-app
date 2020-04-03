@@ -1,0 +1,20 @@
+- content_for :header do
+  = render 'seller/navbar'
+
+- content_for :footer do
+  = render 'shared/footer_small'
+
+main.container.maincontent
+  .row
+    .col-12
+      h2 Criar local
+      = simple_form_for @place, url: seller_places_path, validate: true do |f|
+        = f.input :name
+        = f.association :category
+        = f.input :district, collection: Location.all_districts, label: 'Distrito', input_html:{ id: 'district_select'}
+        = f.input :area, collection: Location.for_district(@place.district).map(&:area), selected: @place.area,  input_html:{ id: 'area_select'}
+        = f.input :address, hint: 'Rua e número', placeholder: 'Morada'
+        = f.hidden_field :main_photo, value: @place.cached_main_photo_data, id:nil
+        = f.input :main_photo, as: :file, hint: 'Formato JPG, max. 10Mb'
+
+        = f.button :submit, 'Criar'

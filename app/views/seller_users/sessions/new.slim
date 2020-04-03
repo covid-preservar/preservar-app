@@ -1,14 +1,18 @@
-h2= t("devise.sessions.new.sign_in")
-= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .form-inputs
-    = f.input :email,
-      required: false,
-      autofocus: true,
-      input_html: { autocomplete: "email" }
-    = f.input :password,
-      required: false,
-      input_html: { autocomplete: "current-password" }
-    = f.input :remember_me, label: 'Lembrar-se de mim', as: :boolean if devise_mapping.rememberable?
-  .form-actions
-    = f.button :submit, t("devise.sessions.new.sign_in")
-= render "seller_users/shared/links"
+.row
+  .col-12
+    h2= t("devise.sessions.new.sign_in")
+.row
+  .col-md-6.col-sm-12
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-inputs
+        = f.input :email,
+          required: false,
+          autofocus: true,
+          input_html: { autocomplete: "email" }
+        = f.input :password,
+          required: false,
+          input_html: { autocomplete: "current-password" }
+        = f.input :remember_me, label: 'Lembrar-se de mim', as: :boolean if devise_mapping.rememberable?
+      .form-actions
+        = f.button :submit, t("devise.sessions.new.sign_in")
+    = render "seller_users/shared/links"

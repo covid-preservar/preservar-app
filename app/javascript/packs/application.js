@@ -22,8 +22,8 @@ import '../src/new_voucher_form';
 import '../src/smooth_scroll';
 import '../src/analytics';
 
-import SellerForm from "../src/seller_registration_form";
-window.SellerForm = SellerForm;
+import PlaceForm from "../src/place_form";
+window.PlaceForm = PlaceForm;
 
 import VoucherPaymentForm from "../src/voucher_payment_form";
 window.VoucherPaymentForm = VoucherPaymentForm;
@@ -36,13 +36,15 @@ window.VoucherPaymentForm = VoucherPaymentForm;
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 function setup() {
-  if ($('body').is('.registrations.new') && !window.registration_form) {
-    window.registration_form = new SellerForm();
+  if ($("body").is(".registrations.new, .places.new") && !window.place_form) {
+    window.place_form = new PlaceForm();
   }
 
   if ($('body').is('.payments') && !window.voucher_payment_form) {
     window.voucher_payment_form = new VoucherPaymentForm();
   }
+
+  $('[data-toggle="tooltip"]').tooltip();
 }
 
 

@@ -10,12 +10,13 @@ class Place < ApplicationRecord
   belongs_to :seller
   has_many :vouchers, dependent: :restrict_with_exception
 
-  validates :area, :address, presence: true
-  validates :main_photo, presence: true, if: :published?
+  validates :name, :area, :address, :main_photo, presence: true
   validate  :seller_has_api_key
 
   scope :sorted, -> { order(name: :asc) }
   scope :published, -> { where(published: true) }
+
+  attr_accessor :district
 
   def can_publish?
     seller.payment_api_key.present? && main_photo.present?

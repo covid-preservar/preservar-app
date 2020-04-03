@@ -1,0 +1,71 @@
+- content_for :header do
+  = render 'seller/navbar'
+
+- content_for :footer do
+  = render 'shared/footer_small'
+
+main.container.maincontent
+  .row
+    .col-sm-12.col-md-8.col-xl-6
+      h3.mb-4 A minha conta
+      table.table
+        tbody
+          tr
+            td
+              strong Nome da empresa
+            td
+              = @seller.company_name
+          tr
+            td
+              strong NIF
+            td
+              = @seller.vat_id
+          - if @seller.payment_api_key.blank?
+            tr
+              td
+                strong Estado
+              td
+                | Aguarda inscrição Eupago
+                span data-toggle="tooltip" data-placement="top" title='A inscrição na Eupago tem que ser concluida antes de podermos activar a sua conta.'
+                  = inline_svg_tag 'iconic/question-mark.svg', class:'iconic question'
+
+    .col-sm-12.col-md-8.col-xl-6
+      h3.mb-4 Os meus locais
+      table.table
+        thead
+          th Nome
+          th Estado
+          th
+        tbody
+          - @seller.places.each do |place|
+            tr
+              td
+                = place.name
+              td
+                = place.published ? 'Publicado' : 'Em validação'
+              td
+                = link_to 'Detalhes', seller_place_path(place)
+      = link_to 'Adicionar local', new_seller_place_path
+  .row
+    .col-sm-12.col-md-8.col-xl-6
+      h3.mb-4.mt-4 Os meus vouchers
+      table.table
+        thead
+          th Local
+          th Código
+          th Valor
+          th Email
+          th Estado
+        tbody
+          - @seller.vouchers.seller_visible.each do |voucher|
+            tr
+              td
+                = voucher.place.name
+              td
+                = voucher.code
+              td
+                = voucher.value
+              td
+                = voucher.email
+              td
+                = voucher.human_state_name

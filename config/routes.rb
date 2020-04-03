@@ -33,6 +33,12 @@ Rails.application.routes.draw do
              controllers: { registrations: 'seller_users/registrations' },
              path_names: { sign_up: 'registo' }
 
+
+  namespace :seller do
+    resource :account, only: [:show]
+    resources :places, only: [:show, :new, :create]
+  end
+
   # TEMP - Until the seller login area is built
   get '/comerciante/bem-vindo', to: 'places#register_success', as: :register_success
 
@@ -45,7 +51,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :admin_users
     resources :categories
-    resources :payment_notifications
+    resources :payment_notifications, only: [:index, :show]
     resources :sellers
     resources :places do
       member do
@@ -53,7 +59,7 @@ Rails.application.routes.draw do
         patch :unpublish
       end
     end
-    resources :seller_users, except: [:destroy]
+    resources :seller_users
     resources :vouchers
 
     root to: "places#index"

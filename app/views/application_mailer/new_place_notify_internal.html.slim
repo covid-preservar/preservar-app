@@ -1,0 +1,17 @@
+h2 Comerciante criou novo local
+
+table
+  tbody
+    tr
+      td
+        strong Nome:
+      td =< @place.name
+    tr
+      td
+        strong Categoria:
+      td =< @place.category.name
+    tr
+      td
+        strong Link:
+      td =< link_to admin_place_url(@place), admin_place_url(@place)
+

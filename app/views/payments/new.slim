@@ -3,11 +3,20 @@
 
 .container
   section#hero.row
-    #hero-text.col-sm-12.col-md-12.col-lg-6
+    #hero-text.col-sm-12.col-md-12.col-lg-6.mb-4
       h1 Escolha como deseja pagar
       br
 
 .container
+  .row
+    .col-sm-12.col-md-6.col-lg-4.voucher-detail
+      h3
+        ' Local:
+        = @voucher.place.name
+        br
+        ' Valor:
+        = number_to_currency @voucher.value, locale: :pt
+        / TODO - Add discount info if applicable
   .row
     .col-sm-12.col-md-6.col-lg-4#form-wrapper
       = render 'form'

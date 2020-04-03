@@ -1,0 +1,12 @@
+
+- content_for :body_class
+  | devise
+
+- content_for :header
+  = render 'shared/header'
+
+- content_for :content
+  .container
+    = yield
+
+= render template: "layouts/application"

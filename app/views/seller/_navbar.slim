@@ -1,0 +1,11 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand href='/'
+    = image_tag 'logo-small.svg'
+
+  button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+    span class="navbar-toggler-icon"
+
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.ml-auto.mt-0
+      li.nav-item
+        = link_to 'A minha conta', seller_account_path, class: 'secondary-cta'

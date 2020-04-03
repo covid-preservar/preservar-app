@@ -1,0 +1,14 @@
+.iconic {
+  height: .875rem;
+  width: .875rem;
+
+  &.question {
+    background: $blue;
+    border-radius: 50%;
+    fill: $white;
+    height: 1rem;
+    margin-left: .25rem;
+    padding: 3px 2px 3px 1px;
+    width: 1rem;
+  }
+}

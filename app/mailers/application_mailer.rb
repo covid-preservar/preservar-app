@@ -13,6 +13,12 @@ class ApplicationMailer < ActionMailer::Base
     mail to:ENV['EUPAGO_EMAIL'], cc:'eupago@preserve.pt', subject:'[tech4covid19] Novo Registo'
   end
 
+  def new_place_notify_internal(place)
+    @place = place
+    mail to:'eupago@preserve.pt', subject:'Comerciante criou novo local'
+  end
+
+
   def voucher_email(voucher_id)
     @voucher = Voucher.find(voucher_id)
     mail to:@voucher.email, subject: 'Parabéns pelo apoio! Aqui está o seu voucher.'

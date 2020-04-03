@@ -9,6 +9,10 @@ class ApplicationMailerPreview < ActionMailer::Preview
     ApplicationMailer.seller_signup_notify_internal(Seller.first)
   end
 
+  def new_place_notify_internal
+    ApplicationMailer.new_place_notify_internal(Place.first)
+  end
+
   def voucher_email
     ApplicationMailer.voucher_email(Voucher.first.id)
   end

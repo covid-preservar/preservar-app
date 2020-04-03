@@ -4,8 +4,8 @@
     h3 Sobre o estabelecimento
     = f.input :name, label: 'Nome público do estabelecimento', hint: 'Este é o nome que vai ser visível na plataforma.', placeholder: 'Nome'
     = f.input :category_id, collection: Category.all
-    = f.input :district, collection: Location.all_districts, label: 'Distrito'
-    = f.input :area, collection: Location.for_district(@form.district).map(&:area), selected: @form.area
+    = f.input :district, collection: Location.all_districts, label: 'Distrito', input_html:{ id: 'district_select'}
+    = f.input :area, collection: Location.for_district(@form.district).map(&:area), selected: @form.area, input_html:{ id: 'area_select'}
     = f.input :address, hint: 'Rua e número', placeholder: 'Morada'
     = f.hidden_field :main_photo, value: @form.cached_main_photo_data, id:nil
     = f.input :main_photo, as: :file, hint: 'Formato JPG, max. 10Mb'

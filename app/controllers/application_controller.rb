@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :load_categories, unless: -> { request.xhr? }
   before_action :load_cities, unless: -> { request.xhr? }
-  before_action :set_devise_layout, if: :devise_controller?
+  # before_action :set_devise_layout, if: :devise_controller?
 
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -24,6 +24,15 @@ class ApplicationController < ActionController::Base
     I18n.locale = 'pt'
   end
 
+  def after_sign_in_path_for(resource)
+    case resource
+    when AdminUser
+      admin_root_path
+    when SellerUser
+      seller_account_path
+    end
+  end
+
   private
 
   def load_categories
@@ -34,7 +43,7 @@ class ApplicationController < ActionController::Base
     gon.cities = Place.published.distinct(:area).pluck(:area)
   end
 
-  def set_devise_layout
-    self.class.layout(resource_name == :admin_user ? 'devise_admin' : 'application')
-  end
+  # def set_devise_layout
+  #   self.class.layout(resource_name == :admin_user ? 'devise_admin' : 'devise')
+  # end
 end

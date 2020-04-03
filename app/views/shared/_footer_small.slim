@@ -1,0 +1,11 @@
+- cache [:footer_small, ENV['HEROKU_SLUG_COMMIT']] do
+  footer.footer-small.container
+    .row
+      .col-md-6.col-12
+        = image_tag 'logo.svg', alt: 'Preserve', height: '80px'
+      .col-md-6.col-12
+          => link_to 'Termos e Condições', tos_path
+          '  &middot;
+          => link_to 'Politica de Privacidade', privacy_path
+          '  &middot;
+          = mail_to 'info@preserve.pt'

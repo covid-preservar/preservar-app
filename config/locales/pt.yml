@@ -16,6 +16,9 @@ pt:
     attributes:
       voucher:
         payment_phone: 'Número de Telemóvel'
+      place:
+        main_photo: 'Fotografia'
+
   activemodel:
     attributes:
       seller_signup_form:
