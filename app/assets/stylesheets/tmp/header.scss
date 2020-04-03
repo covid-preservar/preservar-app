@@ -9,6 +9,10 @@
   .header-right {
     text-align: right;
   }
+
+  .header-link + .header-link {
+    margin-left: 1rem;
+  }
 }
 
 .header-main {

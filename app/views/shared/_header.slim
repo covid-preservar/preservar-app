@@ -1,10 +1,11 @@
 header.header.header-main
   a#logo href="/"
   - if seller_user_signed_in?
-    = link_to 'A minha conta', seller_account_path, class: 'nav-link secondary-cta'
+    .header-right
+      = link_to 'Terminar sessão', destroy_seller_user_session_path, method: :delete, class: 'header-link'
+      = link_to 'A minha conta', seller_account_path, class: 'header-link secondary-cta'
   - else
     .header-right
+      = link_to 'Login Comerciante', new_seller_user_session_path, class: 'header-link'
       - if request.path == root_path
-        = link_to 'Submeta o seu negócio', new_seller_user_registration_path, class: 'secondary-cta'
-        br
-      = link_to 'Login Comerciante', new_seller_user_session_path
+        = link_to 'Submeta o seu negócio', new_seller_user_registration_path, class: 'header-link secondary-cta'
