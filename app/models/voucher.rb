@@ -37,7 +37,7 @@ class Voucher < ApplicationRecord
   validates :payment_identifier, presence: true, if: :pending_payment?
   validates :payment_phone, format: { with: /\A\d{9}\z/ }, if: :requires_phone?
 
-  scope :seller_visible, -> { where(state: %w[paid redeemed])}
+  scope :seller_visible, -> { where(state: %w[paid redeemed]) }
 
   attr_reader :custom_value
 

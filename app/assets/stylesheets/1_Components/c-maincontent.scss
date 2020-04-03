@@ -1,5 +1,5 @@
 .maincontent {
   min-height: calc(100vh - #{$navbar-brand-height} - #{$navbar-padding-y} - #{$footer-height} - 2rem);
-  padding-top: 2rem;
   padding-bottom: 2rem;
+  padding-top: 2rem;
 }

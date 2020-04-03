@@ -2,10 +2,9 @@
 class Seller::BaseController < ApplicationController
   before_action :authenticate_seller_user!
 
-
   protected
 
   def body_class
-   "seller_area #{super}"
+    "seller-area #{super}"
   end
 end
