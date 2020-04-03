@@ -1,7 +1,7 @@
 h1
   ' Parabéns pelo seu apoio.
   br
-  => @voucher.seller.name
+  => @voucher.place.name
   | agradece!
 
 p
@@ -35,7 +35,7 @@ table
     tr
       td
         strong Estabelecimento
-      td = @voucher.seller.name
+      td = @voucher.place.name
 
 
 

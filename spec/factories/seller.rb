@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 FactoryBot.define do
   factory :seller do
-    name { 'Tasca do Chico' }
-    category
+    seller_user
     payment_api_key { Faker::Internet.uuid }
-    address { "#{Faker::Address.street_name}, #{Faker::Address.building_number}" }
-    area { Location.all.sample }
+    vat_id { '999999999' }
+    company_name { Faker::Company.name }
+    contact_name { Faker::Name.name }
   end
 end

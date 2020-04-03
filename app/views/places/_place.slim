@@ -1,0 +1,9 @@
+- cache place do
+  a.place href=place_path(place)
+    .place-img-wrapper
+      = image_tag place.main_photo_url(:small, public: true)
+    h3 = place.name
+    p
+      => place.category.name
+      ' &middot;
+      = place.area

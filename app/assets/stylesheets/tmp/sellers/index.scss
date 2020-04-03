@@ -1,4 +1,4 @@
-.sellers.index {
+.places.index {
   #places-container {
     margin-top: 6rem;
     .section-separator:before {
@@ -39,7 +39,7 @@
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;  /* Firefox */
 
-  &::-webkit-scrollbar { 
+  &::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
   }
 
@@ -53,6 +53,7 @@
   text-decoration: none;
   flex: 0 1 calc(25% - 1rem);
   margin-right: 1rem;
+  margin-bottom: 3rem;
 
   h3,
   p {
@@ -92,7 +93,6 @@
 
 @media only screen and (max-width: 768px) {
   .place {
-    margin-top: 3rem;
     flex-basis: calc(33% - 1rem);
 
     &:nth-child(n+4) {
@@ -105,8 +105,8 @@
   .place {
     margin-top: 2rem;
     flex: 1 1 100%;
-    width: 100%;
     margin-right: 0;
+    width: 100%;
   }
 
   #places-container .place:first-child {

@@ -18,7 +18,7 @@ class SellerSignupForm
                 :password,
                 :password_confirmation
 
-  attr_writer :seller, :seller_user
+  attr_writer :seller, :seller_user, :place
 
   validates :name,
             :address,
@@ -41,20 +41,9 @@ class SellerSignupForm
 
   def initialize(attributes = {})
     super(attributes.reject { |_, v| v.blank? })
-    @name ||= seller_user&.seller&.name
-    @area ||= seller_user&.seller&.area
-    @address ||= seller_user&.seller&.address
-    @email ||= seller_user.email
-    @category_id ||= seller_user&.seller&.category_id
-    @password ||= seller_user.password
-    @password_confirmation ||= seller_user.password_confirmation
-    @contact_name ||= seller_user&.seller&.contact_name
-    @company_name ||= seller_user&.seller&.company_name
-
-    @vat_id ||= seller_user&.seller&.vat_id
     @vat_id = 'PT' + @vat_id if @vat_id&.match?(/\A\d{9}\z/)
 
-    @cached_main_photo_data = seller.cached_main_photo_data
+    @cached_main_photo_data = place.cached_main_photo_data
   end
 
   def category
@@ -64,39 +53,44 @@ class SellerSignupForm
   def seller_user
     @seller_user ||= SellerUser.new(email: email,
                                     password: password,
-                                    password_confirmation: password_confirmation,
-                                    seller: seller)
+                                    password_confirmation: password_confirmation)
   end
 
   def seller
-    @seller ||= Seller.new(name: name,
-                           area: area,
-                           address: address,
-                           category_id: category_id,
-                           vat_id: vat_id,
+    @seller ||= Seller.new(vat_id: vat_id,
                            contact_name: contact_name,
                            company_name: company_name,
-                           main_photo: main_photo)
+                           seller_user: seller_user)
+  end
+
+  def place
+    @place ||= seller.places.build(name: name,
+                                   area: area,
+                                   address: address,
+                                   category_id: category_id,
+                                   main_photo: main_photo)
   end
 
   def save
     return false unless valid?
 
-    seller.save!
-    seller_user.save!
-  rescue StandardError
-    copy_errors
-    false
+    ActiveRecord::Base.transaction do
+      seller_user.save!
+      seller.save!
+      place.save!
+    end
+  # rescue StandardError
+  #   copy_errors
+  #   false
   end
 
   private
 
   def copy_errors
-    seller_user.errors.each do |attribute, error|
-      errors.add(attribute, error)
-    end
-    seller.errors.each do |attribute, error|
-      errors.add(attribute, error)
+    [seller_user, seller, place].each do |model|
+      model.errors.each do |attribute, error|
+        errors.add(attribute, error)
+      end
     end
   end
 

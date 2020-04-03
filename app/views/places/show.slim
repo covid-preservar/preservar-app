@@ -1,4 +1,4 @@
-- title @seller.name
+- title @place.name
 - set_meta_tags og: { title: :full_title, site_name: :site}, twitter: { title: :full_title }
 - content_for :header do
   = render 'header'
@@ -11,34 +11,34 @@
 
   .xrow
     #hero-text.xcol-6
-      h1 = @seller.name
+      h1 = @place.name
       p
-        => @seller.category.name
+        => @place.category.name
         ' &middot;
-        = @seller.address
+        = @place.address
 
       = simple_form_for @voucher do |f|
         h3 Apoie este local, seleccione o valor do voucher
-        = f.input_field :seller_id, as: :hidden
-        = f.input :value, as: :radio_buttons, collection: Seller::DEFAULT_EUR_VALUES, checked: 20, legend_tag: false
+        = f.input_field :place_id, as: :hidden
+        = f.input :value, as: :radio_buttons, collection: Place::DEFAULT_EUR_VALUES, checked: 20, legend_tag: false
         = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}
         = f.submit 'Comprar voucher'
         = image_tag 'icon-mb-faded.svg', alt: "Multibanco", class: 'voucher-mb'
 
-    = image_tag @seller.main_photo_url(:large, public: true) || 'place-img.jpg', class: 'xcol-5 xoffset-1', id: 'hero-img'
+    = image_tag @place.main_photo_url(:large, public: true), class: 'xcol-5 xoffset-1', id: 'hero-img'
 
   section#place-share.section
     .xrow
       h2.xcol-6.section-separator Partilhe com os seus amigos, para que possam apoiar também
     .xrow.xcol-6
-      / TODO: add this page URL
-      iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=#{seller_url(@seller)}&layout=button_count&size=large&width=110&height=28" style="border:none;overflow:hidden" width="110"
+
+      iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=#{place_url(@place)}&layout=button_count&size=large&width=110&height=28" style="border:none;overflow:hidden" width="110"
       a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet
       script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
       .link
-        input disabled='true' type="text" value=seller_url(@seller)
+        input disabled='true' type="text" value=place_url(@place)
 
-  == render 'other_sellers'
+  == render 'other_places'
 
   section#kicker.section
     .xrow

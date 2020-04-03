@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 class Category < ApplicationRecord
-  has_many :sellers, dependent: :restrict_with_exception
+  has_many :places, dependent: :restrict_with_exception
 
   validates :name, :name_plural, presence: true
 
-  scope :with_sellers, -> { where(id: Seller.published.distinct(:category_id)) }
+  scope :with_places, -> { where(id: Place.published.distinct(:category_id)) }
   default_scope -> { order(name: :asc) }
 end

@@ -26,9 +26,9 @@ header.main-content__header role="banner"
         class: "button",
       ) if valid_action?(:edit) && show_action?(:edit, page.resource)
     - if page.resource.can_publish?
-      = button_to 'Publish', publish_admin_seller_path(page.resource), class: "button", method: :patch
+      = button_to 'Publish', publish_admin_place_path(page.resource), class: "button", method: :patch
     - if page.resource.published?
-      = button_to 'Unublish', unpublish_admin_seller_path(page.resource), class: "button", method: :patch
+      = button_to 'Unpublish', unpublish_admin_place_path(page.resource), class: "button", method: :patch
 section.main-content__body
   dl
     dt#photo.attribute-label

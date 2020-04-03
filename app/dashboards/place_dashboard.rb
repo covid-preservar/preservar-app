@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'administrate/base_dashboard'
 
-class CategoryDashboard < Administrate::BaseDashboard
+class PlaceDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,10 +9,19 @@ class CategoryDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    category: Field::BelongsTo,
+    seller: Field::BelongsTo,
+    vouchers: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    name_plural: Field::String,
-    places: Field::HasMany
+    created_at: Field::DateTime,
+    updated_at: Field::DateTime,
+    area: Field::String,
+    slug: Field::String,
+    address: Field::String,
+    published: Field::Boolean,
+    main_photo_data: Field::String.with_options(searchable: false),
+    main_photo: ShrineField
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -23,24 +32,40 @@ class CategoryDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     name
-    places
+    category
+    area
+    published
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    published
+    category
+    seller
+    vouchers
     name
-    name_plural
-    places
+    created_at
+    updated_at
+    area
+    slug
+    address
+    main_photo_data
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+    seller
+    category
     name
-    name_plural
+    area
+    slug
+    address
+    published
+    main_photo
   ].freeze
 
   # COLLECTION_FILTERS
@@ -55,10 +80,10 @@ class CategoryDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how categories are displayed
+  # Overwrite this method to customize how sellers are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(category)
-    category.name
-  end
+  # def display_resource(seller)
+  #   "Seller ##{seller.id}"
+  # end
 end

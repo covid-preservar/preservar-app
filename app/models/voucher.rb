@@ -25,7 +25,7 @@ class Voucher < ApplicationRecord
     end
   end
 
-  belongs_to :seller
+  belongs_to :place
 
   validates :code, presence: true, uniqueness: { allow_nil: true }, if: :paid?
   validates :email, format: { with: Devise.email_regexp }, if: :pending_payment?
@@ -50,7 +50,7 @@ class Voucher < ApplicationRecord
   end
 
   def generate_identifier
-    self.payment_identifier = "s#{seller_id}v#{id}_#{payment_method.downcase}_#{Time.now.to_i}"
+    self.payment_identifier = "s#{place_id}s#{place.seller_id}v#{id}_#{payment_method.downcase}_#{Time.now.to_i}"
   end
 
   def requires_phone?

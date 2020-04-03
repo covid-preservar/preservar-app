@@ -2,7 +2,7 @@
 class ApplicationController < ActionController::Base
   # Simple HTTP auth to keep users from
   # accidentaly using the test app and bots from indexing it
-   http_basic_authenticate_with name: ENV["HTTP_USER"],
+  http_basic_authenticate_with name: ENV["HTTP_USER"],
                                password: ENV["HTTP_PASSWORD"],
                                if: -> { ENV["HTTP_AUTH"].present? }
 
@@ -27,11 +27,11 @@ class ApplicationController < ActionController::Base
   private
 
   def load_categories
-    @categories = Category.with_sellers
+    @categories = Category.with_places
   end
 
   def load_cities
-    gon.cities = Seller.published.distinct(:area).pluck(:area)
+    gon.cities = Place.published.distinct(:area).pluck(:area)
   end
 
   def set_devise_layout
