@@ -36,7 +36,14 @@ Rails.application.routes.draw do
 
   namespace :seller do
     resource :account, only: [:show]
-    resources :places, only: [:show, :new, :create]
+    resources :places, only: [:show, :new, :create] do
+      member do
+        get :enable_discount
+        post :confirm_discount
+        get :disable_discount
+        post :confirm_disable_discount
+      end
+    end
   end
 
   # TEMP - Until the seller login area is built

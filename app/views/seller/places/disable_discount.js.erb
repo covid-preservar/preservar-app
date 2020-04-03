@@ -1,0 +1,6 @@
+$('#discountModal').remove()
+$('body').append('<%= j(render partial:"disable_discount_modal")%>')
+$('#discountModal').modal()
+$("#discountModal").on('shown.bs.modal', function () {
+    $("#discountModal .modal").css('display', 'block');
+})

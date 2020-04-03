@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_132343) do
+ActiveRecord::Schema.define(version: 2020_04_03_171549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_132343) do
     t.jsonb "main_photo_data"
     t.boolean "published"
     t.bigint "seller_id"
+    t.boolean "has_discount", default: false
     t.index ["seller_id"], name: "index_places_on_seller_id"
     t.index ["slug"], name: "index_places_on_slug", unique: true
   end

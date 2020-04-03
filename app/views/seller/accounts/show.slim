@@ -36,6 +36,7 @@ main.container.maincontent
         thead
           th Nome
           th Estado
+          th Descontos?
           th
         tbody
           - @seller.places.each do |place|
@@ -44,6 +45,8 @@ main.container.maincontent
                 = place.name
               td
                 = place.published ? 'Publicado' : 'Em validação'
+              td
+                = place.has_discount ? 'Sim' : 'Não'
               td
                 = link_to 'Detalhes', seller_place_path(place)
       = link_to 'Adicionar local', new_seller_place_path

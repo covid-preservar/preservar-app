@@ -34,7 +34,7 @@ select:not(.form-control) {
   opacity: .3;
 }
 
-input[type="submit"],
+input[type="submit"]:not(.btn),
 .primary-cta {
   display: inline-block;
   height: 3rem;
