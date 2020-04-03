@@ -35,13 +35,13 @@ class PaymentsController < ApplicationController
     @voucher = Voucher.find(params[:voucher_id] || params[:id])
 
     unless cookies.encrypted[:uuid] == @voucher.cookie_uuid
-      redirect_to(@voucher.seller, alert: 'Operação inválida') and return
+      redirect_to(@voucher.place, alert: 'Operação inválida') and return
     end
   end
 
   def ensure_voucher_state
     unless @voucher.created?
-      redirect_to(@voucher.seller, alert: 'Operação inválida') and return
+      redirect_to(@voucher.place, alert: 'Operação inválida') and return
     end
   end
 end
