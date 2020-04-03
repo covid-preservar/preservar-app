@@ -84,8 +84,12 @@
   &:nth-child(n+5) {
     margin-top: 2rem;
   }
-
 }
+
+.home-list .place {
+  margin-top: 0;
+}
+
 @media only screen and (max-width: 768px) {
   .place {
     margin-top: 3rem;
