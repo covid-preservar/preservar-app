@@ -5,6 +5,10 @@
   .secondary-cta {
     margin-left: auto;
   }
+
+  .header-right {
+    text-align: right;
+  }
 }
 
 .header-main {
@@ -15,6 +19,7 @@
   height: 3.5rem;
   padding: calc(var(--grid-outer-padding) / 2);
   margin-bottom: 3rem;
+  justify-content: flex-start;
 
   .search-form {
     width: 50%;

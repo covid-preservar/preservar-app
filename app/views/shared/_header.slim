@@ -2,5 +2,9 @@ header.header.header-main
   a#logo href="/"
   - if seller_user_signed_in?
     = link_to 'A minha conta', seller_account_path, class: 'nav-link secondary-cta'
-  - elsif request.path == root_path
-    = link_to 'Submeta o seu negócio', new_seller_user_registration_path, class: 'secondary-cta'
+  - else
+    .header-right
+      - if request.path == root_path
+        = link_to 'Submeta o seu negócio', new_seller_user_registration_path, class: 'secondary-cta'
+        br
+      = link_to 'Login Comerciante', new_seller_user_session_path

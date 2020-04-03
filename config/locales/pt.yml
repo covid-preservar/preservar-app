@@ -9,6 +9,7 @@ pt:
       defaults:
         password: 'Password'
         password_confirmation: 'Confirmação de password'
+        current_password: 'Password actual'
         email: 'E-mail'
         category_id: 'Categoria'
         name: 'Nome'
