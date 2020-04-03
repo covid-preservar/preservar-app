@@ -5,7 +5,7 @@ class InvertSellerUserRelation < ActiveRecord::Migration[6.0]
     reversible do |dir|
       dir.up do
         Seller.all.each do |s|
-          s.update_column :seller_user_id, SellerUser.find_by(seller_id: s.id).id
+          s.update_column :seller_user_id, SellerUser.find_by(seller_id: s.id)&.id
         end
       end
     end
