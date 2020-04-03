@@ -3,3 +3,9 @@ pt:
     passwords:
       new:
         send_me_reset_password_instructions: 'Enviar instruções'
+
+    sessions:
+      signed_in: ''
+      signed_out: ''
+      already_signed_out: ''
+

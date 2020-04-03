@@ -10,8 +10,13 @@
     text-align: right;
   }
 
-  .header-link + .header-link {
-    margin-left: 1rem;
+  .header-link {
+    text-decoration: none;
+    font-weight: bold;
+
+    & + .header-link {
+      margin-left: 1rem;
+    }
   }
 }
 
