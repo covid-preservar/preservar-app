@@ -9,7 +9,7 @@ class SellerUserDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    sellers: Field::HasMany,
+    seller: Field::HasOne,
     id: Field::Number,
     email: Field::String,
     encrypted_password: Field::String,
@@ -34,7 +34,7 @@ class SellerUserDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    sellers
+    seller
     email
     reset_password_token
     reset_password_sent_at
