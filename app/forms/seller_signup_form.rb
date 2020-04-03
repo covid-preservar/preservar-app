@@ -79,9 +79,9 @@ class SellerSignupForm
       seller.save!
       place.save!
     end
-  rescue StandardError
-    copy_errors
-    false
+  # rescue StandardError
+  #   copy_errors
+  #   false
   end
 
   private
