@@ -45,6 +45,12 @@ function setup() {
   }
 
   $('[data-toggle="tooltip"]').tooltip();
+
+  $(".alert-dismissible").on("closed.bs.alert", _ => {
+    if ($('.alert').length == 0) {
+      $(".flashes").hide();
+    }
+  });
 }
 
 
