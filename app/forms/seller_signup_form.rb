@@ -64,22 +64,24 @@ class SellerSignupForm
   end
 
   def place
-    @place ||= Place.new(name: name,
-                         area: area,
-                         address: address,
-                         category_id: category_id,
-                         main_photo: main_photo)
+    @place ||= seller.places.build(name: name,
+                                   area: area,
+                                   address: address,
+                                   category_id: category_id,
+                                   main_photo: main_photo)
   end
 
   def save
     return false unless valid?
 
-    seller_user.save!
-    seller.save!
-    place.save!
-  rescue StandardError
-    copy_errors
-    false
+    ActiveRecord::Base.transaction do
+      seller_user.save!
+      seller.save!
+      place.save!
+    end
+  # rescue StandardError
+  #   copy_errors
+  #   false
   end
 
   private

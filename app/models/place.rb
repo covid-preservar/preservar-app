@@ -18,7 +18,7 @@ class Place < ApplicationRecord
   scope :published, -> { where(published: true) }
 
   def can_publish?
-     seller.payment_api_key.present? && main_photo.present?
+    seller.payment_api_key.present? && main_photo.present?
   end
 
   private

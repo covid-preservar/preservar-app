@@ -1,4 +1,5 @@
-require "administrate/base_dashboard"
+# frozen_string_literal: true
+require 'administrate/base_dashboard'
 
 class SellerDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -13,11 +14,10 @@ class SellerDashboard < Administrate::BaseDashboard
     id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    main_photo_data: Field::String.with_options(searchable: false),
     payment_api_key: Field::String,
     vat_id: Field::String,
     contact_name: Field::String,
-    company_name: Field::String,
+    company_name: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -41,7 +41,6 @@ class SellerDashboard < Administrate::BaseDashboard
     places
     created_at
     updated_at
-    main_photo_data
     payment_api_key
     vat_id
     contact_name
@@ -51,13 +50,11 @@ class SellerDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  seller_user
-  places
-  main_photo_data
-  payment_api_key
-  vat_id
-  contact_name
-  company_name
+    seller_user
+    vat_id
+    contact_name
+    company_name
+    payment_api_key
   ].freeze
 
   # COLLECTION_FILTERS

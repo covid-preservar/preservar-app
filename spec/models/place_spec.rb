@@ -21,5 +21,4 @@ RSpec.describe Place, type: :model do
     place.update main_photo: nil
     expect(place).not_to be_valid
   end
-
 end
