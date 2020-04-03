@@ -1,7 +1,7 @@
 function setup() {
   if ($('#new_voucher').length > 0) {
     $('#voucher_custom_value').on('input', (ev) => {
-      $('#voucher_custom_value').parent().addClass("selected"); // I tried $(this), but didn't work
+      $('#voucher_custom_value').parent().addClass("selected");
       $('.radio_buttons').prop('checked', false)
     })
 
