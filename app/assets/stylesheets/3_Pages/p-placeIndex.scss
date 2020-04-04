@@ -1,13 +1,15 @@
 .places.index {
+
   .places-container {
     margin-top: 6rem;
-    .section-separator:before {
+
+    .section-separator::before {
+      background: var(--color-main-blue);
       content: '';
+      height: 4px;
       position: absolute;
       top: 8rem;
       width: 100px;
-      height: 4px;
-      background: var(--color-main-blue);
     }
 
     @media only screen and (max-width: 375px) {

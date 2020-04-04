@@ -10,7 +10,7 @@
     = link_to '&slarr; Voltar ao início'.html_safe, root_path, class:'place-back'
 
   .xrow
-    #hero-text.xcol-6
+    .hero-text.xcol-6
       h1 = @place.name
       p
         => @place.category.name
@@ -28,7 +28,7 @@
         = f.input_field :place_id, as: :hidden
         = f.input :value, as: :radio_buttons, collection: Place::DEFAULT_EUR_VALUES, checked: 20, legend_tag: false
         = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}
-        = f.submit 'Comprar voucher'
+        = f.submit 'Comprar voucher', class: 'btn btn-primary'
         = image_tag 'icon-mb-faded.svg', alt: "Multibanco", class: 'voucher-mb'
 
     = image_tag @place.main_photo_url(:large, public: true), class: 'xcol-5 xoffset-1', id: 'hero-img'

@@ -5,18 +5,18 @@
 
   font-weight: 300;
   font-style: normal;
- }
+}
 
- @font-face {
+@font-face {
   font-family: 'GangsterGrotesk';
   src: font-url('gangstergrotesk-regular-webfont.woff2') format('woff2'),
        font-url('gangstergrotesk-regular-webfont.woff') format('woff');
 
   font-weight: normal;
   font-style: normal;
- }
+}
 
- @font-face {
+@font-face {
   font-family: 'GangsterGrotesk';
   src: font-url('gangstergrotesk-bold-webfont.woff2') format('woff2'),
        font-url('gangstergrotesk-bold-webfont.woff') format('woff');
@@ -27,8 +27,8 @@
 
 html,
 body {
+  color: $black;
   font-family: $font-family-base;
-  color: #000000;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -41,15 +41,15 @@ h3 {
 }
 
 h1 {
+  color: var(--color-main-blue);
   font-size: var(--h1-font-size);
   line-height: var(--h1-line-height);
-  color: var(--color-main-blue);
 }
 
 h2 {
+  color: var(--color-main-blue);
   font-size: var(--h2-font-size);
   line-height: var(--h2-line-height);
-  color: var(--color-main-blue);
 }
 
 h3 {

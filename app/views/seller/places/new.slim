@@ -18,4 +18,5 @@ main.container.maincontent
         = f.input :main_photo, as: :file, hint: 'Formato JPG, max. 10Mb'
         = f.input :has_discount, label: 'Oferece Descontos?', as: :radio_buttons, wrapper: :vertical_collection_inline
 
-        = f.button :submit, 'Criar'
+        = f.button :submit, 'Criar', class: 'btn btn-primary'
+

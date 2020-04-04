@@ -9,11 +9,11 @@
 .xcontainer
   section#hero
     .xrow.clearfix
-      #hero-text.xcol-md-7.xcol-sm-12.xcol-6
+      .hero-text.xcol-md-7.xcol-sm-12.xcol-6
         h1.spinner-wrapper
           | Preserve o seu
           br
-          #hero-ticker
+          .hero-ticker
             - @spinner_categories.each do |c|
               span = c.name
           br
@@ -22,7 +22,7 @@
         - if @places.any? && ENV['HOSTNAME'] != 'preserve.pt'
           = render 'shared/search_form'
 
-        / section#hero-stats.clearfix
+        / section.hero-stats.clearfix
         /   article.stat
         /     h2 400
         /     p Locais

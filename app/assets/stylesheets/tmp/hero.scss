@@ -41,11 +41,11 @@
     margin-top: 3rem;
   }
 
-  #hero-img {
+  .hero-img {
     object-fit: cover;
   }
 
-  #hero-stats {
+  .hero-stats {
     margin-top: 5rem;
 
     @media only screen and (max-width: 1024px) {
@@ -81,7 +81,7 @@
   }
 
   @media only screen and (max-width: 667px) {
-    #hero-img {
+    .hero-img {
       display: none;
     }
 
@@ -95,8 +95,8 @@
   }
 
   @media only screen and (max-width: 375px) {
-    #hero-text > h1,
-    #hero-text > p {
+    .hero-text > h1,
+    .hero-text > p {
       width: 100%;
     }
 

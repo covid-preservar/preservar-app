@@ -34,39 +34,74 @@ select:not(.form-control) {
   opacity: .3;
 }
 
-input[type="submit"]:not(.btn),
 .primary-cta {
-  display: inline-block;
-  height: 3rem;
-  padding: 0 1rem;
   background: var(--color-main-blue);
-  font-weight: bold;
-  font-size: calc(17rem / 16);
-  line-height: 3rem;
-  text-decoration: none;
-  color: $white;
   border-radius: 0;
-  vertical-align: bottom;
   border: 0;
+  color: $white;
+  display: inline-block;
+  font-size: calc(17rem / 16);
+  font-weight: bold;
+  height: 3rem;
+  line-height: 3rem;
+  outline: 0;
+  padding: 0 1rem;
+  text-decoration: none;
+  vertical-align: bottom;
 
+  &:active,
+  &:focus,
   &:hover {
     background: $primary-cta-hover-bg;
     color: $white;
     cursor: pointer;
   }
+
+  &:active,
+  &:focus {
+    box-shadow: $btn-active-box-shadow
+  }
+}
+
+.btn-primary {
+  font-size: calc(17rem / 16);
+  font-weight: bold;
+  height: 3rem;
+  padding: 0 1rem;
+  text-decoration: none;
+  vertical-align: bottom;
+
+  &:focus,
+  &:hover {
+    background-color: $primary-cta-hover-bg;
+    color: $white;
+    cursor: pointer;
+  }
+
+  &:focus {
+    box-shadow: $btn-focus-box-shadow;
+  }
+
+  &:not(:disabled):not(.disabled):active {
+    background-color: $primary-cta-hover-bg;
+
+    &:focus {
+      box-shadow: $btn-active-box-shadow;
+    }
+  }
 }
 
 .secondary-cta {
-  display: inline-block;
-  height: 3rem;
-  padding: 0 1rem;
   border: 2px solid var(--color-main-blue);
-  font-weight: bold;
-  font-size: calc(17rem / 16);
-  line-height: 2.8rem;
-  text-decoration: none;
-  color: var(--color-main-blue);
   box-sizing: border-box;
+  color: var(--color-main-blue);
+  display: inline-block;
+  font-size: calc(17rem / 16);
+  font-weight: bold;
+  height: 3rem;
+  line-height: 2.8rem;
+  padding: 0 1rem;
+  text-decoration: none;
 
   &:hover {
     background: var(--color-light-blue);
