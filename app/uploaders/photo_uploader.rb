@@ -9,8 +9,8 @@ class PhotoUploader < BaseUploader
   Attacher.validate do
     validate_max_size 10 * 1024 * 1024, message: 'demasiado grande (max. 10 MB)'
     # Docs recommend validating both MIME and extension
-    validate_mime_type_inclusion %w[image/jpeg], message: 'tem que ser formato JPG'
-    validate_extension_inclusion %w[jpg jpeg], message: 'tem que ser formato JPG'
+    validate_mime_type_inclusion %w[image/jpeg image/png], message: 'tem que ser formato JPG ou PNG'
+    validate_extension_inclusion %w[jpg jpeg png], message: 'tem que ser formato JPG'
   end
 
   Attacher.derivatives_processor do |original|
