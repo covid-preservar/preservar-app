@@ -18,21 +18,7 @@
   flex: 0 1 calc(25% - 1rem);
   margin-right: 1rem;
   margin-bottom: 3rem;
-
-  h3,
-  p {
-    font-size: calc(16rem / 16);
-    line-height: calc(24 / 16);
-  }
-
-  h3 {
-    margin-top: 1rem;
-  }
-
-  p {
-    margin-top: 0;
-    opacity: 0.5;
-  }
+  max-width: calc(25% - 1rem);
 
   img {
     transition: opacity 100ms ease-out;
@@ -42,18 +28,62 @@
     background-color: var(--color-main-blue);
   }
 
+  .place-header,
+  .place-info {
+    font-size: calc(16rem / 16);
+    line-height: calc(24 / 16);
+  }
+
+  .place-info {
+    margin-top: 0;
+    opacity: 0.5;
+  }
+
+  .place-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  .place-name {
+    margin-right: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .discount {
+    flex: 0;
+    margin-left: auto;
+    white-space: nowrap;
+
+    .discount-value {
+      color: $black;
+      font-size: .875rem;
+      opacity: 0.5;
+    }
+
+    svg {
+      width: 1.375rem;
+      vertical-align: text-top;
+    }
+  }
+
+
   &:hover img {
     opacity: 0.5;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 812px) {
     flex-basis: calc(33% - 1rem);
+    max-width: calc(33% - 1rem);
   }
 
   @media only screen and (max-width: 414px) {
     flex: 1 1 100%;
     margin-right: 0;
     width: 100%;
+    max-width: none;
 
     img {
       object-fit: cover;
