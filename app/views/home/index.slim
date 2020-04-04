@@ -59,11 +59,11 @@
 
   - if ENV['HOSTNAME'] != 'preserve.pt'
     - cache @places do
-      section#places-container.section
+      section.places-container.section
         .xrow
           h2.xcol-6.section-separator Quem recebe o seu apoio
 
-      #places-list.xrow.home-list
+      .places-list.xrow.home-list
         == render @places
 
   / - cache [:press, ENV['HEROKU_SLUG_COMMIT']] do

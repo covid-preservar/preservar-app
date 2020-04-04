@@ -1,0 +1,21 @@
+.places.index {
+  .places-container {
+    margin-top: 6rem;
+    .section-separator:before {
+      content: "";
+      position: absolute;
+      top: 8rem;
+      width: 100px;
+      height: 4px;
+      background: var(--color-main-blue);
+    }
+
+    @media only screen and (max-width: 375px) {
+      margin-top: 0;
+
+      & .xrow:first-child {
+        display: none;
+      }
+    }
+  }
+}
