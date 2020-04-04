@@ -1,8 +1,8 @@
 .form-control {
   appearance: none;
   background-color: $white;
-  border: 0;
   border-radius: 0;
+  border: 0;
   box-shadow: $input-box-shadow;
   box-sizing: border-box;
   height: 3rem;
@@ -59,7 +59,7 @@ select:not(.form-control) {
 
   &:active,
   &:focus {
-    box-shadow: $btn-active-box-shadow
+    box-shadow: $btn-active-box-shadow;
   }
 }
 

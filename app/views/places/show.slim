@@ -10,28 +10,30 @@
     = link_to '&slarr; Voltar ao início'.html_safe, root_path, class:'place-back'
 
   .xrow
-    .hero-text.xcol-6
-      h1 = @place.name
-      p
-        => @place.category.name
-        ' &middot;
-        = @place.address
+    .xcol-6
+      .hero-text
+        h1 = @place.name
+        p
+          => @place.category.name
+          ' &middot;
+          = @place.address
 
-      = simple_form_for @voucher do |f|
-        h3 Apoie este local, seleccione o valor do voucher
+        = simple_form_for @voucher do |f|
+          h3 Apoie este local, seleccione o valor do voucher
 
-        - if @place.has_discount?
-          p.discount
-            = inline_svg 'icon-heart-small.svg'
-            span.discount-text Este local oferece 10% de desconto na compra de um voucher
+          - if @place.has_discount?
+            p.discount
+              = inline_svg 'icon-heart-small.svg'
+              span.discount-text Este local oferece 10% de desconto na compra de um voucher
 
-        = f.input_field :place_id, as: :hidden
-        = f.input :value, as: :radio_buttons, collection: Place::DEFAULT_EUR_VALUES, checked: 20, legend_tag: false
-        = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}
-        = f.submit 'Comprar voucher', class: 'btn btn-primary'
-        = image_tag 'icon-mb-faded.svg', alt: "Multibanco", class: 'voucher-mb'
+          = f.input_field :place_id, as: :hidden
+          = f.input :value, as: :radio_buttons, collection: Place::DEFAULT_EUR_VALUES, checked: 20, legend_tag: false
+          = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}
+          = f.submit 'Comprar voucher', class: 'btn btn-primary'
+          = image_tag 'icon-mb-faded.svg', alt: "Multibanco", class: 'voucher-mb'
 
-    = image_tag @place.main_photo_url(:large, public: true), class: 'xcol-5 xoffset-1', id: 'hero-img'
+    .xcol-5.xoffset-1
+      = image_tag @place.main_photo_url(:large, public: true), class:'hero-img'
 
   section.place-share.section
     .xrow

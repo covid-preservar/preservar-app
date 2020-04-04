@@ -9,30 +9,32 @@
 .xcontainer
   section#hero
     .xrow.clearfix
-      .hero-text.xcol-md-7.xcol-sm-12.xcol-6
-        h1.spinner-wrapper
-          | Preserve o seu
-          br
-          .hero-ticker
-            - @spinner_categories.each do |c|
-              span = c.name
-          br
-          | favorito
-        p Compre um voucher para usar em qualquer altura, e ajude a sua economia local a sobreviver ao COVID-19
-        - if @places.any? && ENV['HOSTNAME'] != 'preserve.pt'
-          = render 'shared/search_form'
+      .xcol-md-7.xcol-sm-12.xcol-6
+        .hero-text
+          h1.spinner-wrapper
+            | Preserve o seu
+            br
+            .hero-ticker
+              - @spinner_categories.each do |c|
+                span = c.name
+            br
+            | favorito
+          p Compre um voucher para usar em qualquer altura, e ajude a sua economia local a sobreviver ao COVID-19
+          - if @places.any? && ENV['HOSTNAME'] != 'preserve.pt'
+            = render 'shared/search_form'
 
-        / section.hero-stats.clearfix
-        /   article.stat
-        /     h2 400
-        /     p Locais
-        /   article.stat
-        /     h2 10,310
-        /     p Vouchers vendidos
-        /   article.stat
-        /     h2 €206,200
-        /     p Angariados
-      = image_tag 'hero-img.jpg', alt:'Pessoa', id:'hero-img', class:'xcol-5 xoffset-1'
+          / section.hero-stats.clearfix
+          /   article.stat
+          /     h2 400
+          /     p Locais
+          /   article.stat
+          /     h2 10,310
+          /     p Vouchers vendidos
+          /   article.stat
+          /     h2 €206,200
+          /     p Angariados
+      .xcol-5.xoffset-1
+        = image_tag 'hero-img.jpg', alt:'Pessoa', class:'hero-img'
 
   - cache [:how_it_works, ENV['HEROKU_SLUG_COMMIT']] do
     section#how-it-works.section

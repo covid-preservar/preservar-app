@@ -21,7 +21,7 @@
     .primary-cta {
       margin-top: 2rem;
 
-      & + .secondary-cta {
+      + .secondary-cta {
         margin-left: .5rem;
       }
     }

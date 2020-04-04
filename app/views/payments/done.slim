@@ -3,18 +3,19 @@
 
 .xcontainer
   section#hero.xrow
-    .hero-text.xcol-6
-      h1
-        => @voucher.place.name
-        | agradece!
-      h2
-        small
-          | O seu pagamento está a ser processado.
-      p
-        ' Receberá o seu voucher por email quando o pagamento
-        ' for processado.
-      br
-      = link_to 'Voltar ao início'.html_safe, root_path, class:'secondary-cta'
+    .xcol-6
+      .hero-text
+        h1
+          => @voucher.place.name
+          | agradece!
+        h2
+          small
+            | O seu pagamento está a ser processado.
+        p
+          ' Receberá o seu voucher por email quando o pagamento
+          ' for processado.
+        br
+        = link_to 'Voltar ao início'.html_safe, root_path, class:'secondary-cta'
 
     = image_tag 'help.svg', alt: 'Pessoa', class:'xcol-5'
 
