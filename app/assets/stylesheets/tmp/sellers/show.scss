@@ -26,6 +26,23 @@
     }
   }
 
+  .discount {
+    display: flex;
+    align-items: flex-start;
+
+    svg {
+      width: 1rem;
+      margin-right: 5px;
+      margin-top: 2px;
+      flex: 0 0 1rem;
+    }
+
+    .discount-text {
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+
   #new_voucher {
     position: relative;
     padding: 0;
@@ -36,7 +53,7 @@
       margin-top: 2rem;
     }
 
-    span {
+    .tos-text {
       display: block;
       margin-top: 1rem;
       font-size: calc(13rem / 16);
@@ -161,7 +178,7 @@
 
 #share-box,
 #place-share {
-  margin-top: 2rem;
+  margin-top: 5rem;
 }
 
 #place-share {
