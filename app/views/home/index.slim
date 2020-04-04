@@ -66,23 +66,25 @@
       .places-list.xrow.home-list
         == render @places
 
-  / - cache [:press, ENV['HEROKU_SLUG_COMMIT']] do
-  /   section#press.section
-  /     .xrow
-  /       h2.xcol-6.section-separator Como visto em
-  /     #press-wrapper.xrow
-  /       .xcol-2.press-logo
-  /         = image_tag 'publico.svg', alt: 'Público'
-  /       .xcol-2.press-logo
-  /         = image_tag 'publico.svg', alt: 'Público'
-  /       .xcol-2.press-logo
-  /         = image_tag 'publico.svg', alt: 'Público'
-  /       .xcol-2.press-logo
-  /         = image_tag 'publico.svg', alt: 'Público'
-  /       .xcol-2.press-logo
-  /         = image_tag 'publico.svg', alt: 'Público'
-  /       .xcol-2.press-logo
-  /         = image_tag 'publico.svg', alt: 'Público'
+  - cache [:press, ENV['HEROKU_SLUG_COMMIT']] do
+    section#press.section
+      .xrow
+        h2.xcol-6.section-separator Como visto em
+      #press-wrapper.xrow
+        .xcol-2.press-logo
+          = image_tag 'partners/press-acb.png', alt: 'ACB'
+        .xcol-2.press-logo
+          = image_tag 'partners/press-acde.png', alt: 'ACDE'
+        .xcol-2.press-logo
+          = image_tag 'partners/press-eg.png', alt: 'E-Gosto'
+        .xcol-2.press-logo
+          = image_tag 'partners/press-rdp.png', alt: 'RDP'
+        .xcol-2.press-logo
+          = image_tag 'partners/press-acif.png', alt: 'ACIF'
+        .xcol-2.press-logo
+          = image_tag 'partners/press-provar.png', alt: 'Provar'
+        .xcol-2.press-logo
+          = image_tag 'partners/press-aevc.png', alt: 'AEVC'
 
   - cache [:businesses, ENV['HEROKU_SLUG_COMMIT']] do
     section#businesses.section

@@ -30,18 +30,14 @@
         = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}
         = f.submit 'Comprar voucher'
         = image_tag 'icon-mb-faded.svg', alt: "Multibanco", class: 'voucher-mb'
-        span.tos-text
-          ' Ao comprar, está a aceitar os
-          => link_to 'Termos e Condições', tos_path, target:'_blank'
-          ' e a
-          => link_to 'Politica de Privacidade', privacy_path, target:'_blank'
 
     = image_tag @place.main_photo_url(:large, public: true), class: 'xcol-5 xoffset-1', id: 'hero-img'
 
   section.place-share.section
     .xrow
-      h2.xcol-6.section-separator Partilhe com os seus amigos, o pequeno contributo de muitos vai longe.
-    .xrow
+      h2.xcol-6.section-separator Partilhe com os seus amigos, para que possam apoiar também
+    .xrow.xcol-6
+
       iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=#{place_url(@place)}&layout=button_count&size=large&width=110&height=28" style="border:none;overflow:hidden" width="110"
       a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet
       script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
