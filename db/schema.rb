@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_132343) do
+ActiveRecord::Schema.define(version: 2020_04_04_143924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,8 +68,10 @@ ActiveRecord::Schema.define(version: 2020_04_02_132343) do
     t.string "slug"
     t.string "address"
     t.jsonb "main_photo_data"
-    t.boolean "published"
+    t.boolean "published", default: false
     t.bigint "seller_id"
+    t.index ["category_id"], name: "index_places_on_category_id"
+    t.index ["published"], name: "index_places_on_published"
     t.index ["seller_id"], name: "index_places_on_seller_id"
     t.index ["slug"], name: "index_places_on_slug", unique: true
   end
@@ -80,11 +82,9 @@ ActiveRecord::Schema.define(version: 2020_04_02_132343) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.bigint "old_seller_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_seller_users_on_email", unique: true
-    t.index ["old_seller_id"], name: "index_seller_users_on_old_seller_id"
     t.index ["reset_password_token"], name: "index_seller_users_on_reset_password_token", unique: true
   end
 
