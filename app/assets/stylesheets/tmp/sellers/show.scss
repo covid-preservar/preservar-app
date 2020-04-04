@@ -5,7 +5,7 @@
   }
 
   #place-hero {
-    margin-top: 6rem;
+    margin-top: 8rem;
 
     @media only screen and (max-width: 375px) {
       margin-top: 0;
@@ -13,6 +13,10 @@
   }
 
   #hero-text {
+    h1 + p {
+      opacity: .5;
+    }
+
     .primary-cta {
       margin-top: 2rem;
     }
@@ -82,6 +86,22 @@
     font-weight: bold;
     color: var(--color-main-blue);
     box-sizing: border-box;
+  }
+
+  input[type="number"]:focus {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .09);
+  }
+
+  .selected {
+    input[type="number"] {
+      //border: 2px solid var(--color-main-blue);
+      background-color: var(--color-main-blue);
+      color: white;
+    }
+
+    &:before {
+      color: white;
+    }
   }
 
   input[type="radio"] + .form-check-label:first-of-type {
@@ -159,13 +179,13 @@
 
 
 
-#share-box,
 #place-share {
-  margin-top: 2rem;
+  margin-top: 6rem;
 }
 
 #place-share {
-  &  > *:not(h3) {
+  iframe,
+  .link {
     display: block;
     margin-top: 1rem;
   }

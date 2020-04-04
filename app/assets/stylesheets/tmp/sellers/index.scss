@@ -82,15 +82,28 @@
     opacity: 0.5;
   }
 
+  &:nth-child(n+5) {
+    margin-top: 2rem;
+  }
 }
+
+.home-list .place {
+  margin-top: 0;
+}
+
 @media only screen and (max-width: 768px) {
   .place {
     flex-basis: calc(33% - 1rem);
+
+    &:nth-child(n+4) {
+      margin-top: 2rem;
+    }
   }
 
 }
 @media only screen and (max-width: 414px) {
   .place {
+    margin-top: 2rem;
     flex: 1 1 100%;
     margin-right: 0;
     width: 100%;
