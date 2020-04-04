@@ -10,20 +10,20 @@
   }
 
   .input-group {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+    box-shadow: $input-box-shadow;
     margin-top: 1rem;
 
     .input-group-text {
       background: transparent;
-      border: none;
+      border: 0;
     }
 
     .form-control {
-      width: 100%;
       background: transparent;
       box-shadow: none;
-      padding: 0;
       color: $black;
+      padding: 0;
+      width: 100%;
     }
   }
 }
