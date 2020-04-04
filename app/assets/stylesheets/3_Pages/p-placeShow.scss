@@ -1,4 +1,5 @@
 .places.show {
+
   .place-back {
     position: absolute;
     top: 6rem;
@@ -31,14 +32,14 @@
   }
 
   .discount {
-    display: flex;
     align-items: flex-start;
+    display: flex;
 
     svg {
-      width: 1rem;
+      flex: 0 0 1rem;
       margin-right: 5px;
       margin-top: 2px;
-      flex: 0 0 1rem;
+      width: 1rem;
     }
 
     .discount-text {
@@ -48,9 +49,9 @@
   }
 
   .new_voucher {
-    position: relative;
-    padding: 0;
     margin-top: 4rem;
+    padding: 0;
+    position: relative;
 
     input[type="submit"] {
       display: inline-block;
@@ -59,16 +60,16 @@
 
     .tos-text {
       display: block;
-      margin-top: 1rem;
       font-size: calc(13rem / 16);
       line-height: calc(16 / 13);
+      margin-top: 1rem;
     }
 
     .voucher_value {
-      position: relative;
-      margin: 1rem 0;
       display: flex;
+      margin: 1rem 0;
       padding-right: 1rem;
+      position: relative;
 
       @media only screen and (max-width: 375px) {
         padding-right: 0;
@@ -94,15 +95,15 @@
   }
 
   .form-check-label {
-    width: 100%;
-    display: inline-block;
     border: 2px solid var(--color-main-blue);
+    box-sizing: border-box;
+    color: var(--color-main-blue);
+    display: inline-block;
+    font-weight: bold;
     height: 2.5rem;
     line-height: 2.3rem;
     padding: 0 1rem;
-    font-weight: bold;
-    color: var(--color-main-blue);
-    box-sizing: border-box;
+    width: 100%;
   }
 
   input[type="number"]:focus {
@@ -111,12 +112,11 @@
 
   .selected {
     input[type="number"] {
-      //border: 2px solid var(--color-main-blue);
       background-color: var(--color-main-blue);
       color: white;
     }
 
-    &:before {
+    &::before {
       color: white;
     }
   }
@@ -134,7 +134,7 @@
     color: white;
   }
 
-    input[type="number"] {
+  input[type="number"] {
     width: 47.7272727273%;
   }
 
@@ -145,17 +145,17 @@
       padding-left: 2.5rem;
     }
 
-    &:before {
-      content: "€";
-      position: absolute;
+    &::before {
+      content: '€';
       left: 1rem;
       line-height: 3rem;
+      position: absolute;
       z-index: 1;
     }
   }
 
   @media only screen and (max-width: 1288px) {
-    .new_voucher:before {
+    .new_voucher::before {
       margin-left: -10%;
     }
   }
@@ -163,8 +163,8 @@
   @media only screen and (max-width: 768px) {
 
     .new_voucher {
-      width: 100%;
       margin-left: 0;
+      width: 100%;
     }
 
     .place-back {

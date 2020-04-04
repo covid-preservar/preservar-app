@@ -1,11 +1,11 @@
 .places-list {
-  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 2rem;
 
   @media only screen and (max-width: 414px) {
-    margin-top: 0;
     flex-direction: column;
+    margin-top: 0;
 
     .place:first-child {
       margin-top: 0;
@@ -14,11 +14,11 @@
 }
 
 .place {
-  text-decoration: none;
   flex: 0 1 calc(25% - 1rem);
-  margin-right: 1rem;
   margin-bottom: 3rem;
+  margin-right: 1rem;
   max-width: calc(25% - 1rem);
+  text-decoration: none;
 
   img {
     transition: opacity 100ms ease-out;
@@ -36,7 +36,7 @@
 
   .place-info {
     margin-top: 0;
-    opacity: 0.5;
+    opacity: .5;
   }
 
   .place-header {
@@ -53,12 +53,12 @@
   }
 
   .discount {
+    align-items: center;
+    display: flex;
     flex: 0;
+    justify-content: space-between;
     margin-left: auto;
     white-space: nowrap;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
     .discount-value {
       color: $black;
@@ -67,14 +67,14 @@
     }
 
     svg {
-      width: 1rem;
       margin-right: 5px;
+      width: 1rem;
     }
   }
 
 
   &:hover img {
-    opacity: 0.5;
+    opacity: .5;
   }
 
   @media only screen and (max-width: 812px) {
@@ -85,13 +85,13 @@
   @media only screen and (max-width: 414px) {
     flex: 1 1 100%;
     margin-right: 0;
-    width: 100%;
     max-width: none;
+    width: 100%;
 
     img {
+      height: 50vw;
       object-fit: cover;
       width: 100%;
-      height: 50vw;
     }
   }
 }

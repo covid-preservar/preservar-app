@@ -1,25 +1,18 @@
 .place-share {
   margin-top: 6rem;
 
-  &  > *:not(h3) {
-    display: block;
-    margin-top: 1rem;
-  }
-
   h3 {
     margin-top: 1.5rem;
   }
 
   iframe {
-    display: block;
     margin-top: 1rem;
   }
 
-
   .input-group {
-    display: block;
-    margin-top: 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+    margin-top: 1rem;
+
     .input-group-text {
       background: transparent;
       border: none;
