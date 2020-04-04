@@ -3,11 +3,11 @@
 - content_for :header do
   = render 'header'
 
-#place-hero.xcontainer
+.place-hero.xcontainer
   - if @show_back
-    = link_to '&slarr; Voltar à pesquisa'.html_safe, request.referrer, id:'place-back'
+    = link_to '&slarr; Voltar à pesquisa'.html_safe, request.referrer, class:'place-back'
   - else
-    = link_to '&slarr; Voltar ao início'.html_safe, root_path, id:'place-back'
+    = link_to '&slarr; Voltar ao início'.html_safe, root_path, class:'place-back'
 
   .xrow
     #hero-text.xcol-6
@@ -38,15 +38,17 @@
 
     = image_tag @place.main_photo_url(:large, public: true), class: 'xcol-5 xoffset-1', id: 'hero-img'
 
-  section#place-share.section
+  section.place-share.section
     .xrow
       h2.xcol-6.section-separator Partilhe com os seus amigos, o pequeno contributo de muitos vai longe.
     .xrow
       iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=#{place_url(@place)}&layout=button_count&size=large&width=110&height=28" style="border:none;overflow:hidden" width="110"
       a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet
       script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
-      .link
-        input disabled='true' type="text" value=place_url(@place)
+      .input-group
+        .input-group-prepend
+          span.input-group-text 🔗
+        input.form-control disabled='true' type="text" value=place_url(@place)
 
   == render 'other_places'
 

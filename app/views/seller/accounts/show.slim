@@ -50,8 +50,9 @@ main.container.maincontent
               td
                 = link_to 'Detalhes', seller_place_path(place)
       = link_to 'Adicionar local', new_seller_place_path
+  hr
   .row.mt-4
-    .col-sm-12.col-md-8.col-xl-6
+    .col-sm-12.col-xl-8
       h3.mb-4 Os meus vouchers
       - if @seller.vouchers.seller_visible.any?
         table.table
@@ -59,6 +60,7 @@ main.container.maincontent
             th Local
             th Código
             th Valor
+            th Desconto
             th Email
             th Estado
           tbody
@@ -70,6 +72,8 @@ main.container.maincontent
                   = voucher.code
                 td
                   = voucher.value
+                td
+                  = voucher.discount_percent.zero? ? '-' : "#{voucher.discount_percent}%"
                 td
                   = voucher.email
                 td

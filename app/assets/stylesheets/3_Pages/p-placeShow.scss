@@ -1,10 +1,10 @@
 .places.show {
-  #place-back {
+  .place-back {
     position: absolute;
     top: 6rem;
   }
 
-  #place-hero {
+  .place-hero {
     margin-top: 6rem;
 
     @media only screen and (max-width: 375px) {
@@ -43,7 +43,7 @@
     }
   }
 
-  #new_voucher {
+  .new_voucher {
     position: relative;
     padding: 0;
     margin-top: 4rem;
@@ -135,19 +135,19 @@
   }
 
   @media only screen and (max-width: 1288px) {
-    #new_voucher:before {
+    .new_voucher:before {
       margin-left: -10%;
     }
   }
 
   @media only screen and (max-width: 768px) {
 
-    #new_voucher {
+    .new_voucher {
       width: 100%;
       margin-left: 0;
     }
 
-    #place-back {
+    .place-back {
       position: relative;
       top: -2rem;
     }
@@ -158,57 +158,18 @@
   }
 
   @media only screen and (max-width: 375px) {
-    #place-hero #hero-img {
+    .place-hero #hero-img {
       display: block;
       position: relative;
     }
 
-    #place-hero .row {
+    .place-hero .row {
       display: flex;
       flex-direction: column-reverse;
     }
 
     #hero-img {
       margin-bottom: 2rem;
-    }
-  }
-}
-
-
-
-#share-box,
-#place-share {
-  margin-top: 5rem;
-}
-
-#place-share {
-  &  > *:not(h3) {
-    display: block;
-    margin-top: 1rem;
-  }
-
-  h3 {
-    margin-top: 1.5rem;
-  }
-
-  input {
-    width: 100%;
-  }
-
-
-  .link {
-    position: relative;
-
-    &:after {
-      content: "🔗";
-      position: absolute;
-      left: 1rem;
-      line-height: 3rem;
-    }
-
-    input {
-      padding-left: 3rem;
-      color: $black;
     }
   }
 }

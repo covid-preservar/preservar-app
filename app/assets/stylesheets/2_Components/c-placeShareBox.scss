@@ -1,0 +1,28 @@
+.place-share {
+  margin-top: 5rem;
+
+  &  > *:not(h3) {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+  }
+
+  .input-group {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+    .input-group-text {
+      background: transparent;
+      border: none;
+    }
+
+    .form-control {
+      width: 100%;
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
+      color: $black;
+    }
+  }
+}

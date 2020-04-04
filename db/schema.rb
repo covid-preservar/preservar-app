@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_171549) do
+ActiveRecord::Schema.define(version: 2020_04_04_100139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_171549) do
     t.string "payment_method"
     t.string "payment_phone"
     t.string "cookie_uuid"
+    t.integer "discount_percent", default: 0
     t.index ["payment_identifier"], name: "index_vouchers_on_payment_identifier"
     t.index ["place_id"], name: "index_vouchers_on_place_id"
   end
