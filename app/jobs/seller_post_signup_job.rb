@@ -36,7 +36,7 @@ class SellerPostSignupJob < ApplicationJob
     params = [{ name: :nome_pessoa, value: seller.contact_name},
               { name: :nome_estabelecimento, value: seller.places.first.name},
               { name: :tipo, value: seller.places.first.category.name},
-              { name: :link_detalhe, value: place_url(seller.places.first)}]
+              { name: :link_detalhe, value: Rails.application.routes.url_helpers.place_url(seller.places.first)}]
 
     RestClient.put(base_url + "/contactdata/#{contact_id}",
                    {'Data': params}.to_json,
