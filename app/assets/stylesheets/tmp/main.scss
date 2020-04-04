@@ -198,9 +198,9 @@ textarea {
 }
 
 .xrow::after {
+  clear: both;
   content: '';
   display: table;
-  clear: both;
 }
 
 .hidden-sm {
@@ -711,10 +711,10 @@ a {
 
   .hero-img {
     display: block;
-    width: 100%;
-    position: relative;
     margin-bottom: 2rem;
     margin-left: 0;
+    position: relative;
+    width: 100%;
   }
 
   #place-hero .xrow {

@@ -1,8 +1,8 @@
 .form-control {
   appearance: none;
   background-color: $white;
-  border-radius: 0;
   border: 0;
+  border-radius: 0;
   box-shadow: $input-box-shadow;
   box-sizing: border-box;
   height: 3rem;
@@ -19,8 +19,8 @@ input:not(.form-control):not([type="file"], [type="radio"], [type="checkbox"], [
 select:not(.form-control) {
   appearance: none;
   background-color: $white;
-  border-radius: 0;
   border: 0;
+  border-radius: 0;
   box-shadow: $input-box-shadow;
   box-sizing: border-box;
   height: 3rem;
@@ -36,8 +36,8 @@ select:not(.form-control) {
 
 .primary-cta {
   background: var(--color-main-blue);
-  border-radius: 0;
   border: 0;
+  border-radius: 0;
   color: $white;
   display: inline-block;
   font-size: calc(17rem / 16);

@@ -73,7 +73,7 @@
       flex: 1;
       padding-left: 0;
 
-      & + .form-check {
+      + .form-check {
         margin-left: .5rem;
       }
     }
@@ -104,30 +104,30 @@
   }
 
   .selected {
-    input[type="number"] {
+    [type="number"] {
       background-color: var(--color-main-blue);
-      color: white;
+      color: $white;
     }
 
     &::before {
-      color: white;
+      color: $white;
     }
   }
 
-  input[type="radio"] + .form-check-label:first-of-type {
+  [type="radio"] + .form-check-label:first-of-type {
     margin-left: 0;
   }
 
-  input[type="radio"] + .form-check-label:hover {
+  [type="radio"] + .form-check-label:hover {
     background-color: var(--color-light-blue);
   }
 
-  input[type="radio"]:checked + .form-check-label {
+  [type="radio"]:checked + .form-check-label {
     background-color: var(--color-main-blue);
-    color: white;
+    color: $white;
   }
 
-  input[type="number"] {
+  [type="number"] {
     width: 47.7272727273%;
   }
 
@@ -165,7 +165,7 @@
       top: -2rem;
     }
 
-    & input[type="number"] {
+    [type="number"] {
       width: 100%;
     }
   }

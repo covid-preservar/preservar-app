@@ -22,3 +22,4 @@ exclude_patterns:
   - "app/assets/stylesheets/bootstrap/"
   - "app/javascript/vendor/"
   - "db/schema.rb"
+  - "db/seeds.rb"
