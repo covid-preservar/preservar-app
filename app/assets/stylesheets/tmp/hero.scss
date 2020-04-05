@@ -13,12 +13,7 @@
     height: 50rem;
   }
 
-  @media only screen and (max-width: 450px) {
-    height: 55rem;
-
-  }
-
-  @media only screen and (max-width: 375px) {
+  @media only screen and (max-width: 576px) {
     width: auto;
     right: 0;
     height: 40rem;
@@ -94,7 +89,7 @@
     }
   }
 
-  @media only screen and (max-width: 375px) {
+  @media only screen and (max-width: 576px) {
     .hero-text > h1,
     .hero-text > p {
       width: 100%;

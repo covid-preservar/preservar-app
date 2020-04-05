@@ -8,7 +8,7 @@
   .place-hero {
     margin-top: 6rem;
 
-    @media only screen and (max-width: 375px) {
+    @media only screen and (max-width: 576px) {
       margin-top: 0;
     }
   }
@@ -64,7 +64,7 @@
       padding-right: 1rem;
       position: relative;
 
-      @media only screen and (max-width: 375px) {
+      @media only screen and (max-width: 576px) {
         padding-right: 0;
       }
     }
@@ -170,7 +170,7 @@
     }
   }
 
-  @media only screen and (max-width: 375px) {
+  @media only screen and (max-width: 576px) {
     .place-hero .hero-img {
       display: block;
       position: relative;

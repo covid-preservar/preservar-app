@@ -15,6 +15,10 @@
       justify-content: space-between;
     }
 
+    @include media-breakpoint-up(576px) { // martelada
+      justify-content: flex-start;
+    }
+
     .method {
       height: 140px;
       width: 140px;

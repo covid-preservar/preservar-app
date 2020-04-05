@@ -194,7 +194,7 @@ textarea {
 .xcol-10,
 .xcol-11,
 .xcol-12 {
-  width: 96%;
+  width: 100%;
 }
 
 .xrow::after {
@@ -717,7 +717,7 @@ a {
     width: 100%;
   }
 
-  #place-hero .xrow {
+  .place-hero .xrow {
     display: flex;
     flex-direction: column-reverse;
   }
@@ -727,7 +727,8 @@ a {
   }
 }
 
-@media only screen and (max-width: 414px) {
+
+@media only screen and (max-width: 576px) {
 
   .primary-cta,
   .secondary-cta {
@@ -741,15 +742,11 @@ a {
     line-height: 2.3rem;
   }
 
-}
-
-@media only screen and (max-width: 375px) {
-
   #logo {
-    width: 30%;
-    height: auto;
-    padding-bottom: 25%;
-    background-size: 100%;
+    background: image-url('logo-small.svg') no-repeat;
+    display: block;
+    height: 2.5rem;
+    width: 2.5rem;
   }
 
   h1 {
