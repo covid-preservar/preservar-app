@@ -18,7 +18,7 @@ class Voucher < ApplicationRecord
     end
 
     event :payment_success do
-      transitions from: :pending_payment, to: :paid, after: :generate_code
+      transitions from: :pending_payment, to: :paid, after: :finalize_voucher
     end
 
     event :redeemed do
@@ -38,6 +38,8 @@ class Voucher < ApplicationRecord
   validates :payment_identifier, presence: true, if: :pending_payment?
   validates :payment_phone, format: { with: /\A\d{9}\z/ }, if: :requires_phone?
 
+  validate :valid_vat_id
+
   before_validation :set_discount, on: :create
 
   scope :seller_visible, -> { where(state: %w[paid redeemed]) }
@@ -46,6 +48,14 @@ class Voucher < ApplicationRecord
 
   def custom_value=(val)
     self.value = val if val.present?
+  end
+
+  def vat_id=(value)
+    write_attribute(:vat_id, "PT#{value.tr('PT', '')}")
+  end
+
+  def vat_id
+    read_attribute(:vat_id)&.tr('PT', '')
   end
 
   def human_state_name
@@ -59,8 +69,9 @@ class Voucher < ApplicationRecord
 
   private
 
-  def generate_code
+  def finalize_voucher
     self.code = SecureRandom.hex(3).upcase
+    self.valid_until = Date.today + 24.months
   end
 
   def generate_identifier
@@ -73,5 +84,11 @@ class Voucher < ApplicationRecord
 
   def set_discount
     self.discount_percent = DEFAULT_DISCOUNT if place.has_discount?
+  end
+
+  def valid_vat_id
+    if vat_id.present?
+      errors.add(:vat_id, :invalid) unless Valvat.new(read_attribute(:vat_id)).valid_checksum?
+    end
   end
 end

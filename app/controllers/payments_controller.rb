@@ -28,7 +28,7 @@ class PaymentsController < ApplicationController
   private
 
   def payment_params
-    params.require(:voucher).permit(:email, :payment_method, :payment_phone)
+    params.require(:voucher).permit(:email, :payment_method, :payment_phone, :vat_id)
   end
 
   def load_and_check_voucher
