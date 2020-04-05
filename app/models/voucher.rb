@@ -70,8 +70,13 @@ class Voucher < ApplicationRecord
   private
 
   def finalize_voucher
-    self.code = SecureRandom.hex(3).upcase
     self.valid_until = Date.today + 24.months
+
+    # Ensure uniqueness
+    loop do
+      self.code = SecureRandom.hex(3).upcase
+      break unless self.class.where(code: self.code).exists?
+    end
   end
 
   def generate_identifier
