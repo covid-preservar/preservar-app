@@ -20,7 +20,7 @@
             br
             | favorito
           p Compre um voucher para usar em qualquer altura, e ajude a sua economia local a sobreviver ao COVID-19
-          - if @places.any? && ENV['HOSTNAME'] != 'preserve.pt'
+          - if Flipper.enabled?(:for_buyers)
             = render 'shared/search_form'
 
           / section.hero-stats.clearfix
@@ -59,7 +59,7 @@
         h3 Parabéns, contribuiu para sua economia local!
         p Contribuiu para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
 
-  - if ENV['HOSTNAME'] != 'preserve.pt'
+  - if Flipper.enabled?(:for_buyers)
     - cache @places do
       section.places-container.section
         .xrow
@@ -95,7 +95,8 @@
       .xrow
         = link_to 'Registe o seu local', new_seller_user_registration_path, class: 'primary-cta'
 
-  - if ENV['HOSTNAME'] != 'preserve.pt'
+
+  - if Flipper.enabled?(:for_buyers)
     section#kicker.section
       .xrow
         h2.xcol-6.section-separator Está à espera de quê? Preserve o seu sítio preferido agora

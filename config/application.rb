@@ -34,5 +34,7 @@ module Preservar
     config.generators do |g|
       g.test_framework :rspec
     end
+
+    config.middleware.use Flipper::Middleware::Memoizer, preload_all: true
   end
 end

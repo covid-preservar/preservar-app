@@ -3,7 +3,10 @@ namespace :db do
   task :populate => :environment do
     require 'faker'
 
-    [AdminUser, Seller, SellerUser, Place, Voucher].each do |klass|
+    [AdminUser, Seller, SellerUser,
+     Place, Voucher,
+     Flipper::Adapters::ActiveRecord::Feature,
+     Flipper::Adapters::ActiveRecord::Gate].each do |klass|
 
       query = "TRUNCATE TABLE #{klass.table_name} CASCADE"
       ActiveRecord::Base.connection.execute(query)
@@ -51,6 +54,12 @@ namespace :db do
     end
 
     AdminUser.create!(email: 'admin@example.com', password: 'secret', confirmed_at: Time.now.utc)
+
+
+    Flipper::Adapters::ActiveRecord::Feature.create key:'discounts'
+    Flipper::Adapters::ActiveRecord::Feature.create key:'for_buyers'
+    Flipper.enable :discounts
+    Flipper.enable :for_buyers
   end
 end
 
