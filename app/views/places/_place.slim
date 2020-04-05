@@ -4,7 +4,7 @@
       = image_tag place.main_photo_url(:small, public: true)
     h3.place-header
       span.place-name = place.name
-      - if place.has_discount?
+      - if Flipper.enabled?(:discounts) && place.has_discount?
         .discount
           => inline_svg 'icon-heart-small.svg'
           span.discount-value 10%

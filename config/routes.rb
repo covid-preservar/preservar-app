@@ -76,6 +76,7 @@ Rails.application.routes.draw do
   authenticate :admin_user do
     require 'sidekiq/web'
     mount Sidekiq::Web => '/admin/sidekiq'
+    mount Flipper::UI.app(Flipper) => '/admin/flipper'
   end
 
   if Rails.env.development?
