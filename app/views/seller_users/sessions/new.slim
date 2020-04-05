@@ -14,5 +14,5 @@
           input_html: { autocomplete: "current-password" }
         = f.input :remember_me, label: 'Lembrar-se de mim', as: :boolean if devise_mapping.rememberable?
       .form-actions
-        = f.button :submit, t("devise.sessions.new.sign_in"), class: 'btn btn-primary'
+        = f.button :submit, t("devise.sessions.new.sign_in_button"), class: 'btn btn-primary'
     = render "seller_users/shared/links"
