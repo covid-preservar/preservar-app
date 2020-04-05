@@ -13,7 +13,7 @@ module Admin
       if requested_resource.can_publish?
 
         if requested_resource.published_at.nil?
-          #queue email
+          ApplicationMailer.seller_place_published_notification(requested_resource.id).deliver_later
         end
         requested_resource.update(published: true, published_at: Time.now)
       else

@@ -27,4 +27,9 @@ class ApplicationMailer < ActionMailer::Base
     @voucher = Voucher.find(voucher_id)
     mail to: @voucher.place.seller.seller_user.email, subject: "Preserve - Vendeu um voucher!"
   end
+
+  def seller_place_published_notification(place_id)
+    @place = Place.find(place_id)
+    mail to: @place.seller.seller_user.email, subject: "Preserve - Publicámos o seu local!"
+  end
 end

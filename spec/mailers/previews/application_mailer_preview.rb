@@ -20,4 +20,8 @@ class ApplicationMailerPreview < ActionMailer::Preview
   def seller_voucher_email
     ApplicationMailer.seller_voucher_email(Voucher.first.id)
   end
+
+  def seller_place_published_notification
+    ApplicationMailer.seller_place_published_notification(Place.first.id)
+  end
 end
