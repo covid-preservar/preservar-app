@@ -8,4 +8,7 @@ pt:
       signed_in: ''
       signed_out: ''
       already_signed_out: ''
+      new:
+        sign_in: 'Área de comerciante'
+        sign_in_button: 'Entrar'
 
