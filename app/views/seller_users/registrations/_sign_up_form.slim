@@ -8,7 +8,7 @@
     = f.input :area, collection: Location.for_district(@form.district).map(&:area), selected: @form.area, input_html:{ id: 'area_select'}
     = f.input :address, hint: 'Rua e número', placeholder: 'Morada'
     = f.hidden_field :main_photo, value: @form.cached_main_photo_data, id:nil
-    = f.input :main_photo, as: :file, hint: 'Formato JPG, max. 10Mb'
+    = f.input :main_photo, label: 'Fotografia do estabelecimento', as: :file, hint: 'Esta foto vai aparecer no seu perfil público, seleccione uma foto o mais profissional possível. Formato JPG ou PNG, max. 10Mb'
 
   .register-form-section
     h3 Sobre si
