@@ -34,12 +34,12 @@
     margin-top: 2rem;
 
     &:before {
-      width: 100vw;
+      bottom: 0;
       left: 50%;
-      right: 50%;
       margin-left: -50vw;
       margin-right: -50vw;
-      bottom: 0;
+      right: 50%;
+      width: 100vw;
     }
   }
 }

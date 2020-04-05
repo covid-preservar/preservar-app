@@ -22,8 +22,8 @@
   @media only screen and (max-width: 576px) {
     .secondary-cta {
       border: 0;
-      padding: 0;
       line-height: 1rem;
+      padding: 0;
     }
 
     .header-link {
@@ -46,7 +46,7 @@
 }
 
 #announcement {
-  display: flex; 
+  display: flex;
   position: absolute;
   top: 0;
   left: 0;
@@ -55,8 +55,8 @@
   background-color: var(--color-main-blue);
 
   p {
-    margin: auto; /* Important */ 
-    text-align: center; 
+    margin: auto; /* Important */
+    text-align: center;
     color: white;
     font-size: calc(16rem/16);
 
