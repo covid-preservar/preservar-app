@@ -56,6 +56,8 @@ function setup() {
 
   if ("share" in navigator && $(".js-mobileShare").length > 0) {
     new MobileShare();
+  } else {
+    $(".js-mobileShare").hide();
   }
 
 }
