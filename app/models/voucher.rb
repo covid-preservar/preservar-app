@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class Voucher < ApplicationRecord
   PAYMENT_METHODS = %w[MB MBW].freeze
+  DEFAULT_DISCOUNT = 10
 
   include AASM
 
@@ -37,6 +38,8 @@ class Voucher < ApplicationRecord
   validates :payment_identifier, presence: true, if: :pending_payment?
   validates :payment_phone, format: { with: /\A\d{9}\z/ }, if: :requires_phone?
 
+  before_validation :set_discount, on: :create
+
   scope :seller_visible, -> { where(state: %w[paid redeemed]) }
 
   attr_reader :custom_value
@@ -66,5 +69,9 @@ class Voucher < ApplicationRecord
 
   def requires_phone?
     pending_payment? && payment_method == 'MBW'
+  end
+
+  def set_discount
+    self.discount_percent = DEFAULT_DISCOUNT if place.has_discount?
   end
 end

@@ -1,3 +1,4 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  = image_tag 'logo-small.svg', class:'navbar-brand'
+  .navbar-brand
+    = inline_svg 'logo-small.svg'
   = link_to '&slarr; Back to the app'.html_safe, root_path

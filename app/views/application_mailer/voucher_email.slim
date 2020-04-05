@@ -31,7 +31,12 @@ table
     tr
       td
         strong Valor
-      td = number_to_currency @voucher.value, locale: :pt
+      td
+        = number_to_currency @voucher.value, locale: :pt
+        - unless @voucher.discount_percent.zero?
+          ' +
+          = @voucher.discount_percent
+          | % de desconto
     tr
       td
         strong Estabelecimento

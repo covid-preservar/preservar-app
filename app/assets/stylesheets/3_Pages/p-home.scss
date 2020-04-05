@@ -1,0 +1,22 @@
+.places-list.home-list {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  left: 0;
+  margin-right: -50vw;
+  overflow-x: auto;
+  position: relative;
+  right: 50%;
+  width: 100vw;
+
+  -ms-overflow-style: none;  // Internet Explorer 10+
+  scrollbar-width: none;  // Firefox
+
+  &::-webkit-scrollbar {
+    display: none;  // Safari and Chrome
+  }
+
+  .place {
+    flex: 0 0 15rem;
+    margin-right: 1rem;
+  }
+}

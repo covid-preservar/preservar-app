@@ -21,3 +21,5 @@ exclude_patterns:
   - "!spec/support/helpers"
   - "app/assets/stylesheets/bootstrap/"
   - "app/javascript/vendor/"
+  - "db/schema.rb"
+  - "db/seeds.rb"

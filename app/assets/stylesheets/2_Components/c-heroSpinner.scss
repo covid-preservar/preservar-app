@@ -1,26 +1,26 @@
 .spinner-wrapper {
-  position: relative;
   margin-bottom: 2rem;
+  position: relative;
 }
 
-#hero-ticker {
-  position: absolute;
+.hero-ticker {
   display: inline-block;
-  width: 100%;
   height: 4.5rem;
+  position: absolute;
+  width: 100%;
 
   @media only screen and (max-width: 375px) {
-    &:after {
+    &::after {
       display: none;
     }
   }
 
   span {
+    animation: rotateWord 6s linear 0s infinite;
     display: inline-block;
-    position: absolute;
     opacity: 0;
     overflow: hidden;
-    animation: rotateWord 6s linear 0s infinite;
+    position: absolute;
     white-space: nowrap;
   }
 
@@ -35,25 +35,31 @@
   0% {
     opacity: 0;
   }
+
   2% {
     opacity: 0;
     transform: translateY(-30px);
   }
+
   5% {
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateY(0);
   }
+
   17% {
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateY(0);
   }
+
   20% {
     opacity: 0;
     transform: translateY(30px);
   }
+
   80% {
     opacity: 0;
   }
+
   100% {
     opacity: 0;
   }

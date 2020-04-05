@@ -173,6 +173,15 @@ GEM
     faker (2.10.2)
       i18n (>= 1.6, < 2)
     ffi (1.12.2)
+    flipper (0.17.2)
+    flipper-active_record (0.17.2)
+      activerecord (>= 4.2, < 7)
+      flipper (~> 0.17.2)
+    flipper-ui (0.17.2)
+      erubi (>= 1.0.0, < 2.0.0)
+      flipper (~> 0.17.2)
+      rack (>= 1.4, < 3)
+      rack-protection (>= 1.5.3, < 2.1.0)
     foreman (0.86.0)
     friendly_id (5.3.0)
       activerecord (>= 4.0.0)
@@ -497,6 +506,9 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   faker
+  flipper
+  flipper-active_record
+  flipper-ui
   foreman (= 0.86.0)
   friendly_id
   geocoder

@@ -1,0 +1,29 @@
+.place-share {
+  margin-top: 6rem;
+
+  h3 {
+    margin-top: 1.5rem;
+  }
+
+  iframe {
+    margin-top: 1rem;
+  }
+
+  .input-group {
+    box-shadow: $input-box-shadow;
+    margin-top: 1rem;
+
+    .input-group-text {
+      background: transparent;
+      border: 0;
+    }
+
+    .form-control {
+      background: transparent;
+      box-shadow: none;
+      color: $black;
+      padding: 0;
+      width: 100%;
+    }
+  }
+}

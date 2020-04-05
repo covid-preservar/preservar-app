@@ -21,7 +21,8 @@ class PlaceDashboard < Administrate::BaseDashboard
     address: Field::String,
     published: Field::Boolean,
     main_photo_data: Field::String.with_options(searchable: false),
-    main_photo: ShrineField
+    main_photo: ShrineField,
+    has_discount: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -43,6 +44,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     id
     published
     category
+    has_discount
     seller
     vouchers
     name
@@ -66,6 +68,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     address
     published
     main_photo
+    has_discount
   ].freeze
 
   # COLLECTION_FILTERS

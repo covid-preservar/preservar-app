@@ -4,4 +4,5 @@ nav.navigation role="navigation"
         class: "navigation__link navigation__link--#{nav_link_state(resource)}")
   hr
     a.navigation__link href="/admin/sidekiq"  Sidekiq
+    a.navigation__link href='/admin/flipper'  Flipper
     = button_to 'Logout', destroy_admin_user_session_path, method: :delete, class: 'btn-link', form_class: 'btn-link'

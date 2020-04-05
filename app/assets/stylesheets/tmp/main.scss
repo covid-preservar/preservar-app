@@ -198,9 +198,9 @@ textarea {
 }
 
 .xrow::after {
-  content: "";
-  display: table;
   clear: both;
+  content: '';
+  display: table;
 }
 
 .hidden-sm {
@@ -581,7 +581,7 @@ a {
 }
 
 .section-separator:before {
-  content: "";
+  content: '';
   position: absolute;
   top: -2rem;
   width: 100px;
@@ -697,9 +697,7 @@ a {
 }
 
 @media only screen and (max-width: 768px) {
-
-
-  #hero-img {
+  .hero-img {
     position: absolute;
     right: 0;
     width: 40%;
@@ -711,12 +709,12 @@ a {
     padding: 0 calc(var(--grid-outer-padding) / 2);
   }
 
-  #hero-img {
+  .hero-img {
     display: block;
-    width: 100%;
-    position: relative;
     margin-bottom: 2rem;
     margin-left: 0;
+    position: relative;
+    width: 100%;
   }
 
   #place-hero .xrow {
@@ -724,7 +722,7 @@ a {
     flex-direction: column-reverse;
   }
 
-  #hero-text {
+  .hero-text {
     width: 100%;
   }
 }

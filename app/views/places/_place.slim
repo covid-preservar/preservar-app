@@ -2,8 +2,13 @@
   a.place href=place_path(place)
     .place-img-wrapper
       = image_tag place.main_photo_url(:small, public: true)
-    h3 = place.name
-    p
+    h3.place-header
+      span.place-name = place.name
+      - if Flipper.enabled?(:discounts) && place.has_discount?
+        .discount
+          => inline_svg 'icon-heart-small.svg'
+          span.discount-value 10%
+    p.place-info
       => place.category.name
       ' &middot;
       = place.area

@@ -1,16 +1,15 @@
 @import 'vendor/awesomplete';
 @import '0_Settings/!settings';
 @import 'bootstrap/bootstrap';
-@import '1_Components/!components';
-@import '2_Pages/!pages';
+@import '1_Base/!base';
+@import '2_Components/!components';
+@import '3_Pages/!pages';
 @import 'tmp/hero';
 @import 'tmp/kicker';
 @import 'tmp/main';
 @import 'tmp/search_form';
 @import 'tmp/header';
 @import 'tmp/footer';
-@import 'tmp/sellers/index';
-@import 'tmp/sellers/show';
 @import 'tmp/sellers/register';
 @import 'tmp/vouchers';
 

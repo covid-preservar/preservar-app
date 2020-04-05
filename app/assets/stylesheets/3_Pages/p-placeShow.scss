@@ -1,57 +1,68 @@
 .places.show {
-  #place-back {
+
+  .place-back {
     position: absolute;
     top: 6rem;
   }
 
-  #place-hero {
-    margin-top: 8rem;
+  .place-hero {
+    margin-top: 6rem;
 
     @media only screen and (max-width: 375px) {
       margin-top: 0;
     }
   }
 
-  #hero-text {
+  .hero-text {
     h1 + p {
       opacity: .5;
     }
 
     .primary-cta {
       margin-top: 2rem;
+
+      + .secondary-cta {
+        margin-left: .5rem;
+      }
     }
 
     .secondary-cta {
       margin-top: 2rem;
     }
 
-    .primary-cta + .secondary-cta {
-      margin-left: .5rem;
+  }
+
+  .discount {
+    align-items: flex-start;
+    display: flex;
+
+    svg {
+      flex: 0 0 1rem;
+      margin-right: 5px;
+      margin-top: 2px;
+      width: 1rem;
+    }
+
+    .discount-text {
+      font-size: 1rem;
+      margin: 0;
     }
   }
 
-  #new_voucher {
-    position: relative;
-    padding: 0;
+  .new_voucher {
     margin-top: 4rem;
+    padding: 0;
+    position: relative;
 
-    input[type="submit"] {
-      display: inline-block;
+    .btn {
       margin-top: 2rem;
     }
 
-    span {
-      display: block;
-      margin-top: 1rem;
-      font-size: calc(13rem / 16);
-      line-height: calc(16 / 13);
-    }
-
     .voucher_value {
-      position: relative;
-      margin: 1rem 0;
       display: flex;
+      margin: 1rem 0;
       padding-right: 1rem;
+      position: relative;
 
       @media only screen and (max-width: 375px) {
         padding-right: 0;
@@ -62,7 +73,7 @@
       flex: 1;
       padding-left: 0;
 
-      & + .form-check {
+      + .form-check {
         margin-left: .5rem;
       }
     }
@@ -77,47 +88,46 @@
   }
 
   .form-check-label {
-    width: 100%;
-    display: inline-block;
     border: 2px solid var(--color-main-blue);
+    box-sizing: border-box;
+    color: var(--color-main-blue);
+    display: inline-block;
+    font-weight: bold;
     height: 2.5rem;
     line-height: 2.3rem;
     padding: 0 1rem;
-    font-weight: bold;
-    color: var(--color-main-blue);
-    box-sizing: border-box;
+    width: 100%;
   }
 
   input[type="number"]:focus {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .09);
+    box-shadow: $input-box-shadow;
   }
 
   .selected {
-    input[type="number"] {
-      //border: 2px solid var(--color-main-blue);
+    [type="number"] {
       background-color: var(--color-main-blue);
-      color: white;
+      color: $white;
     }
 
-    &:before {
-      color: white;
+    &::before {
+      color: $white;
     }
   }
 
-  input[type="radio"] + .form-check-label:first-of-type {
+  [type="radio"] + .form-check-label:first-of-type {
     margin-left: 0;
   }
 
-  input[type="radio"] + .form-check-label:hover {
+  [type="radio"] + .form-check-label:hover {
     background-color: var(--color-light-blue);
   }
 
-  input[type="radio"]:checked + .form-check-label {
+  [type="radio"]:checked + .form-check-label {
     background-color: var(--color-main-blue);
-    color: white;
+    color: $white;
   }
 
-    input[type="number"] {
+  [type="number"] {
     width: 47.7272727273%;
   }
 
@@ -128,90 +138,51 @@
       padding-left: 2.5rem;
     }
 
-    &:before {
-      content: "€";
-      position: absolute;
+    &::before {
+      content: '€';
       left: 1rem;
       line-height: 3rem;
+      position: absolute;
       z-index: 1;
     }
   }
 
   @media only screen and (max-width: 1288px) {
-    #new_voucher:before {
+    .new_voucher::before {
       margin-left: -10%;
     }
   }
 
   @media only screen and (max-width: 768px) {
 
-    #new_voucher {
-      width: 100%;
+    .new_voucher {
       margin-left: 0;
+      width: 100%;
     }
 
-    #place-back {
+    .place-back {
       position: relative;
       top: -2rem;
     }
 
-    & input[type="number"] {
+    [type="number"] {
       width: 100%;
     }
   }
 
   @media only screen and (max-width: 375px) {
-    #place-hero #hero-img {
+    .place-hero .hero-img {
       display: block;
       position: relative;
     }
 
-    #place-hero .row {
+    .place-hero .row {
       display: flex;
       flex-direction: column-reverse;
     }
 
-    #hero-img {
+    .hero-img {
       margin-bottom: 2rem;
-    }
-  }
-}
-
-
-
-#place-share {
-  margin-top: 6rem;
-}
-
-#place-share {
-  iframe,
-  .link {
-    display: block;
-    margin-top: 1rem;
-  }
-
-  h3 {
-    margin-top: 1.5rem;
-  }
-
-  input {
-    width: 100%;
-  }
-
-
-  .link {
-    position: relative;
-
-    &:after {
-      content: "🔗";
-      position: absolute;
-      left: 1rem;
-      line-height: 3rem;
-    }
-
-    input {
-      padding-left: 3rem;
-      color: $black;
     }
   }
 }
