@@ -28,6 +28,12 @@ table
       td
         strong Email
       td = @voucher.email
+    - if @voucher.vat_id.present?
+      tr
+        td
+          strong NIF
+        td = @voucher.vat_id
+
     tr
       td
         strong Valor

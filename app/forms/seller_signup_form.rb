@@ -37,7 +37,7 @@ class SellerSignupForm
                        confirmation: true,
                        length: { within: Devise.password_length }
 
-  validates :vat_id, valvat: true
+  validates :vat_id, valvat: { checksum: true }
 
   def initialize(attributes = {})
     super(attributes.reject { |_, v| v.blank? })
