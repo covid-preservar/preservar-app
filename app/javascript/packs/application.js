@@ -28,6 +28,8 @@ window.PlaceForm = PlaceForm;
 import VoucherPaymentForm from "../src/voucher_payment_form";
 window.VoucherPaymentForm = VoucherPaymentForm;
 
+import MobileShare from "../src/mobile_share";
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -51,6 +53,11 @@ function setup() {
       $(".flashes").hide();
     }
   });
+
+  if ("share" in navigator && $(".js-mobileShare").length > 0) {
+    new MobileShare();
+  }
+
 }
 
 
