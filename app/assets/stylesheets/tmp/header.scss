@@ -22,6 +22,27 @@
 
 .header-main {
   padding: var(--grid-outer-padding);
+
+  &.announcement {
+    padding-top: 5rem;
+  }
+}
+
+#announcement {
+  display: flex; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  background-color: var(--color-main-blue);
+
+  p {
+    margin: auto; /* Important */ 
+    text-align: center; 
+    color: white;
+    font-size: calc(16rem/16);
+  }
 }
 
 .header-short {
