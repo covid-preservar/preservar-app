@@ -11,7 +11,11 @@ module Admin
 
     def publish
       if requested_resource.can_publish?
-        requested_resource.update(published: true)
+
+        if requested_resource.published_at.nil?
+          ApplicationMailer.seller_place_published_notification(requested_resource.id).deliver_later
+        end
+        requested_resource.update(published: true, published_at: Time.now)
       else
         flash[:alert] = "Can't publish. Place needs photo and payment API key"
       end

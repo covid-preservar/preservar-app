@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2020_04_05_134107) do
     t.boolean "published", default: false
     t.bigint "seller_id"
     t.boolean "has_discount", default: false
+    t.datetime "published_at"
     t.index ["category_id"], name: "index_places_on_category_id"
     t.index ["published"], name: "index_places_on_published"
     t.index ["seller_id"], name: "index_places_on_seller_id"
