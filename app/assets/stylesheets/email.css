@@ -113,6 +113,11 @@ h1 {
   font-size: 24px;
 }
 
+* + h1,
+* + h2 {
+  margin-top: 30px;
+}
+
 h2 {
   font-size: 22px;
 }
@@ -133,6 +138,14 @@ ol li {
   margin-left: 5px;
 }
 
+ol {
+  padding-left: 0;
+}
+
+ol li {
+  margin-left: 0;
+}
+
 a {
   color: #00093c;
   text-decoration: underline;
@@ -144,6 +157,7 @@ a {
 .btn {
   box-sizing: border-box;
   width: 100%;
+  margin-bottom: 15px;
 }
 .btn > tbody > tr > td {
   padding-bottom: 15px;
@@ -156,20 +170,21 @@ a {
   border-radius: 5px;
   text-align: center;
 }
+
 .btn a {
-  background-color: #ffffff;
-  border: solid 1px #3498db;
-  border-radius: 5px;
-  box-sizing: border-box;
-  color: #3498db;
-  cursor: pointer;
+  background: #00093C;
+  border: 0;
+  border-radius: 0;
+  color: white;
   display: inline-block;
-  font-size: 14px;
+  font-size: calc(17rem / 16);
   font-weight: bold;
-  margin: 0;
-  padding: 12px 25px;
+  height: 3rem;
+  line-height: 3rem;
+  outline: 0;
+  padding: 0 1rem;
   text-decoration: none;
-  text-transform: capitalize;
+  vertical-align: bottom;
 }
 
 .btn-primary table td {
@@ -323,4 +338,12 @@ hr {
     background-color: #34495e !important;
     border-color: #34495e !important;
   }
+}
+
+/* -------------------------------------
+          CUSTOM
+      ------------------------------------- */
+
+img {
+  margin-bottom: 15px;
 }
