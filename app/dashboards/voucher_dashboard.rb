@@ -20,7 +20,8 @@ class VoucherDashboard < Administrate::BaseDashboard
     payment_identifier: Field::String,
     payment_method: Field::String,
     payment_phone: Field::String,
-    cookie_uuid: Field::String
+    cookie_uuid: Field::String,
+    vat_id: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -43,6 +44,7 @@ class VoucherDashboard < Administrate::BaseDashboard
     id
     place
     email
+    vat_id
     value
     code
     state

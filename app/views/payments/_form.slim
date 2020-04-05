@@ -3,6 +3,9 @@
                       method: :post, remote: true,
                       html: {class:'voucher_payment'} do |f|
       = f.input :email, label:'Email para receber o voucher', placeholder: 'Email'
+      = f.input :vat_id, label: 'NIF (Opcional)',
+                         hint: 'Se pretender que o comerciante emita factura',
+                         input_html: { value: @voucher.vat_id }
 
       .payment-methods
         = f.collection_radio_buttons :payment_method,

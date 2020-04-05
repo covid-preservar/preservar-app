@@ -22,6 +22,11 @@ table
       td
         strong Email do comprador
       td = @voucher.email
+    - if @voucher.vat_id.present?
+      tr
+        td
+          strong NIF para facturação
+        td = @voucher.vat_id
 
 br
 br
