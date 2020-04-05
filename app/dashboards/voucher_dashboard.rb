@@ -21,7 +21,8 @@ class VoucherDashboard < Administrate::BaseDashboard
     payment_method: Field::String,
     payment_phone: Field::String,
     cookie_uuid: Field::String,
-    vat_id: Field::String
+    vat_id: Field::String,
+    valid_until: Field::Date
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -35,6 +36,7 @@ class VoucherDashboard < Administrate::BaseDashboard
     email
     code
     value
+    valid_until
     state
   ].freeze
 
@@ -47,6 +49,7 @@ class VoucherDashboard < Administrate::BaseDashboard
     vat_id
     value
     code
+    valid_until
     state
     created_at
     updated_at
@@ -65,6 +68,7 @@ class VoucherDashboard < Administrate::BaseDashboard
     value
     state
     email
+    valid_until
     payment_identifier
     payment_method
     payment_phone

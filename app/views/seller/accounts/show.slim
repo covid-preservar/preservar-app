@@ -54,13 +54,14 @@ main.container.maincontent
       = link_to 'Adicionar local', new_seller_place_path
   hr
   .row.mt-4
-    .col-sm-12.col-xl-8
+    .col-sm-12
       h3.mb-4 Os meus vouchers
       - if @seller.vouchers.seller_visible.any?
         table.table
           thead
             th Local
             th Código
+            th Validade
             th Valor
             - if Flipper.enabled?(:discounts)
               th Desconto
@@ -75,7 +76,9 @@ main.container.maincontent
                 td
                   = voucher.code
                 td
-                  = voucher.value
+                  = voucher.valid_until
+                td
+                  = number_to_currency voucher.value, locale: :pt
                 - if Flipper.enabled?(:discounts)
                   td
                     = voucher.discount_percent.zero? ? '-' : "#{voucher.discount_percent}%"

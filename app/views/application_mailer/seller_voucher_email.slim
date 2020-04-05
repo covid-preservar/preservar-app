@@ -27,6 +27,10 @@ table
         td
           strong NIF para facturação
         td = @voucher.vat_id
+    tr
+      td
+        strong Validade
+      td = @voucher.valid_until
 
 br
 br

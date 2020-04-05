@@ -18,7 +18,7 @@ class Voucher < ApplicationRecord
     end
 
     event :payment_success do
-      transitions from: :pending_payment, to: :paid, after: :generate_code
+      transitions from: :pending_payment, to: :paid, after: :finalize_voucher
     end
 
     event :redeemed do
@@ -69,8 +69,9 @@ class Voucher < ApplicationRecord
 
   private
 
-  def generate_code
+  def finalize_voucher
     self.code = SecureRandom.hex(3).upcase
+    self.valid_until = Date.today + 24.months
   end
 
   def generate_identifier
