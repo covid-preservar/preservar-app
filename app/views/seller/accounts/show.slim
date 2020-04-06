@@ -20,6 +20,11 @@ main.container.maincontent
               strong NIF
             td
               = @seller.vat_id
+          tr
+            td
+              strong IBAN
+            td
+              = @seller.iban
           - if @seller.payment_api_key.blank?
             tr
               td

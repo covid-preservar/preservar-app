@@ -16,6 +16,7 @@ class SellerDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     payment_api_key: Field::String,
     vat_id: Field::String,
+    iban: Field::String,
     contact_name: Field::String,
     company_name: Field::String
   }.freeze
@@ -43,6 +44,7 @@ class SellerDashboard < Administrate::BaseDashboard
     updated_at
     payment_api_key
     vat_id
+    iban
     contact_name
   ].freeze
 
@@ -52,6 +54,7 @@ class SellerDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     seller_user
     vat_id
+    iban
     contact_name
     company_name
     payment_api_key

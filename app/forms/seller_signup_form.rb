@@ -13,6 +13,7 @@ class SellerSignupForm
                 :email,
                 :is_company,
                 :vat_id,
+                :iban,
                 :contact_name,
                 :company_name,
                 :password,
@@ -29,6 +30,7 @@ class SellerSignupForm
             :password_confirmation,
             :category_id,
             :main_photo,
+            :iban,
             :company_name, presence: true
 
   validates :email, format: { with: Devise.email_regexp }
@@ -38,6 +40,7 @@ class SellerSignupForm
                        length: { within: Devise.password_length }
 
   validates :vat_id, valvat: { checksum: true }
+  validate :validate_iban
 
   def initialize(attributes = {})
     super(attributes.reject { |_, v| v.blank? })
@@ -92,6 +95,10 @@ class SellerSignupForm
         errors.add(attribute, error)
       end
     end
+  end
+
+  def validate_iban
+    errors.add(:iban, 'é inválido') unless Ibandit::IBAN.new(iban).valid?
   end
 
 end

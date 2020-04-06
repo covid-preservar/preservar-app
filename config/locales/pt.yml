@@ -33,6 +33,7 @@ pt:
         address: 'Morada'
         area: 'Zona/Concelho'
         company_name: 'Nome da empresa'
+        iban: 'IBAN'
   errors:
     messages:
         invalid_vat: 'é inválido'
