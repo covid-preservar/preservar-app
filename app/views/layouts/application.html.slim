@@ -31,6 +31,10 @@ html lang="#{I18n.locale}"
     = display_meta_tags site: 'Preserve'
 
   body class="#{body_class} #{yield (:body_class)}"
+    .spinner-wrapper.spinner--stopped
+      .spinner-overlay
+        .spinner
+
     = yield :header
     = render 'shared/flashes'
     = content_for?(:content) ? yield(:content) : yield

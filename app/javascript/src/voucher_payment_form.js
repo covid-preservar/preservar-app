@@ -1,4 +1,4 @@
-export default class SellerForm {
+export default class VoucherPaymentForm {
   constructor() {
     if (!$('.payment-method-radio:checked').val()) {
       $('.voucher_payment_phone').hide();
