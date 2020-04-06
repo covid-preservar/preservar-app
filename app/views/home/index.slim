@@ -20,8 +20,7 @@
             br
             | favorito
           p Compre um voucher para usar em qualquer altura, e ajude a sua economia local a sobreviver ao COVID-19
-          - if Flipper.enabled?(:for_buyers)
-            = render 'shared/search_form'
+          = render 'shared/search_form'
 
           / section.hero-stats.clearfix
           /   article.stat
@@ -59,11 +58,10 @@
         h3 Parabéns, contribuiu para sua economia local!
         p Contribuiu para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
 
-  - if Flipper.enabled?(:for_buyers)
-    - cache @places do
-      section.places-container.section
-        .xrow
-          h2.xcol-6.section-separator Quem recebe o seu apoio
+  - cache @places do
+    section.places-container.section
+      .xrow
+        h2.xcol-6.section-separator Quem recebe o seu apoio
 
       .places-list.xrow.home-list
         == render @places
@@ -96,9 +94,8 @@
         = link_to 'Registe o seu local', new_seller_user_registration_path, class: 'primary-cta'
 
 
-  - if Flipper.enabled?(:for_buyers)
-    section#kicker.section
-      .xrow
-        h2.xcol-6.section-separator Está à espera de quê? Preserve o seu sítio preferido agora
-      .xrow
-        = render 'shared/search_form', locals: {extra_classes: 'xcol-6'}
+  section#kicker.section
+    .xrow
+      h2.xcol-6.section-separator Está à espera de quê? Preserve o seu sítio preferido agora
+    .xrow
+      = render 'shared/search_form', locals: {extra_classes: 'xcol-6'}

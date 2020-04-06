@@ -16,14 +16,11 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  # Temporary constraint until we launch
-  constraints( ->(req) {Flipper.enabled?(:for_buyers)}) do
-    resources :places, only: [:index, :show]
-    resources :vouchers, only: [:create, :show] do
-      resources :payments, only: [:new, :create]
+  resources :places, only: [:index, :show]
+  resources :vouchers, only: [:create, :show] do
+    resources :payments, only: [:new, :create]
 
-      get '/obrigado', to: 'payments#done', as: :thank_you, on: :member
-    end
+    get '/obrigado', to: 'payments#done', as: :thank_you, on: :member
   end
 
   get '/tos', to: 'home#tos', as: :tos

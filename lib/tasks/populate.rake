@@ -57,9 +57,7 @@ namespace :db do
 
 
     Flipper::Adapters::ActiveRecord::Feature.create key:'discounts'
-    Flipper::Adapters::ActiveRecord::Feature.create key:'for_buyers'
     Flipper.enable :discounts
-    Flipper.enable :for_buyers
   end
 end
 
