@@ -7,10 +7,10 @@ class PlacesController < ApplicationController
 
     if params[:category].present?
       @category = Category.find(params[:category])
-      @places = @category.places.published.where(area: @city).sorted
+      @places = @category.places.includes(:category).published.where(area: @city).sorted
       @title = "#{@category.name_plural} em #{@city}"
     else
-      @places = Place.published.where(area: @city).sorted
+      @places = Place.published.includes(:category).where(area: @city).sorted
       @title = "Locais em #{@city}"
     end
   end
