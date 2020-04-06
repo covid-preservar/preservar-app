@@ -22,7 +22,7 @@ class HomeController < ApplicationController
   def set_location
     location = request.location
     detected_city = location&.city.presence || location&.state.presence
-    @city = Location.find_location(detected_city)
+    @city = Location.find_location(detected_city)&.area
 
     unless @city.present? && @city.in?(@cities)
       @city = 'Grande Lisboa'
