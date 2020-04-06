@@ -4,8 +4,14 @@ class PlacesController < ApplicationController
 
   def index
     @city = params[:city] || 'Grande Lisboa'
-    @category = Category.find(params[:category] || 1)
-    @places = @category.places.published.where(area: @city).sorted
+    if params[:category].present?
+      @category = Category.find(params[:category])
+      @places = @category.places.published.where(area: @city).sorted
+      @title = "#{@category.name_plural} em #{@city}"
+    else
+      @places = Place.published.where(area: @city).sorted
+      @title = "Locais em #{@city}"
+    end
   end
 
   def show

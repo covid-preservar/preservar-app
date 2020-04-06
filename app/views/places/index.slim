@@ -1,4 +1,4 @@
-- title "#{@category.name_plural} em #{@city}"
+- title @title
 - set_meta_tags og: { title: :full_title, site_name: :site}, twitter: { title: :full_title }
 
 - content_for :header do
@@ -18,4 +18,3 @@ section.xcontainer.section#businesses
     h2.xcol-6.section-separator Não encontra o seu local favorito? Partilhe a página de submissão com eles
   .xrow
     = link_to 'Submeter local', new_seller_user_registration_path, class: 'primary-cta'
-    
