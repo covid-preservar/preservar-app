@@ -15,7 +15,8 @@ select {
   background: image-url('icon-arrow-down.svg') $white right .5rem center no-repeat;
 }
 
-input:not(.form-control):not([type="file"], [type="radio"], [type="checkbox"], [type="submit"]),
+input[type='text']:not(.form-control),
+input[type='search']:not(.form-control),
 select:not(.form-control) {
   appearance: none;
   background-color: $white;
