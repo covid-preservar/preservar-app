@@ -1,11 +1,10 @@
 header.header.header-main
   a#logo href="/"
-  - if seller_user_signed_in?
-    .header-right
+  .header-right
+    - if seller_user_signed_in?
       = link_to 'Terminar sessão', destroy_seller_user_session_path, method: :delete, class: 'header-link'
       = link_to 'A minha conta', seller_account_path, class: 'header-link secondary-cta'
-  - else
-    .header-right
+    - else
       = link_to 'Entrar', new_seller_user_session_path, class: 'header-link'
       - if request.path == root_path
         = link_to 'Submeter local', new_seller_user_registration_path, class: 'header-link secondary-cta'

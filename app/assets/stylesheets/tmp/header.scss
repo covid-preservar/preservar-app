@@ -8,6 +8,7 @@
 
   .header-right {
     text-align: right;
+    margin-left: auto;
   }
 
   .header-link {
@@ -83,6 +84,10 @@
     height: 2.5rem;
     line-height: 2.2rem;
   }
+
+  .header-link {
+    margin-right: 1rem;
+  }
 }
 
 #logo-small {
@@ -156,7 +161,7 @@
       }
     }
 
-    .secondary-cta {
+    .header-right {
       position: absolute;
       right: 1rem;
       top: 1rem;

@@ -2,7 +2,9 @@ header.header.header-short
   a#logo-small href="/"
   = render 'shared/search_form'
 
-  - if seller_user_signed_in?
-    = link_to 'A minha conta', seller_account_path, class: 'nav-link secondary-cta'
-  - elsif request.path == root_path
-    = link_to 'Submeta o seu negócio', new_seller_user_registration_path, class: 'secondary-cta'
+  .header-right
+    - if seller_user_signed_in?
+      = link_to 'A minha conta', seller_account_path, class: 'secondary-cta'
+    - else
+      = link_to 'Entrar', new_seller_user_session_path, class: 'header-link'
+      = link_to 'Submeter local', new_seller_user_registration_path, class: 'secondary-cta'
