@@ -12,3 +12,10 @@ section.places-container.xcontainer
 
   .places-list.xrow
     == render @places
+
+section.xcontainer.section#businesses
+  .xrow.clearfix
+    h2.xcol-6.section-separator Não encontra o seu local favorito? Partilhe a página de submissão com eles
+  .xrow
+    = link_to 'Submeter local', new_seller_user_registration_path, class: 'primary-cta'
+    
