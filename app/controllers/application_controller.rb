@@ -40,7 +40,8 @@ class ApplicationController < ActionController::Base
   end
 
   def load_cities
-    gon.cities = Place.published.distinct(:area).pluck(:area)
+    @cities = Place.published.distinct(:area).pluck(:area).sort
+    # gon.cities = @cities
   end
 
   # def set_devise_layout

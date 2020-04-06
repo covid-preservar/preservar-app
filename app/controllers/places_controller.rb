@@ -4,6 +4,7 @@ class PlacesController < ApplicationController
 
   def index
     @city = params[:city] || 'Grande Lisboa'
+
     if params[:category].present?
       @category = Category.find(params[:category])
       @places = @category.places.published.where(area: @city).sorted
