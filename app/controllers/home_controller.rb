@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def index
     @spinner_categories = %w[Restaurante Café Cabeleireiro Museu Teatro]
-    @places = Place.published.order("RANDOM()").limit(20)
+    @places = Place.published.includes(:category).order("RANDOM()").limit(20)
     render :index
   end
 

@@ -4,5 +4,5 @@
   = select_tag :category,
               options_from_collection_for_select(@categories, :id, :name_plural, @category&.id),
               class: 'select-input', id:nil,
-              include_blank: 'Todos'
+              include_blank: 'Todos os locais'
   = submit_tag 'Pesquisar', class:'primary-cta'
