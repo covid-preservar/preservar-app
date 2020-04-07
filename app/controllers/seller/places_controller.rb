@@ -3,6 +3,7 @@ class Seller::PlacesController < Seller::BaseController
   before_action :load_place, except: %i[new create]
 
   def show
+    redirect_to(seller_place_url(@place)) and return if seller_place_url(@place) != request.url
   end
 
   def new
@@ -18,6 +19,17 @@ class Seller::PlacesController < Seller::BaseController
     else
       gon.locations = Location.grouped_areas
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @place.update(place_params)
+      redirect_to seller_place_path(@place), notice: 'Alterações guardadas com sucesso.'
+    else
+      render :edit
     end
   end
 

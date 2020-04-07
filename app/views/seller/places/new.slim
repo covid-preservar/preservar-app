@@ -8,7 +8,7 @@ main.container.maincontent
   .row
     .col-12
       h2.mb-4 Criar local
-      = simple_form_for @place, url: seller_places_path, validate: true do |f|
+      = simple_form_for @place, url: seller_places_path, validate: true, remote: true  do |f|
         = f.input :name
         = f.association :category
         = f.input :district, collection: Location.all_districts, label: 'Distrito', input_html:{ id: 'district_select'}

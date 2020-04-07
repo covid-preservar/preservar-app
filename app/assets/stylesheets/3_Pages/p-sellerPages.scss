@@ -14,4 +14,14 @@
   .table {
     border-collapse: collapse;
   }
+
+  .place_header {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+  }
+
+  .actions {
+    margin-left: auto;
+  }
 }

@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   namespace :seller do
     resource :account, only: [:show]
-    resources :places, only: [:show, :new, :create] do
+    resources :places, except: [:index, :destroy] do
       member do
         get :enable_discount
         post :confirm_discount

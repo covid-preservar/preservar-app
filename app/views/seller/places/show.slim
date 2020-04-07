@@ -9,7 +9,11 @@ main.container.maincontent
     .col-12
       = link_to '&slarr; Voltar'.html_safe, seller_account_path
 
-      h2.mb-4.mt-2 = @place.name
+
+      h2.place_header
+        = @place.name
+        .actions
+          = link_to 'Editar', edit_seller_place_path(@place), class: 'btn btn-outline-primary btn-sm'
 
       table.table
         tbody

@@ -3,7 +3,7 @@ class Place < ApplicationRecord
   DEFAULT_EUR_VALUES = [20, 30, 40, 50].map { |v| ["€#{v}", v] }
 
   extend FriendlyId
-  friendly_id :slug_candidates, use: %i[slugged]
+  friendly_id :slug_candidates, use: %i[history]
 
   include PhotoUploader::Attachment.new(:main_photo)
   belongs_to :category
@@ -34,5 +34,9 @@ class Place < ApplicationRecord
 
   def seller_has_api_key
     errors.add(:base, 'Seller must have API key') if published? && seller.payment_api_key.blank?
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
   end
 end
