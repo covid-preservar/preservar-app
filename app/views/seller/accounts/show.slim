@@ -25,6 +25,12 @@ main.container.maincontent
               strong IBAN
             td
               = @seller.iban
+          tr
+            td
+              strong Codigo Certidão Permanente
+            td
+              = @seller.company_registration_code
+
           - if @seller.payment_api_key.blank?
             tr
               td

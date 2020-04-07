@@ -37,6 +37,7 @@ class SellerUsers::RegistrationsController < Devise::RegistrationsController
                                         :password,
                                         :vat_id,
                                         :iban,
+                                        :company_registration_code,
                                         :password,
                                         :password_confirmation,
                                         :contact_name,

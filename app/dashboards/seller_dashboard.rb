@@ -18,7 +18,8 @@ class SellerDashboard < Administrate::BaseDashboard
     vat_id: Field::String,
     iban: Field::String,
     contact_name: Field::String,
-    company_name: Field::String
+    company_name: Field::String,
+    company_registration_code: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -45,6 +46,7 @@ class SellerDashboard < Administrate::BaseDashboard
     payment_api_key
     vat_id
     iban
+    company_registration_code
     contact_name
   ].freeze
 
@@ -55,6 +57,7 @@ class SellerDashboard < Administrate::BaseDashboard
     seller_user
     vat_id
     iban
+    company_registration_code
     contact_name
     company_name
     payment_api_key

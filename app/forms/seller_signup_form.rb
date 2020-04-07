@@ -14,6 +14,7 @@ class SellerSignupForm
                 :is_company,
                 :vat_id,
                 :iban,
+                :company_registration_code,
                 :contact_name,
                 :company_name,
                 :password,
@@ -40,6 +41,9 @@ class SellerSignupForm
                        length: { within: Devise.password_length }
 
   validates :vat_id, valvat: { checksum: true }
+  validates :company_registration_code,
+            format: { with: /\d{4}-\d{4}-\d{4}/, allow_nil: true }
+
   validate :validate_iban
 
   def initialize(attributes = {})
@@ -63,6 +67,8 @@ class SellerSignupForm
     @seller ||= Seller.new(vat_id: vat_id,
                            contact_name: contact_name,
                            company_name: company_name,
+                           iban: iban,
+                           company_registration_code: company_registration_code,
                            seller_user: seller_user)
   end
 
