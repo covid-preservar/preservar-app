@@ -9,9 +9,14 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :load_categories
   before_action :load_cities
-  # before_action :set_devise_layout, if: :devise_controller?
 
-  # before_action :configure_permitted_parameters, if: :devise_controller?
+  if !Rails.env.development?
+    rescue_from ActiveRecord::RecordNotFound,
+                ActionController::RoutingError,
+                ActionController::UnknownFormat,
+                ActionController::MethodNotAllowed,
+                with: :handle_404
+  end
 
   protected
 
@@ -41,10 +46,10 @@ class ApplicationController < ActionController::Base
 
   def load_cities
     @cities = Place.published.distinct(:area).pluck(:area).sort
-    # gon.cities = @cities
   end
 
-  # def set_devise_layout
-  #   self.class.layout(resource_name == :admin_user ? 'devise_admin' : 'devise')
-  # end
+  def handle_404(exception)
+    logger.warn("#{exception.class}: #{exception.message}")
+    render file: "public/404.html", layout:nil, status: 404
+  end
 end

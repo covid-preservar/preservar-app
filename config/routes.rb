@@ -13,8 +13,13 @@ Rails.application.routes.draw do
     end
   end
 
-
   root to: 'home#index'
+
+  ### Fix some shared URLs that are 404s
+    get '/Compre', to: redirect('/')
+    get '/.', to: redirect('/')
+    get '/*', to: redirect('/')
+  ###
 
   resources :places, only: [:index, :show]
   resources :vouchers, only: [:create, :show] do
