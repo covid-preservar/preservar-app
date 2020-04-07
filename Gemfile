@@ -43,6 +43,7 @@ gem 'redcarpet'
 gem 'rollbar'
 gem 'shrine'
 gem 'sidekiq', '~> 6.0.0'
+gem 'sidekiq-cron'
 gem 'slim-rails'
 gem 'valvat'
 

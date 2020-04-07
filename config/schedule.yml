@@ -1,0 +1,4 @@
+clean_dead_vouchers:
+  cron: "0 1 * * *"
+  class: "CleanDeadVouchers"
+  queue: low
