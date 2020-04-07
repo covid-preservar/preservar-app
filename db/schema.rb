@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_113155) do
+ActiveRecord::Schema.define(version: 2020_04_07_133102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_113155) do
     t.integer "discount_percent", default: 0
     t.string "vat_id"
     t.date "valid_until"
+    t.datetime "payment_completed_at"
     t.index ["payment_identifier"], name: "index_vouchers_on_payment_identifier"
     t.index ["place_id"], name: "index_vouchers_on_place_id"
   end

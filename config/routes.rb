@@ -72,6 +72,7 @@ Rails.application.routes.draw do
     resources :seller_users
     resources :vouchers
 
+    get 'stats', to: 'stats#index', as: :stats
     root to: "places#index"
   end
 

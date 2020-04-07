@@ -1,8 +1,10 @@
 nav.navigation role="navigation"
   - Administrate::Namespace.new(namespace).resources.each do |resource|
+    - next if resource.name == :stats
     = link_to(display_resource_name(resource), [namespace, resource_index_route_key(resource)],
         class: "navigation__link navigation__link--#{nav_link_state(resource)}")
   hr
+    a.navigation__link href="/admin/stats"  Stats
     a.navigation__link href="/admin/sidekiq"  Sidekiq
     a.navigation__link href='/admin/flipper'  Flipper
     = button_to 'Logout', destroy_admin_user_session_path, method: :delete, class: 'btn-link', form_class: 'btn-link'

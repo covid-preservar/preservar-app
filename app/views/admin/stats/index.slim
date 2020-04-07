@@ -1,0 +1,17 @@
+header.main-content__header
+  h1.main-content__page-title
+    | Stats
+
+section.stats_section
+  h2.subtitle Voucher Stats
+  table
+    thead
+      th Date
+      th Vouchers Paid
+      th Amount
+    tbody
+      - @voucher_stats.each do |day, stats|
+        tr
+          td = day
+          td = stats.first
+          td = number_to_currency stats.last, locale: :pt

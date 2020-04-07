@@ -71,6 +71,7 @@ class Voucher < ApplicationRecord
 
   def finalize_voucher
     self.valid_until = Date.today + 24.months
+    self.payment_completed_at = Time.now
 
     # Ensure uniqueness
     loop do

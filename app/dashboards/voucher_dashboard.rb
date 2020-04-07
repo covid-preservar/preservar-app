@@ -16,6 +16,7 @@ class VoucherDashboard < Administrate::BaseDashboard
     state: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    payment_completed_at: Field::DateTime,
     email: Field::String,
     payment_identifier: Field::String,
     payment_method: Field::String,
@@ -51,6 +52,7 @@ class VoucherDashboard < Administrate::BaseDashboard
     code
     valid_until
     state
+    payment_completed_at
     created_at
     updated_at
     payment_identifier
