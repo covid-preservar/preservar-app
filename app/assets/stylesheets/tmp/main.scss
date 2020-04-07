@@ -636,26 +636,23 @@ a {
   margin-top: 1rem;
 }
 
-#support-people,
-#press-wrapper {
+.support-people,
+.press-wrapper {
   margin-top: 3rem;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
 }
 
-#press-wrapper {
+.press-wrapper {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
   width: 100vw;
-  position: relative;
-  left: 0;
-  right: 50%;
-  margin-right: -50vw;
   -webkit-overflow-scrolling: touch;
-}
-
-#press-wrapper::-webkit-scrollbar,
-#support-people::-webkit-scrollbar {
-  display: none;
+  -ms-overflow-style: none;  // Internet Explorer 10+
+  scrollbar-width: none;  // Firefox
 }
 
 .support-person img {
@@ -777,7 +774,7 @@ a {
     margin-left: 0;
   }
 
-  #support-people {
+  .support-people {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
