@@ -78,6 +78,7 @@ Rails.application.routes.draw do
 
   authenticate :admin_user do
     require 'sidekiq/web'
+    require 'sidekiq/cron/web'
     mount Sidekiq::Web => '/admin/sidekiq'
     mount Flipper::UI.app(Flipper) => '/admin/flipper'
   end
