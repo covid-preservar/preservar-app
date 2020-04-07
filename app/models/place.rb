@@ -22,6 +22,12 @@ class Place < ApplicationRecord
     !published && seller.payment_api_key.present? && main_photo.present?
   end
 
+  def photo_url(size)
+    # fallback to original to handle the gap between upload
+    # and derivative generation
+    main_photo_url(size , public: true) || main_photo_url(public: true)
+  end
+
   private
 
   def slug_candidates
