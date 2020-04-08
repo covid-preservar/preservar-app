@@ -26,11 +26,23 @@ class SellerPostSignupJob < ApplicationJob
     base_url = "https://#{ENV["MAILJET_API_KEY"]}:#{ENV["MAILJET_SECRET_KEY"]}@api.mailjet.com/v3/REST"
 
     # Add the email to Mailjet
-    response = RestClient.post(base_url + "/contact",
-                               {email: seller.seller_user.email}.to_json,
-                               content_type: :json)
-    response = JSON.parse response.body
-    contact_id = response.fetch('Data')&.first&.fetch('ID')
+    RestClient.post(base_url + "/contact",
+                    {email: seller.seller_user.email}.to_json,
+                    content_type: :json) do |response, request, result|
+
+      case response.code
+      when 400
+        contact_id = get_mailjet_id(seller.seller_user.email)
+      when 200
+        response = JSON.parse response.body
+        contact_id = response.fetch('Data')&.first&.fetch('ID')
+      else
+        Rails.logger.warn("Failed to add email '#{seller.seller_user.email}' to Mailjet. Response was #{response.code}")
+        return nil
+      end
+    end
+
+    return nil if contact_id.nil?
 
     # Set contact metadata
     params = [{ name: :nome_pessoa, value: seller.contact_name},
@@ -46,5 +58,18 @@ class SellerPostSignupJob < ApplicationJob
     RestClient.post(base_url + "/listrecipient",
                     params.to_json,
                     content_type: :json)
+  end
+
+  def get_mailjet_id(email)
+    RestClient.get(base_url + "/contact/#{seller.seller_user.email}") do |response, request, result|
+      case response.code
+      when 200
+        response = JSON.parse response.body
+        return response.fetch('Data')&.first&.fetch('ID')
+      else
+        Rails.logger.warn("Failed to get email '#{email}' from Mailjet. Response was #{response.code}")
+        return nil
+      end
+    end
   end
 end
