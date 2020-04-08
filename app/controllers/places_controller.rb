@@ -3,16 +3,13 @@ class PlacesController < ApplicationController
   before_action :load_place_and_ensure_canonical_url, only: [:show]
 
   def index
-    @city = params[:city] || 'Grande Lisboa'
+    @city = params[:city]
 
-    if params[:category].present?
-      @category = Category.find(params[:category])
-      @places = @category.places.includes(:category).published.where(area: @city).sorted
-      @title = "#{@category.name_plural} em #{@city}"
-    else
-      @places = Place.published.includes(:category).where(area: @city).sorted
-      @title = "Locais em #{@city}"
-    end
+    search = PlaceSearch.new(category: params[:category], city: @city)
+
+    @category = search.category
+    @places = search.places
+    @title = search.title
   end
 
   def show
