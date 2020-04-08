@@ -3,11 +3,11 @@ class PaymentService
 
   ENDPOINT = ENV['PAYMENT_ENDPOINT']
   RESPONSES = {
-    '0' => 'Sucesso',
-    '-7' => 'Serviço Inativo',
-    '-8' => 'Referência Inválida',
-    '-9' => 'Valores Incorretos',
-    '-10' => 'Chave Inválida'
+    0 => 'Sucesso',
+    -7 => 'Serviço Inativo',
+    -9 => 'Referência Inválida',
+    -9 => 'Valores Incorretos',
+    -10 => 'Chave Inválida'
   }.freeze
 
   attr_accessor :api_key,
@@ -68,6 +68,7 @@ class PaymentService
   def get_error(response)
     state = RESPONSES[response['estado']]
     message = response['resposta']
+    Rails.logger.warn("Payment API Error for transaction '#{identifier}''. State: '#{response['estado']}'' - '#{state}''. Message: '#{message}''")
     OpenStruct.new(success: false, state: state, message: message)
   end
 
