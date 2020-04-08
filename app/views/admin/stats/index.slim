@@ -3,6 +3,33 @@ header.main-content__header
     | Stats
 
 section.stats_section
+  h2.subtitle Totais
+  table
+    tbody
+      tr
+        td
+          strong Vouchers (# Vendidos / Valor Total)
+        td
+          => Voucher.paid.count
+          ' /
+          = number_to_currency Voucher.paid.sum(:value), locale: :pt
+      tr
+        td
+          strong Locais (Total / Publicados)
+        td
+          => Place.count
+          ' /
+          = Place.published.count
+
+      tr
+        td
+          strong Comerciantes (Total / Publicados)
+        td
+          => Seller.count
+          ' /
+          = Seller.where(id: Place.published.select(:seller_id)).distinct.count
+
+section.stats_section
   h2.subtitle Voucher Stats
   table
     thead
