@@ -5,7 +5,7 @@ class PaymentService
   RESPONSES = {
     0 => 'Sucesso',
     -7 => 'Serviço Inativo',
-    -9 => 'Referência Inválida',
+    -8 => 'Referência Inválida',
     -9 => 'Valores Incorretos',
     -10 => 'Chave Inválida'
   }.freeze
