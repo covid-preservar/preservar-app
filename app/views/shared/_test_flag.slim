@@ -2,4 +2,7 @@
   ' TEST —
   => ENV['HEROKU_SLUG_COMMIT']&.slice(0,8)
   ' —
-  = request.location&.city
+  => request.remote_ip
+  ' —
+  => request.location&.city
+
