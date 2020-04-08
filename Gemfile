@@ -57,36 +57,37 @@ gem 'client_side_validations-simple_form'
 gem 'administrate', '~> 0.13.0'
 
 group :production do
-  gem 'scout_apm'
+  gem 'cloudflare-rails'
   gem 'dalli'
+  gem 'scout_apm'
 end
 
 group :development, :test do
-  gem 'pry-byebug'
   gem 'awesome_print'
   gem 'dotenv-rails'
-  gem 'rspec-rails', '~> 3.9.0'
   gem 'factory_bot_rails'
   gem 'image_optim_pack'
+  gem 'pry-byebug'
+  gem 'rspec-rails', '~> 3.9.0'
 end
 
 group :development do
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'letter_opener_web'
-  gem 'foreman', '= 0.86.0', require: false
   gem 'bullet'
+  gem 'foreman', '= 0.86.0', require: false
+  gem 'letter_opener_web'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
-  gem 'simplecov'
   gem 'database_cleaner'
   gem 'rspec-sidekiq'
+  gem 'selenium-webdriver'
+  gem 'simplecov'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
