@@ -42,3 +42,17 @@ section.stats_section
           td = day
           td = stats.first
           td = number_to_currency stats.last, locale: :pt
+
+section.stats_section
+  h2.subtitle Seller Stats
+  table
+    thead
+      th Date
+      th Sellers
+      th Published
+    tbody
+      - @seller_stats.each do |day, stats|
+        tr
+          td = day
+          td = stats.first
+          td = stats.last
