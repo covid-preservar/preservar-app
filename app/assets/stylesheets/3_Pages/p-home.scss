@@ -1,23 +1,91 @@
 .places-list.home-list {
   flex-direction: row;
   flex-wrap: nowrap;
+  display: flex;
   overflow-x: auto;
-  width: 100vw;
   -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: none;  // Internet Explorer 10+
-  scrollbar-width: none;  // Firefox
+  -ms-overflow-style: none; // Internet Explorer 10+
+  scrollbar-width: none; // Firefox
 
   @media only screen and (max-width: 414px) {
     margin-top: 2rem;
   }
 
   &::-webkit-scrollbar {
-    display: none;  // Safari and Chrome
+    display: none; // Safari and Chrome
   }
 
   .place {
     flex: 0 0 15rem;
     margin-right: 1rem;
     max-width: 240px;
+  }
+}
+
+.press-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-top: 3rem;
+  overflow-x: scroll;
+
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // Internet Explorer 10+
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .press-logo {
+    position: relative;
+    flex: 0 0 11.5rem;
+    margin-right: calc(var(--grid-outer-padding) / 2);
+    height: 11.5rem;
+    background-color: #f2f2f2;
+    text-align: center;
+
+    &[class^="xcol"] {
+      margin-left: 0;
+    }
+
+    img {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.home.index {
+  .places-container {
+    margin-right: -1rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .home.index {
+    .places-container {
+      margin-right: -2rem;
+    }
+  }
+
+  .places-list.home-list {
+    flex-wrap: wrap;
+    width: auto;
+
+    .place {
+      flex-basis: 23%;
+      max-width: 23%;
+    }
+  }
+
+  .press-wrapper {
+    flex-wrap: wrap;
+    width: auto;
+
+    .press-logo {
+      margin-top: 1rem;
+    }
   }
 }
