@@ -636,24 +636,6 @@ a {
   margin-top: 1rem;
 }
 
-.support-people,
-.press-wrapper {
-  margin-top: 3rem;
-
-  &::-webkit-scrollbar{
-    display: none;
-  }
-}
-
-.press-wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  width: 100vw;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: none;  // Internet Explorer 10+
-  scrollbar-width: none;  // Firefox
-}
 
 .support-person img {
   box-shadow: -0.5rem -0.5rem 0 var(--color-light-blue);
@@ -670,24 +652,7 @@ a {
   font-weight: bold;
 }
 
-.press-logo {
-  position: relative;
-  flex: 0 0 11.5rem;
-  margin-right: calc(var(--grid-outer-padding) / 2);
-  height: 11.5rem;
-  background-color: #f2f2f2;
-  text-align: center;
-}
 
-.press-logo[class^="xcol"] {
-  margin-left: 0;
-}
-
-.press-logo img {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
 
 #businesses .primary-cta {
   margin-top: 2rem;
