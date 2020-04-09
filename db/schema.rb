@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_07_133102) do
+ActiveRecord::Schema.define(version: 2020_04_09_151758) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "admin_users", force: :cascade do |t|
@@ -146,6 +147,7 @@ ActiveRecord::Schema.define(version: 2020_04_07_133102) do
     t.string "vat_id"
     t.date "valid_until"
     t.datetime "payment_completed_at"
+    t.hstore "tracking_codes", default: {}
     t.index ["payment_identifier"], name: "index_vouchers_on_payment_identifier"
     t.index ["place_id"], name: "index_vouchers_on_place_id"
   end

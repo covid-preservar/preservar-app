@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :load_categories
   before_action :load_cities
+  before_action :set_cookies, unless: -> { request.xhr? }
+
 
   if !Rails.env.development?
     rescue_from ActiveRecord::RecordNotFound,
@@ -52,4 +54,45 @@ class ApplicationController < ActionController::Base
     logger.warn("#{exception.class}: #{exception.message}")
     render file: "public/404.html", layout:nil, status: 404
   end
+
+  def set_cookies
+    referrer = get_http_referrer()
+    if has_tracking_codes?(params) || referrer_present?(referrer)
+      clean_tracking_cookies()
+      load_tracking_cookies(params, referrer)
+    end
+  end
+
+  def get_http_referrer()
+    request.referrer.try(:strip).try(:[], 0...3000)
+  end
+
+  def has_tracking_codes?(params)
+    params.keys.any? { |k| k.start_with?('utm_') }
+  end
+
+  def referrer_present?(referrer)
+    referrer.present? && URI(referrer.strip).host != ENV['HOSTNAME']
+  end
+
+  def clean_tracking_cookies
+    cookies.delete(:referrer)
+    cookies.each do |key, value|
+      cookies.delete(key) if key.start_with?('utm_')
+    end
+  end
+
+  def load_tracking_cookies(params, referrer)
+    expires = 7.days.from_now
+
+    cookies.signed[:referrer] = { value: referrer, expires: expires } if referrer_present?(referrer)
+
+    params.each do |key, value|
+      if key.starts_with?('utm_')
+        cookies.signed[key] = { value: value, expires: expires }
+      end
+    end
+  end
+
+
 end
