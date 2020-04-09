@@ -31,6 +31,6 @@ import VoucherPaymentForm from '../src/voucher_payment_form';
 window.VoucherPaymentForm = VoucherPaymentForm;
 
 import MobileShare from '../src/mobile_share';
-
+window.MobileShare = MobileShare
 
 import "../src/main_setup";
