@@ -23,7 +23,7 @@ class VouchersController < ApplicationController
     cookies.each do |key, value|
       codes[key] = cookies.signed[key] if key.starts_with?('utm_')
     end
-    binding.pry
+
     codes[:referrer] = cookies.signed[:referrer] if cookies.signed[:referrer].present?
 
     codes
