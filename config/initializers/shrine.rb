@@ -37,6 +37,11 @@ else
     cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/cache'), # temporary
     store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads')        # permanent
   }
+
+  Shrine.plugin :backgrounding
+  Shrine::Attacher.promote_block { ShrinePromoteJob.perform_later(self.class.name, record.class.name, record.id, name, file_data) }
+  Shrine::Attacher.destroy_block { ShrineDeleteJob.set(wait: 1.minute).perform_later(self.class.name, data) }
+
 end
 
 Shrine.plugin :activerecord

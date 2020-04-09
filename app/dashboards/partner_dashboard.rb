@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-require 'administrate/base_dashboard'
+require "administrate/base_dashboard"
 
-class PlaceDashboard < Administrate::BaseDashboard
+class PartnerDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,21 +8,16 @@ class PlaceDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    category: Field::BelongsTo,
-    seller: Field::BelongsTo,
-    vouchers: Field::HasMany,
-    partnership: Field::BelongsTo,
-    partner_id: Field::Number,
+    partnerships: Field::HasMany,
+    places: Field::HasMany,
     id: Field::Number,
     name: Field::String,
+    large_logo: ShrineField,
+    small_logo: ShrineField,
+    place_page_copy: Field::String,
+    voucher_copy: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    area: Field::String,
-    slug: Field::String,
-    address: Field::String,
-    published: Field::Boolean,
-    main_photo: ShrineField,
-    has_discount: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -34,43 +28,30 @@ class PlaceDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     name
-    category
-    area
-    published
+    places
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    published
-    category
-    has_discount
-    seller
-    vouchers
     name
+    partnerships
+    place_page_copy
+    voucher_copy
     created_at
     updated_at
-    area
-    slug
-    address
-    partnership
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    seller
-    category
     name
-    area
-    slug
-    address
-    published
-    main_photo
-    partner_id
-    has_discount
+    large_logo
+    small_logo
+    place_page_copy
+    voucher_copy
   ].freeze
 
   # COLLECTION_FILTERS
@@ -85,10 +66,10 @@ class PlaceDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how sellers are displayed
+  # Overwrite this method to customize how partners are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(place)
-    "Place: #{place.name}"
+  def display_resource(partner)
+    "Partner: #{partner.name}"
   end
 end

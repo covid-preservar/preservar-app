@@ -8,6 +8,10 @@
         .discount
           => inline_svg 'icon-heart-small.svg'
           span.discount-value 10%
+      - if place.approved_partner.present?
+        .partner
+          = image_tag place.approved_partner.thumb_logo_url, class: 'partner-logo-thumb'
+
     p.place-info
       => place.category.name
       ' &middot;

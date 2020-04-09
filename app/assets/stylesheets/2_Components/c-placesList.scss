@@ -72,6 +72,20 @@
     }
   }
 
+  .partner {
+    align-items: flex-start;
+    display: flex;
+    align-items: center;
+
+    .partner-text {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+   .partner-logo-thumb {
+      width: 1.5rem;
+    }
+  }
 
   &:hover img {
     opacity: .5;
