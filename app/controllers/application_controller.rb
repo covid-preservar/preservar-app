@@ -56,14 +56,14 @@ class ApplicationController < ActionController::Base
   end
 
   def set_cookies
-    referrer = get_http_referrer()
+    referrer = get_http_referrer
     if has_tracking_codes?(params) || referrer_present?(referrer)
       clean_tracking_cookies()
       load_tracking_cookies(params, referrer)
     end
   end
 
-  def get_http_referrer()
+  def get_http_referrer
     request.referrer.try(:strip).try(:[], 0...3000)
   end
 
@@ -77,7 +77,7 @@ class ApplicationController < ActionController::Base
 
   def clean_tracking_cookies
     cookies.delete(:referrer)
-    cookies.each do |key, value|
+    cookies.each do |key, _|
       cookies.delete(key) if key.start_with?('utm_')
     end
   end
@@ -93,6 +93,4 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-
-
 end
