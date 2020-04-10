@@ -80,6 +80,29 @@ ActiveRecord::Schema.define(version: 2020_04_09_151758) do
     t.string "aliases", default: [], array: true
   end
 
+  create_table "partners", force: :cascade do |t|
+    t.string "type"
+    t.string "name"
+    t.string "slug"
+    t.jsonb "large_logo_data"
+    t.jsonb "small_logo_data"
+    t.string "place_page_copy"
+    t.string "voucher_copy"
+    t.jsonb "partner_properties", default: {}, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "partnerships", force: :cascade do |t|
+    t.bigint "partner_id"
+    t.bigint "place_id"
+    t.boolean "approved", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["partner_id"], name: "index_partnerships_on_partner_id"
+    t.index ["place_id"], name: "index_partnerships_on_place_id"
+  end
+
   create_table "payment_notifications", force: :cascade do |t|
     t.jsonb "data"
     t.string "status"
