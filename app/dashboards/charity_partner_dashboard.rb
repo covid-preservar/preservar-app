@@ -20,8 +20,9 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
     partner_properties: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    min_value: Field::Number.with_options(prefix: "€ ", decimals: 2),
-    charity_value: Field::Number.with_options(prefix: "€ ", decimals: 2)
+    min_value: Field::Number.with_options(prefix: "€ "),
+    charity_value: Field::Number.with_options(prefix: "€ "),
+    target_value: Field::Number.with_options(prefix: "€ ")
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -44,6 +45,7 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
     voucher_copy
     min_value
     charity_value
+    target_value
     created_at
     updated_at
     partner_properties
@@ -61,6 +63,7 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
     voucher_copy
     min_value
     charity_value
+    target_value
   ].freeze
 
   # COLLECTION_FILTERS
