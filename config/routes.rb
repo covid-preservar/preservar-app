@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     end
   end
 
+  # Partner subdomains
+  constraints(::Subdomains::Partner) do
+    get '/', to: 'partners#index'
+  end
+
   root to: 'home#index'
 
   ### Fix some shared URLs that are 404s

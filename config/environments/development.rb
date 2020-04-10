@@ -59,6 +59,8 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.action_controller.asset_host = ENV['HOSTNAME']
+
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 
@@ -68,9 +70,10 @@ Rails.application.configure do
 
   config.active_job.queue_adapter = :sidekiq
 
-  if ENV['HOSTNAME'].present?
-    config.hosts << ENV['HOSTNAME']
-    config.hosts << "www.#{ENV['HOSTNAME']}"
+  config.hosts = ->(domain) do
+    domain == ENV['HOSTNAME'] ||
+    domain == "www.#{ENV['HOSTNAME']}" ||
+    Partner.pluck(:slug).include?(domain.chomp(".#{ENV['HOSTNAME']}"))
   end
 
 config.after_initialize do

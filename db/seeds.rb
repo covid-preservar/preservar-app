@@ -366,10 +366,11 @@ end
 
 CharityPartner.create!(
   name: "L'Oréal Portugal",
+  slug: 'loreal',
   min_value: 20,
   charity_value: 5,
   target_value: 10000,
   place_page_copy: 'Lorem place page copy',
   voucher_copy: 'Lorem voucher copy',
-  large_logo: Rack::Test::UploadedFile.new('spec/files/loreal_logo.svg', 'image/svg+xml'),
-  small_logo: Rack::Test::UploadedFile.new('spec/files/loreal_logo.svg', 'image/svg+xml'))
+  large_logo: Rack::Test::UploadedFile.new('spec/files/tag-loreal.svg', 'image/svg+xml'),
+  small_logo: Rack::Test::UploadedFile.new('spec/files/tag-loreal.svg', 'image/svg+xml'))

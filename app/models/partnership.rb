@@ -1,4 +1,4 @@
 class Partnership < ApplicationRecord
-  belongs_to :partner
-  belongs_to :place
+  belongs_to :partner, inverse_of: :partnerships
+  belongs_to :place, inverse_of: :partnership
 end

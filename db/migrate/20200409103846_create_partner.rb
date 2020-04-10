@@ -3,6 +3,7 @@ class CreatePartner < ActiveRecord::Migration[6.0]
     create_table :partners do |t|
       t.string :type
       t.string :name
+      t.string :slug
       t.jsonb :large_logo_data
       t.jsonb :small_logo_data
       t.string :place_page_copy

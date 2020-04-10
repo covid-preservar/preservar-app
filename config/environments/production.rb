@@ -32,7 +32,7 @@ Rails.application.configure do
   config.assets.compile = false
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  # config.action_controller.asset_host = 'http://assets.example.com'
+  config.action_controller.asset_host = ENV['HOSTNAME']
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
@@ -121,10 +121,13 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
-  config.hosts << ENV.fetch('HOSTNAME')
-  config.hosts << "www.#{ENV.fetch('HOSTNAME')}"
-  config.hosts << "#{ENV.fetch('HEROKU_APP_NAME') { 'eztz-prod' }}.herokuapp.com"
 
+  config.hosts = ->(domain) do
+    domain == ENV['HOSTNAME'] ||
+    domain == "www.#{ENV['HOSTNAME']}" ||
+    "#{ENV.fetch('HEROKU_APP_NAME') { 'eztz-prod' }}.herokuapp.com" ||
+    Partner.pluck(:slug).include?(domain.tr(ENV['HOSTNAME'], ''))
+  end
 
   config.session_store :cookie_store, key: '_preserve_session', expire_after: 2.weeks
 end

@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_103846) do
   create_table "partners", force: :cascade do |t|
     t.string "type"
     t.string "name"
+    t.string "slug"
     t.jsonb "large_logo_data"
     t.jsonb "small_logo_data"
     t.string "place_page_copy"
