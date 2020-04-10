@@ -50,10 +50,3 @@ Shrine.plugin :restore_cached_data
 Shrine.plugin :determine_mime_type
 Shrine.logger = Rails.logger
 Shrine.plugin :instrumentation
-
-class Shrine::Attacher
-  def promote(*)
-    create_derivatives
-    super
-  end
-end
