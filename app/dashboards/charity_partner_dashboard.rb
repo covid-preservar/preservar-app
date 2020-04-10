@@ -13,6 +13,7 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
     id: Field::Number,
     type: Field::String,
     name: Field::String,
+    slug: Field::String,
     large_logo: ShrineField,
     small_logo: ShrineField,
     place_page_copy: Field::String,
@@ -33,6 +34,7 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     name
+    slug
     partnerships
   ].freeze
 
@@ -41,6 +43,7 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
+    slug
     place_page_copy
     voucher_copy
     min_value
@@ -57,6 +60,7 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     name
+    slug
     large_logo
     small_logo
     place_page_copy
