@@ -30,40 +30,37 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
-  partnerships
-  places
-  id
-  type
+    id
+    name
+    partnerships
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
-  partnerships
-  places
-  id
-  type
-  name
-  place_page_copy
-  voucher_copy
-  min_value
-  charity_value
-  created_at
-  updated_at
-  partner_properties
+    id
+    name
+    place_page_copy
+    voucher_copy
+    min_value
+    charity_value
+    created_at
+    updated_at
+    partner_properties
+    partnerships
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  name
-  large_logo
-  small_logo
-  place_page_copy
-  voucher_copy
-  min_value
-  charity_value
+    name
+    large_logo
+    small_logo
+    place_page_copy
+    voucher_copy
+    min_value
+    charity_value
   ].freeze
 
   # COLLECTION_FILTERS
