@@ -80,11 +80,13 @@ ActiveRecord::Schema.define(version: 2020_04_09_103846) do
   end
 
   create_table "partners", force: :cascade do |t|
+    t.string "type"
     t.string "name"
     t.jsonb "large_logo_data"
     t.jsonb "small_logo_data"
     t.string "place_page_copy"
     t.string "voucher_copy"
+    t.jsonb "partner_properties", default: {}, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

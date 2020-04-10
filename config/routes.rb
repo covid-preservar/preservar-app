@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :payment_notifications, only: [:index, :show]
     resources :sellers
-    resources :partners
+    resources :charity_partners
     resources :partnerships
     resources :places do
       member do

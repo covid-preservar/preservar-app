@@ -21,10 +21,7 @@
         = simple_form_for @voucher do |f|
 
           - if @place.approved_partner.present?
-            p.partner
-              = image_tag @place.approved_partner.logo_url, class: 'partner-logo-thumb'
-              span.partner-text = @place.approved_partner.place_page_copy
-
+            = render @place.approved_partner
 
           h3 Apoie este local, seleccione o valor do voucher
 

@@ -8,7 +8,7 @@ class PartnershipDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    partner: Field::BelongsTo,
+    partner: Field::Polymorphic,
     place: Field::BelongsTo,
     id: Field::Number,
     approved: Field::Boolean,
@@ -43,8 +43,6 @@ class PartnershipDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  partner
-  place
   approved
   ].freeze
 
