@@ -73,7 +73,7 @@ Rails.application.configure do
   config.hosts = ->(domain) do
     domain == ENV['HOSTNAME'] ||
     domain == "www.#{ENV['HOSTNAME']}" ||
-    Partner.pluck(:slug).include?(domain.chomp(".#{ENV['HOSTNAME']}"))
+    domain.ends_with?(ENV['HOSTNAME'])
   end
 
 config.after_initialize do

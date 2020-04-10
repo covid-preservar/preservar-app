@@ -3,7 +3,7 @@ class Partner < ApplicationRecord
   include PartnerLogoUploader::Attachment.new(:large_logo)
   include SmallPartnerLogoUploader::Attachment.new(:small_logo)
 
-  has_many :partnerships, inverse_of: :partners, dependent: :destroy
+  has_many :partnerships, inverse_of: :partner, dependent: :destroy
   has_many :places, through: :partnerships, inverse_of: :partner
 
   def logo_url

@@ -124,9 +124,8 @@ Rails.application.configure do
 
   config.hosts = ->(domain) do
     domain == ENV['HOSTNAME'] ||
-    domain == "www.#{ENV['HOSTNAME']}" ||
     "#{ENV.fetch('HEROKU_APP_NAME') { 'eztz-prod' }}.herokuapp.com" ||
-    Partner.pluck(:slug).include?(domain.tr(ENV['HOSTNAME'], ''))
+    domain.ends_with?(ENV['HOSTNAME'])
   end
 
   config.session_store :cookie_store, key: '_preserve_session', expire_after: 2.weeks

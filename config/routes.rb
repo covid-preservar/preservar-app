@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  # redirect www -> root (in production only)
-  constraints(subdomain: 'www')do
-    get '/', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}")
-    get '*path', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}/%{path}")
-  end
-
   # redirect herokuapp (in production only)
   if Rails.env.production? && !ENV.fetch('HOSTNAME').ends_with?('herokuapp.com')
     constraints(host: "#{ENV.fetch('HEROKU_APP_NAME') { 'preserve-prod' }}.herokuapp.com") do
@@ -16,6 +10,14 @@ Rails.application.routes.draw do
   # Partner subdomains
   constraints(::Subdomains::Partner) do
     get '/', to: 'partners#index'
+  end
+
+  # Other subdomains are redirected
+  constraints(->(req){ req.host != ENV['HOSTNAME'] &&
+                       req.subdomain.present?  &&
+                       !req.subdomain.in?(Subdomains::Partner.subdomains)}) do
+    get '/', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}")
+    get '*path', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}/%{path}")
   end
 
   root to: 'home#index'
