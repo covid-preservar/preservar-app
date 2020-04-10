@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   # Other subdomains are redirected
   constraints(->(req){ req.host != ENV['HOSTNAME'] &&
-                       req.subdomain.present?  &&
+                       req.subdomain.present? &&
                        !req.subdomain.in?(Subdomains::Partner.subdomains)}) do
     get '/', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}")
     get '*path', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}/%{path}")

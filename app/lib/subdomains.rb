@@ -15,7 +15,8 @@ module Subdomains
     end
 
     def self.matches?(request)
-      subdomains.include?(request.subdomain)
+      domain_length = ENV['HOSTNAME'].split('.').count - 1
+      subdomains.include?(request.subdomain(domain_length))
     end
   end
 end

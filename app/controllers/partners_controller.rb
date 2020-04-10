@@ -1,7 +1,8 @@
 class PartnersController < ApplicationController
 
   def index
-    @partner = Partner.find_by(slug: request.subdomain)
+    domain_length = ENV['HOSTNAME'].split('.').count - 1
+    @partner = Partner.find_by(slug: request.subdomain(domain_length))
     @places = @partner.places.published
     render @partner.slug
   end
