@@ -1,15 +1,24 @@
 # frozen_string_literal: true
-class SellerUsers::RegistrationsController < Lib::RegistrationsController
+class SellerUsers::PartnerRegistrationsController < Lib::RegistrationsController
 
   def new
+    @partner = Partner.find_by(slug: request.subdomain)
+
     super do
-      @form = SellerSignupForm.new(seller_user: resource)
+      @form = PartnerSellerSignupForm.new(seller_user: resource, partner: @partner)
     end
   end
 
   def create
-    @form = SellerSignupForm.new(signup_params)
+    @partner = Partner.find_by(slug: request.subdomain)
+    @form = PartnerSellerSignupForm.new(signup_params.merge(partner: @partner))
     super
+  end
+
+  protected
+
+  def body_class
+    "#{super} loreal partners"
   end
 
   private
@@ -20,7 +29,6 @@ class SellerUsers::RegistrationsController < Lib::RegistrationsController
                                         :area,
                                         :address,
                                         :main_photo,
-                                        :category_id,
                                         :email,
                                         :password,
                                         :vat_id,
@@ -29,6 +37,8 @@ class SellerUsers::RegistrationsController < Lib::RegistrationsController
                                         :password,
                                         :password_confirmation,
                                         :contact_name,
-                                        :company_name)
+                                        :company_name,
+                                        :partner_id_code)
   end
+
 end

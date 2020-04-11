@@ -8,17 +8,14 @@
   margin-top: 2rem;
 }
 
-#register-form {
+.new_seller_user {
+  margin-bottom: 5rem;
+
   .form-control {
     box-shadow: none;
     background-color: var(--color-light-blue);
     width: 100%;
   }
-}
-
-
-.new_seller_user {
-  margin-bottom: 5rem;
 
   input:not[type='radio'],
   select {

@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   # Partner subdomains
   constraints(->(req){ req.subdomain.present? && Subdomains::Partner.matches?(req) }) do
     get '/', to: 'partners#index'
+
+    devise_scope :seller_user do
+      get '/comerciante/registo', to: 'seller_users/partner_registrations#new', as: :new_partner_signup
+      post '/comerciante', to: 'seller_users/partner_registrations#create', as: :partner_signup
+    end
   end
 
   # Other subdomains are redirected

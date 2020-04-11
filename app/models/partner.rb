@@ -21,4 +21,22 @@ class Partner < ApplicationRecord
   def is_charity_partner?
     false
   end
+
+  def restricted_category_id
+    partner_properties['restricted_category_id']
+  end
+
+  def restricted_category_id=(value)
+    partner_properties['restricted_category_id'] = value
+  end
+
+  def restricted_category
+    if partner_properties['restricted_category_id'].present?
+      Category.find_by(id: partner_properties['restricted_category_id'])
+    end
+  end
+
+  def restricted_category=(category)
+    partner_properties['restricted_category_id'] = category.id
+  end
 end

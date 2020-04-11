@@ -87,7 +87,10 @@ class SellerSignupForm
       seller_user.save!
       seller.save!
       place.save!
+      yield if block_given?
     end
+
+    true
   rescue StandardError
     copy_errors
     false

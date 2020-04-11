@@ -12,7 +12,6 @@ class CharityPartner < Partner
     partner_properties['min_value'] = value
   end
 
-
   def target_value
     partner_properties['target_value']
   end
@@ -20,7 +19,6 @@ class CharityPartner < Partner
   def target_value=(value)
     partner_properties['target_value'] = value
   end
-
 
   def charity_value
     partner_properties['charity_value']
