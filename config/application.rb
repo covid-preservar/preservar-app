@@ -39,7 +39,7 @@ module Preservar
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins Regexp.new("^(.*\.|)#{ENV['HOSTNAME']}$")
+        origins '*'
         resource '/assets/*', :headers => :any, :methods => [:get]
       end
     end
