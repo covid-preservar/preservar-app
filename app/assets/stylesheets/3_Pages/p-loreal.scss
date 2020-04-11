@@ -1,8 +1,9 @@
 .partners.loreal {
 
   .navbar {
-    height: 14rem;
     align-items: flex-start;
+    height: 14rem;
+    padding-top: 1.5rem;
   }
 
   .loreal-hero-img {
@@ -29,8 +30,8 @@
   .charity-progress-bg {
     background-color: $progress-bg-color;
     border: 0;
-    margin-bottom: 1rem;
     height: 4px;
+    margin-bottom: 1rem;
     width: 100%;
 
     .charity-progress-fg {
@@ -70,5 +71,4 @@
       bottom: 6rem;
     }
   }
-
 }
