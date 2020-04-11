@@ -27,6 +27,7 @@ class Voucher < ApplicationRecord
   end
 
   belongs_to :place
+  belongs_to :partner, optional: true
 
   validates :code, presence: true, uniqueness: { allow_nil: true }, if: :paid?
   validates :email, format: { with: Devise.email_regexp }, if: :pending_payment?

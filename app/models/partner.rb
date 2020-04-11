@@ -5,6 +5,7 @@ class Partner < ApplicationRecord
 
   has_many :partnerships, inverse_of: :partner, dependent: :destroy
   has_many :places, through: :partnerships, inverse_of: :partner
+  has_many :vouchers
 
   def logo_url
     large_logo_url(:large , public: true) || large_logo_url(public: true)

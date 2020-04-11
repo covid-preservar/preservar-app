@@ -3,6 +3,8 @@ class PartnersController < ApplicationController
   def index
     @partner = Partner.find_by(slug: request.subdomain)
     @places = @partner.places.published
+
+    @accumulated = @partner.vouchers.paid.sum(:value)
     render @partner.slug
   end
 

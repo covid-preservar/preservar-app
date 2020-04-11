@@ -372,5 +372,5 @@ CharityPartner.create!(
   target_value: 10000,
   place_page_copy: 'Lorem place page copy',
   voucher_copy: 'Lorem voucher copy',
-  large_logo: Rack::Test::UploadedFile.new('spec/files/tag-loreal.svg', 'image/svg'),
+  large_logo: Rack::Test::UploadedFile.new('spec/files/logo-loreal.svg', 'image/svg'),
   small_logo: Rack::Test::UploadedFile.new('spec/files/tag-loreal.svg', 'image/svg'))

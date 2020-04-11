@@ -31,9 +31,13 @@
 
     .col-sm-6.mt-5.col-12
       .charity-progress-bg
-        .charity-progress-fg style="width: #{(400.fdiv(10000) * 100)}%"
-      h2 400 €
-      .charity-summary angariados, de um objectivo de €10,000
+        .charity-progress-fg style="width: #{(@accumulated.fdiv(@partner.target_value.to_i) * 100)}%"
+      h2 = number_to_currency @accumulated, locale: :pt, precision: 0
+
+      .charity-summary
+        ' angariados, de um objectivo de
+        = number_to_currency @partner.target_value, locale: :pt, precision: 0
+
     .col-sm-6.col-lg-5.offset-lg-1.mt-5.col-12
       p.partner-signup
         ' É cliente da divisão de produtos profissionais

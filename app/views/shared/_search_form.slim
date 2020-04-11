@@ -1,5 +1,4 @@
-- extra_classes = local_assigns.dig(:locals, :extra_classes)
-= form_tag places_path, method: :get, class: "search-form #{extra_classes}", remote: true do
+= form_tag places_path, method: :get, class: 'search-form', remote: true do
   = select_tag :city,
               options_from_collection_for_select(@cities, :itself, :itself, @city),
               class: 'select-input',

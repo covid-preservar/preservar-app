@@ -89,18 +89,18 @@
           = image_tag 'partners/press-provar.png', alt: 'Provar'
         .xcol-2.press-logo
           = image_tag 'partners/press-aevc.png', alt: 'AEVC'
-        
+
 
   - cache [:businesses, ENV['HEROKU_SLUG_COMMIT']] do
     section#businesses.section
       .xrow
-        h2.xcol-6.section-separator Tem um estabelecimento? Comece a vender vouchers hoje.
-      .xrow
-        = link_to 'Submeta o seu local', new_seller_user_registration_path, class: 'primary-cta'
+        .xcol-6
+          h2.section-separator Tem um estabelecimento? Comece a vender vouchers hoje.
+          = link_to 'Submeta o seu local', new_seller_user_registration_path, class: 'primary-cta'
 
 
   section#kicker.section
     .xrow
-      h2.xcol-6.section-separator Está à espera de quê? Preserve o seu sítio preferido agora
-    .xrow
-      = render 'shared/search_form', locals: {extra_classes: 'xcol-6'}
+      .xcol-6
+        h2.section-separator Está à espera de quê? Preserve o seu sítio preferido agora
+        = render 'shared/search_form'
