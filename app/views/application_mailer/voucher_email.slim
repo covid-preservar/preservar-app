@@ -6,16 +6,17 @@ h1
 
 p
   | Olá :)
-  br
-  br
+p
   ' Obrigado pelo seu apoio, que ajuda a ultrapassarmos este momento difícil.
-  br
-  br
+p
   | Este voucher não tem data limite, pode usá-lo quando lhe for mais conveniente.
-  br
-  br
-  | Para receber a sua factura, contacte o estabelecimento directamente ou peça-a no momento da sua visita.
+p
+  | Se indicou o seu NIF ao comprar este voucher, este foi comunicado ao estabelecimento para a emissão da factura.
 
+- if @voucher.partner.present? && @voucher.partner.charity_partner?
+  p = @voucher.partner.voucher_copy
+
+br
 h3 Detalhes do voucher
 p
   strong
