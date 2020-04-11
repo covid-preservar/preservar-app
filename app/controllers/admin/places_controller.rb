@@ -50,9 +50,9 @@ module Admin
     # and `dashboard`:
     #
     def resource_params
-      params.require(resource_class.model_name.param_key).
-        permit(dashboard.permitted_attributes << :partner_id).
-        transform_values { |v| read_param_value(v) }
+      params.require(resource_class.model_name.param_key)
+            .permit(dashboard.permitted_attributes << :partner_id)
+            .transform_values { |v| read_param_value(v) }
     end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions

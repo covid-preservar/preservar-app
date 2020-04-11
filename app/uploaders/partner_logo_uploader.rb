@@ -23,7 +23,5 @@ class PartnerLogoUploader < BaseUploader
         large: optimize_image(magick.resize_and_pad!(400, 400, gravity: 'Center'))
       }
     end
-
   end
-
 end

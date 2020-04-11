@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 class CharityPartner < Partner
 
-  def is_charity_partner?
+  def charity_partner?
     true
   end
 

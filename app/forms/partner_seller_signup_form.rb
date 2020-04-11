@@ -3,7 +3,6 @@ class PartnerSellerSignupForm < SellerSignupForm
   attr_accessor :partner_id_code,
                 :partner
 
-
   validates :partner_id_code, presence: true
 
   def initialize(attributes = {})

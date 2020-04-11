@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 module Subdomains
   class Partner
-    class << self
-      attr_accessor :subdomains
-    end
+    # class << self
+    #   attr_accessor :subdomains
+    # end
 
     def self.subdomains
       return unless load_subdomains?
@@ -11,7 +12,7 @@ module Subdomains
     end
 
     def self.load_subdomains?
-      ::ActiveRecord::Base.connection.table_exists?("partners")
+      ::ActiveRecord::Base.connection.table_exists?('partners')
     end
 
     def self.matches?(request)

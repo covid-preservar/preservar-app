@@ -19,7 +19,7 @@ class Place < ApplicationRecord
   scope :sorted, -> { order(name: :asc) }
   scope :published, -> { where(published: true) }
 
-  default_scope -> { includes(:partnership, :partner, :category)}
+  default_scope -> { includes(:partnership, :partner, :category) }
 
   attr_accessor :district
 

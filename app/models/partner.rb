@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Partner < ApplicationRecord
 
   include PartnerLogoUploader::Attachment.new(:large_logo)
@@ -8,18 +9,18 @@ class Partner < ApplicationRecord
   has_many :vouchers
 
   def logo_url
-    large_logo_url(:large , public: true) || large_logo_url(public: true)
+    large_logo_url(:large, public: true) || large_logo_url(public: true)
   end
 
   def thumb_logo_url
     small_logo_url(public: true)
   end
 
-  def is_discount_partner?
+  def discount_partner?
     false
   end
 
-  def is_charity_partner?
+  def charity_partner?
     false
   end
 
