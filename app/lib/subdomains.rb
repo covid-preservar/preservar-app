@@ -7,7 +7,7 @@ module Subdomains
     def self.subdomains
       return unless load_subdomains?
 
-      @subdomains ||= ::Partner.pluck(:slug)
+      ::Partner.pluck(:slug)
     end
 
     def self.load_subdomains?
@@ -15,8 +15,7 @@ module Subdomains
     end
 
     def self.matches?(request)
-      domain_length = ENV['HOSTNAME'].split('.').count - 1
-      subdomains.include?(request.subdomain(domain_length))
+      subdomains.include?(request.subdomain)
     end
   end
 end

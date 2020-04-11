@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   # Partner subdomains
-  constraints(::Subdomains::Partner) do
+  constraints(->(req){ req.subdomain.present? && Subdomains::Partner.matches?(req) }) do
     get '/', to: 'partners#index'
   end
 
