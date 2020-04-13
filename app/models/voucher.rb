@@ -68,6 +68,10 @@ class Voucher < ApplicationRecord
     end
   end
 
+  def update_tracking(codes)
+    self.update_columns tracking_codes: codes
+  end
+
   private
 
   def finalize_voucher

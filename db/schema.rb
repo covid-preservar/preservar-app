@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_04_11_110909) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "admin_users", force: :cascade do |t|
@@ -169,6 +170,7 @@ ActiveRecord::Schema.define(version: 2020_04_11_110909) do
     t.string "vat_id"
     t.date "valid_until"
     t.datetime "payment_completed_at"
+    t.hstore "tracking_codes", default: {}
     t.bigint "partner_id"
     t.index ["partner_id"], name: "index_vouchers_on_partner_id"
     t.index ["payment_identifier"], name: "index_vouchers_on_payment_identifier"

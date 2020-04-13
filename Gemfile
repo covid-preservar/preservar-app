@@ -74,7 +74,7 @@ end
 
 group :development do
   gem 'bullet'
-  gem 'foreman', '= 0.86.0', require: false
+  gem 'foreman', '= 0.87.1', require: false
   gem 'letter_opener_web'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
