@@ -77,6 +77,7 @@ Rails.application.routes.draw do
     resources :sellers
     resources :charity_partners
     resources :partnerships
+    resources :partner_identifiers, only: [:index, :show]
     resources :places do
       member do
         patch :publish

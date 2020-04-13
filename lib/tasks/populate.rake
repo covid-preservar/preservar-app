@@ -56,8 +56,14 @@ namespace :db do
       seller.places.create!(params)
     end
 
+    partner = Partner.first
     Category.find(5).places.each do |place|
-      place.build_partnership(partner: Partner.first, approved: true).save!
+      place.build_partnership(partner: partner, approved: true).save!
+    end
+
+    # Load dummy partner ids for testing
+    File.open('spec/files/lorealIDs.txt', 'r').each do |line|
+      PartnerIdentifier.create!(identifier: line.chomp, partner: partner)
     end
 
     Flipper::Adapters::ActiveRecord::Feature.create key:'discounts'

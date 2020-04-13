@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class CharityPartnerDashboard < Administrate::BaseDashboard
+class PartnerIdentifierDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,23 +8,12 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    partnerships: Field::HasMany,
-    places: Field::HasMany,
+    partner: Field::Polymorphic,
+    place: Field::BelongsTo,
     id: Field::Number,
-    type: Field::String,
-    name: Field::String,
-    slug: Field::String,
-    large_logo: ShrineField,
-    small_logo: ShrineField,
-    place_page_copy: Field::String,
-    voucher_copy: Field::String,
-    partner_properties: Field::String.with_options(searchable: false),
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-    min_value: Field::Number.with_options(prefix: "€ "),
-    charity_value: Field::Number.with_options(prefix: "€ "),
-    target_value: Field::Number.with_options(prefix: "€ "),
-    restricted_category: Field::BelongsTo.with_options(class_name: 'Category')
+    identifier: Field::String,
+    used: Field::Boolean,
+    used_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -34,44 +23,30 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
     id
-    name
-    slug
-    partnerships
+    partner
+    identifier
+    place
+    used
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    name
-    slug
-    place_page_copy
-    voucher_copy
-    min_value
-    charity_value
-    target_value
-    restricted_category
-    created_at
-    updated_at
-    partner_properties
-    partnerships
+    partner
+    identifier
+    place
+    used
+    used_at
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-    name
-    slug
-    large_logo
-    small_logo
-    place_page_copy
-    voucher_copy
-    min_value
-    charity_value
-    target_value
-    restricted_category
-
+    identifier
+    used
+    used_at
   ].freeze
 
   # COLLECTION_FILTERS
@@ -86,10 +61,10 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how charity partners are displayed
+  # Overwrite this method to customize how partner identifiers are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(charity_partner)
-    "CharityPartner ##{charity_partner.name}"
-  end
+  # def display_resource(partner_identifier)
+  #   "PartnerIdentifier ##{partner_identifier.id}"
+  # end
 end
