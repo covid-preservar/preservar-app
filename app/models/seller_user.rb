@@ -5,6 +5,6 @@ class SellerUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :seller
+  has_one :seller, dependent: :restrict_with_exception
   has_many :places, through: :seller
 end

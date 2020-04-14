@@ -57,7 +57,19 @@ $btn-focus-box-shadow: $btn-active-box-shadow;
 $font-family-sans-serif: "GangsterGrotesk", Helvetica, sans-serif;
 $font-family-base: $font-family-sans-serif;
 
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  lg2: 1024px,
+  xl: 1200px
+);
+
 // End bootstrap overrides
 
 $spinner-element-bg: .5rem solid rgba(255, 255, 255, .2);
 $spinner-element-fg: .5rem solid $primary-cta-hover-bg;
+
+$progress-bg-color: #EFF5FF;

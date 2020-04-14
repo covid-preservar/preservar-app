@@ -11,6 +11,50 @@
     @media only screen and (max-width: 576px) {
       margin-top: 0;
     }
+
+
+      .discount {
+    align-items: flex-start;
+    display: flex;
+
+    svg {
+      flex: 0 0 1rem;
+      margin-right: 5px;
+      margin-top: 2px;
+      width: 1rem;
+    }
+
+    .discount-text {
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+
+    .partner {
+      align-items: flex-start;
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      .partner-text {
+        font-size: 1rem;
+        margin: 0;
+      }
+
+    .partner-logo-thumb {
+        width: 5rem;
+        margin-right: 1rem;
+      }
+    }
+
+    .charity-text {
+      color: $blue;
+      margin-top: .25rem;
+    }
+
+    .partner-logo {
+      margin-top: 3rem;
+    }
   }
 
   .hero-text {
@@ -31,23 +75,6 @@
       margin-top: 2rem;
     }
 
-  }
-
-  .discount {
-    align-items: flex-start;
-    display: flex;
-
-    svg {
-      flex: 0 0 1rem;
-      margin-right: 5px;
-      margin-top: 2px;
-      width: 1rem;
-    }
-
-    .discount-text {
-      font-size: 1rem;
-      margin: 0;
-    }
   }
 
   .new_voucher {
@@ -148,13 +175,26 @@
     }
   }
 
+  @include media-breakpoint-up(sm) {
+    .hero-img {
+      width: auto;
+    }
+  }
+
+  @include media-breakpoint-down(sm) {
+    .share-block {
+      margin-top: 5rem;
+    }
+  }
+
+
   @media only screen and (max-width: 1288px) {
     .new_voucher::before {
       margin-left: -10%;
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  @include media-breakpoint-up(md) {
 
     .new_voucher {
       margin-left: 0;
@@ -171,15 +211,15 @@
     }
   }
 
-  @media only screen and (max-width: 576px) {
+  @include media-breakpoint-up(sm) {
     .place-hero .hero-img {
       display: block;
       position: relative;
     }
 
     .place-hero .row {
-      display: flex;
-      flex-direction: column-reverse;
+      // display: flex;
+      // flex-direction: column-reverse;
     }
 
     .hero-img {

@@ -18,6 +18,9 @@ namespace :db do
       # when running populate.
       klass.reset_column_information
     end
+
+    AdminUser.create!(email: 'admin@example.com', password: 'secret', confirmed_at: Time.now.utc)
+
     place_hashes = [
       { name: 'Tasca do Chico', category_id: 1, area: 'Grande Lisboa' },
       { name: 'Tasca do Manel', category_id: 1, area: 'Grande Lisboa' },
@@ -53,8 +56,15 @@ namespace :db do
       seller.places.create!(params)
     end
 
-    AdminUser.create!(email: 'admin@example.com', password: 'secret', confirmed_at: Time.now.utc)
+    partner = Partner.first
+    Category.find(5).places.each do |place|
+      place.build_partnership(partner: partner, approved: true).save!
+    end
 
+    # Load dummy partner ids for testing
+    File.open('spec/files/lorealIDs.txt', 'r').each do |line|
+      PartnerIdentifier.create!(identifier: line.chomp, partner: partner)
+    end
 
     Flipper::Adapters::ActiveRecord::Feature.create key:'discounts'
     Flipper.enable :discounts

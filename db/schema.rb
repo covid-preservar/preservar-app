@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_09_151758) do
+ActiveRecord::Schema.define(version: 2020_04_13_183309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -78,6 +78,39 @@ ActiveRecord::Schema.define(version: 2020_04_09_151758) do
     t.string "district"
     t.string "area"
     t.string "aliases", default: [], array: true
+  end
+
+  create_table "partner_identifiers", force: :cascade do |t|
+    t.bigint "partner_id", null: false
+    t.bigint "place_id"
+    t.string "identifier"
+    t.boolean "used", default: false, null: false
+    t.datetime "used_at"
+    t.index ["partner_id"], name: "index_partner_identifiers_on_partner_id"
+    t.index ["place_id"], name: "index_partner_identifiers_on_place_id"
+  end
+
+  create_table "partners", force: :cascade do |t|
+    t.string "type"
+    t.string "name"
+    t.string "slug"
+    t.jsonb "large_logo_data"
+    t.jsonb "small_logo_data"
+    t.string "place_page_copy"
+    t.string "voucher_copy"
+    t.jsonb "partner_properties", default: {}, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "partnerships", force: :cascade do |t|
+    t.bigint "partner_id"
+    t.bigint "place_id"
+    t.boolean "approved", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["partner_id"], name: "index_partnerships_on_partner_id"
+    t.index ["place_id"], name: "index_partnerships_on_place_id"
   end
 
   create_table "payment_notifications", force: :cascade do |t|
@@ -148,8 +181,17 @@ ActiveRecord::Schema.define(version: 2020_04_09_151758) do
     t.date "valid_until"
     t.datetime "payment_completed_at"
     t.hstore "tracking_codes", default: {}
+    t.bigint "partner_id"
+    t.index ["partner_id"], name: "index_vouchers_on_partner_id"
     t.index ["payment_identifier"], name: "index_vouchers_on_payment_identifier"
     t.index ["place_id"], name: "index_vouchers_on_place_id"
   end
 
+  add_foreign_key "partner_identifiers", "partners"
+  add_foreign_key "partnerships", "partners"
+  add_foreign_key "partnerships", "places"
+  add_foreign_key "places", "categories"
+  add_foreign_key "places", "sellers"
+  add_foreign_key "sellers", "seller_users"
+  add_foreign_key "vouchers", "places"
 end

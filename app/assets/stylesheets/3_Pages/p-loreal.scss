@@ -1,0 +1,74 @@
+.partners.loreal {
+
+  .navbar {
+    align-items: flex-start;
+    height: 14rem;
+    padding-top: 1.5rem;
+  }
+
+  .loreal-hero-img {
+    display: none;
+    object-fit: cover;
+  }
+
+  .hero-bottom-images {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    width: 100vw;
+  }
+
+  .loreal-brands {
+    margin-top: 1rem;
+  }
+
+  .partner-signup {
+    color: $blue;
+    margin-bottom: 2rem;
+  }
+
+  .charity-progress-bg {
+    background-color: $progress-bg-color;
+    border: 0;
+    height: 4px;
+    margin-bottom: 1rem;
+    width: 100%;
+
+    .charity-progress-fg {
+      background-color: $blue;
+      height: 4px;
+    }
+  }
+
+  .charity-summary {
+    color: $gray-400;
+  }
+
+  .partner-bottom-brand {
+    margin: 5rem 0;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  @include media-breakpoint-up(sm) {
+    .loreal-hero-img {
+      display: block;
+      margin-left: auto;
+    }
+
+    #hero::before {
+      bottom: 10rem;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .hero-bottom-images {
+      flex-wrap: nowrap;
+      width: 120%;
+    }
+
+    #hero::before {
+      bottom: 6rem;
+    }
+  }
+}

@@ -35,7 +35,6 @@ pt:
         company_name: 'Nome da empresa'
         iban: 'IBAN'
         company_registration_code: 'Código de acesso da Certidão Permanente'
-
   errors:
     messages:
         invalid_vat: 'é inválido'

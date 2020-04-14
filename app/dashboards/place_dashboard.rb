@@ -12,6 +12,8 @@ class PlaceDashboard < Administrate::BaseDashboard
     category: Field::BelongsTo,
     seller: Field::BelongsTo,
     vouchers: Field::HasMany,
+    partnership: Field::BelongsTo,
+    partner_id: Field::Number,
     id: Field::Number,
     name: Field::String,
     created_at: Field::DateTime,
@@ -20,7 +22,6 @@ class PlaceDashboard < Administrate::BaseDashboard
     slug: Field::String,
     address: Field::String,
     published: Field::Boolean,
-    main_photo_data: Field::String.with_options(searchable: false),
     main_photo: ShrineField,
     has_discount: Field::Boolean
   }.freeze
@@ -53,7 +54,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     area
     slug
     address
-    main_photo_data
+    partnership
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -68,6 +69,7 @@ class PlaceDashboard < Administrate::BaseDashboard
     address
     published
     main_photo
+    partner_id
     has_discount
   ].freeze
 
@@ -86,7 +88,7 @@ class PlaceDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how sellers are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(seller)
-  #   "Seller ##{seller.id}"
-  # end
+  def display_resource(place)
+    "Place: #{place.name}"
+  end
 end

@@ -10,6 +10,7 @@ class ShrinePromoteJob < ApplicationJob
     record = Object.const_get(record_class).unscoped.find(record_id)
 
     attacher = attacher_class.retrieve(model: record, name: name, file: file_data)
+    attacher.create_derivatives if attacher.respond_to?(:create_derivatives)
     attacher.atomic_promote
   end
 end
