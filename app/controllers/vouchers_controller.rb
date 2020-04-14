@@ -13,7 +13,7 @@ class VouchersController < ApplicationController
       cookies.encrypted[:uuid] = { value: voucher.cookie_uuid, expires: 1.hour }
       redirect_to new_voucher_payment_path(voucher)
     else
-      redirect_to voucher.place
+      redirect_to voucher.place, alert: 'Ocorreu um erro'
     end
   end
 

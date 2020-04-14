@@ -175,6 +175,20 @@
     }
   }
 
+  .preview-alert {
+    position: absolute;
+    left: 40%;
+  }
+
+  .preview-overlay {
+    background: transparent;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
   @include media-breakpoint-up(sm) {
     .hero-img {
       width: auto;

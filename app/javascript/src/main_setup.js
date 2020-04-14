@@ -22,6 +22,10 @@ function setup() {
   } else {
     $('.js-mobileShare').hide();
   }
+
+  if ($('body').is('.place-preview')) {
+    $("#new_voucher .btn-primary").prop("disabled", true);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', setup, { once: true });

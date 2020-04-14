@@ -1,7 +1,10 @@
 - title @place.name
 - set_meta_tags og: { title: :full_title, site_name: :site}, twitter: { title: :full_title }
 - content_for :header do
-  = render 'header'
+  - if @preview
+    = render 'preview_header'
+  - else
+    = render 'header'
 
 .place-hero.container-md
   - if @show_back
@@ -40,7 +43,8 @@
           = f.submit 'Comprar voucher', class: 'btn btn-primary'
           = image_tag 'icon-mb-faded.svg', alt: "Multibanco", class: 'voucher-mb'
 
-
+        - if @preview
+          .preview-overlay
 
     .col-sm-5.offset-sm-1.col-12.order-first.order-sm-last
       = image_tag @place.photo_url(:large), class:'hero-img'
@@ -60,6 +64,10 @@
           .input-group-prepend
             span.input-group-text 🔗
           input.form-control disabled='true' type="text" value=place_url(@place)
+
+        - if @preview
+          .preview-overlay
+
 
       - if @place.approved_partner.present? && @place.approved_partner.charity_partner?
         .col-md-5.offset-md-1.col-12.order-first.order-sm-last

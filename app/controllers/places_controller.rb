@@ -26,11 +26,23 @@ class PlacesController < ApplicationController
   def register_success
   end
 
+  protected
+
+  def body_class
+    @preview ? "#{super} place-preview": super
+  end
+
   private
 
   def load_place_and_ensure_canonical_url
-    @place = Place.published.includes([:category]).friendly.find(params[:id])
+    if params[:preview] == 'true' && seller_user_signed_in?
+      @place = current_seller_user.seller.places.friendly.find(params[:id])
+      @preview = true
+    else
+      @place = Place.published.includes([:category]).friendly.find(params[:id])
 
-    redirect_to(place_url(@place, host: ENV['HOSTNAME'])) and return if place_url(@place, host: ENV['HOSTNAME']) != request.url
+      redirect_to(place_url(@place, host: ENV['HOSTNAME'])) and return if place_url(@place, host: ENV['HOSTNAME']) != request.url
+    end
+
   end
 end

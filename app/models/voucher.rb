@@ -39,6 +39,7 @@ class Voucher < ApplicationRecord
   validates :payment_identifier, presence: true, if: :pending_payment?
   validates :payment_phone, format: { with: /\A\d{9}\z/ }, if: :requires_phone?
 
+  validate :place_is_published, on: :create
   validate :valid_vat_id
 
   before_validation :set_discount, on: :create
@@ -101,5 +102,9 @@ class Voucher < ApplicationRecord
     if vat_id.present?
       errors.add(:vat_id, :invalid) unless Valvat.new(read_attribute(:vat_id)).valid_checksum?
     end
+  end
+
+  def place_is_published
+    errors.add(:place_id, :invalid) unless place.published?
   end
 end

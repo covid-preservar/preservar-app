@@ -13,7 +13,10 @@ main.container.maincontent
       h2.place_header
         = @place.name
         .actions
-          = link_to 'Pré-visualizar', place_path(@place, preview: true), class: 'btn btn-outline-primary btn-sm mr-2'
+          - if @place.published?
+            = link_to 'Ver página', place_path(@place), class: 'btn btn-outline-primary btn-sm mr-2'
+          - else
+            = link_to 'Pré-visualizar', place_path(@place, preview: true), class: 'btn btn-outline-primary btn-sm mr-2'
           = link_to 'Editar', edit_seller_place_path(@place), class: 'btn btn-outline-primary btn-sm'
 
       table.table
