@@ -6,8 +6,11 @@
 
 main.container.maincontent
   .row
-    .col-sm-12.col-md-8.col-xl-6
-      h3.mb-4 A minha conta
+    .col-sm-12.col-md-8.col-xl-6.mb-5
+      h3.mb-4.d-flex.justify-content-between.align-items-center
+        | A minha conta
+        = link_to 'Alterar Email ou Password', edit_seller_user_registration_path, class:'btn btn-outline-primary btn-sm'
+
       table.table
         tbody
           tr
@@ -39,16 +42,16 @@ main.container.maincontent
                 | Aguarda inscrição Eupago
                 span data-toggle="tooltip" data-placement="top" title='A inscrição na Eupago tem que ser concluida antes de podermos activar a sua conta.'
                   = inline_svg_tag 'iconic/question-mark.svg', class:'iconic question'
-      = link_to 'Alterar Email ou Password', edit_seller_user_registration_path
-      .mb-4
+
     .col-sm-12.col-md-8.col-xl-6
-      h3.mb-4 Os meus locais
+      h3.mb-4.d-flex.justify-content-between.align-items-center
+        | Os meus locais
+        = link_to 'Adicionar local', new_seller_place_path, class:'btn btn-outline-primary btn-sm'
+
       table.table
         thead
           th Nome
           th Estado
-          - if Flipper.enabled?(:discounts)
-            th Descontos?
           th
         tbody
           - @seller.places.each do |place|
@@ -57,12 +60,8 @@ main.container.maincontent
                 = place.name
               td
                 = place.published ? 'Publicado' : 'Em validação'
-              - if Flipper.enabled?(:discounts)
-                td
-                  = place.has_discount ? 'Sim' : 'Não'
               td
-                = link_to 'Detalhes', seller_place_path(place)
-      = link_to 'Adicionar local', new_seller_place_path
+                = link_to 'Detalhes', seller_place_path(place), class:'btn btn-outline-primary btn-xs'
   hr
   .row.mt-4
     .col-sm-12

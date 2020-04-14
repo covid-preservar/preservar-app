@@ -29,10 +29,10 @@ main.container.maincontent
               td.discount
                 - if @place.has_discount?
                   ' Sim
-                  = link_to 'Desactivar', disable_discount_seller_place_path(@place), remote: true, class: 'btn btn-sm btn-outline-danger'
+                  = link_to 'Desactivar', disable_discount_seller_place_path(@place), remote: true, class: 'btn btn-xs btn-outline-danger'
                 - else
                   ' Não
-                  = link_to 'Activar', enable_discount_seller_place_path(@place), remote: true, class: 'btn btn-sm btn-outline-primary'
+                  = link_to 'Activar', enable_discount_seller_place_path(@place), remote: true, class: 'btn btn-xs btn-outline-primary'
           tr
             td
               strong Categoria
