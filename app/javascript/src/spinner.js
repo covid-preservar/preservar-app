@@ -7,10 +7,13 @@ export default class Spinner {
   }
 
   start() {
-    $(".spinner-wrapper").removeClass("spinner--stopped");
+    this.timer = setTimeout( _ => {
+      $(".spinner-wrapper").removeClass("spinner--stopped");
+    }, 500);
   }
 
   stop() {
+    clearTimeout(this.timer);
     $(".spinner-wrapper").addClass("spinner--stopped");
   }
 }

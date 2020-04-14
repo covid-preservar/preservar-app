@@ -1,8 +1,8 @@
 .places.show {
 
   .place-back {
-    position: absolute;
-    top: 6rem;
+    position: relative;
+    top: -2rem;
   }
 
   .place-hero {
@@ -199,11 +199,6 @@
     .new_voucher {
       margin-left: 0;
       width: 100%;
-    }
-
-    .place-back {
-      position: relative;
-      top: -2rem;
     }
 
     [type="number"] {
