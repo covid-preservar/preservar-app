@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_183309) do
+ActiveRecord::Schema.define(version: 2020_04_14_165534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -133,6 +133,8 @@ ActiveRecord::Schema.define(version: 2020_04_13_183309) do
     t.bigint "seller_id"
     t.boolean "has_discount", default: false
     t.datetime "published_at"
+    t.text "description"
+    t.string "url"
     t.index ["category_id"], name: "index_places_on_category_id"
     t.index ["published"], name: "index_places_on_published"
     t.index ["seller_id"], name: "index_places_on_seller_id"

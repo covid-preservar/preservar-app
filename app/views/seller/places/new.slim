@@ -16,8 +16,14 @@ main.container.maincontent
         = f.input :address, hint: 'Rua e número', placeholder: 'Morada'
         = f.hidden_field :main_photo, value: @place.cached_main_photo_data, id:nil
         = f.input :main_photo, as: :file, hint: 'Formato JPG, max. 10Mb'
+
+        = f.input :description, maxlength: 1000, input_html: {rows: 5}
+        = f.input :url, placeholder: 'https://example.com', hint: 'Link para o seu site, página de Facebook ou perfil de Instagram'
+
         - if Flipper.enabled?(:discounts)
           = f.input :has_discount, label: 'Oferece Descontos?', as: :radio_buttons, wrapper: :vertical_collection_inline
 
         = f.button :submit, 'Criar', class: 'btn btn-primary'
 
+javascript:
+  new TextLengthValidator('#place_description')

@@ -19,6 +19,8 @@ pt:
         payment_phone: 'Número de Telemóvel'
       place:
         main_photo: 'Fotografia'
+        description: 'Descrição'
+        url: 'Link'
 
   activemodel:
     attributes:

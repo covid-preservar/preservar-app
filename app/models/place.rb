@@ -15,7 +15,9 @@ class Place < ApplicationRecord
   has_one :partner_identifier
 
   validates :name, :area, :address, :main_photo, presence: true
+  validates :description, length: {maximum: 1000}
   validate  :seller_has_api_key
+  validate  :valid_url
 
   scope :sorted, -> { order(name: :asc) }
   scope :published, -> { where(published: true) }
@@ -60,5 +62,15 @@ class Place < ApplicationRecord
 
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
+  end
+
+  def valid_url
+    return true if url.blank?
+    begin
+      uri = URI(url)
+      errors.add(:url, "not a valid http or https URL") unless uri.present? && uri.is_a?(URI::HTTP)
+    rescue URI::BadURIError, URI::InvalidComponentError, URI::InvalidURIError, ArgumentError
+      errors.add(:url, "not a valid http or https URL")
+    end
   end
 end

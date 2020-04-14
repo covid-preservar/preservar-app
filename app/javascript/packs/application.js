@@ -33,4 +33,7 @@ window.VoucherPaymentForm = VoucherPaymentForm;
 import MobileShare from '../src/mobile_share';
 window.MobileShare = MobileShare
 
+import TextLengthValidator from "../src/length_validator";
+window.TextLengthValidator = TextLengthValidator
+
 import "../src/main_setup";
