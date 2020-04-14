@@ -22,16 +22,17 @@
           p Compre um voucher para usar em qualquer altura, e ajude a sua economia local a sobreviver ao COVID-19
           = render 'shared/search_form'
 
-          / section.hero-stats.clearfix
-          /   article.stat
-          /     h2 400
-          /     p Locais
-          /   article.stat
-          /     h2 10,310
-          /     p Vouchers vendidos
-          /   article.stat
-          /     h2 €206,200
-          /     p Angariados
+        - cache @stats_cache do
+          section.hero-stats.clearfix
+            article.stat
+              h2 = Place.published.count
+              p Locais
+            article.stat
+              h2 = Voucher.paid.count
+              p Vouchers vendidos
+            article.stat
+              h2 = number_to_currency Voucher.paid.sum(:value), locale: :pt, precision: 0
+              p Angariados
       .xcol-5.xoffset-1
         = image_tag 'hero-img.jpg', alt:'Pessoa', class:'hero-img'
 
