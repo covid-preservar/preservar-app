@@ -71,4 +71,7 @@
   section.row
     .col-12.col-sm-6
       p
-        small.text-muted O Parceiro não será responsável pelo não cumprimento das suas obrigações, se esse incumprimento tiver sido causado ou resultar de um evento de força maior. A Preserve e a L'Oreal não são responsáveis, não tem controlo, nem prestam qualquer garantia sobre a prestação dos Serviços prestados pelos Parceiros, bem como sobre a qualidade, pontualidade ou qualquer outro aspeto relacionado com os aqueles (mais informações nos => link_to 'Termos e Condições', tos_url(host: ENV['HOSTNAME'])).
+        small.text-muted
+          ' O Parceiro não será responsável pelo não cumprimento das suas obrigações, se esse incumprimento tiver sido causado ou resultar de um evento de força maior. A Preserve e a L'Oreal não são responsáveis, não tem controlo, nem prestam qualquer garantia sobre a prestação dos Serviços prestados pelos Parceiros, bem como sobre a qualidade, pontualidade ou qualquer outro aspeto relacionado com os aqueles (mais informações nos
+          = link_to 'Termos e Condições', tos_url(host: ENV['HOSTNAME'])
+          | ).
