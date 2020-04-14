@@ -45,12 +45,13 @@
         ' Profissionel? Registe-se aqui
       = link_to 'Registe o seu salão', new_partner_signup_path, class: 'btn btn-primary', data:{turbolinks: false}
 
-  section.places-container.section
-    .row
-      h2.col-sm-6.section-separator Salões aderentes
+  - if @places.any?
+    section.places-container.section
+      .row
+        h2.col-sm-6.section-separator Salões aderentes
 
-    .places-list.xrow.home-list
-      == render @places
+      .places-list.xrow.home-list
+        == render @places
 
   section.partner-bottom-brand
     = image_tag 'loreal/partner-loreal-hashtag.svg'
