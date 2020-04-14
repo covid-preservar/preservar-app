@@ -58,7 +58,14 @@ module Admin
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
     def show_action?(action, resource)
-      action != :destroy || resource.vouchers.empty?
+      return true unless action == :destroy
+
+      case resource
+      when Voucher
+        false
+      when Place
+        resource.vouchers.empty?
+      end
     end
   end
 end
