@@ -19,7 +19,7 @@ class Place < ApplicationRecord
   attr_accessor :district
 
   def can_publish?
-    !published && seller.payment_api_key.present? && main_photo.present?
+    !published && seller&.payment_api_key&.present? && main_photo.present?
   end
 
   def photo_url(size)
