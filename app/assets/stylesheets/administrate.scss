@@ -44,3 +44,16 @@ form.btn-link {
 .subtitle {
   padding: 1rem 2rem;
 }
+
+.partner-logo {
+  vertical-align: middle;
+  margin: 1rem;
+
+  &.logo-lg {
+    max-width: 200px;
+  }
+
+  &.logo-sm {
+    max-width: 50px;
+  }
+}

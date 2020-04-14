@@ -1,0 +1,21 @@
+.container-md
+  section#hero.row
+    .col-sm-6.col-12
+      .hero-text
+        h1 O seu negócio está encerrado por causa do Covid-19?
+        h2 Venda vouchers aos seus clientes, seja pago imediatamente, mantenha o seu negócio aberto
+        p Esta plataforma gratuita permite-lhe vender vouchers para que os seus clientes preferidos o possam apoiar nesta altura de crise. Registar-se é tão fácil como dizer: vai-te lixar, ó Covide!
+
+
+      .hero-bottom-images
+        = image_tag 'loreal/partner-loreal-profissionel.svg', class:'loreal-brands'
+        = image_tag 'loreal/partner-loreal-kerastase.svg', class:'loreal-brands'
+        = image_tag 'loreal/partner-loreal-redken.svg', class:'loreal-brands'
+        = image_tag 'loreal/partner-loreal-shuuemura.svg', class:'loreal-brands'
+
+    .col-sm-6.col-lg-5.offset-lg-1.col-12
+      = image_tag 'loreal/loreal-hero.jpg', class:'loreal-hero-img'
+
+  == render 'seller_users/registrations/how_it_works'
+
+  == render 'sign_up_form', url: partner_signup_path

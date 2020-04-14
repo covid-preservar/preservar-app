@@ -26,6 +26,14 @@
 
   .place-img-wrapper {
     background-color: var(--color-main-blue);
+    position: relative;
+  }
+
+  .partner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 40%;
   }
 
   .place-header,
@@ -72,6 +80,20 @@
     }
   }
 
+  .partner {
+    align-items: flex-start;
+    display: flex;
+    align-items: center;
+
+    .partner-text {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+   .partner-logo-thumb {
+      width: 1.5rem;
+    }
+  }
 
   &:hover img {
     opacity: .5;
@@ -88,7 +110,7 @@
     max-width: none;
     width: 100%;
 
-    img {
+    .place-img {
       height: 50vw;
       object-fit: cover;
       width: 100%;

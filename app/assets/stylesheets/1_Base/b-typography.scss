@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'GangsterGrotesk';
-  src: font-url('gangstergrotesk-light-webfont.woff2') format('woff2'),
-       font-url('gangstergrotesk-light-webfont.woff') format('woff');
+  src: font-url('gangstergrotesk-light.woff2') format('woff2'),
+       font-url('gangstergrotesk-light.woff') format('woff');
 
   font-weight: 300;
   font-style: normal;
@@ -9,8 +9,8 @@
 
 @font-face {
   font-family: 'GangsterGrotesk';
-  src: font-url('gangstergrotesk-regular-webfont.woff2') format('woff2'),
-       font-url('gangstergrotesk-regular-webfont.woff') format('woff');
+  src: font-url('gangstergrotesk-regular.woff2') format('woff2'),
+       font-url('gangstergrotesk-regular.woff') format('woff');
 
   font-weight: normal;
   font-style: normal;
@@ -18,8 +18,8 @@
 
 @font-face {
   font-family: 'GangsterGrotesk';
-  src: font-url('gangstergrotesk-bold-webfont.woff2') format('woff2'),
-       font-url('gangstergrotesk-bold-webfont.woff') format('woff');
+  src: font-url('gangstergrotesk-bold.woff2') format('woff2'),
+       font-url('gangstergrotesk-bold.woff') format('woff');
 
   font-weight: bold;
   font-style: normal;
@@ -66,4 +66,8 @@ p {
 .small {
   font-size: calc(14rem/16);
   line-height: calc(24/14);
+}
+
+.nowrap {
+  white-space: nowrap;
 }

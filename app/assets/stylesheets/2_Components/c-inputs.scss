@@ -43,7 +43,6 @@ select:not(.form-control) {
   display: inline-block;
   font-size: calc(17rem / 16);
   font-weight: bold;
-  height: 3rem;
   line-height: 3rem;
   outline: 0;
   padding: 0 1rem;
@@ -68,7 +67,7 @@ select:not(.form-control) {
 .btn-primary {
   font-size: calc(17rem / 16);
   font-weight: bold;
-  height: 3rem;
+  line-height: 3rem;
   padding: 0 1rem;
   text-decoration: none;
   vertical-align: bottom;

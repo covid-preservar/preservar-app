@@ -24,9 +24,13 @@
   .row
     .col-sm-12.col-md-6.col-lg-4#form-wrapper
       = render 'form'
+
   br
   small
     ' Ao comprar, está a aceitar os
     => link_to 'Termos e Condições', tos_path, target:'_blank'
     ' e a
     => link_to 'Politica de Privacidade', privacy_path, target:'_blank'
+
+  - if @voucher.partner.present? && @voucher.partner.charity_partner?
+    p = @voucher.partner.voucher_copy

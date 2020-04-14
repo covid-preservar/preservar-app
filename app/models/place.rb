@@ -10,11 +10,16 @@ class Place < ApplicationRecord
   belongs_to :seller
   has_many :vouchers, dependent: :restrict_with_exception
 
+  has_one :partnership, inverse_of: :place
+  has_one :partner, through: :partnership, inverse_of: :places
+
   validates :name, :area, :address, :main_photo, presence: true
   validate  :seller_has_api_key
 
   scope :sorted, -> { order(name: :asc) }
   scope :published, -> { where(published: true) }
+
+  default_scope -> { includes(:partnership, :partner, :category) }
 
   attr_accessor :district
 
@@ -26,6 +31,16 @@ class Place < ApplicationRecord
     # fallback to original to handle the gap between upload
     # and derivative generation
     main_photo_url(size , public: true) || main_photo_url(public: true)
+  end
+
+  attr_reader :partner_id
+
+  def partner_id=(value)
+    self.partner = Partner.find_by_id(value)
+  end
+
+  def approved_partner
+    partner if partnership&.approved?
   end
 
   private

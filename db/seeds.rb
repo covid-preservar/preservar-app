@@ -10,11 +10,13 @@
 CATEGORIES = [
   {name: 'Restaurante', name_plural: 'Restaurantes'},
   {name: 'Café', name_plural: 'Cafés' },
-  {name: 'Museu', name_plural: 'Museus' },
-  {name: 'Zoo', name_plural: 'Zoos' },
-  {name: 'Cabeleireiro', name_plural: 'Cabeleireiros' },
-  {name: 'Teatro', name_plural: 'Teatros' },
-  {name: 'Cinema', name_plural: 'Cinemas' }
+  {name: 'Cultura', name_plural: 'Cultura' },
+  {name: 'Lazer', name_plural: 'Lazer' },
+  {name: 'Beleza e Bem-estar', name_plural: '	Beleza e Bem-estar' },
+  {name: 'Hotel', name_plural: 'Hoteis' },
+  {name: 'Loja', name_plural: 'Lojas' },
+  {name: 'Noite e Bar', name_plural: 'Noite e Bar' },
+  {name: 'Outro', name_plural: 'Outros' }
 ]
 
 puts 'Seeding categories...'
@@ -361,3 +363,14 @@ LOCATIONS.each do |district, areas|
     Location.create!(district: district, area: name)
   end
 end
+
+CharityPartner.create!(
+  name: "L'Oréal Portugal",
+  slug: 'loreal',
+  min_value: 20,
+  charity_value: 5,
+  target_value: 10000,
+  place_page_copy: 'Lorem place page copy',
+  voucher_copy: 'Lorem voucher copy',
+  large_logo: Rack::Test::UploadedFile.new('spec/files/logo-loreal.svg', 'image/svg'),
+  small_logo: Rack::Test::UploadedFile.new('spec/files/tag-loreal.svg', 'image/svg'))

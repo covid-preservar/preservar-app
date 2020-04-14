@@ -10,6 +10,6 @@ export default class PlaceForm {
       }
     })
 
-    window.ClientSideValidations.callbacks.element.fail = window.spinner.stop;
+    // window.ClientSideValidations.callbacks.element.fail = window.spinner.stop;
   }
 }

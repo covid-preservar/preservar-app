@@ -1,28 +1,50 @@
-= simple_form_for(@form, as: resource_name, url: registration_path(resource_name), remote: true, validate: true) do |f|
+section#register-form.section
+  .row
+    .col-lg-6
+      h2.section-separator Registe-se agora e comece a vender
 
-  .register-form-section
-    h3 Sobre o estabelecimento
-    = f.input :name, label: 'Nome público do estabelecimento', hint: 'Este é o nome que vai ser visível na plataforma.', placeholder: 'Nome'
-    = f.input :category_id, collection: Category.all
-    = f.input :district, collection: Location.all_districts, label: 'Distrito', input_html:{ id: 'district_select'}
-    = f.input :area, collection: Location.for_district(@form.district).map(&:area), selected: @form.area, input_html:{ id: 'area_select'}
-    = f.input :address, hint: 'Rua e número', placeholder: 'Morada'
-    = f.hidden_field :main_photo, value: @form.cached_main_photo_data, id:nil
-    = f.input :main_photo, label: 'Fotografia do estabelecimento', as: :file, hint: 'Esta foto vai aparecer no seu perfil público, seleccione uma foto o mais profissional possível. Formato JPG ou PNG, max. 10Mb'
+      = simple_form_for(@form,
+                        as: resource_name,
+                        url: url,
+                        remote: true,
+                        validate: true) do |f|
 
-  .register-form-section
-    h3 Sobre si
-    = f.input :contact_name, placeholder: 'Nome', label: 'O seu nome'
-    = f.input :email, placeholder: 'E-mail', required: true
-    = f.input :password, placeholder:"Password", hint: "Mínimo 6 caracteres"
-    = f.input :password_confirmation, placeholder:"Password", hint: "Mínimo 6 caracteres"
+        .register-form-section
+          h3 Sobre o estabelecimento
+          = f.input :name, label: 'Nome público do estabelecimento', hint: 'Este é o nome que vai ser visível na plataforma.', placeholder: 'Nome'
 
-  .register-form-section
-    h3 Sobre a empresa
-    = f.input :vat_id, placeholder: 'PT999999999', label: 'NIF', required: true
-    = f.input :company_name, placeholder: 'Nome', hint:'Ou nome completo se for Empresário em Nome Individual', required: true
-    = f.input :iban, placeholder: 'IBAN', required: true
-    = f.input :company_registration_code, placeholder: '1111-2222-3333'
+          - if @form.respond_to?(:partner) && @form.partner.restricted_category.present?
+            = f.input :category, readonly: true,
+                                 validate: false,
+                                 input_html: { value: @form.partner.restricted_category.name,
+                                               name: nil}
 
-  = f.button :submit, 'Registar', class: 'btn btn-primary', class: 'btn btn-primary'
+          - else
+            = f.input :category_id, collection: Category.all
+
+          = f.input :district, collection: Location.all_districts, label: 'Distrito', input_html:{ id: 'district_select'}
+          = f.input :area, collection: Location.for_district(@form.district).map(&:area), selected: @form.area, input_html:{ id: 'area_select'}
+          = f.input :address, hint: 'Rua e número', placeholder: 'Morada'
+          = f.hidden_field :main_photo, value: @form.cached_main_photo_data, id:nil
+          = f.input :main_photo, label: 'Fotografia do estabelecimento', as: :file, hint: 'Esta foto vai aparecer no seu perfil público, seleccione uma foto o mais profissional possível. Formato JPG ou PNG, max. 10Mb'
+
+          = yield f
+
+        .register-form-section
+          h3 Sobre si
+          = f.input :contact_name, placeholder: 'Nome', label: 'O seu nome'
+          = f.input :email, placeholder: 'E-mail', required: true
+          = f.input :password, placeholder:"Password", hint: "Mínimo 6 caracteres"
+          = f.input :password_confirmation, placeholder:"Password", hint: "Mínimo 6 caracteres"
+
+
+        .register-form-section
+          h3 Sobre a empresa
+          = f.input :vat_id, placeholder: 'PT999999999', label: 'NIF', required: true
+          = f.input :company_name, placeholder: 'Nome', hint:'Ou nome completo se for Empresário em Nome Individual', required: true
+          = f.input :iban, placeholder: 'IBAN', required: true
+          = f.input :company_registration_code, placeholder: '1111-2222-3333'
+
+
+        = f.button :submit, 'Registar', class: 'btn btn-primary', class: 'btn btn-primary'
 

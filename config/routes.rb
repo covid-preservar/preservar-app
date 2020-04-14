@@ -1,16 +1,28 @@
 Rails.application.routes.draw do
-  # redirect www -> root (in production only)
-  constraints(subdomain: 'www')do
-    get '/', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}")
-    get '*path', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}/%{path}")
-  end
-
   # redirect herokuapp (in production only)
   if Rails.env.production? && !ENV.fetch('HOSTNAME').ends_with?('herokuapp.com')
     constraints(host: "#{ENV.fetch('HEROKU_APP_NAME') { 'preserve-prod' }}.herokuapp.com") do
       get '/', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}")
       get '*path', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}/%{path}")
     end
+  end
+
+  # Partner subdomains
+  constraints(->(req){ req.subdomain.present? && Subdomains::Partner.matches?(req) }) do
+    get '/', to: 'partners#index'
+
+    devise_scope :seller_user do
+      get '/comerciante/registo', to: 'seller_users/partner_registrations#new', as: :new_partner_signup
+      post '/comerciante', to: 'seller_users/partner_registrations#create', as: :partner_signup
+    end
+  end
+
+  # Other subdomains are redirected
+  constraints(->(req){ req.host != ENV['HOSTNAME'] &&
+                       req.subdomain.present? &&
+                       !req.subdomain.in?(Subdomains::Partner.subdomains)}) do
+    get '/', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}")
+    get '*path', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}/%{path}")
   end
 
   root to: 'home#index'
@@ -63,6 +75,9 @@ Rails.application.routes.draw do
     resources :categories
     resources :payment_notifications, only: [:index, :show]
     resources :sellers
+    resources :charity_partners
+    resources :partnerships
+    resources :partner_identifiers, only: [:index, :show]
     resources :places do
       member do
         patch :publish
