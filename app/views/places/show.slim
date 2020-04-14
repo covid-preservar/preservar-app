@@ -62,7 +62,7 @@
           p.charity-text
             ' Por cada voucher comprado a este local haverá um donativo de
             = @place.approved_partner.charity_value
-            | € para a instituição X, cortesia da:
+            | € para uma instituição de saúde, cortesia da:
           = image_tag @place.approved_partner.logo_url, class: 'partner-logo'
 
   == render 'other_places'
