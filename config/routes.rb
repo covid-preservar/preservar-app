@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       get '/comerciante/registo', to: 'seller_users/partner_registrations#new', as: :new_partner_signup
       post '/comerciante', to: 'seller_users/partner_registrations#create', as: :partner_signup
     end
+
+    get '*path', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}/%{path}")
   end
 
   # Other subdomains are redirected

@@ -1,6 +1,10 @@
+- title "L'Oréal"
+- set_meta_tags og: { title: :full_title, site_name: :site}, twitter: { title: :full_title }
+
 - content_for :header do
   nav.navbar.container-md
     = image_tag 'loreal/logo-preserve-loreal.svg'
+    = image_tag 'loreal/partner-loreal-hashtag.svg', class: 'd-none d-lg-block partner-top-brand'
 
 .container-md
   section#hero.row
@@ -27,8 +31,9 @@
     .col-sm-6.col-lg-5.offset-lg-1.col-12
       = image_tag 'loreal/loreal-hero.jpg', class:'loreal-hero-img'
 
+  section.partner-bottom-brand.d-lg-none
+    = image_tag 'loreal/partner-loreal-hashtag.svg'
   section.row
-
     .col-sm-6.mt-5.col-12
       .charity-progress-bg
         .charity-progress-fg style="width: #{(@partner.charity_progress.fdiv(@partner.target_value) * 100)}%"
@@ -50,8 +55,20 @@
       .row
         h2.col-sm-6.section-separator Salões aderentes
 
+      .row
+        .col-12.col-sm-6.col-lg-4.col-xl-3.d-flex.mt-4
+          = select_tag :city,
+                       options_from_collection_for_select(@cities, :itself, :itself, params[:city]),
+                       class: 'select-input flex-fill',
+                       include_blank: 'Todo o país'
+          javascript:
+            $('#city').change(ev => {
+              Turbolinks.visit(`${location.pathname}?city=${ev.target.value}`)
+            })
       .places-list.xrow.home-list
         == render @places
 
-  section.partner-bottom-brand
-    = image_tag 'loreal/partner-loreal-hashtag.svg'
+  section.row
+    .col-12.col-sm-6
+      p
+        small.text-muted Em caso de insolvência do prestador, a Preserve e a L’Oréal não se responsabilizam pela prestação do serviço.

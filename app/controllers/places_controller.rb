@@ -31,6 +31,6 @@ class PlacesController < ApplicationController
   def load_place_and_ensure_canonical_url
     @place = Place.published.includes([:category]).friendly.find(params[:id])
 
-    redirect_to(@place) and return if place_url(@place) != request.url
+    redirect_to(place_url(@place, host: ENV['HOSTNAME'])) and return if place_url(@place, host: ENV['HOSTNAME']) != request.url
   end
 end
