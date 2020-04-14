@@ -15,8 +15,12 @@
         h1 = @place.name
         p
           => @place.category.name
-          ' &middot;
-          = @place.address
+          br
+          => @place.address
+          span.d-none.d-sm-inline
+            ' &middot;
+          br.d-sm-none
+          = @place.area
 
         = simple_form_for @voucher do |f|
 
