@@ -23,10 +23,10 @@ class SellerPostSignupJob < ApplicationJob
   # Mailjet's gem is horribly broken and useless,
   # so we have to go low-level and use rest-client directly
   def add_to_mailjet(seller)
-    base_url = "https://#{ENV["MAILJET_API_KEY"]}:#{ENV["MAILJET_SECRET_KEY"]}@api.mailjet.com/v3/REST"
+    @base_url = "https://#{ENV["MAILJET_API_KEY"]}:#{ENV["MAILJET_SECRET_KEY"]}@api.mailjet.com/v3/REST"
 
     # Add the email to Mailjet
-    RestClient.post(base_url + "/contact",
+    RestClient.post(@base_url + "/contact",
                     {email: seller.seller_user.email}.to_json,
                     content_type: :json) do |response, request, result|
 
@@ -50,18 +50,18 @@ class SellerPostSignupJob < ApplicationJob
               { name: :tipo, value: seller.places.first.category.name},
               { name: :link_detalhe, value: Rails.application.routes.url_helpers.place_url(seller.places.first)}]
 
-    RestClient.put(base_url + "/contactdata/#{contact_id}",
+    RestClient.put(@base_url + "/contactdata/#{contact_id}",
                    {'Data': params}.to_json,
                    content_type: :json)
 
     params = { ContactID: contact_id, ListID: ENV["MAILJET_CONTACT_LIST_ID"]}
-    RestClient.post(base_url + "/listrecipient",
+    RestClient.post(@base_url + "/listrecipient",
                     params.to_json,
                     content_type: :json)
   end
 
   def get_mailjet_id(email)
-    RestClient.get(base_url + "/contact/#{seller.seller_user.email}") do |response, request, result|
+    RestClient.get(@base_url + "/contact/#{seller.seller_user.email}") do |response, request, result|
       case response.code
       when 200
         response = JSON.parse response.body

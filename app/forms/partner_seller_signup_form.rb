@@ -32,6 +32,6 @@ class PartnerSellerSignupForm < SellerSignupForm
   private
 
   def partner_id_valid
-    errors.add(:partner_id_code, "Código inválido") unless partner_identifier.present?
+    errors.add(:partner_id_code, "inválido") unless partner_identifier.present?
   end
 end
