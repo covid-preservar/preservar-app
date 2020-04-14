@@ -12,6 +12,7 @@ class Place < ApplicationRecord
 
   has_one :partnership, inverse_of: :place
   has_one :partner, through: :partnership, inverse_of: :places
+  has_one :partner_identifier
 
   validates :name, :area, :address, :main_photo, presence: true
   validate  :seller_has_api_key

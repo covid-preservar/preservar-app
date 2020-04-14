@@ -53,3 +53,21 @@ main.container.maincontent
               strong Fotografia
             td
               = image_tag @place.photo_url(:small), class: 'img-preview'
+          - if @place.partner.present?
+            tr
+              td colspan='2'
+                strong
+                  ' Parceria
+                  = @place.partner.name
+            tr
+              td
+                strong
+                  ' Código de parceiro
+              td
+                = @place&.partner_identifier&.identifier
+            tr
+              td
+                strong
+                  ' Estado
+              td
+                = @place.partnership.approved ? 'Validada' : 'Aguarda validação'
