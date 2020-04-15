@@ -14,18 +14,18 @@ class PartnerSellerSignupForm < SellerSignupForm
   end
 
   def partnership
-    @partnership ||= partner.partnerships.build(place: place)
+    @partnership ||= partner.partnerships.build(place: place, partner_identifier: partner_identifier)
   end
 
   def partner_identifier
-    @partner_identifier ||= partner.partner_identifiers.unused.find_by(identifier: partner_id_code)
+    @partner_identifier ||= partner.partner_identifiers.find_by(identifier: partner_id_code)
   end
 
   def save
     place.category = partner.restricted_category if partner.restricted_category.present?
     super do
       partnership.save!
-      partner_identifier.mark_used!(place: place)
+      partner_identifier.mark_used!
     end
   end
 

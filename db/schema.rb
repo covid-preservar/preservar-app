@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_183309) do
+ActiveRecord::Schema.define(version: 2020_04_15_124545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -82,12 +82,10 @@ ActiveRecord::Schema.define(version: 2020_04_13_183309) do
 
   create_table "partner_identifiers", force: :cascade do |t|
     t.bigint "partner_id", null: false
-    t.bigint "place_id"
     t.string "identifier"
-    t.boolean "used", default: false, null: false
-    t.datetime "used_at"
+    t.datetime "last_used_at"
+    t.integer "use_count", default: 0
     t.index ["partner_id"], name: "index_partner_identifiers_on_partner_id"
-    t.index ["place_id"], name: "index_partner_identifiers_on_place_id"
   end
 
   create_table "partners", force: :cascade do |t|
@@ -109,7 +107,9 @@ ActiveRecord::Schema.define(version: 2020_04_13_183309) do
     t.boolean "approved", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "partner_identifier_id"
     t.index ["partner_id"], name: "index_partnerships_on_partner_id"
+    t.index ["partner_identifier_id"], name: "index_partnerships_on_partner_identifier_id"
     t.index ["place_id"], name: "index_partnerships_on_place_id"
   end
 

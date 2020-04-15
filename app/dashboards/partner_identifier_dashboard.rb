@@ -9,11 +9,11 @@ class PartnerIdentifierDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     partner: Field::Polymorphic,
-    place: Field::BelongsTo,
+    partnerships: Field::HasMany,
     id: Field::Number,
+    use_count: Field::Number,
     identifier: Field::String,
-    used: Field::Boolean,
-    used_at: Field::DateTime,
+    last_used_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -25,8 +25,8 @@ class PartnerIdentifierDashboard < Administrate::BaseDashboard
     id
     partner
     identifier
-    place
-    used
+    use_count
+    last_used_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,9 +35,9 @@ class PartnerIdentifierDashboard < Administrate::BaseDashboard
     id
     partner
     identifier
-    place
-    used
-    used_at
+    use_count
+    partnerships
+    last_used_at
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -45,8 +45,7 @@ class PartnerIdentifierDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     identifier
-    used
-    used_at
+    last_used_at
   ].freeze
 
   # COLLECTION_FILTERS

@@ -1,9 +1,9 @@
 export default class Spinner {
   constructor() {
-    document.addEventListener("turbolinks:request-start", this.start);
-    document.addEventListener("ajax:send", this.start);
-    document.addEventListener("turbolinks:request-end", this.stop);
-    document.addEventListener("ajax:complete", this.stop);
+    document.addEventListener("turbolinks:request-start", this.start.bind(this));
+    document.addEventListener("ajax:send", this.start.bind(this));
+    document.addEventListener("turbolinks:request-end", this.stop.bind(this));
+    document.addEventListener("ajax:complete", this.stop.bind(this));
   }
 
   start() {

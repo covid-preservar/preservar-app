@@ -2,11 +2,9 @@
 class PartnerIdentifier < ApplicationRecord
 
   belongs_to :partner
-  belongs_to :place, optional: true
+  has_many :partnerships
 
-  scope :unused, -> { where( used: false )}
-
-  def mark_used!(place:)
-    self.update! used: true, place: place, used_at: Time.now
+  def mark_used!
+    self.update! last_used_at: Time.now, use_count: self.use_count + 1
   end
 end
