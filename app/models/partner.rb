@@ -42,4 +42,12 @@ class Partner < ApplicationRecord
   def restricted_category=(category)
     partner_properties['restricted_category_id'] = category.id
   end
+
+  def requires_partner_id_code
+    partner_properties['requires_partner_id_code'] || false
+  end
+
+  def requires_partner_id_code=(value)
+    partner_properties['requires_partner_id_code'] = value == '1'
+  end
 end

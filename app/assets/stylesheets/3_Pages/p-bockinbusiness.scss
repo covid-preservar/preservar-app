@@ -1,0 +1,55 @@
+.partners.bockinbusiness {
+
+  .navbar {
+    align-items: flex-start;
+    height: 16rem;
+    padding-top: 1.5rem;
+  }
+
+  .hero-text {
+    color: $white;
+    padding-bottom: 2rem;
+
+    h2 {
+      color: $white;
+    }
+  }
+
+  #hero::before {
+    background: #AB2328;
+    bottom: 0;
+  }
+
+  .bockinbusiness-hero-img {
+    display: none;
+    object-fit: cover;
+  }
+
+  .partner-top-brand {
+    max-width: 40%;
+    max-height: 136px;
+  }
+
+  .teaser-block {
+    margin-top: 5rem;
+  }
+
+  @include media-breakpoint-up(sm) {
+    .bockinbusiness-hero-img {
+      display: block;
+      margin-left: auto;
+    }
+
+    #hero::before {
+      bottom: 0;
+    }
+  }
+
+
+  @include media-breakpoint-up(xl) {
+
+    #hero::before {
+      bottom: 5rem;
+    }
+  }
+}
