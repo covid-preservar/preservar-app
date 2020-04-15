@@ -1,0 +1,63 @@
+- title "Super Bock"
+- set_meta_tags og: { title: :full_title, site_name: :site}, twitter: { title: :full_title }
+
+- content_for :header do
+  nav.navbar.container-md
+    = image_tag 'loreal/logo-preserve-loreal.svg'
+    = image_tag 'loreal/partner-loreal-hashtag.svg', class: 'd-none d-lg-block partner-top-brand'
+
+.container-md
+  section#hero.row
+    .col-sm-6.col-12
+      .hero-text
+        h2 header text
+        p
+          ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita ex quas minima nisi odio necessitatibus accusamus quae exercitationem maiores id adipisci reiciendis ipsa laudantium debitis ipsam, beatae voluptas et consectetur?
+
+    .col-sm-6.col-lg-5.offset-lg-1.col-12
+      = image_tag 'loreal/loreal-hero.jpg', class:'loreal-hero-img'
+
+  section.partner-bottom-brand.d-lg-none
+    = image_tag 'loreal/partner-loreal-hashtag.svg'
+  section.row
+    .col-sm-6.mt-5.col-12
+      .charity-progress-bg
+        .charity-progress-fg style="width: #{(@partner.charity_progress.fdiv(@partner.target_value) * 100)}%"
+      h2 = number_to_currency @partner.charity_progress, locale: :pt, precision: 0
+
+      .charity-summary
+        ' angariados, de um objectivo de
+        = number_to_currency @partner.target_value, locale: :pt, precision: 0
+
+    .col-sm-6.col-lg-5.offset-lg-1.mt-5.col-12
+      p.partner-signup
+        ' É cliente da divisão de produtos profissionais
+        span.nowrap> L´Oréal
+        ' Profissionel? Registe-se aqui
+      = link_to 'Registe o seu salão', new_partner_signup_path, class: 'btn btn-primary', data:{turbolinks: false}
+
+  - if @places.any?
+    section.places-container.section
+      .row
+        h2.col-sm-6.section-separator Salões aderentes
+
+      .row
+        .col-12.col-sm-6.col-lg-4.col-xl-3.d-flex.mt-4
+          = select_tag :city,
+                       options_from_collection_for_select(@cities, :itself, :itself, params[:city]),
+                       class: 'select-input flex-fill',
+                       include_blank: 'Todo o país'
+          javascript:
+            $('#city').change(ev => {
+              Turbolinks.visit(`${location.pathname}?city=${ev.target.value}`)
+            })
+      .places-list.xrow.home-list
+        == render @places
+
+  section.row
+    .col-12.col-sm-6
+      p
+        small.text-muted
+          ' O Parceiro não será responsável pelo não cumprimento das suas obrigações, se esse incumprimento tiver sido causado ou resultar de um evento de força maior. A Preserve e a Divisão de Produtos Profissionais L’Oréal não são responsáveis, não tem controlo, nem prestam qualquer garantia sobre a prestação dos Serviços prestados pelos Parceiros, bem como sobre a qualidade, pontualidade ou qualquer outro aspeto relacionado com os aqueles (mais informações nos
+          = link_to 'Termos e Condições', tos_url(host: ENV['HOSTNAME'])
+          | ).

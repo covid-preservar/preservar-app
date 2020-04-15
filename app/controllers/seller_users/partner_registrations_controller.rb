@@ -3,14 +3,17 @@ class SellerUsers::PartnerRegistrationsController < Lib::RegistrationsController
 
   def new
     @partner = Partner.find_by(slug: request.subdomain)
+    prepend_view_path "#{Rails.root}/app/views/partners/#{@partner.slug}"
 
     super do
       @form = PartnerSellerSignupForm.new(seller_user: resource, partner: @partner)
     end
+
   end
 
   def create
     @partner = Partner.find_by(slug: request.subdomain)
+    prepend_view_path "#{Rails.root}/app/views/partners/#{@partner.slug}"
     @form = PartnerSellerSignupForm.new(signup_params.merge(partner: @partner))
     super
   end
@@ -32,6 +35,7 @@ class SellerUsers::PartnerRegistrationsController < Lib::RegistrationsController
                                         :email,
                                         :password,
                                         :vat_id,
+                                        :category_id,
                                         :iban,
                                         :company_registration_code,
                                         :password,
