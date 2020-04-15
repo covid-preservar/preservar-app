@@ -49,7 +49,7 @@ class SellerSignupForm
 
   def initialize(attributes = {})
     super(attributes.reject { |_, v| v.blank? })
-    @vat_id = 'PT' + @vat_id if @vat_id&.match?(/\A\d{9}\z/)
+    @iban = @iban.squish.tr('.', ' ')
 
     @cached_main_photo_data = place.cached_main_photo_data
   end
