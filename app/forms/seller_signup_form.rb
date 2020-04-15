@@ -49,7 +49,7 @@ class SellerSignupForm
 
   def initialize(attributes = {})
     super(attributes.reject { |_, v| v.blank? })
-    @iban = @iban.squish.tr('.', ' ')
+    @iban = @iban.squish.tr('.', ' ') if @iban.present?
 
     @cached_main_photo_data = place.cached_main_photo_data
   end
