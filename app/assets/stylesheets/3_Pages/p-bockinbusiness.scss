@@ -8,6 +8,7 @@
 
   .hero-text {
     color: $white;
+    padding-bottom: 2rem;
 
     h2 {
       color: $white;
@@ -16,6 +17,7 @@
 
   #hero::before {
     background: #AB2328;
+    bottom: 0;
   }
 
   .bockinbusiness-hero-img {
@@ -28,6 +30,10 @@
     max-height: 136px;
   }
 
+  .teaser-block {
+    margin-top: 5rem;
+  }
+
   @include media-breakpoint-up(sm) {
     .bockinbusiness-hero-img {
       display: block;
@@ -35,16 +41,10 @@
     }
 
     #hero::before {
-      bottom: -2rem;
+      bottom: 0;
     }
   }
 
-  @include media-breakpoint-up(md) {
-
-    #hero::before {
-      bottom: -2rem;
-    }
-  }
 
   @include media-breakpoint-up(xl) {
 
