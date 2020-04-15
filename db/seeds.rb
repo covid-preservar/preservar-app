@@ -374,3 +374,14 @@ CharityPartner.create!(
   voucher_copy: 'Lorem voucher copy',
   large_logo: Rack::Test::UploadedFile.new('spec/files/logo-loreal.svg', 'image/svg'),
   small_logo: Rack::Test::UploadedFile.new('spec/files/tag-loreal.svg', 'image/svg'))
+
+CharityPartner.create!(
+  name: "Super Bock",
+  slug: 'bockinbusiness',
+  min_value: 20,
+  charity_value: 5,
+  target_value: 20000,
+  place_page_copy: 'Lorem place page copy',
+  voucher_copy: 'Lorem voucher copy',
+  large_logo: Rack::Test::UploadedFile.new('spec/files/logo-sb.svg', 'image/svg'),
+  small_logo: Rack::Test::UploadedFile.new('spec/files/logo-sb.svg', 'image/svg'))

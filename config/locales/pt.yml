@@ -43,7 +43,7 @@ pt:
         iban: 'IBAN'
         company_registration_code: 'Código de acesso da Certidão Permanente'
       partner_seller_signup_form:
-        partner_id_code: Número de cliente L’Oréal
+        partner_id_code: Número
   errors:
     messages:
         invalid_vat: 'é inválido'

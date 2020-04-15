@@ -20,6 +20,6 @@ class PartnersController < ApplicationController
   protected
 
   def body_class
-    "#{super} loreal"
+    "#{super} #{@partner.slug}"
   end
 end
