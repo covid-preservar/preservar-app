@@ -26,16 +26,16 @@ class SellerPostSignupJob < ApplicationJob
     @base_url = "https://#{ENV["MAILJET_API_KEY"]}:#{ENV["MAILJET_SECRET_KEY"]}@api.mailjet.com/v3/REST"
 
     # Add the email to Mailjet
-    RestClient.post(@base_url + "/contact",
+    contact_id = RestClient.post(@base_url + "/contact",
                     {email: seller.seller_user.email}.to_json,
                     content_type: :json) do |response, request, result|
 
       case response.code
       when 400
-        contact_id = get_mailjet_id(seller.seller_user.email)
+        return get_mailjet_id(seller.seller_user.email)
       when 200
         response = JSON.parse response.body
-        contact_id = response.fetch('Data')&.first&.fetch('ID')
+        return response.fetch('Data')&.first&.fetch('ID')
       else
         Rails.logger.warn("Failed to add email '#{seller.seller_user.email}' to Mailjet. Response was #{response.code}")
         return nil
