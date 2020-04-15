@@ -61,7 +61,7 @@ class SellerPostSignupJob < ApplicationJob
   end
 
   def get_mailjet_id(email)
-    RestClient.get(@base_url + "/contact/#{seller.seller_user.email}") do |response, request, result|
+    RestClient.get(@base_url + "/contact/#{email}") do |response, request, result|
       case response.code
       when 200
         response = JSON.parse response.body
