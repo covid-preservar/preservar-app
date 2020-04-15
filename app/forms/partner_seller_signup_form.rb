@@ -3,7 +3,7 @@ class PartnerSellerSignupForm < SellerSignupForm
   attr_accessor :partner_id_code,
                 :partner
 
-  validates :partner_id_code, presence: true
+  validates :partner_id_code, presence: true, if: -> { partner.requires_partner_id_code }
   validate :partner_id_valid
 
   def initialize(attributes = {})
@@ -25,13 +25,13 @@ class PartnerSellerSignupForm < SellerSignupForm
     place.category = partner.restricted_category if partner.restricted_category.present?
     super do
       partnership.save!
-      partner_identifier.mark_used!
+      partner_identifier.mark_used! if partner.requires_partner_id_code
     end
   end
 
   private
 
   def partner_id_valid
-    errors.add(:partner_id_code, "inválido") unless partner_identifier.present?
+    errors.add(:partner_id_code, "inválido") unless partner.requires_partner_id_code && partner_identifier.present?
   end
 end

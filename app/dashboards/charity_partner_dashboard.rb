@@ -24,7 +24,8 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
     min_value: Field::Number.with_options(prefix: "€ "),
     charity_value: Field::Number.with_options(prefix: "€ "),
     target_value: Field::Number.with_options(prefix: "€ "),
-    restricted_category: Field::BelongsTo.with_options(class_name: 'Category')
+    restricted_category: Field::BelongsTo.with_options(class_name: 'Category'),
+    requires_partner_id_code: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -51,6 +52,7 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
     charity_value
     target_value
     restricted_category
+    requires_partner_id_code
     created_at
     updated_at
     partner_properties
@@ -71,7 +73,7 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
     charity_value
     target_value
     restricted_category
-
+    requires_partner_id_code
   ].freeze
 
   # COLLECTION_FILTERS
