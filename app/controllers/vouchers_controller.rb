@@ -2,18 +2,19 @@
 class VouchersController < ApplicationController
 
   def create
-    voucher = Voucher.new(voucher_params.merge(cookie_uuid: SecureRandom.uuid))
+    @voucher = Voucher.new(voucher_params.merge(cookie_uuid: SecureRandom.uuid))
 
-    if voucher.place.approved_partner.present?
-      voucher.partner = voucher.place.approved_partner
+    if @voucher.place.approved_partner.present?
+      @voucher.partner = @voucher.place.approved_partner
     end
 
-    if voucher.save
-      voucher.update_tracking(tracking_codes)
-      cookies.encrypted[:uuid] = { value: voucher.cookie_uuid, expires: 1.hour }
-      redirect_to new_voucher_payment_path(voucher)
+    if @voucher.save
+      @voucher.update_tracking(tracking_codes)
+      cookies.encrypted[:uuid] = { value: @voucher.cookie_uuid, expires: 1.hour }
+      redirect_to new_voucher_payment_path(@voucher)
     else
-      redirect_to voucher.place
+      @place = @voucher.place
+      render :new
     end
   end
 

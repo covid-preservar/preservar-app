@@ -22,24 +22,7 @@
           br.d-sm-none
           = @place.area
 
-        = simple_form_for @voucher do |f|
-
-          - if @place.approved_partner.present?
-            = render @place.approved_partner
-
-          h3 Apoie este local, seleccione o valor do voucher
-
-          - if Flipper.enabled?(:discounts) && @place.has_discount?
-            p.discount
-              = inline_svg 'icon-heart-small.svg'
-              span.discount-text Este local oferece 10% de desconto na compra de um voucher
-
-          = f.input_field :place_id, as: :hidden
-          = f.input :value, as: :radio_buttons, collection: Place::DEFAULT_EUR_VALUES, checked: 20, legend_tag: false
-          = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}
-          = f.submit 'Comprar voucher', class: 'btn btn-primary'
-          = image_tag 'icon-mb-faded.svg', alt: "Multibanco", class: 'voucher-mb'
-
+        = render 'vouchers/form'
 
 
     .col-sm-5.offset-sm-1.col-12.order-first.order-sm-last
@@ -64,9 +47,13 @@
       - if @place.approved_partner.present? && @place.approved_partner.charity_partner?
         .col-md-5.offset-md-1.col-12.order-first.order-sm-last
           p.charity-text
-            ' Por cada voucher comprado a este local haverá um donativo de
-            = @place.approved_partner.charity_value
-            | € para uma instituição de saúde, cortesia da:
+            ' Por cada voucher
+            - if @place.approved_partner.min_value.present?
+              ' de valor igual ou superior a
+              => number_to_currency @place.approved_partner.min_value, locale: :pt, precision: 0
+            ' comprado a este local haverá um donativo de
+            => number_to_currency @place.approved_partner.charity_value, locale: :pt, precision: 0
+            | para uma instituição de saúde, cortesia da:
           = image_tag @place.approved_partner.logo_url, class: 'partner-logo'
 
   == render 'other_places'

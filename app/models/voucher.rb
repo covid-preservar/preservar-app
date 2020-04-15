@@ -32,6 +32,9 @@ class Voucher < ApplicationRecord
   validates :code, presence: true, uniqueness: { allow_nil: true }, if: :paid?
   validates :email, format: { with: Devise.email_regexp }, if: :pending_payment?
   validates :value, numericality: { minimum: 1 }
+  validates :custom_value, numericality: { greater_than_or_equal_to: ->(instance) { instance.partner.min_value }},
+                           if: -> { partner.present? && partner.min_value.present? }
+
   validates :payment_method, presence: true,
                              inclusion: { in: PAYMENT_METHODS },
                              if: :pending_payment?
@@ -41,6 +44,7 @@ class Voucher < ApplicationRecord
 
   validate :valid_vat_id
 
+
   before_validation :set_discount, on: :create
 
   scope :seller_visible, -> { where(state: %w[paid redeemed]) }
@@ -48,6 +52,7 @@ class Voucher < ApplicationRecord
   attr_reader :custom_value
 
   def custom_value=(val)
+    @custom_value = val
     self.value = val if val.present?
   end
 

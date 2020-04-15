@@ -17,8 +17,15 @@ pt:
     attributes:
       voucher:
         payment_phone: 'Número de Telemóvel'
+        custom_value: 'Valor'
       place:
         main_photo: 'Fotografia'
+    errors:
+      models:
+        voucher:
+          attributes:
+            custom_value:
+              greater_than_or_equal_to: 'mínimo €%{count}'
 
   activemodel:
     attributes:

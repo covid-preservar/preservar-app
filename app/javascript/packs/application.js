@@ -27,6 +27,9 @@ window.spinner = new Spinner();
 import PlaceForm from '../src/place_form';
 window.PlaceForm = PlaceForm;
 
+import NewVoucherForm from '../src/new_voucher_form';
+window.NewVoucherForm = NewVoucherForm;
+
 import VoucherPaymentForm from '../src/voucher_payment_form';
 window.VoucherPaymentForm = VoucherPaymentForm;
 

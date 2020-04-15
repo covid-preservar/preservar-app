@@ -1,5 +1,12 @@
+import NewVoucherForm from "./new_voucher_form";
+
 function setup() {
   spinner.stop();
+
+
+  if ($("#new_voucher").length > 0 && !window.voucher_form) {
+    window.voucher_form = new NewVoucherForm();
+  }
 
   if ($('#new_seller_user').length > 0 && !window.place_form) {
     window.place_form = new PlaceForm();
