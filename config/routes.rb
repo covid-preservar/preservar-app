@@ -90,7 +90,7 @@ Rails.application.routes.draw do
     resources :vouchers
 
     get 'stats', to: 'stats#index', as: :stats
-    root to: "places#index"
+    root to: "stats#index"
   end
 
 

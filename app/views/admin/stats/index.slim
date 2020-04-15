@@ -30,6 +30,33 @@ section.stats_section
           = Seller.where(id: Place.published.select(:seller_id)).distinct.count
 
 section.stats_section
+  h2.subtitle Partner stats
+  - Partner.all.each do |partner|
+    br
+    p.subtitle = partner.name
+    table
+      tbody
+        tr
+          td
+            strong Locais (Total / Publicados)
+          td
+            => partner.places.published.count
+            ' /
+            = partner.places.count
+        tr
+          td
+            strong Numero de vouchers
+          td
+            = partner.vouchers.paid.count
+        tr
+          td
+            strong Valor
+          td
+            => number_to_currency partner.charity_progress, locale: :pt, precision: 0
+            ' /
+            = number_to_currency partner.target_value, locale: :pt, precision: 0
+
+section.stats_section
   h2.subtitle Voucher Stats
   table
     thead
