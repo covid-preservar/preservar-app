@@ -5,10 +5,17 @@ task :migrate_partners => :environment do
     x.save
   end
 
+  x = CharityPartner.first
+  x.partner_properties.delete 'min_value'
+  x.partner_properties.delete 'target_value'
+  x.partner_properties.delete 'charity_value'
+  x.becomes!(MarketingPartner)
+  x.save!
+
   x = CharityPartner.last
   x.becomes!(AddOnPartner)
-  x.save
+  x.save!
   z = AddOnPartner.find x.id
   z.add_on_value = z.partner_properties.delete('charity_value')
-  z.save
+  z.save!
 end

@@ -13,13 +13,7 @@ p
 p
   | Se indicou o seu NIF ao comprar este voucher, este foi comunicado ao estabelecimento para a emissão da factura.
 
-- if @voucher.has_charity_partner?
-  .content-block
-    .align-center
-      = image_tag @voucher.partner.logo_url
-    p = @voucher.partner.voucher_copy
-
-- if @voucher.has_add_on_partner?
+- if @voucher.partner.present?
   .content-block
     .align-center
       = image_tag @voucher.partner.logo_url

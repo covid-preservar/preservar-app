@@ -46,7 +46,7 @@ class Partner < ApplicationRecord
   end
 
   def target_value
-    partner_properties['target_value'].to_i
+    partner_properties['target_value']&.to_i
   end
 
   def target_value=(value)
