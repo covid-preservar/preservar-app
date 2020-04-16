@@ -1,7 +1,7 @@
 = simple_form_for @voucher, remote: true do |f|
 
-  - if @place.approved_partner.present?
-    = render @place.approved_partner
+  - if @place.active_partner.present?
+    = render @place.active_partner
 
   h3 Apoie este local, seleccione o valor do voucher
 

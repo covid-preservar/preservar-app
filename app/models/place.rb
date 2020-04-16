@@ -44,6 +44,10 @@ class Place < ApplicationRecord
     partner if partnership&.approved?
   end
 
+  def active_partner
+    approved_partner if approved_partner&.active?
+  end
+
   def has_charity_partner?
     approved_partner.present? && partner.charity_partner?
   end

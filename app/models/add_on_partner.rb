@@ -16,4 +16,8 @@ class AddOnPartner < Partner
   def target_progress
     vouchers.paid.count * add_on_value
   end
+
+  def active?
+    target_progress < target_value
+  end
 end

@@ -2,9 +2,9 @@
   a.place href=place_url(place, host: ENV['HOSTNAME'])
     .place-img-wrapper
       = image_tag place.photo_url(:small), class: 'place-img'
-      - if place.approved_partner.present?
+      - if place.active_partner.present?
         .partner-overlay
-          = image_tag place.approved_partner.thumb_logo_url, class: 'partner-logo-thumb'
+          = image_tag place.partner.thumb_logo_url, class: 'partner-logo-thumb'
 
     h3.place-header
       span.place-name = place.name

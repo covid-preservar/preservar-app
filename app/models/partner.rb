@@ -25,6 +25,10 @@ class Partner < ApplicationRecord
     false
   end
 
+  def active?
+    true
+  end
+
   def min_value
     partner_properties['min_value'].to_i
   end
