@@ -31,9 +31,10 @@ class Voucher < ApplicationRecord
 
   validates :code, presence: true, uniqueness: { allow_nil: true }, if: :paid?
   validates :email, format: { with: Devise.email_regexp }, if: :pending_payment?
-  validates :value, numericality: { minimum: 1 }
+  validates :value, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 200 }
   validates :custom_value, numericality: {
                             greater_than_or_equal_to: ->(instance) { instance.partner.min_value },
+                            less_than_or_equal_to: 200,
                             allow_nil: true
                            }, if: -> { partner.present? && partner.min_value.present? }
 
@@ -45,7 +46,6 @@ class Voucher < ApplicationRecord
   validates :payment_phone, format: { with: /\A\d{9}\z/ }, if: :requires_phone?
 
   validate :valid_vat_id
-
 
   before_validation :set_discount, on: :create
 
