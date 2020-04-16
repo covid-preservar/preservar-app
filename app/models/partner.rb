@@ -25,8 +25,16 @@ class Partner < ApplicationRecord
     false
   end
 
+  def marketing_partner?
+    false
+  end
+
   def active?
     true
+  end
+
+  def restricted_category_id
+    partner_properties['restricted_category_id']
   end
 
   def min_value

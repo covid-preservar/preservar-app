@@ -16,11 +16,7 @@
           strong #EuApoioOMeuCabeleireiro
           | , porque a Beleza está em cuidar.
         p
-          ' Por cada voucher comprado a um salão L'Oréal Professionnel, Kérastase, Redken ou Shu Uemura, serão
-          strong oferecidos 5€ a uma instituição de saúde.
-        p
-          ' O objetivo da L’Oréal Divisão de Produtos Professionais e da Preserve é chegar aos €10.000.
-          strong O meu cabeleireiro cuida sempre de mim. É hora de cuidar do meu cabeleireiro!
+          ' O dinheiro é transferido diretamente para o salão escolhido e poderá utilizar o seu voucher em qualquer serviço ou produtos disponível assim que tudo fique bem.
 
       .hero-bottom-images
         = image_tag 'loreal/partner-loreal-profissionel.svg', class:'loreal-brands'
@@ -34,16 +30,8 @@
   section.partner-bottom-brand.d-lg-none
     = image_tag 'loreal/partner-loreal-hashtag.svg'
   section.row
+
     .col-sm-6.mt-5.col-12
-      .charity-progress-bg
-        .charity-progress-fg style="width: #{(@partner.target_progress.fdiv(@partner.target_value) * 100)}%"
-      h2 = number_to_currency @partner.target_progress, locale: :pt, precision: 0
-
-      .charity-summary
-        ' angariados, de um objectivo de
-        = number_to_currency @partner.target_value, locale: :pt, precision: 0
-
-    .col-sm-6.col-lg-5.offset-lg-1.mt-5.col-12
       p.partner-signup
         ' É cliente da divisão de produtos profissionais
         span.nowrap> L´Oréal
