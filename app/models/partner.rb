@@ -2,7 +2,7 @@
 class Partner < ApplicationRecord
 
   include PartnerLogoUploader::Attachment.new(:large_logo)
-  include SmallPartnerLogoUploader::Attachment.new(:small_logo)
+  include PartnerLogoUploader::Attachment.new(:small_logo)
 
   has_many :partnerships, inverse_of: :partner, dependent: :destroy
   has_many :places, through: :partnerships, inverse_of: :partner
@@ -10,7 +10,7 @@ class Partner < ApplicationRecord
   has_many :partner_identifiers
 
   def logo_url
-    large_logo_url(:large, public: true) || large_logo_url(public: true)
+    large_logo_url(public: true)
   end
 
   def thumb_logo_url
