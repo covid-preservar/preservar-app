@@ -32,4 +32,4 @@
       p Se é cliente Super Bock, em breve vai poder registar-se nesta página. Mais novidades e detalhes em breve.
       p Entretanto, leia mais sobre o Preserve e veja outros locais carregando no botão abaixo.
       br
-      = link_to 'Mais sobre o Preserve.pt', root_url(host: ENV['HOSTNAME']), class: 'btn btn-primary'
+      = link_to 'Registe o seu estabelecimento', new_partner_signup_path, class: 'btn btn-primary', data:{turbolinks: false}

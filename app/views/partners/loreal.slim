@@ -36,8 +36,8 @@
   section.row
     .col-sm-6.mt-5.col-12
       .charity-progress-bg
-        .charity-progress-fg style="width: #{(@partner.charity_progress.fdiv(@partner.target_value) * 100)}%"
-      h2 = number_to_currency @partner.charity_progress, locale: :pt, precision: 0
+        .charity-progress-fg style="width: #{(@partner.target_progress.fdiv(@partner.target_value) * 100)}%"
+      h2 = number_to_currency @partner.target_progress, locale: :pt, precision: 0
 
       .charity-summary
         ' angariados, de um objectivo de

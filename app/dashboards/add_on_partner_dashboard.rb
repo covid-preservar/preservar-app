@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class CharityPartnerDashboard < Administrate::BaseDashboard
+class AddOnPartnerDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -22,7 +22,7 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     min_value: Field::Number.with_options(prefix: "€ "),
-    charity_value: Field::Number.with_options(prefix: "€ "),
+    add_on_value: Field::Number.with_options(prefix: "€ "),
     target_value: Field::Number.with_options(prefix: "€ "),
     restricted_categories: Field::HasMany.with_options(class_name: 'Category'),
     requires_partner_id_code: Field::Boolean
@@ -49,7 +49,7 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
     place_page_copy
     voucher_copy
     min_value
-    charity_value
+    add_on_value
     target_value
     restricted_categories
     requires_partner_id_code
@@ -70,7 +70,7 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
     place_page_copy
     voucher_copy
     min_value
-    charity_value
+    add_on_value
     target_value
     restricted_categories
     requires_partner_id_code
@@ -92,6 +92,6 @@ class CharityPartnerDashboard < Administrate::BaseDashboard
   # across all pages of the admin dashboard.
   #
   def display_resource(charity_partner)
-    "CharityPartner ##{charity_partner.name}"
+    "AddOnPartner ##{charity_partner.name}"
   end
 end

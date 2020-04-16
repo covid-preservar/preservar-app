@@ -8,9 +8,6 @@ class PartnerSellerSignupForm < SellerSignupForm
 
   def initialize(attributes = {})
     super(attributes)
-    if partner.restricted_category.present?
-      @category_id = partner.restricted_category_id
-    end
   end
 
   def partnership
@@ -22,7 +19,7 @@ class PartnerSellerSignupForm < SellerSignupForm
   end
 
   def save
-    place.category = partner.restricted_category if partner.restricted_category.present?
+    place.category = partner.restricted_categories.first if partner.restricted_categories&.length == 1
     super do
       partnership.save!
       partner_identifier.mark_used! if partner.requires_partner_id_code
@@ -32,6 +29,6 @@ class PartnerSellerSignupForm < SellerSignupForm
   private
 
   def partner_id_valid
-    errors.add(:partner_id_code, "inválido") unless partner.requires_partner_id_code && partner_identifier.present?
+    errors.add(:partner_id_code, "inválido") if partner.requires_partner_id_code && partner_identifier.blank?
   end
 end

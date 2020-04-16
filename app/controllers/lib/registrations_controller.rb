@@ -16,8 +16,7 @@ class Lib::RegistrationsController < Devise::RegistrationsController
   def create
     if @form.save
       SellerPostSignupJob.perform_later(@form.seller.id)
-      expire_data_after_sign_in!
-
+      sign_up(resource_name, user)
       redirect_to register_success_path
     else
       clean_up_passwords resource

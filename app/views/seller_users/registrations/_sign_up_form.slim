@@ -13,11 +13,15 @@ section#register-form.section
           h3 Sobre o estabelecimento
           = f.input :name, label: 'Nome público do estabelecimento', hint: 'Este é o nome que vai ser visível na plataforma.', placeholder: 'Nome'
 
-          - if @form.respond_to?(:partner) && @form.partner.restricted_category.present?
-            = f.input :category, readonly: true,
-                                 validate: false,
-                                 input_html: { value: @form.partner.restricted_category.name,
-                                               name: nil}
+          - if @form.respond_to?(:partner) && @form.partner.restricted_categories.present?
+            - if @form.partner.restricted_categories.length == 1
+              = f.input :category, readonly: true,
+                                  validate: false,
+                                  label: 'Categoria',
+                                  input_html: { value: @form.partner.restricted_categories.first.name,
+                                                name: nil}
+            - else
+              = f.input :category_id, collection: @form.partner.restricted_categories
 
           - else
             = f.input :category_id, collection: Category.all

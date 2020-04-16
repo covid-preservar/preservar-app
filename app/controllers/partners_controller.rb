@@ -6,13 +6,13 @@ class PartnersController < ApplicationController
     @partner = Partner.find_by(slug: request.subdomain)
 
     if params[:city].present?
-      search = PlaceSearch.new(category: @partner.restricted_category_id, city: params[:city])
+      search = PlaceSearch.new(partner: @partner, city: params[:city])
       @places = search.places
     else
       @places = @partner.places.published
     end
 
-    @cities = @places.pluck(:area).uniq.sort
+    @cities = @partner.places.published.pluck(:area).uniq.sort
 
     render @partner.slug
   end

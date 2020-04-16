@@ -17,7 +17,7 @@ class Partner < ApplicationRecord
     small_logo_url(public: true)
   end
 
-  def discount_partner?
+  def add_on_partner?
     false
   end
 
@@ -25,22 +25,38 @@ class Partner < ApplicationRecord
     false
   end
 
-  def restricted_category_id
-    partner_properties['restricted_category_id']
+  def min_value
+    partner_properties['min_value'].to_i
   end
 
-  def restricted_category_id=(value)
-    partner_properties['restricted_category_id'] = value
+  def min_value=(value)
+    partner_properties['min_value'] = value
   end
 
-  def restricted_category
-    if partner_properties['restricted_category_id'].present?
-      Category.find_by(id: partner_properties['restricted_category_id'])
+  def target_value
+    partner_properties['target_value'].to_i
+  end
+
+  def target_value=(value)
+    partner_properties['target_value'] = value
+  end
+
+  def restricted_category_ids
+    partner_properties['restricted_category_ids']
+  end
+
+  def restricted_category_ids=(value)
+    partner_properties['restricted_category_ids'] = value.delete_if(&:blank?)
+  end
+
+  def restricted_categories
+    if partner_properties['restricted_category_ids'].present?
+      Category.where(id: partner_properties['restricted_category_ids'])
     end
   end
 
-  def restricted_category=(category)
-    partner_properties['restricted_category_id'] = category.id
+  def restricted_categories=(categories)
+    partner_properties['restricted_category_ids'] = categories.map(&:id)
   end
 
   def requires_partner_id_code

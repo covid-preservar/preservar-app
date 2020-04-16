@@ -52,7 +52,7 @@ section.stats_section
           td
             strong Valor
           td
-            => number_to_currency partner.charity_progress, locale: :pt, precision: 0
+            => number_to_currency partner.target_progress, locale: :pt, precision: 0
             ' /
             = number_to_currency partner.target_value, locale: :pt, precision: 0
 

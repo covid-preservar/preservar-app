@@ -44,6 +44,10 @@ class Place < ApplicationRecord
     partner if partnership&.approved?
   end
 
+  def has_charity_partner?
+    approved_partner.present? && partner.charity_partner?
+  end
+
   private
 
   def slug_candidates

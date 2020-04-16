@@ -5,22 +5,6 @@ class CharityPartner < Partner
     true
   end
 
-  def min_value
-    partner_properties['min_value'].to_i
-  end
-
-  def min_value=(value)
-    partner_properties['min_value'] = value
-  end
-
-  def target_value
-    partner_properties['target_value'].to_i
-  end
-
-  def target_value=(value)
-    partner_properties['target_value'] = value
-  end
-
   def charity_value
     partner_properties['charity_value'].to_i
   end
@@ -29,7 +13,7 @@ class CharityPartner < Partner
     partner_properties['charity_value'] = value
   end
 
-  def charity_progress
+  def target_progress
     vouchers.paid.count * charity_value
   end
 end

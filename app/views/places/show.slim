@@ -44,7 +44,7 @@
             span.input-group-text 🔗
           input.form-control disabled='true' type="text" value=place_url(@place)
 
-      - if @place.approved_partner.present? && @place.approved_partner.charity_partner?
+      - if @place.has_charity_partner?
         .col-md-5.offset-md-1.col-12.order-first.order-sm-last
           p.charity-text
             ' Por cada voucher

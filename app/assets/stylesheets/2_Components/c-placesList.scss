@@ -34,6 +34,10 @@
     bottom: 0;
     left: 0;
     max-width: 40%;
+
+    .partner-logo-thumb {
+      max-height: 3rem;
+    }
   }
 
   .place-header,
@@ -77,21 +81,6 @@
     svg {
       margin-right: 5px;
       width: 1rem;
-    }
-  }
-
-  .partner {
-    align-items: flex-start;
-    display: flex;
-    align-items: center;
-
-    .partner-text {
-      font-size: 1rem;
-      margin: 0;
-    }
-
-   .partner-logo-thumb {
-      width: 1.5rem;
     }
   }
 
