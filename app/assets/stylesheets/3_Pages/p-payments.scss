@@ -1,6 +1,99 @@
 .payments {
+
+  .voucher-detail {
+    margin-bottom: 2rem;
+  }
+
   .partner-logo-thumb {
-    width: 2rem;
     margin-right: .5rem;
+    width: 2rem;
+  }
+
+  .payment-methods {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: .5rem 0;
+
+    @include media-breakpoint-up(sm) {
+      justify-content: flex-start;
+    }
+
+    @include media-breakpoint-up(lg) {
+      justify-content: space-between;
+    }
+
+    .method {
+      align-items: center;
+      border: 2px solid $black;
+      display: flex;
+      height: 140px;
+      justify-content: center;
+      text-align: center;
+      width: 140px;
+
+      + .method {
+        margin-left: .5rem;
+      }
+
+      input {
+        display: none;
+      }
+
+      &.selected {
+        background-color: var(--color-light-blue);
+      }
+    }
+
+  }
+
+  .button {
+    width: 140px;
+  }
+
+  @include media-breakpoint-up(sm) {
+    .payment-methods {
+      .method {
+        height: 175px;
+        width: 175px;
+      }
+    }
+
+    .button {
+      width: 175px;
+    }
+  }
+
+}
+
+
+#paymentModal {
+
+  .logo {
+    text-align: center;
+  }
+
+  .payment-info {
+    margin: 2rem auto;
+
+    th {
+      min-width: 8rem;
+      text-align: left;
+    }
+
+    td {
+      text-align: right;
+    }
+  }
+
+  .instructions {
+    font-size: 1rem;
+    margin: 2rem auto;
+  }
+
+  @include media-breakpoint-up(sm) {
+    .instructions {
+      max-width: 80%;
+    }
   }
 }
