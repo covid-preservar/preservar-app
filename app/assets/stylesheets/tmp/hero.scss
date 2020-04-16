@@ -23,9 +23,11 @@
 #hero {
   position: relative;
 
-  h1 + p,
-  h2 + p {
-    margin-top: 2rem;
+  .hero_text {
+    h1 + p,
+    h2 + p {
+      margin-top: 2rem;
+    }
   }
 
   h1 + h2 {
@@ -38,16 +40,6 @@
 
   .hero-img {
     object-fit: cover;
-  }
-
-  .hero-stats {
-    margin-top: 5rem;
-
-    @media only screen and (max-width: 1024px) {
-      & {
-        margin-top: 4rem;
-      }
-    }
   }
 
   &:before {

@@ -6,10 +6,9 @@
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none; // Internet Explorer 10+
   scrollbar-width: none; // Firefox
+  margin: 0;
 
-  @media only screen and (max-width: 414px) {
-    margin-top: 2rem;
-  }
+  margin-top: 2rem;
 
   &::-webkit-scrollbar {
     display: none; // Safari and Chrome
@@ -45,10 +44,6 @@
     background-color: #f2f2f2;
     text-align: center;
 
-    &[class^="xcol"] {
-      margin-left: 0;
-    }
-
     img {
       position: relative;
       top: 50%;
@@ -60,6 +55,32 @@
 .home.index {
   .places-container {
     margin-right: -1rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+
+    @media only screen and (max-width: 1024px) {
+      & {
+        margin-top: 4rem;
+      }
+    }
+  }
+
+
+  .stat {
+    flex: 1;
+
+    & + .stat {
+      margin-left: .5rem;
+    }
+  }
+
+  .stat p {
+    margin-top: .5rem;
+    opacity: 0.4;
   }
 }
 

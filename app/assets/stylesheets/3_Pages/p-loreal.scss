@@ -7,7 +7,6 @@
   }
 
   .loreal-hero-img {
-    display: none;
     object-fit: cover;
   }
 
@@ -56,11 +55,6 @@
   }
 
   @include media-breakpoint-up(sm) {
-    .loreal-hero-img {
-      display: block;
-      margin-left: auto;
-    }
-
     #hero::before {
       bottom: 10rem;
     }

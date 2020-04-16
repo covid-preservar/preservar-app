@@ -6,10 +6,10 @@
                 og: { title: 'Preserve os seus locais preferidos', site_name: :site},
                 twitter: { title: 'Preserve os seus locais preferidos' }
 
-.xcontainer
+.container
   section#hero
-    .xrow.clearfix
-      .xcol-md-7.xcol-sm-12.xcol-6
+    .row
+      .col-md-7.col-lg-7.col-12
         .hero-text
           h1.hero-wrapper
             | Preserve o seu
@@ -22,6 +22,10 @@
           p Compre um voucher para usar em qualquer altura, e ajude a sua economia local a sobreviver ao COVID-19
           = render 'shared/search_form'
 
+      .col-md-5.col-lg-5.d-none.d-md-block
+        = image_tag 'hero-img.jpg', alt:'Pessoa', class:'hero-img'
+    .row
+      .col-md-8.col-12
         - cache @stats_cache do
           section.hero-stats.clearfix
             article.stat
@@ -33,75 +37,75 @@
             article.stat
               h2 = number_to_currency Voucher.paid.sum(:value), locale: :pt, precision: 0
               p Angariados
-      .xcol-5.xoffset-1
-        = image_tag 'hero-img.jpg', alt:'Pessoa', class:'hero-img'
-
   - cache [:how_it_works, ENV['HEROKU_SLUG_COMMIT']] do
     section#how-it-works.section
-      #how-it-works-brief.xrow
-        .xcol-6
+      #how-it-works-brief.row
+        .col-12.col-md-6
           h2.section-separator Os seus locais preferidos precisam de ajuda
           p Por causa do Covid-19, os seus locais preferidos estão de portas fechadas. A maioria não vai aguentar mais de 1-2 meses sem clientes e vão ter de tomar decisões drásticas, como despedir o pessoal, ou abrir falência.
           p Pode ajudar.
-        = image_tag 'help.svg', alt: 'Hug', class:'xcol-6'
+        = image_tag 'help.svg', alt: 'Hug', class:'col-md-6 d-none d-md-block'
 
-    #how-it-works-facts.xrow
-      .xcol-4.fact
+    #how-it-works-facts.row
+      .col-sm-4.col-12.fact
         = image_tag 'icon-voucher.svg', alt: 'Voucher'
         h3 Compre um voucher para usar no futuro
         p Os vouchers são válidos durante 24 meses e podem ser utilizados em qualquer altura.
-      .xcol-4.fact
+      .col-sm-4.col-12.fact
         = image_tag 'icon-money.svg', alt: 'Money'
         h3 O local recebe o dinheiro imediatamente, sem comissões
         p O dinheiro é transferido diretamente de si para a conta do local. Todos os pagamentos estão protegidos contra fraude e todos os locais foram verificados manualmente.
-      .xcol-4.fact
+      .col-sm-4.col-12.fact
         = image_tag 'icon-heart.svg', alt: 'Heart'
         h3 Parabéns, contribuiu para sua economia local!
         p Contribuiu para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
 
   - cache @places do
     section.places-container.section
-      .xrow
-        h2.xcol-6.section-separator Quem recebe o seu apoio
+      .row
+        h2.col-12.section-separator Quem recebe o seu apoio
 
-      .places-list.xrow.home-list
+      .places-list.row.home-list
         == render @places
 
   - cache [:press, ENV['HEROKU_SLUG_COMMIT']] do
     section#press.section
-      .xrow
-        h2.xcol-6.section-separator Como visto em
-      .press-wrapper.xrow
-        .xcol-2.press-logo
+      .row
+        h2.col-12.section-separator Como visto em
+      .press-wrapper.row
+        .press-logo
           = image_tag 'partners/press-acb.png', alt: 'ACB'
-        .xcol-2.press-logo
+        .press-logo
           = image_tag 'partners/press-madeoflisboa.png', alt: 'Made of Lisboa'
-        .xcol-2.press-logo
+        .press-logo
           = image_tag 'partners/press-acsjm.png', alt: 'ACSJM'
-        .xcol-2.press-logo
+        .press-logo
           = image_tag 'partners/press-acde.png', alt: 'ACDE'
-        .xcol-2.press-logo
+        .press-logo
           = image_tag 'partners/press-eg.png', alt: 'E-Gosto'
-        .xcol-2.press-logo
+        .press-logo
           = image_tag 'partners/press-rdp.png', alt: 'RDP'
-        .xcol-2.press-logo
+        .press-logo
           = image_tag 'partners/press-acif.png', alt: 'ACIF'
-        .xcol-2.press-logo
+        .press-logo
           = image_tag 'partners/press-provar.png', alt: 'Provar'
-        .xcol-2.press-logo
+        .press-logo
           = image_tag 'partners/press-aevc.png', alt: 'AEVC'
 
 
   - cache [:businesses, ENV['HEROKU_SLUG_COMMIT']] do
     section#businesses.section
-      .xrow
-        .xcol-6
+      .row
+        .col-12.col-md-8.col-lg-6
           h2.section-separator Tem um estabelecimento? Comece a vender vouchers hoje.
           = link_to 'Submeta o seu local', new_seller_user_registration_path, class: 'primary-cta'
 
 
   section#kicker.section
-    .xrow
-      .xcol-6
-        h2.section-separator Está à espera de quê? Preserve o seu sítio preferido agora
+    .row
+      .col-12.col-md-8.col-lg-6
+        h2.section-separator
+          ' Está à espera de quê?
+          br
+          | Preserve o seu sítio preferido agora
         = render 'shared/search_form'

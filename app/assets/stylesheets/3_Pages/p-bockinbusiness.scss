@@ -23,7 +23,6 @@
   }
 
   .bockinbusiness-hero-img {
-    display: none;
     object-fit: cover;
   }
 
@@ -37,10 +36,6 @@
   }
 
   @include media-breakpoint-up(sm) {
-    .bockinbusiness-hero-img {
-      display: block;
-      margin-left: auto;
-    }
 
     #hero::before {
       bottom: 0;
