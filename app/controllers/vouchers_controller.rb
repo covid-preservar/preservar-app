@@ -4,8 +4,8 @@ class VouchersController < ApplicationController
   def create
     @voucher = Voucher.new(voucher_params.merge(cookie_uuid: SecureRandom.uuid))
 
-    if @voucher.place.approved_partner.present?
-      @voucher.partner = @voucher.place.approved_partner
+    if @voucher.place.active_partner.present?
+      @voucher.partner = @voucher.place.active_partner
     end
 
     if @voucher.save

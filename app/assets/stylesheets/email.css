@@ -255,6 +255,10 @@ hr {
   margin: 20px 0;
 }
 
+.muted {
+  color: #6c757d;
+}
+
 /* -------------------------------------
           RESPONSIVE AND MOBILE FRIENDLY STYLES
       ------------------------------------- */

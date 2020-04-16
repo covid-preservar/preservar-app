@@ -1,9 +1,13 @@
-.payments.new {
+.payments {
 
   .voucher-detail {
     margin-bottom: 2rem;
   }
 
+  .partner-logo-thumb {
+    margin-right: .5rem;
+    width: 2rem;
+  }
 
   .payment-methods {
     display: flex;
@@ -20,13 +24,13 @@
     }
 
     .method {
-      height: 140px;
-      width: 140px;
-      border: 2px solid $black;
-      text-align: center;
-      display: flex;
-      justify-content: center;
       align-items: center;
+      border: 2px solid $black;
+      display: flex;
+      height: 140px;
+      justify-content: center;
+      text-align: center;
+      width: 140px;
 
       + .method {
         margin-left: .5rem;
@@ -59,7 +63,9 @@
       width: 175px;
     }
   }
+
 }
+
 
 #paymentModal {
 
@@ -71,8 +77,8 @@
     margin: 2rem auto;
 
     th {
-      text-align: left;
       min-width: 8rem;
+      text-align: left;
     }
 
     td {

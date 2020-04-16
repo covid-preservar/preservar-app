@@ -364,7 +364,7 @@ LOCATIONS.each do |district, areas|
   end
 end
 
-CharityPartner.create!(
+MarketingPartner.create!(
   name: "L'Oréal Portugal",
   slug: 'loreal',
   min_value: 20,
@@ -375,7 +375,7 @@ CharityPartner.create!(
   large_logo: Rack::Test::UploadedFile.new('spec/files/logo-loreal.svg', 'image/svg'),
   small_logo: Rack::Test::UploadedFile.new('spec/files/tag-loreal.svg', 'image/svg'))
 
-CharityPartner.create!(
+AddOnPartner.create!(
   name: "Super Bock",
   slug: 'bockinbusiness',
   min_value: 20,

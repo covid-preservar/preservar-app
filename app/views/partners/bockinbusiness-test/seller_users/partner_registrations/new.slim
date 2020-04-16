@@ -1,3 +1,9 @@
+- content_for :header do
+  nav.navbar.container-md
+    = image_tag 'bockinbusiness/logo.svg'
+    = image_tag 'bockinbusiness/logo-sb.svg', class: 'd-none d-lg-block partner-top-brand'
+
+
 .container-md
   section#hero.row
     .col-sm-6.col-12
@@ -8,7 +14,7 @@
 
 
     .col-sm-6.col-lg-5.offset-lg-1.col-12
-      = image_tag 'loreal/loreal-hero.jpg', class:'loreal-hero-img'
+      = image_tag 'bockinbusiness/bockinbusiness-hero.jpg', class:'bockinbusiness-hero-img'
 
   == render 'seller_users/registrations/how_it_works'
 

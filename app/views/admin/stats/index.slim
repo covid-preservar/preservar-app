@@ -48,13 +48,14 @@ section.stats_section
             strong Numero de vouchers
           td
             = partner.vouchers.paid.count
-        tr
-          td
-            strong Valor
-          td
-            => number_to_currency partner.charity_progress, locale: :pt, precision: 0
-            ' /
-            = number_to_currency partner.target_value, locale: :pt, precision: 0
+        - if partner&.target_value&.present?
+          tr
+            td
+              strong Valor
+            td
+              => number_to_currency partner.target_progress, locale: :pt, precision: 0
+              ' /
+              = number_to_currency partner.target_value, locale: :pt, precision: 0
 
 section.stats_section
   h2.subtitle Voucher Stats

@@ -77,7 +77,9 @@ Rails.application.routes.draw do
     resources :categories
     resources :payment_notifications, only: [:index, :show]
     resources :sellers
+    resources :add_on_partners
     resources :charity_partners
+    resources :marketing_partners
     resources :partnerships
     resources :partner_identifiers, only: [:index, :show]
     resources :places do

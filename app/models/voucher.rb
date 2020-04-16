@@ -31,9 +31,12 @@ class Voucher < ApplicationRecord
 
   validates :code, presence: true, uniqueness: { allow_nil: true }, if: :paid?
   validates :email, format: { with: Devise.email_regexp }, if: :pending_payment?
-  validates :value, numericality: { minimum: 1 }
-  validates :custom_value, numericality: { greater_than_or_equal_to: ->(instance) { instance.partner.min_value }},
-                           if: -> { partner.present? && partner.min_value.present? }
+  validates :value, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 200 }
+  validates :custom_value, numericality: {
+                            greater_than_or_equal_to: ->(instance) { instance.partner.min_value },
+                            less_than_or_equal_to: 200,
+                            allow_nil: true
+                           }, if: -> { partner.present? && partner.min_value.present? }
 
   validates :payment_method, presence: true,
                              inclusion: { in: PAYMENT_METHODS },
@@ -44,7 +47,6 @@ class Voucher < ApplicationRecord
 
   validate :valid_vat_id
 
-
   before_validation :set_discount, on: :create
 
   scope :seller_visible, -> { where(state: %w[paid redeemed]) }
@@ -52,7 +54,7 @@ class Voucher < ApplicationRecord
   attr_reader :custom_value
 
   def custom_value=(val)
-    @custom_value = val
+    @custom_value = val.presence
     self.value = val if val.present?
   end
 
@@ -75,6 +77,14 @@ class Voucher < ApplicationRecord
 
   def update_tracking(codes)
     self.update_columns tracking_codes: codes
+  end
+
+  def has_charity_partner?
+    partner.present? && partner.charity_partner?
+  end
+
+  def has_add_on_partner?
+    partner.present? && partner.add_on_partner?
   end
 
   private

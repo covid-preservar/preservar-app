@@ -51,15 +51,15 @@
   }
 
   &:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 80%;
-    top: 0;
-    bottom: 10rem;
     background-color: var(--color-light-blue);
+    bottom: 10rem;
+    content: '';
+    left: -10rem;
     margin-left: calc(-100vw / 2 + var(--grid-max-width) / 2);
     margin-top: -16rem;
+    position: absolute;
+    right: 24vw;
+    top: 0;
     z-index: -1;
   }
 

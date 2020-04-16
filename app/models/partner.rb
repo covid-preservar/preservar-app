@@ -2,7 +2,7 @@
 class Partner < ApplicationRecord
 
   include PartnerLogoUploader::Attachment.new(:large_logo)
-  include SmallPartnerLogoUploader::Attachment.new(:small_logo)
+  include PartnerLogoUploader::Attachment.new(:small_logo)
 
   has_many :partnerships, inverse_of: :partner, dependent: :destroy
   has_many :places, through: :partnerships, inverse_of: :partner
@@ -10,14 +10,14 @@ class Partner < ApplicationRecord
   has_many :partner_identifiers
 
   def logo_url
-    large_logo_url(:large, public: true) || large_logo_url(public: true)
+    large_logo_url(public: true)
   end
 
   def thumb_logo_url
     small_logo_url(public: true)
   end
 
-  def discount_partner?
+  def add_on_partner?
     false
   end
 
@@ -25,22 +25,50 @@ class Partner < ApplicationRecord
     false
   end
 
+  def marketing_partner?
+    false
+  end
+
+  def active?
+    true
+  end
+
   def restricted_category_id
     partner_properties['restricted_category_id']
   end
 
-  def restricted_category_id=(value)
-    partner_properties['restricted_category_id'] = value
+  def min_value
+    partner_properties['min_value'].to_i
   end
 
-  def restricted_category
-    if partner_properties['restricted_category_id'].present?
-      Category.find_by(id: partner_properties['restricted_category_id'])
+  def min_value=(value)
+    partner_properties['min_value'] = value
+  end
+
+  def target_value
+    partner_properties['target_value']&.to_i
+  end
+
+  def target_value=(value)
+    partner_properties['target_value'] = value
+  end
+
+  def restricted_category_ids
+    partner_properties['restricted_category_ids']
+  end
+
+  def restricted_category_ids=(value)
+    partner_properties['restricted_category_ids'] = value.delete_if(&:blank?)
+  end
+
+  def restricted_categories
+    if partner_properties['restricted_category_ids'].present?
+      Category.where(id: partner_properties['restricted_category_ids'])
     end
   end
 
-  def restricted_category=(category)
-    partner_properties['restricted_category_id'] = category.id
+  def restricted_categories=(categories)
+    partner_properties['restricted_category_ids'] = categories.map(&:id)
   end
 
   def requires_partner_id_code
