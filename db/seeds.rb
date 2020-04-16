@@ -367,9 +367,6 @@ end
 MarketingPartner.create!(
   name: "L'Oréal Portugal",
   slug: 'loreal',
-  min_value: 20,
-  charity_value: 5,
-  target_value: 10000,
   place_page_copy: 'Lorem place page copy',
   voucher_copy: 'Lorem voucher copy',
   large_logo: Rack::Test::UploadedFile.new('spec/files/logo-loreal.svg', 'image/svg'),
@@ -379,7 +376,7 @@ AddOnPartner.create!(
   name: "Super Bock",
   slug: 'bockinbusiness',
   min_value: 20,
-  charity_value: 5,
+  add_on_value: 5,
   target_value: 20000,
   place_page_copy: 'Lorem place page copy',
   voucher_copy: 'Lorem voucher copy',
