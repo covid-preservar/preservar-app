@@ -21,7 +21,7 @@ class SellerUsers::PartnerRegistrationsController < Lib::RegistrationsController
   protected
 
   def body_class
-    "#{super} loreal partners"
+    "#{super} #{@partner.slug} partners"
   end
 
   private
