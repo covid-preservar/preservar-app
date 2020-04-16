@@ -14,11 +14,11 @@ class ApplicationMailerPreview < ActionMailer::Preview
   end
 
   def voucher_email
-    ApplicationMailer.voucher_email(Voucher.first.id)
+    ApplicationMailer.voucher_email(Voucher.last.id)
   end
 
   def seller_voucher_email
-    ApplicationMailer.seller_voucher_email(Voucher.first.id)
+    ApplicationMailer.seller_voucher_email(Voucher.last.id)
   end
 
   def seller_place_published_notification

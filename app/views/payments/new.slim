@@ -3,23 +3,41 @@
 
 .container
   section#hero.row
-    .col-sm-12.col-md-12.col-lg-6.mb-4
+    .col-12.col-xl-8.mb-4
       .hero-text
         h1 Escolha como deseja pagar
 
 .container
   .row
-    .col-sm-12.col-md-6.col-lg-4.voucher-detail
+    .col-12.col-xl-8.voucher-detail
       h3
         ' Local:
         = @voucher.place.name
-        br
-        ' Valor:
-        => number_to_currency @voucher.value, locale: :pt
-        - unless @voucher.discount_percent.zero?
-          ' +
-          = @voucher.discount_percent
-          | % de desconto
+      - if @voucher.has_add_on_partner?
+        h3.mt-4
+          ' Valor do voucher:
+          => number_to_currency @voucher.value + @voucher.partner.add_on_value, locale: :pt
+        p.mt-0
+          small
+            = image_tag @voucher.partner.thumb_logo_url, class: 'partner-logo-thumb'
+            ' (Este voucher inclui uma oferta de
+            => number_to_currency @voucher.partner.add_on_value, locale: :pt, precision: 0
+            ' cortesia da
+            = @voucher.partner.name
+            | )
+
+        h3.mt-4
+          ' Valor a pagar:
+          => number_to_currency @voucher.value, locale: :pt
+
+      - else
+        h3
+          ' Valor:
+          => number_to_currency @voucher.value, locale: :pt
+          - unless @voucher.discount_percent.zero?
+            ' +
+            = @voucher.discount_percent
+            | % de desconto
 
   .row
     .col-sm-12.col-md-6.col-lg-4#form-wrapper
@@ -32,5 +50,5 @@
     ' e a
     => link_to 'Politica de Privacidade', privacy_path, target:'_blank'
 
-  - if @voucher.partner.present? && @voucher.partner.charity_partner?
+  - if @voucher.has_charity_partner?
     p = @voucher.partner.voucher_copy
