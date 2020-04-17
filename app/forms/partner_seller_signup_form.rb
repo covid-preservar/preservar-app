@@ -13,7 +13,7 @@ class PartnerSellerSignupForm < SellerSignupForm
 
   def initialize(attributes = {})
     super(attributes)
-    @partner_types = partner.partner_properties['partner_types'].invert if partner.partner_properties['partner_types'].present?
+    @partner_types = partner.partner_properties['partner_types'].invert.sort if partner.partner_properties['partner_types'].present?
   end
 
   def partnership
@@ -42,6 +42,8 @@ class PartnerSellerSignupForm < SellerSignupForm
       errors.add(:partner_id_code, "inválido") if partner_identifier.blank?
     when 'distributor'
       errors.add(:partner_alt_id, "inválido") if partner_alt_id.blank?
+    when 'not_client'
+      errors.add(:partner_type, "inválido")
     else
       errors.add(:partner_id_code, "inválido") if partner.requires_partner_id_code && partner_identifier.blank?
     end

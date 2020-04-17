@@ -67,11 +67,21 @@ section#register-form.section
         = f.button :submit, 'Registar', class: 'btn btn-primary', class: 'btn btn-primary'
 
 javascript:
+  $('#seller_user_partner_type').siblings('.form-text').hide()
+
   if ($('#seller_user_partner_type').val()) {
     $(`.sb_${$('#seller_user_partner_type').val()}_id`).show()
   }
 
   $('#seller_user_partner_type').change( (ev) => {
     $('.sb_direct_id, .sb_distributor_id').hide()
-    $(`.sb_${ev.target.value}_id`).show()
+
+    if (ev.target.value == 'not_client') {
+      $(ev.target).siblings('.form-text').show()
+      $('#new_seller_user .btn-primary').prop('disabled', true)
+    } else {
+      $('#new_seller_user .btn-primary').prop('disabled', false)
+      $(ev.target).siblings('.form-text').hide()
+      $(`.sb_${ev.target.value}_id`).show()
+    }
   })
