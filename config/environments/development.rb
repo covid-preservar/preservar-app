@@ -84,5 +84,5 @@ Rails.application.configure do
     Bullet.add_footer = true
   end
 
-  config.session_store :cookie_store, key: '_preserve_session', domain: :all
+  config.session_store :cookie_store, key: '_preservar_session', domain: :all
 end
