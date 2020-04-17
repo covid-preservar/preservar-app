@@ -381,4 +381,4 @@ AddOnPartner.create!(
   place_page_copy: 'Lorem place page copy',
   voucher_copy: 'Lorem voucher copy',
   large_logo: Rack::Test::UploadedFile.new('spec/files/logo-sb.svg', 'image/svg'),
-  small_logo: Rack::Test::UploadedFile.new('spec/files/logo-sb.svg', 'image/svg'))
+  small_logo: Rack::Test::UploadedFile.new('spec/files/tag-sb.svg', 'image/svg'))

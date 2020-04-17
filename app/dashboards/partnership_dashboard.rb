@@ -15,6 +15,7 @@ class PartnershipDashboard < Administrate::BaseDashboard
     approved: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    properties: Field::String.with_options(searchable: false)
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -37,6 +38,7 @@ class PartnershipDashboard < Administrate::BaseDashboard
     place
     partner_identifier
     approved
+    properties
     created_at
     updated_at
   ].freeze

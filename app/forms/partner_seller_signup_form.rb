@@ -29,6 +29,7 @@ class PartnerSellerSignupForm < SellerSignupForm
     super do
       partnership.properties['honor_check'] = honor_check if partner.requires_honor_check
       partnership.properties['partner_type'] = partner_type if partner_type.present?
+      partnership.properties['distributor_id'] = partner_alt_id if partner_alt_id.present?
       partnership.save!
       partner_identifier&.mark_used!
     end
