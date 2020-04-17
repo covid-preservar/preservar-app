@@ -53,9 +53,9 @@
       .row
         .col-12.col-sm-6.col-lg-4.col-xl-3.d-flex.mt-4
           = select_tag :city,
-                      options_from_collection_for_select(@cities, :itself, :itself, params[:city]),
-                      class: 'select-input flex-fill',
-                      include_blank: 'Todo o país'
+                       options_from_collection_for_select(@cities, :itself, :itself, params[:city]),
+                       class: 'select-input flex-fill',
+                       include_blank: 'Todo o país'
           javascript:
             $('#city').change(ev => {
               Turbolinks.visit(`${location.pathname}?city=${ev.target.value}`)
