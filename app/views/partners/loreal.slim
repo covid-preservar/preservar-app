@@ -37,33 +37,35 @@
   section.partner-bottom-brand.d-md-none
     = image_tag 'loreal/partner-loreal-hashtag.svg'
   section.row
-
-    .col-sm-6.mt-5.col-12
+    .col-sm-12.col-lg-7.mt-5.col-7
+    .col-sm-12.col-lg-5.mt-5.col-5
       p.partner-signup
         ' É cliente da divisão de produtos profissionais
         span.nowrap> L´Oréal?
         ' Registe-se aqui
       = link_to 'Registe o seu salão', new_partner_signup_path, class: 'btn btn-primary', data:{turbolinks: false}
 
-  - if @places.any?
-    section.places-container.section
-      .row
-        h2.col-sm-6.section-separator Salões aderentes
+  section.places-container.section
+    .row
+      h2.col-sm-6.section-separator Salões aderentes
 
+    - if @places.any?
       .row
         .col-12.col-sm-6.col-lg-4.col-xl-3.d-flex.mt-4
           = select_tag :city,
-                       options_from_collection_for_select(@cities, :itself, :itself, params[:city]),
-                       class: 'select-input flex-fill',
-                       include_blank: 'Todo o país'
+                      options_from_collection_for_select(@cities, :itself, :itself, params[:city]),
+                      class: 'select-input flex-fill',
+                      include_blank: 'Todo o país'
           javascript:
             $('#city').change(ev => {
               Turbolinks.visit(`${location.pathname}?city=${ev.target.value}`)
             })
       .places-list.xrow.home-list
         == render @places
+    - else
+      p Mais novidades brevemente, por favor volte mais tarde.
 
-  section.row
+  section.row.section
     .col-12.col-sm-6
       p
         small.text-muted

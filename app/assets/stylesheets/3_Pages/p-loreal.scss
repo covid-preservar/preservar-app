@@ -41,6 +41,10 @@
     #hero::before {
       bottom: 10rem;
     }
+
+    .places-container {
+      margin-top: 6rem;
+    }
   }
 
   @include media-breakpoint-up(md) {
@@ -51,6 +55,12 @@
 
     #hero::before {
       bottom: 8rem;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .places-container {
+      margin-top: -6rem;
     }
   }
 }
