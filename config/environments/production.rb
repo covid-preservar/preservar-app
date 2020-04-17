@@ -128,5 +128,6 @@ Rails.application.configure do
     domain.ends_with?(ENV['HOSTNAME'])
   end
 
-  config.session_store :cookie_store, key: '_preserve_session', expire_after: 2.weeks
+  config.secret_key_base = ENV['SECRET_KEY_BASE']
+  config.session_store :cookie_store, key: '_preservar_session', expire_after: 2.weeks, httponly: true, domain: :all
 end
