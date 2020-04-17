@@ -14,7 +14,7 @@ section#register-form.section
           = f.input :partner_type, label: 'Tipo de cliente Super Bock',
                                    as: :select,
                                    collection: @form.partner_types,
-                                   hint: "Se não é cliente Super Bock, <a href='#{root_url}'>registe-se aqui no Preserve.pt</a>".html_safe
+                                   hint: "Se não é cliente Super Bock, <a href='#{new_seller_user_registration_url}'>registe-se aqui no Preserve.pt</a>".html_safe
 
           = f.input :partner_id_code, label: 'Número de cliente Super Bock', id: 'sb_direct_id', wrapper_class: 'sb_direct_id'
           = f.input :partner_alt_id, label: 'Distribuidor Super Bock',
