@@ -1,0 +1,6 @@
+- content_for :header do
+  - cache [:bockinbusiness_nav, ENV['HEROKU_SLUG_COMMIT']] do
+    nav.navbar.container-md
+      = link_to '/' do
+        = inline_svg 'bockinbusiness/logo.svg'
+      = inline_svg 'bockinbusiness/logo-sb.svg', class: 'd-none d-md-block partner-top-brand'

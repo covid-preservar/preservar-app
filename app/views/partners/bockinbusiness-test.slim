@@ -1,32 +1,30 @@
 - title "Super Bock"
 - set_meta_tags og: { title: :full_title, site_name: :site, url: 'https://bockinbusiness.preserve.pt'}, twitter: { title: :full_title }
 
-- content_for :header do
-  nav.navbar.container-md
-    = link_to '/' do
-      = image_tag 'bockinbusiness/logo.svg'
-    = image_tag 'bockinbusiness/logo-sb.svg', class: 'd-none d-md-block partner-top-brand'
+= render 'partners/bockinbusiness-test/header'
 
 .container-md
-  section#hero.row
-    .col-sm-6.col-12
-      .hero-text
-        h2 Preserva os teus cafés, bares, restaurantes e discotecas favoritos
-        p Compra um voucher para usares na reabertura dos teus cafés, bares, restaurantes e discotecas favoritos.
+  - cache [:bockinbusiness_home, ENV['HEROKU_SLUG_COMMIT']] do
 
-        p O dinheiro é enviado para eles, ajudando-os nesta fase difícil em que não têm rendimentos.
+    section#hero.row
+      .col-sm-6.col-12
+        .hero-text
+          h2 Preserva os teus cafés, bares, restaurantes e discotecas favoritos
+          p Compra um voucher para usares na reabertura dos teus cafés, bares, restaurantes e discotecas favoritos.
 
-        p
-          ' Por cada voucher comprado a um Cliente Super Bock ou de Distribuidores Super Bock elegível, a
-          strong
-            ' Super Bock oferece a ti e ao Ponto de Venda +5€.
-          | Sempre vivemos momentos inesquecíveis com os nosso amigos nestes lugares… junta-te a este movimento para os ajudar!
+          p O dinheiro é enviado para eles, ajudando-os nesta fase difícil em que não têm rendimentos.
 
-    .col-sm-6.col-lg-5.offset-lg-1.col-12.d-none.d-sm-block
-      = image_tag 'bockinbusiness/bockinbusiness-hero.jpg', class:'bockinbusiness-hero-img'
+          p
+            ' Por cada voucher comprado a um Cliente Super Bock ou de Distribuidores Super Bock elegível, a
+            strong
+              ' Super Bock oferece a ti e ao Ponto de Venda +5€.
+            | Sempre vivemos momentos inesquecíveis com os nosso amigos nestes lugares… junta-te a este movimento para os ajudar!
 
-  section.partner-bottom-brand.d-md-none.mt-5.mb-5
-    = image_tag 'bockinbusiness/logo-sb.svg'
+      .col-sm-6.col-lg-5.offset-lg-1.col-12.d-none.d-sm-block
+        = image_tag 'bockinbusiness/bockinbusiness-hero.jpg', class:'bockinbusiness-hero-img'
+
+    section.partner-bottom-brand.d-md-none.mb-5
+      = image_tag 'bockinbusiness/logo-sb.svg'
 
   section.row
     .col-sm-6.mt-5.col-12
