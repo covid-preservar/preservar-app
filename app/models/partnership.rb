@@ -4,7 +4,4 @@ class Partnership < ApplicationRecord
   belongs_to :place, inverse_of: :partnership
   belongs_to :partner_identifier, optional: true
 
-
-
 end
-
