@@ -8,11 +8,6 @@ class ApplicationMailer < ActionMailer::Base
     mail to: @seller.seller_user.email, subject:'Confirmação de registo no Preserve'
   end
 
-  def seller_signup_notify_internal(seller)
-    @seller = seller
-    mail to:ENV['EUPAGO_EMAIL'], cc:'eupago@preserve.pt', subject:'[tech4covid19] Novo Registo'
-  end
-
   def new_place_notify_internal(place)
     @place = place
     mail to:'eupago@preserve.pt', subject:'Comerciante criou novo local'

@@ -5,10 +5,6 @@ class ApplicationMailerPreview < ActionMailer::Preview
     ApplicationMailer.seller_signup(Seller.first)
   end
 
-  def seller_signup_notify_internal
-    ApplicationMailer.seller_signup_notify_internal(Seller.first)
-  end
-
   def new_place_notify_internal
     ApplicationMailer.new_place_notify_internal(Place.first)
   end

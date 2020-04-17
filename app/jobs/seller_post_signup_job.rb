@@ -14,7 +14,6 @@ class SellerPostSignupJob < ApplicationJob
     end
 
     ApplicationMailer.seller_signup(seller).deliver_now
-    ApplicationMailer.seller_signup_notify_internal(seller).deliver_now
   end
 
   private
