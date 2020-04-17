@@ -19,16 +19,18 @@ html lang="#{I18n.locale}"
       meta id='google-analytics-id' data-value=ENV['GOOGLE_ANALYTICS_ID']
 
     - set_meta_tags canonical: "https://#{ENV['HOSTNAME']}#{request.path}",
-                    description: 'O Preserve tem como missão ajudar a contrariar as quebras de receita dos negócios locais. Com o Preserve, estes negócios podem vender vouchers e gerar receitas imediatas, ajudando a manter a sua atividade e postos de trabalho.',
                     og: { type: 'website',
                           description: :description,
-                          image: 'https://assets.preserve.pt/social/banner.jpg'},
+                          },
                     twitter: { card: :summary_large_image,
-                               image: 'https://assets.preserve.pt/social/banner.jpg',
                                description: :description },
                     fb: { pages: '101214354878043' }
 
-    = display_meta_tags site: 'Preserve', og: { url: :canonical }
+    = display_meta_tags site: 'Preserve',
+                        description: 'O Preserve tem como missão ajudar a contrariar as quebras de receita dos negócios locais. Com o Preserve, estes negócios podem vender vouchers e gerar receitas imediatas, ajudando a manter a sua atividade e postos de trabalho.',
+                        og: { url: :canonical,
+                              image: 'https://assets.preserve.pt/social/banner.jpg' },
+                        twitter: { image: 'https://assets.preserve.pt/social/banner.jpg' }
 
   body class="#{body_class} #{yield (:body_class)}"
     .spinner-wrapper.spinner--stopped
