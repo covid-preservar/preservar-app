@@ -7,6 +7,7 @@ export default class Spinner {
   }
 
   start() {
+    clearTimeout(this.timer);
     this.timer = setTimeout( _ => {
       $(".spinner-wrapper").removeClass("spinner--stopped");
     }, 500);

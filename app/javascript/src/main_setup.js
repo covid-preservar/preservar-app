@@ -3,7 +3,6 @@ import NewVoucherForm from "./new_voucher_form";
 function setup() {
   spinner.stop();
 
-
   if ($("#new_voucher").length > 0 && !window.voucher_form) {
     window.voucher_form = new NewVoucherForm();
   }
