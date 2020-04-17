@@ -3,7 +3,8 @@
 
 - content_for :header do
   nav.navbar.container-md
-    = image_tag 'bockinbusiness/logo.svg'
+    = link_to '/' do
+      = image_tag 'bockinbusiness/logo.svg'
     = image_tag 'bockinbusiness/logo-sb.svg', class: 'd-none d-md-block partner-top-brand'
 
 .container-md

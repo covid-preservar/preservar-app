@@ -42,7 +42,10 @@ class SellerUsers::PartnerRegistrationsController < Lib::RegistrationsController
                                         :password_confirmation,
                                         :contact_name,
                                         :company_name,
-                                        :partner_id_code)
+                                        :partner_id_code,
+                                        :partner_alt_id,
+                                        :partner_type,
+                                        :honor_check)
   end
 
 end

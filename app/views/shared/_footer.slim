@@ -15,8 +15,8 @@
             a href="https://www.eupago.pt/" target="_blank" eupago
             | .
         p.bottom
-          => link_to 'Termos e Condições', tos_url(host: ENV['HOSTNAME'])
+          => link_to 'Termos e Condições', tos_url
           '  &middot;
-          => link_to 'Politica de Privacidade', privacy_url(host: ENV['HOSTNAME'])
+          => link_to 'Politica de Privacidade', privacy_url
           '  &middot;
           = mail_to 'info@preserve.pt'

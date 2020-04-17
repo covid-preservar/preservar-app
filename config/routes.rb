@@ -27,72 +27,75 @@ Rails.application.routes.draw do
     get '*path', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}/%{path}")
   end
 
-  root to: 'home#index'
-
   ### Fix some shared URLs that are 404s
     get '/Compre', to: redirect('/')
     get '/.', to: redirect('/')
     get '/*', to: redirect('/')
   ###
 
-  resources :places, only: [:index, :show]
-  resources :vouchers, only: [:create, :show] do
-    resources :payments, only: [:new, :create]
 
-    get '/obrigado', to: 'payments#done', as: :thank_you, on: :member
-  end
+  constraints(host: ENV['HOSTNAME']) do
+    root to: 'home#index'
 
-  get '/tos', to: 'home#tos', as: :tos
-  get '/privacy', to: 'home#privacy', as: :privacy
+    resources :places, only: [:index, :show]
+    resources :vouchers, only: [:create, :show] do
+      resources :payments, only: [:new, :create]
 
-  devise_for :seller_users,
-             path: 'comerciante',
-             controllers: { registrations: 'seller_users/registrations' },
-             path_names: { sign_up: 'registo' }
+      get '/obrigado', to: 'payments#done', as: :thank_you, on: :member
+    end
+
+    get '/tos', to: 'home#tos', as: :tos
+    get '/privacy', to: 'home#privacy', as: :privacy
+
+    devise_for :seller_users,
+              path: 'comerciante',
+              controllers: { registrations: 'seller_users/registrations' },
+              path_names: { sign_up: 'registo' }
 
 
-  namespace :seller do
-    resource :account, only: [:show]
-    resources :places, except: [:index, :destroy] do
-      member do
-        get :enable_discount
-        post :confirm_discount
-        get :disable_discount
-        post :confirm_disable_discount
+    namespace :seller do
+      resource :account, only: [:show]
+      resources :places, except: [:index, :destroy] do
+        member do
+          get :enable_discount
+          post :confirm_discount
+          get :disable_discount
+          post :confirm_disable_discount
+        end
       end
     end
-  end
 
-  # TEMP - Until the seller login area is built
-  get '/comerciante/bem-vindo', to: 'places#register_success', as: :register_success
+    # TEMP - Until the seller login area is built
+    get '/comerciante/bem-vindo', to: 'places#register_success', as: :register_success
 
-  namespace :webhooks do
-    get 'payment/eupago', to:'eu_pago#webhook'
-  end
-
-  devise_for :admin_users, path: 'admin'
-
-  namespace :admin do
-    resources :admin_users
-    resources :categories
-    resources :payment_notifications, only: [:index, :show]
-    resources :sellers
-    resources :add_on_partners
-    resources :charity_partners
-    resources :marketing_partners
-    resources :partnerships
-    resources :partner_identifiers, only: [:index, :show]
-    resources :places do
-      member do
-        patch :publish
-        patch :unpublish
-      end
+    namespace :webhooks do
+      get 'payment/eupago', to:'eu_pago#webhook'
     end
-    resources :seller_users
-    resources :vouchers
 
-    get 'stats', to: 'stats#index', as: :stats
-    root to: "stats#index"
+    devise_for :admin_users, path: 'admin'
+
+    namespace :admin do
+      resources :admin_users
+      resources :categories
+      resources :payment_notifications, only: [:index, :show]
+      resources :sellers
+      resources :add_on_partners
+      resources :charity_partners
+      resources :marketing_partners
+      resources :partnerships
+      resources :partner_identifiers, only: [:index, :show]
+      resources :places do
+        member do
+          patch :publish
+          patch :unpublish
+        end
+      end
+      resources :seller_users
+      resources :vouchers
+
+      get 'stats', to: 'stats#index', as: :stats
+      root to: "stats#index"
+    end
   end
 
 

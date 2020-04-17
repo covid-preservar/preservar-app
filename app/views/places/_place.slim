@@ -1,5 +1,5 @@
 - cache place do
-  a.place href=place_url(place, host: ENV['HOSTNAME'])
+  a.place href=place_url(place)
     .place-img-wrapper
       = image_tag place.photo_url(:small), class: 'place-img'
       - if place.active_partner.present?

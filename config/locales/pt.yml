@@ -44,6 +44,9 @@ pt:
         company_registration_code: 'Código de acesso da Certidão Permanente'
       partner_seller_signup_form:
         partner_id_code: Número
+        partner_type: Tipo de cliente
+        partner_alt_id: Distribuidor
+        honor_check: Declaração
   errors:
     messages:
         invalid_vat: 'é inválido'

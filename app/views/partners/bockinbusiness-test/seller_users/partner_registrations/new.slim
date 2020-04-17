@@ -1,21 +1,21 @@
 - content_for :header do
   nav.navbar.container-md
-    = image_tag 'bockinbusiness/logo.svg'
+    = link_to '/' do
+      = image_tag 'bockinbusiness/logo.svg'
     = image_tag 'bockinbusiness/logo-sb.svg', class: 'd-none d-lg-block partner-top-brand'
 
 
-.container-md
-  section#hero.row
-    .col-sm-6.col-12
-      .hero-text
-        h1 header text
-        h2 subheader text
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis pariatur magni unde placeat harum perferendis dicta qui fugit quis iste reprehenderit voluptatibus a earum delectus quisquam libero, in quaerat maxime?
+section#hero.row
+  .col-sm-6.col-12
+    .hero-text
+      h1 header text
+      h2 subheader text
+      p Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis pariatur magni unde placeat harum perferendis dicta qui fugit quis iste reprehenderit voluptatibus a earum delectus quisquam libero, in quaerat maxime?
 
 
-    .col-sm-6.col-lg-5.offset-lg-1.col-12
-      = image_tag 'bockinbusiness/bockinbusiness-hero.jpg', class:'bockinbusiness-hero-img'
+  .col-sm-6.col-lg-5.offset-lg-1.col-12
+    = image_tag 'bockinbusiness/bockinbusiness-hero.jpg', class:'bockinbusiness-hero-img'
 
-  == render 'seller_users/registrations/how_it_works'
+== render 'seller_users/registrations/how_it_works'
 
-  == render 'sign_up_form', url: partner_signup_path
+== render 'sign_up_form', url: partner_signup_path

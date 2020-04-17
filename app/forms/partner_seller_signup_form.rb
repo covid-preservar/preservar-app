@@ -1,13 +1,19 @@
 # frozen_string_literal: true
 class PartnerSellerSignupForm < SellerSignupForm
   attr_accessor :partner_id_code,
-                :partner
+                :partner_alt_id,
+                :partner,
+                :partner_type,
+                :partner_types,
+                :honor_check
 
-  validates :partner_id_code, presence: true, if: -> { partner.requires_partner_id_code }
+  validates :partner_type, presence: true, if: -> { partner_types.present? }
+  validates :honor_check, acceptance: true, if: -> { partner.requires_honor_check }
   validate :partner_id_valid
 
   def initialize(attributes = {})
     super(attributes)
+    @partner_types = partner.partner_properties['partner_types'].invert if partner.partner_properties['partner_types'].present?
   end
 
   def partnership
@@ -21,14 +27,24 @@ class PartnerSellerSignupForm < SellerSignupForm
   def save
     place.category = partner.restricted_categories.first if partner.restricted_categories&.length == 1
     super do
+      partnership.properties['honor_check'] = honor_check if partner.requires_honor_check
+      partnership.properties['partner_type'] = partner_type if partner_type.present?
       partnership.save!
-      partner_identifier.mark_used! if partner.requires_partner_id_code
+      partner_identifier&.mark_used!
     end
   end
 
   private
 
   def partner_id_valid
-    errors.add(:partner_id_code, "inválido") if partner.requires_partner_id_code && partner_identifier.blank?
+    case partner_type
+    when 'direct'
+      errors.add(:partner_id_code, "inválido") if partner_identifier.blank?
+    when 'distributor'
+      errors.add(:partner_alt_id, "inválido") if partner_alt_id.blank?
+    else
+      errors.add(:partner_id_code, "inválido") if partner.requires_partner_id_code && partner_identifier.blank?
+    end
   end
+
 end

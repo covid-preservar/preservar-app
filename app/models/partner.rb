@@ -78,4 +78,12 @@ class Partner < ApplicationRecord
   def requires_partner_id_code=(value)
     partner_properties['requires_partner_id_code'] = value == '1'
   end
+
+  def requires_honor_check
+    partner_properties['requires_honor_check'] || false
+  end
+
+  def requires_honor_check=(value)
+    partner_properties['requires_honor_check'] = value == '1'
+  end
 end

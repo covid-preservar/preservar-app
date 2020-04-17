@@ -16,7 +16,7 @@ class Lib::RegistrationsController < Devise::RegistrationsController
   def create
     if @form.save
       SellerPostSignupJob.perform_later(@form.seller.id)
-      sign_up(resource_name, @form.seller_user)
+      sign_up(:seller_user, @form.seller_user)
       redirect_to register_success_path
     else
       clean_up_passwords resource

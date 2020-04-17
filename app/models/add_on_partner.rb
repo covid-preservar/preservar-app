@@ -17,7 +17,15 @@ class AddOnPartner < Partner
     vouchers.paid.count * add_on_value
   end
 
+  def date_limit
+    Date.parse(partner_properties['date_limit']) rescue nil
+  end
+
+  def date_limit=(date)
+    partner_properties['date_limit'] = date
+  end
+
   def active?
-    target_progress < target_value
+    target_progress < target_value && ((date_limit.present? && Date.today <= date_limit) || date_limit.nil?)
   end
 end

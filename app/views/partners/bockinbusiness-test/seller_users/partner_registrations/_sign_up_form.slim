@@ -1,2 +1,77 @@
-== render 'seller_users/registrations/sign_up_form', url: url do |f|
-  = f.input :partner_id_code, label: 'Número de cliente Super Bock'
+section#register-form.section
+  .row
+    .col-lg-6
+      h2.section-separator Registe-se agora e comece a vender
+
+      = simple_form_for(@form,
+                        as: resource_name,
+                        url: url,
+                        remote: true,
+                        validate: true) do |f|
+
+        .register-form-section
+          h3 Sobre o estabelecimento
+          = f.input :partner_type, label: 'Tipo de cliente Super Bock',
+                                   as: :select,
+                                   collection: @form.partner_types,
+                                   hint: "Se não é cliente Super Bock, <a href='#{root_url}'>registe-se aqui no Preserve.pt</a>".html_safe
+
+          = f.input :partner_id_code, label: 'Número de cliente Super Bock', id: 'sb_direct_id', wrapper_class: 'sb_direct_id'
+          = f.input :partner_alt_id, label: 'Distribuidor Super Bock',
+                                      id: 'sb_distributor_id',
+                                      wrapper_class: 'sb_distributor_id',
+                                      hint: 'O seu registo irá ser verificado manualmente e, caso não seja cliente Super Bock, irá ser removido.'
+
+
+          = f.input :name, label: 'Nome público do estabelecimento', hint: 'Este é o nome que vai ser visível na plataforma.', placeholder: 'Nome'
+
+          - if @form.respond_to?(:partner) && @form.partner.restricted_categories.present?
+            - if @form.partner.restricted_categories.length == 1
+              = f.input :category, readonly: true,
+                                  validate: false,
+                                  label: 'Categoria',
+                                  input_html: { value: @form.partner.restricted_categories.first.name,
+                                                name: nil}
+            - else
+              = f.input :category_id, collection: @form.partner.restricted_categories
+
+          - else
+            = f.input :category_id, collection: Category.all
+
+          = f.input :district, collection: Location.all_districts, label: 'Distrito', input_html:{ id: 'district_select'}
+          = f.input :area, collection: Location.for_district(@form.district).map(&:area), selected: @form.area, input_html:{ id: 'area_select'}
+          = f.input :address, hint: 'Rua e número', placeholder: 'Morada'
+          = f.hidden_field :main_photo, value: @form.cached_main_photo_data, id:nil
+          = f.input :main_photo, label: 'Fotografia do estabelecimento', as: :file, hint: 'Esta foto vai aparecer no seu perfil público, seleccione uma foto o mais profissional possível. Formato JPG ou PNG, max. 10Mb'
+
+
+        .register-form-section
+          h3 Sobre si
+          = f.input :contact_name, placeholder: 'Nome', label: 'O seu nome'
+          = f.input :email, placeholder: 'E-mail', required: true
+          = f.input :password, placeholder:"Password", hint: "Mínimo 6 caracteres"
+          = f.input :password_confirmation, placeholder:"Password", hint: "Mínimo 6 caracteres"
+
+
+        .register-form-section
+          h3 Sobre a empresa
+          = f.input :vat_id, placeholder: 'PT999999999', label: 'NIF', required: true
+          = f.input :company_name, placeholder: 'Nome', hint:'Ou nome completo se for Empresário em Nome Individual', required: true
+          = f.input :iban, placeholder: 'IBAN', required: true
+          = f.input :company_registration_code, placeholder: '1111-2222-3333', validate: false
+
+        = f.input :honor_check,
+                  as: :boolean,
+                  label: 'Declaro que a informação prestada é verdadeira e que sou um cliente Super Bock ou de um distribuidor Super Bock. Se a informação prestada estiver errada, a Preserve.pt e a Super Bock reservam-se ao direito de remover o seu registo da iniciativa BockInBusiness e pode ser sujeito a litígio legal.'
+
+        = f.button :submit, 'Registar', class: 'btn btn-primary', class: 'btn btn-primary'
+
+javascript:
+  if ($('#seller_user_partner_type').val()) {
+    $(`.sb_${$('#seller_user_partner_type').val()}_id`).show()
+  }
+
+  $('#seller_user_partner_type').change( (ev) => {
+    $('.sb_direct_id, .sb_distributor_id').hide()
+    $(`.sb_${ev.target.value}_id`).show()
+  })
