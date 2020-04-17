@@ -43,23 +43,18 @@
       br
       = link_to 'Registe o seu local', new_partner_signup_path, class: 'btn btn-primary', data:{turbolinks: false}
 
-  - if @places.any?
-    section.places-container.section
-      .row
-        h2.col-sm-6.section-separator Locais aderentes
+  section.places-container.section
+    .row
+      h2.col-sm-6.section-separator Locais aderentes
 
+    - if @places.any?
       .row
-        .col-12.col-sm-6.col-lg-4.col-xl-3.d-flex.mt-4
-          = select_tag :city,
-                       options_from_collection_for_select(@cities, :itself, :itself, params[:city]),
-                       class: 'select-input flex-fill',
-                       include_blank: 'Todo o país'
-          javascript:
-            $('#city').change(ev => {
-              Turbolinks.visit(`${location.pathname}?city=${ev.target.value}`)
-            })
+        = render 'search_form'
+
       .places-list.xrow.home-list
         == render @places
+    - else
+      p Mais novidades brevemente, por favor volte mais tarde.
 
   section.row
     .col-12.col-sm-6

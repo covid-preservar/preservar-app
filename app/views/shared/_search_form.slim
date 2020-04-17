@@ -2,6 +2,7 @@
   = select_tag :city,
               options_from_collection_for_select(@cities, :itself, :itself, @city),
               class: 'select-input',
+              id: nil,
               include_blank: 'Todo o país'
 
   = select_tag :category,

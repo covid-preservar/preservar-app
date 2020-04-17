@@ -4,17 +4,17 @@ class PartnersController < ApplicationController
 
   def index
     @partner = Partner.find_by(slug: request.subdomain)
-
-    if params[:city].present?
-      search = PlaceSearch.new(partner: @partner, city: params[:city])
-      @places = search.places
-    else
-      @places = @partner.places.published
-    end
-
+    @places = @partner.places.published
     @cities = @partner.places.published.pluck(:area).uniq.sort
 
     render @partner.slug
+  end
+
+  def search
+    @partner = Partner.find_by(slug: request.subdomain)
+
+    search = PlaceSearch.new(partner: @partner, city: params[:city], name: params[:name])
+    @places = search.places
   end
 
   protected

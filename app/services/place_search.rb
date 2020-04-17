@@ -1,11 +1,12 @@
 class PlaceSearch
 
-  attr_accessor :category, :city, :partner
+  attr_accessor :category, :city, :partner, :name
 
-  def initialize(category: nil, city: nil, partner: nil)
+  def initialize(category: nil, city: nil, partner: nil, name: nil)
     @category = Category.find(category) if category.present?
     @city = city.presence
     @partner = partner
+    @name = name
   end
 
   def places
@@ -13,14 +14,18 @@ class PlaceSearch
 
     base_scope = if category.present?
       category.places
-    elsif partner.present? && partner.restricted_categories.any?
-      Place.where(category_id: partner.restricted_category_ids)
+    elsif partner.present?
+      partner.places
     else
       Place
     end
     base_scope = base_scope.includes(:category).published
 
-    @places = city.present? ? base_scope.where(area: city).sorted : base_scope.sorted
+    @places = base_scope
+    @places = @places.where(area: city) if city.present?
+    @places = @places.where('name ILIKE ?', "%#{name}%") if name.present?
+
+    @places = @places.sorted
   end
 
   def title
