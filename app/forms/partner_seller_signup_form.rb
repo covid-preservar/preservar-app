@@ -20,6 +20,7 @@ class PartnerSellerSignupForm < SellerSignupForm
 
   def save
     place.category = partner.restricted_categories.first if partner.restricted_categories&.length == 1
+    partnership.approved = partner_identifier.present?
     super do
       partnership.save!
       partner_identifier.mark_used! if partner.requires_partner_id_code
