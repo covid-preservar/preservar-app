@@ -609,16 +609,6 @@ a {
 * Homepage
 */
 
-.stat {
-  float: left;
-  width: 33.3333%;
-}
-
-.stat p {
-  margin-top: 0;
-  opacity: 0.4;
-}
-
 #how-it-works-brief img {
   margin-top: -5rem;
 }
@@ -652,18 +642,8 @@ a {
   font-weight: bold;
 }
 
-
-
 #businesses .primary-cta {
   margin-top: 2rem;
-}
-
-@media only screen and (max-width: 768px) {
-  .hero-img {
-    position: absolute;
-    right: 0;
-    width: 40%;
-  }
 }
 
 @media only screen and (max-width: 580px) {

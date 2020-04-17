@@ -3,50 +3,63 @@
 
   .navbar {
     align-items: flex-start;
-    height: 16rem;
+    height: 10rem;
     padding-top: 1.5rem;
   }
 
   .hero-text {
-    color: $white;
     padding-bottom: 2rem;
-
-    h1,
-    h2 {
-      color: $white;
-    }
   }
 
   #hero::before {
-    background: #AB2328;
     bottom: 0;
   }
 
   .bockinbusiness-hero-img {
-    display: none;
     object-fit: cover;
   }
 
   .partner-top-brand {
-    max-width: 40%;
-    max-height: 136px;
+    position: absolute;
+    right: 1rem;
+    top: 0;
   }
 
-  .teaser-block {
-    margin-top: 5rem;
+  .partner-progress-bg {
+    background-color: $progress-bg-color;
+    border: 0;
+    height: 4px;
+    margin-bottom: 1rem;
+    width: 100%;
+
+    .partner-progress-fg {
+      background-color: $blue;
+      height: 4px;
+    }
   }
+
+  .partner-summary {
+    color: $gray-400;
+  }
+
 
   @include media-breakpoint-up(sm) {
-    .bockinbusiness-hero-img {
-      display: block;
-      margin-left: auto;
+
+    .navbar {
+      height: 12rem;
     }
 
     #hero::before {
       bottom: 0;
     }
+
   }
 
+  @include media-breakpoint-up(md) {
+    .navbar {
+      height: 14rem;
+    }
+  }
 
   @include media-breakpoint-up(xl) {
 
