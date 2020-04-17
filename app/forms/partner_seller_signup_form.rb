@@ -26,6 +26,7 @@ class PartnerSellerSignupForm < SellerSignupForm
 
   def save
     place.category = partner.restricted_categories.first if partner.restricted_categories&.length == 1
+    partnership.approved = partner_identifier.present? || partner_alt_id.present?
     super do
       partnership.properties['honor_check'] = honor_check if partner.requires_honor_check
       partnership.properties['partner_type'] = partner_type if partner_type.present?
