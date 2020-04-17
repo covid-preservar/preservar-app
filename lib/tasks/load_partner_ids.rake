@@ -13,4 +13,14 @@ task :load_partner_ids => :environment do
     print '.'
     PartnerIdentifier.create!(identifier: id, partner_id: 2)
   end
+  obj = bucket.object('sb3.txt')
+  obj.get.body.string.split.each do |id|
+    print '.'
+    PartnerIdentifier.create!(identifier: id, partner_id: 2)
+  end
+  obj = bucket.object('sb4.txt')
+  obj.get.body.string.split.each do |id|
+    print '.'
+    PartnerIdentifier.create!(identifier: id, partner_id: 2)
+  end
 end
