@@ -27,4 +27,9 @@ class ApplicationMailer < ActionMailer::Base
     @place = Place.find(place_id)
     mail to: @place.seller.seller_user.email, subject: "Preserve - Publicámos o seu local!"
   end
+
+  def csv_import_notification(import_id)
+    @import = CSVImport.find(import_id)
+    mail to: @import.admin_user.email, subject: "[Preserve] CSV Import done"
+  end
 end

@@ -13,7 +13,8 @@ if Rails.env.production?
 
   Shrine.storages = {
     cache: Shrine::Storage::S3.new(prefix: 'uploads/cache', **s3_options), # temporary
-    store: Shrine::Storage::S3.new(prefix: 'uploads', **s3_options)        # permanent
+    store: Shrine::Storage::S3.new(prefix: 'uploads', **s3_options),       # permanent
+    csv_store: Shrine::Storage::S3.new(prefix: 'csv_imports', **s3_options)
   }
 
   Shrine.plugin :url_options, store: { host: ENV['SHRINE_CDN_URL'] }
@@ -29,13 +30,15 @@ elsif Rails.env.test?
   Shrine.storages = {
     cache: Shrine::Storage::Memory.new,
     store: Shrine::Storage::Memory.new,
+    csv_store: Shrine::Storage::Memory.new
   }
 else
   require 'shrine/storage/file_system'
 
   Shrine.storages = {
     cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/cache'), # temporary
-    store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads')        # permanent
+    store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads'),       # permanent
+    csv_store: Shrine::Storage::FileSystem.new('public', prefix: 'csv_uploads')
   }
 
   Shrine.plugin :backgrounding

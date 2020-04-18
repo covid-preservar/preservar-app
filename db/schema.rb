@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_124545) do
+ActiveRecord::Schema.define(version: 2020_04_18_135847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -45,6 +45,14 @@ ActiveRecord::Schema.define(version: 2020_04_15_124545) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "name_plural"
+  end
+
+  create_table "csv_imports", force: :cascade do |t|
+    t.bigint "admin_user_id"
+    t.jsonb "file_data"
+    t.jsonb "processing_errors", default: {}
+    t.integer "state", default: 0
+    t.index ["admin_user_id"], name: "index_csv_imports_on_admin_user_id"
   end
 
   create_table "flipper_features", force: :cascade do |t|

@@ -75,6 +75,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :admin_users
     resources :categories
+    resources :csv_imports
     resources :payment_notifications, only: [:index, :show]
     resources :sellers
     resources :add_on_partners

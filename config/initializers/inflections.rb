@@ -15,4 +15,5 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym 'VATID'
   inflect.acronym 'PDF'
+  inflect.acronym 'CSV'
 end
