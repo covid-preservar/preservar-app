@@ -4,7 +4,7 @@
 - content_for :footer do
   = render 'shared/footer_small'
 
-main.container.maincontent
+main.container-xl.maincontent
   .row
     .col-12
       = link_to '&slarr; Voltar'.html_safe, seller_account_path
@@ -64,10 +64,10 @@ main.container.maincontent
                 strong
                   ' Código de parceiro
               td
-                = @place&.partner_identifier&.identifier
+                = @place&.partnership&.partner_identifier&.identifier
             tr
               td
                 strong
                   ' Estado
               td
-                = @place.partnership.approved ? 'Validada' : 'Aguarda validação'
+                = @place&.partnership&.approved ? 'Validada' : 'Aguarda validação'

@@ -1,11 +1,8 @@
 .places-list {
-  display: flex;
-  flex-wrap: wrap;
   margin-top: 2rem;
 
   @media only screen and (max-width: 414px) {
     flex-direction: column;
-    margin-top: 0;
 
     .place:first-child {
       margin-top: 0;
@@ -14,10 +11,7 @@
 }
 
 .place {
-  flex: 0 1 calc(25% - 1rem);
   margin-bottom: 3rem;
-  margin-right: 1rem;
-  max-width: calc(25% - 1rem);
   text-decoration: none;
 
   img {
@@ -88,17 +82,7 @@
     opacity: .5;
   }
 
-  @media only screen and (max-width: 812px) {
-    flex-basis: calc(33% - 1rem);
-    max-width: calc(33% - 1rem);
-  }
-
-  @media only screen and (max-width: 414px) {
-    flex: 1 1 100%;
-    margin-right: 0;
-    max-width: none;
-    width: 100%;
-
+  @include media-breakpoint-down(sm) {
     .place-img {
       height: 50vw;
       object-fit: cover;

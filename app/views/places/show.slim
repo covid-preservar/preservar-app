@@ -3,7 +3,7 @@
 - content_for :header do
   = render 'header'
 
-.place-hero.container-md
+.place-hero.container-xl
   - if @show_back
     = link_to '&slarr; Voltar à pesquisa'.html_safe, request.referrer, class:'place-back'
   - else

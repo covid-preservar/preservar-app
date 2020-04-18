@@ -1,6 +1,6 @@
 - content_for :header do
   - cache [:loreal_nav, ENV['HEROKU_SLUG_COMMIT']] do
-    nav.navbar.container-md
+    nav.navbar.container-xl
       = link_to '/' do
         = inline_svg 'loreal/logo-preserve-loreal.svg'
       = inline_svg 'loreal/partner-loreal-hashtag.svg', class: 'd-none d-md-block partner-top-brand'

@@ -18,6 +18,7 @@
     flex: 0 0 15rem;
     margin-right: 1rem;
     max-width: 240px;
+    padding: 0;
   }
 }
 
@@ -69,7 +70,6 @@
     }
   }
 
-
   .stat {
     flex: 1;
 
@@ -95,10 +95,10 @@
     flex-wrap: wrap;
     width: auto;
 
-    .place {
-      flex-basis: 23%;
-      max-width: 23%;
-    }
+    // .place {
+    //   flex-basis: 23%;
+    //   max-width: 23%;
+    // }
   }
 
   .press-wrapper {

@@ -1,9 +1,9 @@
 - content_for :header do
   = render 'shared/header'
 
-.xcontainer
-  section#hero.xrow
-    .xcol-6
+.container-xl
+  section#hero.row
+    .col-12.col-md-6
       .hero-text
         h1
           => @voucher.place.name
@@ -17,22 +17,23 @@
         br
         = link_to 'Voltar ao início'.html_safe, root_path, class:'secondary-cta'
 
-    = image_tag 'help.svg', alt: 'Pessoa', class:'xcol-5'
+    .col-12.col-md-6.col-lg-5.offset-lg-1
+      = image_tag 'help.svg', alt: 'Pessoa'
 
-  section.place-share.xcol-5
-    .xrow
+  section.place-share.row
+    .col-12.col-md-5
       h3
         ' Partilhe com os seus amigos, o pequeno contributo de muitos vai longe.
 
-    iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=#{place_url(@voucher.place)}&layout=button_count&size=large&width=110&height=28" style="border:none;overflow:hidden" width="110"
-    a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet
-    script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
-    span.btn.btn-outline-secondary.btn-sm.js-mobileShare
-      = inline_svg_tag 'iconic/share-boxed.svg', class:'iconic share'
-      | Share
-    .input-group
-      .input-group-prepend
-        span.input-group-text 🔗
-      input disabled='true' type="text" value=place_url(@voucher.place)
+      iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=#{place_url(@voucher.place)}&layout=button_count&size=large&width=110&height=28" style="border:none;overflow:hidden" width="110"
+      a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet
+      script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
+      span.btn.btn-outline-secondary.btn-sm.js-mobileShare
+        = inline_svg_tag 'iconic/share-boxed.svg', class:'iconic share'
+        | Share
+      .input-group
+        .input-group-prepend
+          span.input-group-text 🔗
+        input.form-control disabled='true' type="text" value=place_url(@voucher.place)
 
   == render 'places/other_places'
