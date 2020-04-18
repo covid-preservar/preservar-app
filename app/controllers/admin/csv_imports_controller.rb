@@ -1,6 +1,5 @@
-# frozen_string_literal: true
 module Admin
-  class SellersController < Admin::ApplicationController
+  class CSVImportsController < Admin::ApplicationController
     # Overwrite any of the RESTful controller actions to implement custom behavior
     # For example, you may want to send an email after a foo is updated.
     #
@@ -8,6 +7,21 @@ module Admin
     #   super
     #   send_foo_updated_email(requested_resource)
     # end
+
+    def create
+      resource = resource_class.new(resource_params.merge(admin_user: current_admin_user))
+
+      if resource.save
+        SellerCSVImport.perform_later resource.id
+
+        redirect_to([namespace, resource],
+                    notice: translate_with_resource("create.success"))
+      else
+        render :new, locals: {
+          page: Administrate::Page::Form.new(dashboard, resource)
+        }
+      end
+    end
 
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
@@ -43,16 +57,5 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
-
-    def show_action?(action, resource)
-      return true unless action == :destroy
-
-      case resource
-      when Seller
-        resource.places.empty?
-      when Place
-        resource.vouchers.empty?
-      end
-    end
   end
 end

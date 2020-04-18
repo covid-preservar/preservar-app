@@ -1,0 +1,46 @@
+p
+  ' CSV Import completed
+  br
+  = link_to admin_csv_import_url(@import), admin_csv_import_url(@import)
+
+strong
+- if @import.published_places.any?
+  strong Published places
+  ul
+    - @import.published_places.each do |place|
+      li = link_to place.name, admin_place_url(place)
+
+
+h2 Errors
+
+- if @import.bad_vat_lines.any?
+  strong Bad VAT ID
+  ul
+    - @import.bad_vat_lines.each do |line|
+      li = line
+
+- if @import.not_found_lines.any?
+  strong Seller ID not found
+  ul
+    - @import.not_found_lines.each do |line|
+      li = line
+
+
+- if @import.no_key_lines.any?
+  strong API Key is missing
+  ul
+    - @import.no_key_lines.each do |line|
+      li = line
+
+- if @import.dup_key_lines.any?
+  strong Seller already has API Key
+  ul
+    - @import.dup_key_lines.each do |line|
+      li = line
+
+- if @import.failed_publish_places.any?
+  strong Could not publish
+  ul
+    - @import.failed_publish_places.each do |place|
+      li = link_to 'place.name', admin_place_url(place)
+

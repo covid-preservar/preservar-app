@@ -20,4 +20,8 @@ class ApplicationMailerPreview < ActionMailer::Preview
   def seller_place_published_notification
     ApplicationMailer.seller_place_published_notification(Place.first.id)
   end
+
+  def csv_import_notification
+    ApplicationMailer.csv_import_notification(CSVImport.last.id)
+  end
 end
