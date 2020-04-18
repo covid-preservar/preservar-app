@@ -1,14 +1,15 @@
 .header {
-  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
+  padding: var(--grid-outer-padding) 1rem;
 
   .secondary-cta {
     margin-left: auto;
   }
 
   .header-right {
-    text-align: right;
     margin-left: auto;
+    text-align: right;
   }
 
   .header-link {
@@ -38,20 +39,16 @@
   }
 }
 
-.header-main {
-  padding: var(--grid-outer-padding);
-}
-
 #announcement {
+  background-color: var(--color-main-blue);
   display: flex;
   height: 3rem;
-  background-color: var(--color-main-blue);
 
   p {
-    margin: auto; /* Important */
-    text-align: center;
     color: white;
     font-size: calc(16rem/16);
+    margin: auto; /* Important */
+    text-align: center;
 
     @media only screen and (max-width: 576px) {
       font-size: calc(13rem/16);
@@ -107,11 +104,11 @@
   background-color: var(--color-light-blue);
   content: '';
   height: 30rem;
-  left: 0;
+  left: -10rem;
   margin-left: calc(-100vw / 2 + var(--grid-max-width) / 2);
   position: absolute;
+  right: 24vw;
   top: 0;
-  width: 80%;
   z-index: -1;
 }
 
@@ -120,15 +117,15 @@
 }
 
 
-
 @media only screen and (max-width: 1288px) {
+
   .content-page #header-main:before,
   .header-short:before {
     margin-left:  -10%;
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@include media-breakpoint-down(lg) {
   .header-short.search-form {
     width: 60%;
 
@@ -138,8 +135,7 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
-
+@include media-breakpoint-down(md) {
   .header-main {
     margin-bottom: 2rem;
     padding: calc(var(--grid-outer-padding) / 2);
@@ -170,7 +166,8 @@
 
 }
 
-@media only screen and (max-width: 667px) {
+@include media-breakpoint-down(sm) {
+
   .content-page #header-main:before,
   .header-short:before {
     left: 50%;
@@ -179,9 +176,7 @@
     right: 50%;
     width: 100vw;
   }
-}
 
-@media only screen and (max-width: 576px) {
   .sellers.show .header-short .search-form  {
     display: none;
   }

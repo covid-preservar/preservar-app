@@ -4,7 +4,7 @@
 - content_for :header do
   = render 'header'
 
-section.places-container.xcontainer
+section.places-container.container-xl
   .row
     h2.col-12.col-md-6
       => @places.count
@@ -13,8 +13,7 @@ section.places-container.xcontainer
   .places-list.row
     == render @places
 
-section.xcontainer.section#businesses
+section.container-xl.section#businesses
   .row.clearfix
-    h2.col-12.col-md-6.section-separator Não encontra o seu local favorito? Partilhe a página de submissão com eles
-  .row
-    = link_to 'Submeter local', new_seller_user_registration_path, class: 'primary-cta'
+    h2.col-12.col-md-8.col-lg-6.section-separator Não encontra o seu local favorito? Partilhe a página de submissão com eles
+  = link_to 'Submeter local', new_seller_user_registration_path, class: 'primary-cta'

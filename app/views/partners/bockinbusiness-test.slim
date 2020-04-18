@@ -2,11 +2,11 @@
 - set_meta_tags og: { title: :full_title, site_name: :site, url: 'https://bockinbusiness.preserve.pt'}, twitter: { title: :full_title }
 
 - content_for :header do
-  nav.navbar.container-md
+  nav.navbar.container-xl
     = image_tag 'bockinbusiness/logo.svg'
     = image_tag 'bockinbusiness/logo-sb.svg', class: 'd-none d-md-block partner-top-brand'
 
-.container-md
+.container-xl
   section#hero.row
     .col-sm-6.col-12
       .hero-text
@@ -59,7 +59,7 @@
             $('#city').change(ev => {
               Turbolinks.visit(`${location.pathname}?city=${ev.target.value}`)
             })
-      .places-list.xrow.home-list
+      .places-list.row.home-list
         == render @places
 
   section.row

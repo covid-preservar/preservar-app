@@ -6,7 +6,7 @@
                 og: { title: 'Preserve os seus locais preferidos', site_name: :site},
                 twitter: { title: 'Preserve os seus locais preferidos' }
 
-.container
+.container-xl
   section#hero
     .row
       .col-md-7.col-lg-7.col-12
@@ -44,7 +44,8 @@
           h2.section-separator Os seus locais preferidos precisam de ajuda
           p Por causa do Covid-19, os seus locais preferidos estão de portas fechadas. A maioria não vai aguentar mais de 1-2 meses sem clientes e vão ter de tomar decisões drásticas, como despedir o pessoal, ou abrir falência.
           p Pode ajudar.
-        = image_tag 'help.svg', alt: 'Hug', class:'col-md-6 d-none d-md-block'
+        .col-md-6.d-none.d-md-block
+          = image_tag 'help.svg', alt: 'Hug'
 
     #how-it-works-facts.row
       .col-sm-4.col-12.fact
