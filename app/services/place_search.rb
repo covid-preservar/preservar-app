@@ -13,7 +13,7 @@ class PlaceSearch
 
     base_scope = if category.present?
       category.places
-    elsif partner.present? && partner.restricted_categories.any?
+    elsif partner.present? && partner.restricted_categories&.any?
       Place.where(category_id: partner.restricted_category_ids)
     else
       Place
