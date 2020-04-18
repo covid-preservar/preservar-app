@@ -1,8 +1,8 @@
 - if @other_places.places.any?
   .section
-    .xrow.clearfix
-      h2.xcol-6.section-separator
+    .row.clearfix
+      h2.col-12.col-md-6.section-separator
         ' Outros locais
         = 'na mesma área' if @other_places.local
-    .places-list.xrow.clearfix
+    .places-list.row.clearfix
       == render @other_places.places

@@ -5,16 +5,16 @@
   = render 'header'
 
 section.places-container.xcontainer
-  .xrow
-    h2.xcol-6.section-separator
+  .row
+    h2.col-12.col-md-6
       => @places.count
       | Resultados
 
-  .places-list.xrow
+  .places-list.row
     == render @places
 
 section.xcontainer.section#businesses
-  .xrow.clearfix
-    h2.xcol-6.section-separator Não encontra o seu local favorito? Partilhe a página de submissão com eles
-  .xrow
+  .row.clearfix
+    h2.col-12.col-md-6.section-separator Não encontra o seu local favorito? Partilhe a página de submissão com eles
+  .row
     = link_to 'Submeter local', new_seller_user_registration_path, class: 'primary-cta'

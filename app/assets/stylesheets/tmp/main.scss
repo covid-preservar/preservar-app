@@ -672,15 +672,6 @@ a {
 
 @media only screen and (max-width: 576px) {
 
-  #how-it-works-facts {
-    display: block;
-
-    .fact {
-      width: 100%; 
-      max-width: 100%;
-    }
-  }
-
   .primary-cta,
   .secondary-cta {
     font-size: calc(15rem / 16);
