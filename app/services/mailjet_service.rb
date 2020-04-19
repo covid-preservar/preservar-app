@@ -13,16 +13,17 @@ class MailjetService
 
       case response.code
       when 400
-        return get_mailjet_id(seller.seller_user.email)
-      when 200
+        get_mailjet_id(seller.seller_user.email)
+      when 200, 201
         response = JSON.parse response.body
-        return response.fetch('Data')&.first&.fetch('ID')
+        response.fetch('Data')&.first&.fetch('ID')
       else
         Rails.logger.warn("Failed to add email '#{seller.seller_user.email}' to Mailjet. Response was #{response.code}")
-        return nil
+        nil
       end
     end
 
+    Rails.logger.warn("Failed to add email or get contact_id '#{seller.seller_user.email}'") if contact_id.nil?
     return nil if contact_id.nil?
 
     # Set contact metadata
@@ -37,8 +38,15 @@ class MailjetService
 
     params = { ContactID: contact_id, ListID: ENV["MAILJET_CONTACT_LIST_ID"]}
     RestClient.post(BASE_URL + "/listrecipient",
-                    params.to_json,
-                    content_type: :json)
+                            params.to_json,
+                            content_type: :json) do |response, request, result|
+      case response.code
+      when 400
+        Rails.logger.warn("'#{seller.seller_user.email}' already added to Mailjet list.")
+      else
+        nil
+      end
+    end
   end
 
   def self.get_mailjet_id(email)
