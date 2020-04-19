@@ -53,8 +53,8 @@ class SellerCSVImport < ApplicationJob
     if seller.nil?
       not_found_lines << line.to_s.chomp
       return false
-    elsif line['vat_id_check'] != '0' ||
-       seller.vat_id.sub('PT', '') != line['vat_check']
+    elsif line['vat_check'] != '0' ||
+       seller.vat_id.sub('PT', '') != line['vat_id_check']
       bad_vat_lines << line.to_s.chomp
       return false
     elsif line['api_key'].nil?
