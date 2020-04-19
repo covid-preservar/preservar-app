@@ -10,6 +10,12 @@ export default class PlaceForm {
       }
     })
 
-    // window.ClientSideValidations.callbacks.element.fail = window.spinner.stop;
+    window.ClientSideValidations.callbacks.form.fail = function(form, eventData) {
+      let error_wrapper = form[0].ClientSideValidations.settings.html_settings.wrapper_error_class;
+
+      $(`.${error_wrapper}`)[0].scrollIntoView({
+        behavior: 'smooth'
+      })
+    }
   }
 }
