@@ -19,6 +19,7 @@
 
   .loreal-brands {
     margin-top: 1rem;
+    width: 25%;
   }
 
   .partner-signup {
@@ -35,6 +36,10 @@
     margin: 4rem 0 1rem;
     padding: 0 1rem;
     text-align: center;
+  }
+
+  #how-it-works-facts {
+    margin-top: 6rem;
   }
 
   @include media-breakpoint-up(sm) {
@@ -54,7 +59,7 @@
     }
 
     #hero::before {
-      bottom: 8rem;
+      bottom: 6rem;
     }
   }
 
