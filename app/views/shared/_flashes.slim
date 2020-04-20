@@ -12,3 +12,14 @@
             = flash[:alert]
             button.close type="button" data-dismiss="alert" aria-label="Close"
               span aria-hidden="true" &times;
+
+- if seller_user_signed_in? && current_seller_user.needs_new_tos_acceptance?
+  .container-xl.flashes
+    .alert.alert-primary
+      ' Actualizámos os nossos
+      => link_to 'Termos e Condições', tos_path, target: '_blank'
+      ' e
+      = link_to 'Politica de Privacidade', privacy_path, target: '_blank'
+      | .
+      br
+      = link_to "Revi e aceito os novos Termos e Condições e Política de Privacidade", accept_new_terms_seller_account_path, method: :put, class: :action, remote: true

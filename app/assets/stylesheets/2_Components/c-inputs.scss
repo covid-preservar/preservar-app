@@ -108,3 +108,7 @@ select:not(.form-control) {
     background: var(--color-light-blue);
   }
 }
+
+.form-check-label a {
+  text-decoration: underline;
+}

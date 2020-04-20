@@ -18,7 +18,8 @@ class SellerSignupForm
                 :contact_name,
                 :company_name,
                 :password,
-                :password_confirmation
+                :password_confirmation,
+                :accept_tos
 
   attr_writer :seller, :seller_user, :place
 
@@ -44,6 +45,7 @@ class SellerSignupForm
   validates :company_registration_code,
             format: { with: /\d{4}-\d{4}-\d{4}/, allow_nil: true }
 
+  validates :accept_tos, acceptance: true
   validate :validate_vat_id
   validate :validate_iban
 
