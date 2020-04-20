@@ -56,6 +56,10 @@
     margin-top: 0 !important;
   }
 
+  a.text-muted {
+    text-decoration: underline;
+  }
+
 
   @include media-breakpoint-up(sm) {
 
