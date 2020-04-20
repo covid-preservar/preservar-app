@@ -1,0 +1,25 @@
+h2 Bonused voucher limit reached
+
+table
+  tbody
+    tr
+      td
+        strong Partner
+      td
+        = link_to @place.approved_partner.name, [:admin, @place.approved_partner]
+    tr
+      td
+        strong Place
+      td
+        = link_to @place.name, admin_place_url(@place)
+
+    tr
+      td
+        strong Paid bonused vouchers
+      td
+        = @place.vouchers.paid.with_bonus.count
+    tr
+      td
+        strong Pending bonused vouchers
+      td
+        = @place.vouchers.not_paid.with_bonus.count

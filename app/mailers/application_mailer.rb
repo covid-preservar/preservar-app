@@ -32,4 +32,9 @@ class ApplicationMailer < ActionMailer::Base
     @import = CSVImport.find(import_id)
     mail to: @import.admin_user.email, subject: "[Preserve] CSV Import done"
   end
+
+  def promo_limit_notify(place_id)
+    @place = Place.find(place_id)
+    mail to: AdminUser.all.map(&:email), subject: "[Preserve] Bonused voucher limit reached"
+  end
 end

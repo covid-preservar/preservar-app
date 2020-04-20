@@ -50,6 +50,8 @@ class Voucher < ApplicationRecord
   before_validation :set_discount, on: :create
 
   scope :seller_visible, -> { where(state: %w[paid redeemed]) }
+  scope :with_bonus, -> { where.not(partner_id: nil) }
+  scope :not_paid, -> {  where.not(state: %w[paid redeemed]) }
 
   attr_reader :custom_value
 

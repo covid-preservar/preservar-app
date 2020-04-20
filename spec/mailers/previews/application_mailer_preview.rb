@@ -24,4 +24,8 @@ class ApplicationMailerPreview < ActionMailer::Preview
   def csv_import_notification
     ApplicationMailer.csv_import_notification(CSVImport.last.id)
   end
+
+  def promo_limit_notify
+    ApplicationMailer.promo_limit_notify(AddOnPartner.last.vouchers.last.place_id)
+  end
 end
