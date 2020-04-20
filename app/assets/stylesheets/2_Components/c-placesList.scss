@@ -82,11 +82,16 @@
     opacity: .5;
   }
 
-  @include media-breakpoint-down(sm) {
+  .place-img {
+    height: 50vw;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  @include media-breakpoint-up(sm) {
     .place-img {
-      height: 50vw;
-      object-fit: cover;
-      width: 100%;
+      height: auto;
+      width: auto;
     }
   }
 }
