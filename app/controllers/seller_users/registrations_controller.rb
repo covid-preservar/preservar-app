@@ -16,6 +16,7 @@ class SellerUsers::RegistrationsController < Lib::RegistrationsController
 
   def signup_params
     params.require(:seller_user).permit(:name,
+                                        :accept_tos,
                                         :district,
                                         :area,
                                         :address,

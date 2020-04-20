@@ -56,7 +56,9 @@ Rails.application.routes.draw do
 
 
     namespace :seller do
-      resource :account, only: [:show]
+      resource :account, only: [:show] do
+        put 'accept_new_terms'
+      end
       resources :places, except: [:index, :destroy] do
         member do
           get :enable_discount
@@ -65,6 +67,7 @@ Rails.application.routes.draw do
           post :confirm_disable_discount
         end
       end
+
     end
 
     # TEMP - Until the seller login area is built

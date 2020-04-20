@@ -42,6 +42,7 @@ pt:
         company_name: 'Nome da empresa'
         iban: 'IBAN'
         company_registration_code: 'Código de acesso da Certidão Permanente'
+        accept_tos: 'Termos e Condições'
       partner_seller_signup_form:
         partner_id_code: Número
         partner_type: Tipo de cliente
