@@ -24,6 +24,7 @@ class AddOnPartnerDashboard < Administrate::BaseDashboard
     min_value: Field::Number.with_options(prefix: "€ "),
     add_on_value: Field::Number.with_options(prefix: "€ "),
     target_value: Field::Number.with_options(prefix: "€ "),
+    voucher_limit: Field::Number,
     restricted_categories: Field::HasMany.with_options(class_name: 'Category'),
     requires_partner_id_code: Field::Boolean,
     requires_honor_check: Field::Boolean,
@@ -53,6 +54,7 @@ class AddOnPartnerDashboard < Administrate::BaseDashboard
     min_value
     add_on_value
     target_value
+    voucher_limit
     date_limit
     restricted_categories
     requires_partner_id_code
@@ -76,6 +78,7 @@ class AddOnPartnerDashboard < Administrate::BaseDashboard
     min_value
     add_on_value
     target_value
+    voucher_limit
     date_limit
     restricted_categories
     requires_partner_id_code

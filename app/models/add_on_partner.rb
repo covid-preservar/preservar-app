@@ -13,6 +13,14 @@ class AddOnPartner < Partner
     partner_properties['add_on_value'] = value
   end
 
+  def voucher_limit
+    partner_properties['voucher_limit'].to_i
+  end
+
+  def voucher_limit=(value)
+    partner_properties['voucher_limit'] = value
+  end
+
   def target_progress
     vouchers.paid.count * add_on_value
   end

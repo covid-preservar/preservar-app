@@ -45,7 +45,13 @@ class Place < ApplicationRecord
   end
 
   def active_partner
-    approved_partner if approved_partner&.active?
+    approved_partner if approved_partner&.active? && !promo_limit_reached?
+  end
+
+  def promo_limit_reached?
+    approved_partner.try(:voucher_limit).present? &&
+    approved_partner.voucher_limit > 0 &&
+    vouchers.paid.count >= approved_partner.voucher_limit
   end
 
   def has_charity_partner?
