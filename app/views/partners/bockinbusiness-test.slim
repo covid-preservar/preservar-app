@@ -36,29 +36,16 @@
         = image_tag 'icon-heart.svg', alt: 'Heart'
         h3 Parabéns, contribuiste para tua economia local!
         p Contribuiste para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
-      section.partner-bottom-brand.d-md-none
-        = inline_svg 'loreal/partner-loreal-hashtag.svg'
 
-  section.row
-    .col-sm-6.mt-5.col-12
-      .partner-progress-bg
-        .partner-progress-fg style="width: #{(@partner.target_progress.fdiv(@partner.target_value) * 100)}%"
-      h2 = number_to_currency @partner.target_progress, locale: :pt, precision: 0
-
-      .partner-summary
-        ' angariados, de um objectivo de
-        = number_to_currency @partner.target_value, locale: :pt, precision: 0
-
-
-    .col-sm-6.col-lg-5.offset-lg-1.mt-5.col-12
-      p.partner-signup
-        ' É cliente da Super Bock ou dos seus distribuidores oficiais? Registe-se aqui
-      br
+  section.row.section.partner-register
+    .col-lg-7.mt-5
+    .col-lg-5.mt-5.col-12
+      p.partner-signup É cliente da Super Bock ou dos seus distribuidores oficiais? Registe-se aqui:
       = link_to 'Registe o seu local', new_partner_signup_path, class: 'btn btn-primary', data:{turbolinks: false}
 
   section.places-container.section
     .row
-      h2.col-sm-6.section-separator Seleciona o teu local favorito e compra o teu voucher agora
+      h2.col-sm-6.section-separator Seleciona o teu local favorito
 
     - if @places.any?
       .row

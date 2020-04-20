@@ -24,7 +24,6 @@
 
   .partner-signup {
     color: $blue;
-    margin-bottom: 2rem;
   }
 
   .partner-top-brand {
@@ -42,6 +41,15 @@
     margin-top: 6rem;
   }
 
+  .partner-register .btn {
+    margin-top: 2rem;
+    border: 0;
+  }
+
+  .partner-register .mt-5 {
+    margin-top: 0 !important;
+  }
+
   @include media-breakpoint-up(sm) {
     #hero::before {
       bottom: 10rem;
@@ -49,6 +57,10 @@
 
     .places-container {
       margin-top: 6rem;
+    }
+
+    .partner-register > *:first-child {
+      margin-top: 0;
     }
   }
 
