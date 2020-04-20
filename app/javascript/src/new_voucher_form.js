@@ -16,3 +16,17 @@ export default class NewVoucherForm {
     }
   }
 }
+
+function setup() {
+  if ($("#new_voucher").length > 0 && !window.voucher_form) {
+    window.voucher_form = new NewVoucherForm();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", setup, { once: true });
+document.addEventListener("turbolinks:load", setup, { once: true });
+document.addEventListener("turbolinks:render", setup);
+
+document.addEventListener("turbolinks:before-render", _ => {
+  window.voucher_form = null;
+});

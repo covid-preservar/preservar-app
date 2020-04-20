@@ -7,14 +7,6 @@ function setup() {
     window.voucher_form = new NewVoucherForm();
   }
 
-  if ($('#new_seller_user').length > 0 && !window.place_form) {
-    window.place_form = new PlaceForm();
-  }
-
-  if ($('body').is('.payments') && !window.voucher_payment_form) {
-    window.voucher_payment_form = new VoucherPaymentForm();
-  }
-
   $('[data-toggle="tooltip"]').tooltip();
 
   $('.alert-dismissible').on('closed.bs.alert', (_) => {

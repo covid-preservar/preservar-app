@@ -27,3 +27,17 @@ export default class VoucherPaymentForm {
     })
   }
 }
+
+function setup() {
+  if ($("body").is(".payments") && !window.voucher_payment_form) {
+    window.voucher_payment_form = new VoucherPaymentForm();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", setup, { once: true });
+document.addEventListener("turbolinks:load", setup, { once: true });
+document.addEventListener("turbolinks:render", setup);
+
+document.addEventListener("turbolinks:before-render", (_) => {
+  window.voucher_payment_form = null;
+});

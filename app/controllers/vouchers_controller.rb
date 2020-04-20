@@ -11,7 +11,7 @@ class VouchersController < ApplicationController
     if @voucher.save
       @voucher.update_tracking(tracking_codes)
       cookies.encrypted[:uuid] = { value: @voucher.cookie_uuid, expires: 1.hour }
-      redirect_to new_voucher_payment_path(@voucher)
+      redirect_to new_voucher_payment_path(@voucher), turbolinks: :advance
     else
       @place = @voucher.place
       render :new
