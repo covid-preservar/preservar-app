@@ -10,15 +10,12 @@
       .col-sm-6.col-12
         .hero-text
           h2 Preserva os teus cafés, bares, restaurantes e discotecas favoritos
-          p Compra um voucher para usares na reabertura dos teus cafés, bares, restaurantes e discotecas favoritos.
-
-          p O dinheiro é enviado para eles, ajudando-os nesta fase difícil em que não têm rendimentos.
-
+          p Compra um voucher para desfrutares na reabertura dos teus bares, cafés, quiosques e restaurantes favoritos. O dinheiro será enviado para eles agora, ajudando-os nesta fase difícil em que não têm rendimentos, para poderem voltar Bock in Business.
           p
-            ' Por cada voucher comprado a um Cliente Super Bock ou de Distribuidores Super Bock elegível, a
-            strong
-              ' Super Bock oferece a ti e ao Ponto de Venda +5€.
-            | Sempre vivemos momentos inesquecíveis com os nosso amigos nestes lugares… junta-te a este movimento para os ajudar!
+            ' Cada voucher que comprares a um estabelecimento aderente e elegível, a Super Bock  
+            strong irá adicionar 5€ a esse voucher
+            ' , aumentando o valor do teu voucher e o dinheiro que chega ao estabelecimento.
+          p Sempre vivemos momentos inesquecíveis com os nosso amigos nestes lugares… junta-te a este movimento para os ajudar para que voltemos a brindar todos juntos!
 
       .col-sm-6.col-lg-5.offset-lg-1.col-12.d-none.d-sm-block
         = image_tag 'bockinbusiness/bockinbusiness-hero.jpg', class:'bockinbusiness-hero-img'
@@ -29,16 +26,16 @@
     #how-it-works-facts.row
       .col-sm-4.col-12.fact
         = image_tag 'icon-voucher.svg', alt: 'Voucher'
-        h3 Compre um voucher para usar no futuro
+        h3 Compra um voucher para usar no futuro
         p Os vouchers são válidos durante 24 meses e podem ser utilizados em qualquer altura.
       .col-sm-4.col-12.fact
         = image_tag 'icon-money.svg', alt: 'Money'
-        h3 O salão recebe o dinheiro imediatamente
+        h3 O local recebe o dinheiro imediatamente
         p O dinheiro é transferido diretamente de si para a conta do salão. Todos os pagamentos estão protegidos contra fraude e todos os locais foram verificados manualmente.
       .col-sm-4.col-12.fact
         = image_tag 'icon-heart.svg', alt: 'Heart'
-        h3 Parabéns, contribuiu para sua economia local!
-        p Contribuiu para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
+        h3 Parabéns, contribuiste para tua economia local!
+        p Contribuiste para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
       section.partner-bottom-brand.d-md-none
         = inline_svg 'loreal/partner-loreal-hashtag.svg'
 
@@ -55,19 +52,19 @@
 
     .col-sm-6.col-lg-5.offset-lg-1.mt-5.col-12
       p.partner-signup
-        ' É cliente Super Bock? Registe-se aqui
+        ' É cliente da Super Bock ou dos seus distribuidores oficiais? Registe-se aqui
       br
       = link_to 'Registe o seu local', new_partner_signup_path, class: 'btn btn-primary', data:{turbolinks: false}
 
   section.places-container.section
     .row
-      h2.col-sm-6.section-separator Locais aderentes
+      h2.col-sm-6.section-separator Seleciona o teu local favorito e compra o teu voucher agora
 
     - if @places.any?
       .row
         = render 'search_form'
 
-      .places-list.xrow.home-list
+      .places-list.row
         == render @places
     - else
       p Mais novidades brevemente, por favor volte mais tarde.
@@ -77,3 +74,4 @@
       p
         small
           = link_to 'Termos e Condições aplicam-se', partner_tos_path, class: 'text-muted'
+          p O BockInBusiness com a Preserve está reservada a maiores de 18 anos
