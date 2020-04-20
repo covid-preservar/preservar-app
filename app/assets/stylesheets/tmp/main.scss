@@ -284,6 +284,28 @@ a {
   margin-top: 3rem;
 }
 
+.content * + h2 {
+  margin-top: 3rem;
+}
+
+.content ol, .content ul {
+  font-size: var(--p-font-size);
+  line-height: var(--p-line-height);
+  padding-left: 0;
+
+  * + & {
+    margin-top: 1rem;
+  }
+
+  ol, ul {
+    padding-left: 1.5rem;
+  }
+
+  li + li {
+    margin-top: 1rem;
+  }
+}
+
 /*
 * Homepage
 */
