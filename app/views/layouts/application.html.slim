@@ -18,6 +18,11 @@ html lang="#{I18n.locale}"
       script async='async' src="https://www.googletagmanager.com/gtag/js?id=#{ENV['GOOGLE_ANALYTICS_ID']}"
       meta id='google-analytics-id' data-value=ENV['GOOGLE_ANALYTICS_ID']
 
+
+
+    - if Rails.env.production? && ENV['TAWK_ID'].present?
+      meta id='tawk-id' data-value=ENV['TAWK_ID']
+
     - set_meta_tags canonical: "https://#{ENV['HOSTNAME']}#{request.path}",
                     og: { type: 'website',
                           description: :description,

@@ -1,0 +1,8 @@
+- content_for :header do
+  = render "partners/#{@partner.slug}/header"
+
+.container-xl.content
+  .row
+    .col-12.col-xl-8.offset-xl-2
+      markdown:
+        # Termos e Condições

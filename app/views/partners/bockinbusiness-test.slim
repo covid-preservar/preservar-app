@@ -1,7 +1,7 @@
 - title "Super Bock"
 - set_meta_tags og: { title: :full_title, site_name: :site, url: 'https://bockinbusiness.preserve.pt'}, twitter: { title: :full_title }
 
-= render 'partners/bockinbusiness-test/header'
+= render "partners/#{@partner.slug}/header"
 
 .container-xl
   - cache [:bockinbusiness_home, ENV['HEROKU_SLUG_COMMIT']] do
@@ -42,7 +42,6 @@
       section.partner-bottom-brand.d-md-none
         = inline_svg 'loreal/partner-loreal-hashtag.svg'
 
-
   section.row
     .col-sm-6.mt-5.col-12
       .partner-progress-bg
@@ -77,4 +76,4 @@
     .col-12.col-sm-6
       p
         small
-          = link_to 'Termos e Condições aplicam-se', '', class: 'text-muted'
+          = link_to 'Termos e Condições aplicam-se', partner_tos_path, class: 'text-muted'

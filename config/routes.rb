@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   constraints(->(req){ req.subdomain.present? && Subdomains::Partner.matches?(req) }) do
     get '/', to: 'partners#index'
     get :search, to: 'partners#search', constraints: { format: :js }, as: :partner_search
+    get :tos, to: 'partners#tos', as: :partner_tos
+    get :faq, to: 'partners#faq', as: :partner_faq
 
     devise_scope :seller_user do
       get '/comerciante/registo', to: 'seller_users/partner_registrations#new', as: :new_partner_signup
@@ -33,7 +35,6 @@ Rails.application.routes.draw do
     get '/.', to: redirect('/')
     get '/*', to: redirect('/')
   ###
-
 
   constraints(host: ENV['HOSTNAME']) do
     root to: 'home#index'
