@@ -1,5 +1,11 @@
 - title "BOCK IN BUSINESS"
-- set_meta_tags og: { title: :full_title, site_name: :site, url: 'https://bockinbusiness.preserve.pt'}, twitter: { title: :full_title }
+- set_meta_tags description: 'Compra um voucher para desfrutares na reabertura dos teus bares, cafés, quiosques e restaurantes favoritos. O dinheiro será enviado para eles agora, ajudando-os nesta fase difícil em que não têm rendimentos, para poderem voltar Bock in Business.',
+                og: { title: 'Preserva os teus cafés, bares, restaurantes e discotecas favoritos.',
+                      site_name: :site,
+                      url: 'https://bockinbusiness.preserve.pt',
+                      image: 'https://assets.preserve.pt/social/banner-superbock.png' },
+                twitter: { title: 'Preserva os teus cafés, bares, restaurantes e discotecas favoritos.',
+                           image: 'https://assets.preserve.pt/social/banner-superbock.png' }
 
 = render "partners/#{@partner.slug}/header"
 
@@ -11,11 +17,11 @@
         .hero-text
           h2 Preserva os teus cafés, bares, restaurantes e discotecas favoritos
           p
-            ' Compra um voucher para desfrutares na reabertura dos teus estabelecimentos favoritos. O dinheiro será enviado para eles agora, ajudando-os nesta fase difícil em que não têm rendimentos, para poderem voltar 
+            ' Compra um voucher para desfrutares na reabertura dos teus estabelecimentos favoritos. O dinheiro será enviado para eles agora, ajudando-os nesta fase difícil em que não têm rendimentos, para poderem voltar
             strong Bock in Business.
           p
-            ' Por cada voucher que comprares, a Super Bock adiciona 
-            strong 5€ a esse voucher 
+            ' Por cada voucher que comprares, a Super Bock adiciona
+            strong 5€ a esse voucher
             ' – mais dinheiro para ti e mais dinheiro para os estabelecimentos participantes nesta acão (oferta limitada aos primeiros 4000 vouchers)
           p Sempre vivemos momentos inesquecíveis com os nossos amigos nestes lugares…junta-te a este movimento para os ajudar para que voltemos a brindar juntos!
 
@@ -43,7 +49,7 @@
       p.col-12
         small
           ' Precisas de ajuda? Lê as nossas
-          => link_to 'Perguntas Frequentes', partner_faq_url, class: 'text-muted' 
+          => link_to 'Perguntas Frequentes', partner_faq_url, class: 'text-muted'
 
   section.row.section.partner-register
     .col-lg-7.mt-5
