@@ -22,7 +22,7 @@ export default class PlaceForm {
 
 
 function setup() {
-  if ($("#new_seller_user").length > 0 && !window.place_form) {
+  if ($("#new_seller_user, #new_place").length > 0 && !window.place_form) {
     window.place_form = new PlaceForm();
   }
 }
