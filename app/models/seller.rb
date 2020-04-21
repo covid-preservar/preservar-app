@@ -7,10 +7,15 @@ class Seller < ApplicationRecord
   validates :vat_id, :contact_name, :company_name, presence: true
 
   before_validation :sanitize_vat_id
+  before_validation :normalize_iban
 
   private
 
   def sanitize_vat_id
     self.vat_id.tr!(' ', '')
+  end
+
+  def normalize_iban
+    self.iban = Ibandit::IBAN.new(self.iban).to_s(:formatted) if self.iban.present?
   end
 end
