@@ -62,7 +62,7 @@ section#register-form.section
 
         = f.input :honor_check,
                   as: :boolean,
-                  label: 'Declaro que a informação prestada é verdadeira e que sou um cliente Super Bock ou de um distribuidor oficial super Bock. Se a informação prestada for propositadamente errada, a Preserve.pt e a Super Bock reservam-se ao direito de remover a sua aplicação da iniciativa BockInBusiness e pode ser sujeito outras acções.'
+                  label: 'Declaro que a informação prestada é verdadeira e que sou um cliente Super Bock ou de um distribuidor oficial Super Bock. Se a informação prestada for propositadamente errada, a Preserve.pt e a Super Bock reservam-se ao direito de remover a sua aplicação da iniciativa BockInBusiness e pode ser sujeito outras acções.'
 
         = f.input :accept_tos, as: :boolean, label: "Aceito os #{link_to 'Termos e Condições', tos_path, target: '_blank'} e #{link_to 'Politica de Privacidade', privacy_path, target: '_blank'}".html_safe
         = f.button :submit, 'Registar', class: 'btn btn-primary', class: 'btn btn-primary'
