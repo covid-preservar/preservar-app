@@ -52,7 +52,7 @@ Rails.application.routes.draw do
     devise_for :seller_users,
               path: 'comerciante',
               controllers: { registrations: 'seller_users/registrations',
-                             sessions: 'seller_user/sessions'},
+                             sessions: 'seller_users/sessions'},
               path_names: { sign_up: 'registo' }
 
 
