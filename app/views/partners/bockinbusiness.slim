@@ -1,35 +1,78 @@
-- title "Super Bock"
+- title "BOCK IN BUSINESS"
 - set_meta_tags og: { title: :full_title, site_name: :site, url: 'https://bockinbusiness.preserve.pt'}, twitter: { title: :full_title }
 
-- content_for :header do
-  nav.navbar.container-xl
-    = image_tag 'bockinbusiness/logo.svg'
-    = image_tag 'bockinbusiness/logo-sb.svg', class: 'd-none d-lg-block partner-top-brand'
+= render "partners/#{@partner.slug}/header"
 
 .container-xl
-  section#hero.row
-    .col-sm-6.col-12
-      .hero-text
-        h2 Preserva os teus cafés, bares, restaurantes e discotecas favoritos
-        p Compra um voucher para usares na reabertura dos teus cafés, bares, restaurantes e discotecas favoritos.
+  - cache [:bockinbusiness_home, ENV['HEROKU_SLUG_COMMIT']] do
 
-        p O dinheiro é enviado para eles, ajudando-os nesta fase difícil em que não têm rendimentos.
+    section#hero.row
+      .col-sm-6.col-12
+        .hero-text
+          h2 Preserva os teus cafés, bares, restaurantes e discotecas favoritos
+          p
+            ' Compra um voucher para desfrutares na reabertura dos teus estabelecimentos favoritos. O dinheiro será enviado para eles agora, ajudando-os nesta fase difícil em que não têm rendimentos, para poderem voltar 
+            strong Bock in Business.
+          p
+            ' Por cada voucher que comprares, a Super Bock adiciona 
+            strong 5€ a esse voucher 
+            ' – mais dinheiro para ti e mais dinheiro para os estabelecimentos participantes nesta acão (oferta limitada aos primeiros 4000 vouchers)
+          p Sempre vivemos momentos inesquecíveis com os nossos amigos nestes lugares…junta-te a este movimento para os ajudar para que voltemos a brindar juntos!
 
-        p
-          ' Por cada voucher comprado a um Cliente Super Bock ou de Distribuidores Super Bock elegível, a
-          strong
-            ' Super Bock oferece a ti e ao Ponto de Venda +5€.
-          | Sempre vivemos momentos inesquecíveis com os nosso amigos nestes lugares… junta-te a este movimento para os ajudar!
+      .col-sm-6.col-lg-5.offset-lg-1.col-12.d-none.d-sm-block
+        = image_tag 'bockinbusiness/bockinbusiness-hero.jpg', class:'bockinbusiness-hero-img'
 
-    .col-sm-6.col-lg-5.offset-lg-1.col-12.d-none.d-sm-block
-      = image_tag 'bockinbusiness/bockinbusiness-hero.jpg', class:'bockinbusiness-hero-img'
+    section.partner-bottom-brand.d-md-none.mb-5
+      = image_tag 'bockinbusiness/logo-sb.svg'
 
-  section.partner-bottom-brand.d-lg-none.mt-5.mb-5
-    = image_tag 'bockinbusiness/logo-sb.svg'
-  section.row.teaser-block
-    .col-lg-6.col-12
-      h2.section-separator Mais novidades em breve
-      p Se é cliente Super Bock ou de um dos seus distribuidores, em breve vai poder registar-se nesta página. Mais novidades e detalhes em breve.
-      p Entretanto, leia mais sobre o Preserve e veja outros locais carregando no botão abaixo.
-      br
-      = link_to 'Mais sobre o Preserve.pt', root_url, class: 'btn btn-primary'
+    #how-it-works-facts.row
+      .col-sm-4.col-12.fact
+        = image_tag 'icon-voucher.svg', alt: 'Voucher'
+        h3 Compra um voucher para usar no futuro
+        p Os vouchers são válidos durante 24 meses e podem ser utilizados em qualquer altura.
+      .col-sm-4.col-12.fact
+        = image_tag 'icon-money.svg', alt: 'Money'
+        h3 O local recebe o dinheiro imediatamente
+        p O dinheiro é transferido diretamente de si para a conta do local. Todos os pagamentos estão protegidos contra fraude e todos os locais foram verificados manualmente.
+      .col-sm-4.col-12.fact
+        = image_tag 'icon-heart.svg', alt: 'Heart'
+        h3 Parabéns, contribuiste para tua economia local!
+        p Contribuiste para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
+
+    .row.mt-3
+      p.col-12
+        small
+          ' Precisas de ajuda? Lê as nossas
+          => link_to 'Perguntas Frequentes', partner_faq_url, class: 'text-muted' 
+
+  section.row.section.partner-register
+    .col-lg-7.mt-5
+    .col-lg-5.mt-5.col-12
+      p.partner-signup É cliente da Super Bock ou dos seus distribuidores oficiais? Registe-se aqui:
+      = link_to 'Registe o seu local', new_partner_signup_path, class: 'btn btn-primary', data:{turbolinks: false}
+
+  section.places-container.section
+    .row
+      h2.col-sm-6.section-separator Seleciona o teu local favorito
+
+    - if @places.any?
+      .row
+        = render 'search_form'
+
+      .places-list.row
+        == render @places
+    - else
+      p Mais novidades brevemente, por favor volte mais tarde.
+
+  section.row
+    .col-12.col-sm-6
+      p
+        small
+          = link_to 'Termos e Condições aplicam-se', partner_tos_path, class: 'text-muted'
+      p
+        small
+          ' Precisas de ajuda? Lê as nossas
+          => link_to 'Perguntas Frequentes', partner_faq_url, class: 'text-muted'
+      p
+        small
+          O BockInBusiness com a Preserve está reservada a maiores de 18 anos
