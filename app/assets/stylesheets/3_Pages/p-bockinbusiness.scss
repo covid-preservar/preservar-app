@@ -23,6 +23,7 @@
     position: absolute;
     right: 1rem;
     top: 0;
+    max-width: 39%;
   }
 
   .partner-bottom-brand {
@@ -53,6 +54,10 @@
 
   .partner-register .mt-5 {
     margin-top: 0 !important;
+  }
+
+  a.text-muted {
+    text-decoration: underline;
   }
 
 

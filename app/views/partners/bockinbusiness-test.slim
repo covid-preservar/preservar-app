@@ -37,6 +37,12 @@
         h3 Parabéns, contribuiste para tua economia local!
         p Contribuiste para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
 
+    .row.mt-3
+      p.col-12
+        small
+          ' Precisas de ajuda? Lê as nossas
+          => link_to 'Perguntas Frequentes', partner_faq_url, class: 'text-muted' 
+
   section.row.section.partner-register
     .col-lg-7.mt-5
     .col-lg-5.mt-5.col-12
@@ -61,4 +67,10 @@
       p
         small
           = link_to 'Termos e Condições aplicam-se', partner_tos_path, class: 'text-muted'
-          p O BockInBusiness com a Preserve está reservada a maiores de 18 anos
+      p
+        small
+          ' Precisas de ajuda? Lê as nossas
+          => link_to 'Perguntas Frequentes', partner_faq_url, class: 'text-muted'
+      p
+        small
+          O BockInBusiness com a Preserve está reservada a maiores de 18 anos
