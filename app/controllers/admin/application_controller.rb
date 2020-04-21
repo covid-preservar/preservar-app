@@ -9,6 +9,7 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     before_action :authenticate_admin_user!
     before_action :set_locale
+    skip_after_action :intercom_rails_auto_include
 
     # Override this value to specify the number of elements to display at a time
     # on index pages. Defaults to 20.
