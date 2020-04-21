@@ -22,6 +22,8 @@ class Place < ApplicationRecord
 
   default_scope -> { includes(:partnership, :partner, :category) }
 
+  paginates_per 30
+
   attr_accessor :district
 
   def can_publish?

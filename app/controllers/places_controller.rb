@@ -5,10 +5,10 @@ class PlacesController < ApplicationController
   def index
     @city = params[:city]
 
-    search = PlaceSearch.new(category: params[:category], city: @city)
+    search = PlaceSearch.new(category: params[:category], city: @city,)
 
     @category = search.category
-    @places = search.places
+    @places = search.places.page params[:page]
     @title = search.title
   end
 
