@@ -10,9 +10,9 @@ class Place < ApplicationRecord
   belongs_to :seller
   has_many :vouchers, dependent: :restrict_with_exception
 
-  has_one :partnership, inverse_of: :place
+  has_one :partnership, inverse_of: :place, dependent: :destroy
   has_one :partner, through: :partnership, inverse_of: :places
-  has_one :partner_identifier
+  has_one :partner_identifier, through: :partnership
 
   validates :name, :area, :address, :main_photo, presence: true
   validate  :seller_has_api_key
