@@ -25,47 +25,11 @@ hr {
 }
 
 /*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-/*
  * Allow only vertical resizing of textareas.
  */
 
 textarea {
   resize: vertical;
-}
-
-/* ==========================================================================
-   Browser Upgrade Prompt
-   ========================================================================== */
-
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
 }
 
 /* ==========================================================================
@@ -77,165 +41,13 @@ textarea {
    ========================================================================== */
 
 /*
- * Hide visually and from screen readers
- */
-
-.hidden {
-  display: none !important;
-}
-
-/*
-* Hide only visually, but have it available for screen readers:
-* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
-*
-* 1. For long content, line feeds are not interpreted as spaces and small width
-*    causes content to wrap 1 word per line:
-*    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
-*/
-
-.sr-only {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  /* 1 */
-}
-
-/*
-* Extends the .sr-only class to allow the element
-* to be focusable when navigated to via the keyboard:
-* https://www.drupal.org/node/897638
-*/
-
-.sr-only.focusable:active,
-.sr-only.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
-}
-
-/*
-* Hide visually and from screen readers, but maintain layout
-*/
-
-.invisible {
-  visibility: hidden;
-}
-
-/*
-* Clearfix: contain floats
-*
-* For modern browsers
-* 1. The space content is one way to avoid an Opera bug when the
-*    `contenteditable` attribute is included anywhere else in the document.
-*    Otherwise it causes space to appear at the top and bottom of elements
-*    that receive the `clearfix` class.
-* 2. The use of `table` rather than `block` is only necessary if using
-*    `:before` to contain the top-margins of child elements.
-*/
-
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-/**
-*** SIMPLE GRID
-*** (C) ZACH COLE 2016
-**/
-
-.xcontainer {
-  width: 100%;
-  max-width: calc(var(--grid-max-width) + 2 * var(--grid-outer-padding));
-  padding: 0 var(--grid-outer-padding);
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.hidden-sm {
-  display: none;
-}
-
-/*
 * Base styles
 */
-
-:root {
-  --color-main-blue: #00093c;
-  --color-light-blue: #eff5ff;
-  --color-main-red: #d12136;
-  --color-main-yellow: #ffba02;
-
-  --h1-font-size: calc(60rem / 16);
-  --h1-line-height: calc(64 / 60);
-  --h2-font-size: calc(36rem / 16);
-  --h2-line-height: calc(40 / 36);
-  --h3-font-size: calc(20rem / 16);
-  --h3-line-height: calc(24 / 20);
-
-  --p-font-size: calc(20rem / 16);
-  --p-line-height: calc(24 / 20);
-
-  --grid-max-width: 1224px;
-  --grid-outer-padding: 32px;
-}
-
-html {
-  font-family: "GangsterGrotesk", Helvetica, sans-serif;
-  color: #000000;
-  font-size: 1rem;
-  line-height: 1.5;
-}
 
 body {
   position: relative;
   width: 100%;
   overflow-x: hidden;
-}
-
-h1 {
-  font-size: var(--h1-font-size);
-  line-height: var(--h1-line-height);
-  font-weight: bold;
-  margin: 0;
-  color: var(--color-main-blue);
-}
-
-h2 {
-  font-size: var(--h2-font-size);
-  line-height: var(--h2-line-height);
-  font-weight: bold;
-  margin: 0;
-  color: var(--color-main-blue);
-}
-
-h3 {
-  font-size: var(--h3-font-size);
-  line-height: var(--h3-line-height);
-  font-weight: bold;
-  margin: 0;
-}
-
-p {
-  font-size: var(--p-font-size);
-  line-height: var(--p-line-height);
-  margin: 0;
 }
 
 * + p {
@@ -249,7 +61,6 @@ h2 + p {
 img {
   max-width: 100%;
 }
-
 
 a {
   color: var(--color-main-blue);
@@ -327,21 +138,20 @@ a {
   margin-top: 1rem;
 }
 
+// .support-person img {
+//   box-shadow: -0.5rem -0.5rem 0 var(--color-light-blue);
+//   margin-bottom: 1rem;
+// }
 
-.support-person img {
-  box-shadow: -0.5rem -0.5rem 0 var(--color-light-blue);
-  margin-bottom: 1rem;
-}
+// .support-person p {
+//   font-size: calc(16rem / 16);
+//   line-height: calc(24 / 16);
+//   margin: 0;
+// }
 
-.support-person p {
-  font-size: calc(16rem / 16);
-  line-height: calc(24 / 16);
-  margin: 0;
-}
-
-.support-person p:first-of-type {
-  font-weight: bold;
-}
+// .support-person p:first-of-type {
+//   font-weight: bold;
+// }
 
 #businesses .primary-cta {
   margin-top: 2rem;
@@ -411,25 +221,25 @@ a {
     margin-left: 0;
   }
 
-  .support-people {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    width: 100vw;
-    position: relative;
-    left: 0;
-    right: 50%;
-    margin-right: -50vw;
-    -webkit-overflow-scrolling: touch;
-  }
+  // .support-people {
+  //   display: flex;
+  //   flex-wrap: nowrap;
+  //   overflow-x: auto;
+  //   width: 100vw;
+  //   position: relative;
+  //   left: 0;
+  //   right: 50%;
+  //   margin-right: -50vw;
+  //   -webkit-overflow-scrolling: touch;
+  // }
 
-  .support-person {
-    flex: 0 0 80%;
-    margin-right: calc(var(--grid-outer-padding) / 2);
-  }
+  // .support-person {
+  //   flex: 0 0 80%;
+  //   margin-right: calc(var(--grid-outer-padding) / 2);
+  // }
 
-  .support-person img {
-    box-shadow: none;
-  }
+  // .support-person img {
+  //   box-shadow: none;
+  // }
 
 }

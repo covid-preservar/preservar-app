@@ -2,7 +2,7 @@
   footer#footer.container-xl
     .row
       .col-md-6.col-12.footer-section
-        = image_tag 'logo.svg', alt: 'Preserve', class:'top'
+        = inline_svg 'logo.svg', alt: 'Preserve', class:'top'
         = image_tag 'logo-tech4covid.svg', alt: 'tech4COVID', id: 'tech4covid', class: 'bottom'
       .col-md-6.col-12.footer-section
         .top
@@ -14,7 +14,7 @@
             '  com o grande apoio da
             a href="https://www.eupago.pt/" target="_blank" eupago
             | .
-        p.bottom
+        p
           => link_to 'Termos e Condições', tos_url
           '  &middot;
           => link_to 'Politica de Privacidade', privacy_url
