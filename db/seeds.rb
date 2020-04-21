@@ -372,7 +372,7 @@ MarketingPartner.create!(
   large_logo: Rack::Test::UploadedFile.new('spec/files/logo-loreal.svg', 'image/svg'),
   small_logo: Rack::Test::UploadedFile.new('spec/files/tag-loreal.svg', 'image/svg'))
 
-AddOnPartner.create!(
+sb = AddOnPartner.create!(
   name: "Super Bock",
   slug: 'bockinbusiness',
   min_value: 20,
@@ -382,3 +382,8 @@ AddOnPartner.create!(
   voucher_copy: 'Lorem voucher copy',
   large_logo: Rack::Test::UploadedFile.new('spec/files/logo-sb.svg', 'image/svg'),
   small_logo: Rack::Test::UploadedFile.new('spec/files/tag-sb.svg', 'image/svg'))
+
+sb.partner_properties["partner_types"]={"direct"=>"Directo com a Super Bock",
+                                        "not_client"=>"Não sou cliente Super bock",
+                                        "distributor"=>"Através de distribuidor"}
+sb.save!

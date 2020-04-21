@@ -15,6 +15,9 @@ class PartnershipDashboard < Administrate::BaseDashboard
     approved: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    honor_check: Field::String,
+    partner_type: Field::String,
+    distributor_id: Field::String,
     properties: Field::String.with_options(searchable: false)
   }.freeze
 
@@ -38,6 +41,9 @@ class PartnershipDashboard < Administrate::BaseDashboard
     place
     partner_identifier
     approved
+    honor_check
+    partner_type
+    distributor_id
     properties
     created_at
     updated_at
@@ -46,9 +52,7 @@ class PartnershipDashboard < Administrate::BaseDashboard
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
-  FORM_ATTRIBUTES = %i[
-    approved
-  ].freeze
+  FORM_ATTRIBUTES = %i[].freeze
 
   # COLLECTION_FILTERS
   # a hash that defines filters that can be used while searching via the search
