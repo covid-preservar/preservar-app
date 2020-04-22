@@ -25,6 +25,11 @@ header.main-content__header role="banner"
         [:edit, namespace, page.resource],
         class: "button",
       ) if valid_action?(:edit) && show_action?(:edit, page.resource)
+    - if page.resource.partnership.present?
+      = link_to 'Edit partnership', [:edit, namespace, page.resource.partnership], class: 'button'
+    - else
+      = link_to 'Add partnership', new_admin_partnership_path(place_id: page.resource.id), class: 'button'
+
     - if page.resource.can_publish?
       = button_to 'Publish', publish_admin_place_path(page.resource), class: "button", method: :patch
     - if page.resource.published?

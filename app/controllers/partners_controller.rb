@@ -4,8 +4,8 @@ class PartnersController < ApplicationController
   before_action :load_partner
 
   def index
-    @places = @partner.places.published
-    @cities = @partner.places.published.pluck(:area).uniq.sort
+    @places = @partner.live_places.published
+    @cities = @partner.live_places.published.pluck(:area).uniq.sort
 
     render @partner.slug
   end

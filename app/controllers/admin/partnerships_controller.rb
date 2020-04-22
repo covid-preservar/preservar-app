@@ -9,6 +9,17 @@ module Admin
     #   send_foo_updated_email(requested_resource)
     # end
 
+    def new
+      resource = new_resource
+      authorize_resource(resource)
+
+      resource.place = Place.find(params[:place_id]) if params[:place_id].present?
+
+      render locals: {
+        page: Administrate::Page::Form.new(dashboard, resource),
+      }
+    end
+
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
     # actions.
@@ -37,7 +48,7 @@ module Admin
     #
     def resource_params
       params.require(:partnership).
-        permit(:approved, :honor_check, :partner_type, :distributor_id, :place_id, :partner_id)
+        permit(:approved, :limit_reached, :honor_check, :partner_type, :distributor_id, :place_id, :partner_id)
     end
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions

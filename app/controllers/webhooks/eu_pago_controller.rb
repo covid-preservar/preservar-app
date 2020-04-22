@@ -51,8 +51,7 @@ class Webhooks::EuPagoController < ActionController::Base
          voucher.place.promo_limit_reached? &&
          voucher.place.vouchers.paid.count == voucher.partner.voucher_limit
 
-        # Force cache refresh to hide partner logo
-        voucher.place.touch
+        voucher.partnership.update limit_reached: true
         ApplicationMailer.promo_limit_notify(voucher.place.id).deliver_later
       end
     else

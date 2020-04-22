@@ -15,7 +15,7 @@ class PlaceSearch
     base_scope = if category.present?
       category.places
     elsif partner.present?
-      partner.places
+      partner.live_places
     else
       Place
     end

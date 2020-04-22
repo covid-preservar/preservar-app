@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_162007) do
+ActiveRecord::Schema.define(version: 2020_04_22_104727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 2020_04_20_162007) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "partner_identifier_id"
     t.jsonb "properties", default: {}, null: false
+    t.boolean "limit_reached", default: false, null: false
     t.index ["partner_id"], name: "index_partnerships_on_partner_id"
     t.index ["partner_identifier_id"], name: "index_partnerships_on_partner_identifier_id"
     t.index ["place_id"], name: "index_partnerships_on_place_id"

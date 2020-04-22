@@ -47,6 +47,11 @@
       .field-unit__field
         = f.text_field :distributor_id
 
+    div class="field-unit field-unit-approved"
+      .field-unit__label
+        label for="partner" Limit reached
+      .field-unit__field
+        = f.check_box :limit_reached
 
     div class="field-unit field-unit-approved"
       .field-unit__label
@@ -59,6 +64,8 @@
       label for="partner" Approved
     .field-unit__field
       = f.check_box :approved
+
+
 
   .form-actions
     = f.submit

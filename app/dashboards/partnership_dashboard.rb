@@ -13,6 +13,7 @@ class PartnershipDashboard < Administrate::BaseDashboard
     partner_identifier: Field::BelongsTo,
     id: Field::Number,
     approved: Field::Boolean,
+    limit_reached: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     honor_check: Field::String,
@@ -31,6 +32,7 @@ class PartnershipDashboard < Administrate::BaseDashboard
     place
     id
     approved
+    limit_reached
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -41,6 +43,7 @@ class PartnershipDashboard < Administrate::BaseDashboard
     place
     partner_identifier
     approved
+    limit_reached
     honor_check
     partner_type
     distributor_id

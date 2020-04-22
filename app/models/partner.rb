@@ -6,6 +6,9 @@ class Partner < ApplicationRecord
 
   has_many :partnerships, inverse_of: :partner, dependent: :destroy
   has_many :places, through: :partnerships, inverse_of: :partner
+  has_many :live_partnerships, -> { where(approved: true, limit_reached: false)}, class_name:'Partnership'
+  has_many :live_places, through: :live_partnerships, class_name:'Place', source: :place
+
   has_many :vouchers
   has_many :partner_identifiers
 

@@ -24,7 +24,8 @@ class VoucherDashboard < Administrate::BaseDashboard
     cookie_uuid: Field::String,
     vat_id: Field::String,
     valid_until: Field::Date,
-    tracking_codes: Field::Text
+    tracking_codes: Field::Text,
+    partner: Field::Polymorphic
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -40,6 +41,7 @@ class VoucherDashboard < Administrate::BaseDashboard
     value
     valid_until
     state
+    partner
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -61,6 +63,7 @@ class VoucherDashboard < Administrate::BaseDashboard
     payment_method
     payment_phone
     cookie_uuid
+    partner
   ].freeze
 
   # FORM_ATTRIBUTES
