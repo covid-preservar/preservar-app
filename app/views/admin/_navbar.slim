@@ -1,4 +1,49 @@
 nav.navbar.navbar-expand-lg.navbar-light.bg-light
   .navbar-brand
-    = inline_svg 'logo-small.svg'
+    = link_to inline_svg('logo-small.svg'), admin_root_path
+  button.navbar-toggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label=("Toggle navigation") data-target="#navbarSupportedContent" data-toggle="collapse" type="button"
+    span.navbar-toggler-icon
+
   = link_to '&slarr; Back to the app'.html_safe, root_path
+
+  - if admin_user_signed_in?
+    #navbarSupportedContent.collapse.navbar-collapse
+      ul.navbar-nav.mr-auto.ml-auto
+        li.nav-item
+          = link_to 'Stats', admin_stats_path, class:'nav-link '
+        - if can? :read, Category
+          li.nav-item
+            = link_to 'Categories', [:admin, Category], class:'nav-link '
+        - if can? :read, Partner
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+              | Partners
+            .dropdown-menu aria-labelledby="navbarDropdown"
+              = link_to 'Partners', [:admin, Partner], class:'dropdown-item'
+              = link_to 'Partnerships', [:admin, Partnership], class:'dropdown-item'
+              = link_to 'Partner Identifiers', [:admin, PartnerIdentifier], class:'dropdown-item'
+        - if can? :read, Seller
+          li.nav-item.dropdown
+            a.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+              | Sellers
+            .dropdown-menu
+              = link_to 'Places', [:admin, Place], class:'dropdown-item'
+              = link_to 'Sellers', [:admin, Seller], class:'dropdown-item'
+              = link_to 'Seller Users', [:admin, SellerUser], class:'dropdown-item'
+              = link_to 'CSV Imports', [:admin, CSVImport], class:'dropdown-item'
+        - if can? :read, Voucher
+          li.nav-item
+            = link_to 'Vouchers', [:admin, Voucher], class:'nav-link '
+
+        - if can? :read, :all
+          li.nav-item.dropdown
+            a.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"
+              | Internal
+            .dropdown-menu
+              = link_to 'Sidekiq', '/admin/sidekiq', class:'dropdown-item'
+              = link_to 'Flipper', '/admin/flipper', class:'dropdown-item'
+              = link_to 'Payment Notifications', [:admin, PaymentNotification], class:'dropdown-item'
+
+        - if can? :read, AdminUser
+          li.nav-item
+            = link_to 'Admin Users', [:admin, AdminUser], class:'nav-link'

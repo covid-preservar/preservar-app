@@ -1,1 +1,2 @@
-$('.home-list').html('<%= j(render(@places) || "Sem resultados")%>');
+$('#search-results').html('<%= j(render 'search_results')%>');
+window.spinner.stop();

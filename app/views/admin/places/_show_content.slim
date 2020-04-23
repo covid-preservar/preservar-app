@@ -1,0 +1,116 @@
+- content_for :resource_actions do
+  - if @resource.partnership.present?
+    = link_to 'Edit partnership', edit_admin_partnership_path(@resource.partnership), class: 'btn btn-outline-primary btn-sm'
+  - else
+    = link_to 'Add partnership', new_admin_partnership_path(place_id: @resource.id), class: 'btn btn-outline-primary btn-sm'
+  - if @resource.can_publish?
+    = button_to 'Publish', publish_admin_place_path(@resource), class: "btn btn-outline-primary btn-sm", method: :patch
+  - if @resource.published?
+    = button_to 'Unpublish', unpublish_admin_place_path(@resource), class: "btn btn-warning btn-sm", method: :patch
+
+- content_for :show_content
+  table.table.table-hover
+    tbody
+      tr
+        td
+          strong Photo
+        td
+          - if @resource.main_photo.present?
+            = image_tag @resource.photo_url(:small)
+          br
+          => link_to 'Small photo', @resource.main_photo_url(:small, public: true), target: '_blank'
+          ' |
+          = link_to 'Large photo', @resource.main_photo_url(:large, public: true), target: '_blank'
+      tr
+        td
+          strong ID
+        td
+          = @resource.id
+      tr
+        td
+          strong Name
+        td
+          = @resource.name
+      tr
+        td
+          strong Published
+        td
+          = @resource.published
+      tr
+        td
+          strong Published At
+        td
+          = @resource.published_at
+      tr
+        td
+          strong Seller
+        td
+          = link_to @resource.seller, [:admin, @resource.seller]
+      tr
+        td
+          strong Slug
+        td
+          = @resource.slug
+      tr
+        td
+          strong Category
+        td
+          = @resource.category.name
+      tr
+        td
+          strong Area
+        td
+          = @resource.area
+      tr
+        td
+          strong Address
+        td
+          = @resource.address
+      tr
+        td
+          strong Partnership
+        td
+          = @resource.partnership
+      tr
+        td
+          strong Has Discount
+        td
+          = @resource.has_discount
+      tr
+        td
+          strong Created At
+        td
+          = @resource.created_at
+      tr
+        td
+          strong Updated At
+        td
+          = @resource.updated_at
+
+
+  h3.mt-4.mb-2 Vouchers
+
+  table.table.table-hover.table-striped
+    thead
+      th
+      th ID
+      th Email
+      th Value
+      th State
+      th Created At
+
+    tbody
+      - @resource.vouchers.each do |voucher|
+        tr
+          td
+            = link_to 'View', [:admin, voucher]
+          td
+            = voucher.id
+          td
+            = voucher.email
+          td
+            = number_to_currency voucher.value, locale: :pt, precision: 0
+          td
+            = voucher.state
+          td
+            = voucher.created_at

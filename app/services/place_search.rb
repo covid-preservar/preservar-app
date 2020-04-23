@@ -2,11 +2,12 @@ class PlaceSearch
 
   attr_accessor :category, :city, :partner, :name
 
-  def initialize(category: nil, city: nil, partner: nil, name: nil)
+  def initialize(category: nil, city: nil, partner: nil, name: nil, page: 1)
     @category = Category.find(category) if category.present?
     @city = city.presence
     @partner = partner
     @name = name
+    @page = page
   end
 
   def places
@@ -15,7 +16,7 @@ class PlaceSearch
     base_scope = if category.present?
       category.places
     elsif partner.present?
-      partner.places
+      partner.live_places
     else
       Place
     end
@@ -25,7 +26,7 @@ class PlaceSearch
     @places = @places.where(area: city) if city.present?
     @places = @places.where('name ILIKE ?', "%#{name}%") if name.present?
 
-    @places = @places.sorted
+    @places = @places.sorted.page(@page)
   end
 
   def title

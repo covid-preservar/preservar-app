@@ -1,0 +1,28 @@
+- content_for :title do
+  = kind.to_s
+
+= render 'show_content'
+
+section.mt-4
+  h2.mb-4
+    ' #{kind.to_s}
+    strong = @resource.try(:name) || @resource.id
+
+  .resource-actions
+    - if can?(:edit, @resource) && edit_resource_link(@resource).present?
+      = link_to 'Edit', edit_resource_link(@resource),
+        class: 'btn btn-outline-primary btn-sm'
+
+    - if can?(:destroy, @resource)
+      = link_to 'Delete', resource_link(@resource),
+        class: 'btn btn-outline-danger btn-sm', method: :delete,
+        data: { confirm: "This #{kind} will be deleted forever! If you're "\
+                         "really sure that you want to delete, press OK." }
+
+    = yield :resource_actions
+
+    = link_to 'Search', search_link, class: 'btn btn-primary btn-sm ml-auto'
+
+    | &nbsp;
+
+  = yield :show_content

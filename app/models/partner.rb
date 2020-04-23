@@ -6,6 +6,9 @@ class Partner < ApplicationRecord
 
   has_many :partnerships, inverse_of: :partner, dependent: :destroy
   has_many :places, through: :partnerships, inverse_of: :partner
+  has_many :live_partnerships, -> { where(approved: true, limit_reached: false)}, class_name:'Partnership'
+  has_many :live_places, through: :live_partnerships, class_name:'Place', source: :place
+
   has_many :vouchers
   has_many :partner_identifiers
 
@@ -85,5 +88,21 @@ class Partner < ApplicationRecord
 
   def requires_honor_check=(value)
     partner_properties['requires_honor_check'] = value == '1'
+  end
+
+  def to_s
+    "#{self.class}: #{name}"
+  end
+
+  def self.inherited(subclass)
+    super
+
+    def subclass.model_name
+      super.tap do |name|
+        route_key = base_class.name.underscore
+        name.instance_variable_set(:@singular_route_key, route_key)
+        name.instance_variable_set(:@route_key, route_key.pluralize)
+      end
+    end
   end
 end

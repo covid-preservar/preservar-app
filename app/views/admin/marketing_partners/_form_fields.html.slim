@@ -1,0 +1,8 @@
+= f.input :name
+= f.input :slug
+= f.input :place_page_copy
+= f.input :voucher_copy
+= f.input :large_logo
+= f.input :small_logo
+= f.input :restricted_category_ids, collection: Category.all, input_html: {multiple: true}
+= f.input :requires_partner_id_code, as: :boolean

@@ -43,11 +43,25 @@ class ApplicationController < ActionController::Base
   private
 
   def load_categories
-    @categories = Category.with_places
+    @categories = Category.with_places.order(name: :asc)
   end
 
   def load_cities
     @cities = Place.published.distinct(:area).pluck(:area).sort
+  end
+
+  def set_location
+    location = request.location
+    city = Location.find_location(location.city)&.area if location&.city.present?
+    state = Location.find_location(location.state)&.area if location&.state.present?
+
+    if city.present? && city.in?(@cities)
+      @city = city
+    elsif state.present? && state.in?(@cities)
+      @city = state
+    else
+      @city = nil
+    end
   end
 
   def handle_404(exception)

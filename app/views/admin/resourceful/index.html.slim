@@ -1,0 +1,44 @@
+- content_for :title do
+
+  = kind.model_name.human.pluralize
+
+= render 'index_header'
+
+section.mt-4
+  - if @resources.empty?
+    p.text-center Nothing to see here... move along
+
+  - else
+    .pagination-info
+      p.mt-2.mb-2 = page_entries_info @resources
+      = paginate @resources, left: 1, right: 2, window: 2, views_prefix: :admin
+
+    table.table.table-striped.table-hover.mt-4
+      thead
+        th &nbsp;
+
+        - index_columns.each do |column|
+          th class=search_sort_class(params[:sort_attr],
+                                    "#{kind.model_name.collection}.#{column[:sort]}")
+            = column[:sort].present? ? index_column_link(column) : column[:label]
+
+      tbody
+        - @resources.each do |resource|
+          tr
+            td.text-nowrap
+              - if can? :show, resource
+                => link_to 'View', resource_link(resource)
+
+              - if can?(:edit, resource) && edit_resource_link(resource).present?
+                = link_to 'Edit', edit_resource_link(resource)
+
+            - index_columns.each do |column|
+              td
+                - if column[:formatter].present?
+                  = column[:formatter].call(self, resource)
+                - else
+                  = resource.send(column[:attr])
+
+    .pagination-info
+      = paginate @resources, left: 1, right: 2, window: 2, views_prefix: :admin
+      p.mt-2.mb-4 = page_entries_info @resources

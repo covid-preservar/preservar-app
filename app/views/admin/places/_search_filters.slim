@@ -1,0 +1,6 @@
+.form-row.mb-2
+  = f.input :name_cont, label: 'Name', as: :string, wrapper_class: 'col'
+  = f.input :category_id_eq, label: 'Category', as: :select, wrapper_class: 'col', collection: Category.all
+.form-row.mb-2
+  = f.input :area_cont, label: 'Area', as: :string, wrapper_class: 'col'
+  = f.input :published_eq, label: 'Published', as: :select, wrapper_class: 'col', collection: [['Yes', true],['No', false]]

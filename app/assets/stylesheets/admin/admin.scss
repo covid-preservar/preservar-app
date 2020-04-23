@@ -1,0 +1,54 @@
+.admin {
+  .navbar-brand {
+    padding: 0;
+
+    svg {
+      width: 2.5rem;
+    }
+  }
+  .stats_section {
+    margin: 2rem 0;
+  }
+
+  .subtitle {
+    padding: 1rem 0;
+  }
+
+  .sort-down::after {
+    background: image-url("iconic/caret-bottom.svg") no-repeat center;
+    content: '';
+    padding: 0 5px;
+  }
+
+  .sort-up::after {
+    background: image-url("iconic/caret-top.svg") no-repeat center;
+    content: '';
+    padding: 0 5px;
+  }
+
+  .sort-indicator {
+    width: 10px !important;
+    height: 10px !important;
+    margin-left: 5px;
+    .iconic-property-fill {
+      fill: $blue !important;
+    }
+
+    .iconic-property-stroke {
+      stroke: $blue !important;
+    }
+  }
+
+  .resource-actions {
+    display: flex;
+    margin: 1rem 0;
+
+    .btn + .btn,
+    .button_to + .button_to,
+    .btn + .button_to,
+    .button_to + .btn {
+      margin-left: .5rem;
+    }
+  }
+
+}

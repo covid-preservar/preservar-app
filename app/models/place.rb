@@ -47,7 +47,7 @@ class Place < ApplicationRecord
   end
 
   def active_partner
-    approved_partner if approved_partner&.active? && !promo_limit_reached?
+    approved_partner if approved_partner&.active? && !partnership.limit_reached?
   end
 
   def promo_limit_reached?
@@ -58,6 +58,10 @@ class Place < ApplicationRecord
 
   def has_charity_partner?
     approved_partner.present? && partner.charity_partner?
+  end
+
+  def to_s
+    "Place: #{name}"
   end
 
   private

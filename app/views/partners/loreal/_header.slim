@@ -4,3 +4,5 @@
       = link_to '/' do
         = inline_svg 'loreal/logo-preserve-loreal.svg'
       = inline_svg 'loreal/partner-loreal-hashtag.svg', class: 'd-none d-md-block partner-top-brand'
+
+      = render partial:'partners/header_right', locals: {place_type: 'salão'}

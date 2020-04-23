@@ -7,13 +7,13 @@
 section.places-container.container-xl
   .row
     h2.col-12.col-md-6
-      => @places.total_count
+      => @places.count
       | Resultados
 
-
   .places-list.row
-    == render @places
+    == render partial: :place, collection: @places, cache: true
   = paginate @places, params: {city: @city, category: @category&.id}
+
 section.container-xl.section#businesses
   .row.clearfix
     h2.col-12.col-md-8.col-lg-6.section-separator Não encontra o seu local favorito? Partilhe a página de submissão com eles

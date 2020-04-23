@@ -1,0 +1,9 @@
+- type = %w(new create).include?(action_name) ? 'New' : 'Edit'
+- title = "#{type} #{@resource.model_name.human.to_s}"
+
+- content_for :title do
+  = title
+
+h2.mb-4.mt-4 = title
+
+= render 'form'

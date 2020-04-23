@@ -1,0 +1,9 @@
+header.mt-4
+  h2
+    => kind_human_name.pluralize
+
+    - if can?(:new, kind) && new_resource_link.present?
+      => link_to "New #{kind.model_name.human}", new_resource_link,
+        class: 'btn btn-outline-primary btn-sm'
+
+  = render 'search' unless search_disabled

@@ -83,12 +83,10 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :admin_users
       resources :categories
-      resources :csv_imports
+      resources :csv_imports, except: [:edit, :update]
       resources :payment_notifications, only: [:index, :show]
       resources :sellers
-      resources :add_on_partners
-      resources :charity_partners
-      resources :marketing_partners
+      resources :partners
       resources :partnerships
       resources :partner_identifiers, only: [:index, :show]
       resources :places do

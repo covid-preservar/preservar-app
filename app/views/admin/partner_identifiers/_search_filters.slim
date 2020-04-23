@@ -1,0 +1,4 @@
+.form-row.mb-2
+  = f.input :identifier_eq, label: 'Identifier',wrapper_class: 'col'
+  = f.input :partner_id_eq, label: 'Partner', as: :select, wrapper_class: 'col', collection: Partner.all
+

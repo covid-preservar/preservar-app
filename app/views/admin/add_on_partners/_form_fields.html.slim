@@ -1,0 +1,14 @@
+= f.input :name
+= f.input :slug
+= f.input :place_page_copy
+= f.input :voucher_copy
+= f.input :large_logo
+= f.input :small_logo
+= f.input :restricted_category_ids, collection: Category.all, input_html: {multiple: true}
+= f.input :requires_partner_id_code, as: :boolean
+= f.input :requires_honor_check, as: :boolean
+= f.input :min_value
+= f.input :add_on_value
+= f.input :target_value
+= f.input :voucher_limit
+= f.input :date_limit, input_html: { class:'date_input'}

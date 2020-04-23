@@ -1,5 +1,5 @@
 module Admin
-  class StatsController < Admin::ApplicationController
+  class StatsController < Admin::BaseController
 
     def index
       voucher_counts = Voucher.paid.group_by_day(:payment_completed_at).count

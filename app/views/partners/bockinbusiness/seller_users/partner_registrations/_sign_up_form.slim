@@ -2,6 +2,9 @@ section#register-form.section
   .row
     .col-lg-6
       h2.section-separator Registe-se agora e comece a vender
+      p.small
+        ' Já tem conta no Preserve? Não se registe outra vez, entre em contacto connosco e envie-nos o seu número de cliente Super Bock ou distribuidor:
+        = link_to 'info@preserve.pt', 'info@preserve.pt'
 
       = simple_form_for(@form,
                         as: resource_name,

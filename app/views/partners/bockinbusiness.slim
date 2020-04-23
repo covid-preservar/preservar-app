@@ -22,7 +22,7 @@
           p
             ' Por cada voucher que comprares, a Super Bock adiciona
             strong 5€ a esse voucher
-            ' – mais dinheiro para ti e mais dinheiro para os estabelecimentos participantes nesta acão (oferta limitada aos primeiros 4000 vouchers)
+            ' – mais dinheiro para ti e mais dinheiro para os estabelecimentos participantes nesta acão (oferta limitada aos primeiros 4000 vouchers).
           p Sempre vivemos momentos inesquecíveis com os nossos amigos nestes lugares…junta-te a este movimento para os ajudar para que voltemos a brindar juntos!
 
       .col-sm-6.col-lg-5.offset-lg-1.col-12.d-none.d-sm-block
@@ -61,20 +61,21 @@
     .row
       h2.col-sm-6.section-separator Seleciona o teu local favorito
 
-    - if @places.any?
-      .row
-        = render 'search_form'
+    .row
+      = render 'search_form'
 
-      .places-list.row
-        == render @places
-    - else
-      p Mais novidades brevemente, por favor volte mais tarde.
+    #search-results
 
-  section.row
+  section.section#businesses
+    .row.clearfix
+      h2.col-12.col-md-8.col-lg-6.section-separator Não encontra o seu local favorito?
+    = link_to 'Pesquise outros locais em preserve.pt', root_url, class: 'primary-cta'
+
+  section.row.section
     .col-12.col-sm-6
       p
         small
-          = link_to 'Termos e Condições aplicam-se', partner_tos_path, class: 'text-muted'
+          = link_to 'Termos e Condições Bock in Business', partner_tos_path, class: 'text-muted'
       p
         small
           ' Precisas de ajuda? Lê as nossas
