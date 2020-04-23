@@ -67,7 +67,8 @@
         = render 'search_form'
 
       .places-list.row
-        == render @places
+        == render partial: :place, collection: @places, cache: true
+
     - else
       p Mais novidades brevemente, por favor volte mais tarde.
 
