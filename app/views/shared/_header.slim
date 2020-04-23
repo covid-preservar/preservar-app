@@ -2,6 +2,7 @@ nav.header.navbar.container-xl
 
   a#logo href="/"
   .header-right
+    = link_to 'Ajuda', 'http://ajuda.preserve.pt/', class: 'header-link', target: '_blank'
     - if seller_user_signed_in?
       = link_to 'Terminar sessão', destroy_seller_user_session_path, method: :delete, class: 'header-link'
       = link_to 'A minha conta', seller_account_path, class: 'header-link secondary-cta'

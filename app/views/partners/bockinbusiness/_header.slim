@@ -4,3 +4,5 @@
       = link_to '/' do
         = inline_svg 'bockinbusiness/logo.svg'
       = inline_svg 'bockinbusiness/logo-sb.svg', class: 'd-none d-md-block partner-top-brand'
+
+      = render partial:'partners/header_right', locals: {place_type: 'local'}
