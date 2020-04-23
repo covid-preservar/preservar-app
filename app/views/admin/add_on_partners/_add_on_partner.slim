@@ -46,11 +46,6 @@
               li = link_to c.name, [:admin, c]
       tr
         td
-          strong Requires Partner Id Code
-        td
-          = @resource.requires_partner_id_code
-      tr
-        td
           strong Min Value
         td
           = number_to_currency @resource.min_value, locale: :pt, precision: 0
