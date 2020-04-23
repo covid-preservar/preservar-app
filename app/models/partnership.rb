@@ -35,4 +35,8 @@ class Partnership < ApplicationRecord
   def partner_id_code=(value)
     self.partner_identifier = partner.partner_identifiers.find_by(identifier: partner_id_code)
   end
+
+  def to_s
+    "Partnership #{id} — #{partner.name}"
+  end
 end
