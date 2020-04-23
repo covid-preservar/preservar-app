@@ -64,7 +64,7 @@ class Admin::ResourcefulController < Admin::BaseController
 
   def destroy
     authorize! :destroy, kind
-    @resource = kind.find(params[:id])
+    find_resource(params[:id])
     @resource.destroy!
     redirect_to after_destroy_path,
                 notice: "#{kind_human_name} was successfully destroyed."
@@ -189,7 +189,7 @@ class Admin::ResourcefulController < Admin::BaseController
   private
 
   def sort_link_params
-    params.require(:q).permit!
+    params.require(:q).permit! if params[:q].present?
   end
 
   def resource_not_found
