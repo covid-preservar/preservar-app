@@ -5,5 +5,5 @@ class Category < ApplicationRecord
   validates :name, :name_plural, presence: true
 
   scope :with_places, -> { where(id: Place.published.distinct(:category_id).select(:category_id)) }
-  default_scope -> { order(name: :asc) }
+
 end

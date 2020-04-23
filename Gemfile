@@ -18,6 +18,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'aasm'
 gem 'aws-sdk-s3'
+gem 'cancancan'
 gem 'countries'
 gem 'devise-i18n'
 gem 'devise'
@@ -34,6 +35,7 @@ gem 'image_optim'
 gem 'image_processing', '~> 1.0'
 gem 'inline_svg'
 gem 'intercom-rails'
+gem 'kaminari'
 gem 'maxminddb'
 gem 'mailjet', github: 'mailjet/mailjet-gem'
 gem 'meta-tags'
@@ -42,6 +44,7 @@ gem 'pry'
 gem 'pry-rails'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'rack-cors'
+gem 'ransack'
 gem 'redcarpet'
 gem 'rollbar'
 gem 'shrine'
@@ -54,9 +57,6 @@ gem 'valvat'
 gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
-
-# Backoffice
-gem 'administrate', '~> 0.13.0'
 
 group :production do
   gem 'cloudflare-rails'

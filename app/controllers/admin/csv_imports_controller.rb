@@ -1,61 +1,51 @@
 module Admin
-  class CSVImportsController < Admin::ApplicationController
-    # Overwrite any of the RESTful controller actions to implement custom behavior
-    # For example, you may want to send an email after a foo is updated.
-    #
-    # def update
-    #   super
-    #   send_foo_updated_email(requested_resource)
-    # end
+  class CSVImportsController < Admin::ResourcefulController
 
-    def create
-      resource = resource_class.new(resource_params.merge(admin_user: current_admin_user))
+    def index_columns
+      [
+        {attr: :id, label: 'ID', sort: :id},
+        {attr: :admin_user, label: 'AdminUser', sort: :admin_user_id, formatter: -> (view, record) { record.admin_user }},
+        {attr: :state, label: 'State', sort: :state}
+      ]
+    end
 
-      if resource.save
-        SellerCSVImport.perform_later resource.id
-
-        redirect_to([namespace, resource],
-                    notice: translate_with_resource("create.success"))
-      else
-        render :new, locals: {
-          page: Administrate::Page::Form.new(dashboard, resource)
-        }
+    def new
+      super do
+        @resource.admin_user = current_admin_user
       end
     end
 
-    # Override this method to specify custom lookup behavior.
-    # This will be used to set the resource for the `show`, `edit`, and `update`
-    # actions.
-    #
-    # def find_resource(param)
-    #   Foo.find_by!(slug: param)
-    # end
+    def show_attributes
+      [
+        {attr: :id, label: 'ID' },
+        {attr: :admin_user, label: 'Admin User' },
+        {attr: :file_data, label: 'File Data' },
+        {attr: :bad_vat_lines_count, label: 'Bad Vat Lines Count' },
+        {attr: :not_found_lines_count, label: 'Not Found Lines Count' },
+        {attr: :no_key_lines_count, label: 'No Key Lines Count' },
+        {attr: :dup_key_lines_count, label: 'Dup Key Lines Count' },
+        {attr: :publish_failed_ids, label: 'Publish Failed Ids' },
+        {attr: :published_ids, label: 'Published Ids' },
+        {attr: :state, label: 'State' }
+      ]
 
-    # The result of this lookup will be available as `requested_resource`
+    end
 
-    # Override this if you have certain roles that require a subset
-    # this will be used to set the records shown on the `index` action.
-    #
-    # def scoped_resource
-    #   if current_user.super_admin?
-    #     resource_class
-    #   else
-    #     resource_class.with_less_stuff
-    #   end
-    # end
+    protected
 
-    # Override `resource_params` if you want to transform the submitted
-    # data before it's persisted. For example, the following would turn all
-    # empty values into nil values. It uses other APIs such as `resource_class`
-    # and `dashboard`:
-    #
-    # def resource_params
-    #   params.require(resource_class.model_name.param_key).
-    #     permit(dashboard.permitted_attributes).
-    #     transform_values { |value| value == "" ? nil : value }
-    # end
+    def search_disabled
+      true
+    end
 
-    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
-    # for more information
+    def after_upsert(type)
+      if type == :create && @resource.persisted?
+        binding.pry
+        SellerCSVImport.perform_later resource.id
+      end
+    end
+
+    def permitted_params
+      super.permit!
+    end
   end
 end

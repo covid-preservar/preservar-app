@@ -21,4 +21,8 @@ class SellerUser < ApplicationRecord
     (ENV.fetch('PRIVACY_POLICY_VERSION') != privacy_policy_version_consented_to) ||
     (ENV.fetch('TERMS_OF_SERVICE_VERSION') != terms_of_service_version_consented_to)
   end
+
+  def to_s
+    "SellerUser <#{email}>"
+  end
 end

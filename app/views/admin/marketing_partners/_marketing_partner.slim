@@ -1,0 +1,66 @@
+
+- content_for :show_content
+  table.table.table-hover
+    tbody
+      tr
+        td
+          strong Photo
+        td
+          - if @resource.large_logo.present?
+            span Large
+            = image_tag @resource.logo_url, class:'partner-logo logo-lg'
+          - if @resource.small_logo.present?
+            span Small
+            = image_tag @resource.thumb_logo_url, class:'partner-logo logo-sm'
+      tr
+        td
+          strong ID
+        td
+          = @resource.id
+      tr
+        td
+          strong Name
+        td
+          = @resource.name
+      tr
+        td
+          strong Slug
+        td
+          = @resource.slug
+      tr
+        td
+          strong Place page copy
+        td
+          = @resource.place_page_copy
+      tr
+        td
+          strong Voucher copy
+        td
+          = @resource.voucher_copy
+      tr
+        td
+          strong Restricted Categories
+        td
+          ul
+            - @resource.restricted_categories&.map do |c|
+              li = link_to c.name, [:admin, c]
+      tr
+        td
+          strong Requires Partner Id Code
+        td
+          = @resource.requires_partner_id_code
+      tr
+        td
+          strong Partner Properties
+        td
+          = @resource.partner_properties
+      tr
+        td
+          strong Created At
+        td
+          = @resource.created_at
+      tr
+        td
+          strong Updated At
+        td
+          = @resource.updated_at

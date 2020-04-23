@@ -1,0 +1,5 @@
+.form-row.mb-2
+  = f.input :status_eq, label: 'Status', as: :select, wrapper_class: 'col', collection: PaymentNotification.distinct(:status).pluck(:status)
+  = f.input :created_at_lteq, label: 'Created before', wrapper_class: 'col', input_html: { class:'date_input' }
+  = f.input :created_at_gteq, label: 'Created after', wrapper_class: 'col', input_html: { class:'date_input' }
+

@@ -1,57 +1,51 @@
 # frozen_string_literal: true
 module Admin
-  class PartnershipsController < Admin::ApplicationController
-    # Overwrite any of the RESTful controller actions to implement custom behavior
-    # For example, you may want to send an email after a foo is updated.
-    #
-    # def update
-    #   super
-    #   send_foo_updated_email(requested_resource)
-    # end
+  class PartnershipsController < Admin::ResourcefulController
+
+    def index_columns
+      [
+        {attr: :id, label: 'ID', sort: :id},
+        {attr: :partner, label: 'Partner', sort: nil, formatter: -> (view, ps) { view.link_to ps.partner, view.admin_partner_path(ps.partner) } },
+        {attr: :place, label: 'Place', sort: nil, formatter: -> (view, ps) { view.link_to "Place: #{ps.place.name}", [:admin, ps.place] } },
+        {attr: :approved, label: 'Approved', sort: :approved},
+        {attr: :limit_reached, label: 'Limit Reached', sort: :limit_reached},
+        {attr: :created_at, label: 'Created At', sort: :created_at},
+        {attr: :updated_at, label: 'Updated At', sort: :updated_at}
+      ]
+    end
+
+    def show_attributes
+      [
+        {attr: :id, label: 'ID'},
+        {attr: :partner, label: 'Partner', formatter: -> (view, ps) { view.link_to ps.partner, view.admin_partner_path(ps.partner) } },
+        {attr: :place, label: 'Place', formatter: -> (view, ps) { view.link_to "Place: #{ps.place.name}", [:admin, ps.place] } },
+        {attr: :approved, label: 'Approved'},
+        {attr: :limit_reached, label: 'Limit Reached'},
+        {attr: :partner_identifier, label: 'Partner Identifier', formatter: -> (view, ps) { view.link_to "PartnerIdentifier: #{ps.partner_identifier.identifier}", [:admin, ps.partner_identifier] }},
+        {attr: :created_at, label: 'Created At'},
+        {attr: :updated_at, label: 'Updated At'}
+      ]
+    end
 
     def new
-      resource = new_resource
-      authorize_resource(resource)
-
-      resource.place = Place.find(params[:place_id]) if params[:place_id].present?
-
-      render locals: {
-        page: Administrate::Page::Form.new(dashboard, resource),
-      }
+      super do
+        @resource.place = Place.find(params[:place_id]) if params[:place_id].present?
+      end
     end
 
-    # Override this method to specify custom lookup behavior.
-    # This will be used to set the resource for the `show`, `edit`, and `update`
-    # actions.
-    #
-    # def find_resource(param)
-    #   Foo.find_by!(slug: param)
-    # end
-
-    # The result of this lookup will be available as `requested_resource`
-
-    # Override this if you have certain roles that require a subset
-    # this will be used to set the records shown on the `index` action.
-    #
-    # def scoped_resource
-    #   if current_user.super_admin?
-    #     resource_class
-    #   else
-    #     resource_class.with_less_stuff
-    #   end
-    # end
-
-    # Override `resource_params` if you want to transform the submitted
-    # data before it's persisted. For example, the following would turn all
-    # empty values into nil values. It uses other APIs such as `resource_class`
-    # and `dashboard`:
-    #
-    def resource_params
-      params.require(:partnership).
-        permit(:approved, :limit_reached, :honor_check, :partner_type, :distributor_id, :place_id, :partner_id)
+    def update
+      super do
+        if permitted_params[:partner_id_code].present?
+          @resource.partner_identifier = PartnerIdentifier.find_by(identifier: permitted_params[:partner_id_code])
+        end
+      end
     end
 
-    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
-    # for more information
+    protected
+
+    def permitted_params
+      super.permit!
+    end
+
   end
 end

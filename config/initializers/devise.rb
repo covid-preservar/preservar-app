@@ -301,5 +301,5 @@ end
 
 Rails.application.config.to_prepare do
   Devise::Mailer.layout 'mailer'
-  Devise::SessionsController.layout ->(controller) { resource_name == :admin_user ? 'devise_admin' : 'devise'}
+  Devise::SessionsController.layout ->(controller) { resource_name == :admin_user ? 'admin' : 'devise'}
 end

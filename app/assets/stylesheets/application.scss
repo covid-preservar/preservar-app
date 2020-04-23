@@ -3,3 +3,13 @@
 @import '1_Base/!base';
 @import '2_Components/!components';
 @import '3_Pages/!pages';
+@import 'tmp/hero';
+@import 'tmp/kicker';
+@import 'tmp/main';
+@import 'tmp/search_form';
+@import 'tmp/sellers/register';
+
+.container.flashes {
+  margin-bottom: -3rem;
+  margin-top: -2rem;
+}
