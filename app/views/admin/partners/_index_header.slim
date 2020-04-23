@@ -1,0 +1,10 @@
+header.mt-4
+  h2
+    => kind_human_name.pluralize
+
+  .resource-actions
+    - if can? :create, Partner
+      = link_to 'New AddOn Partner', new_admin_partner_path(type: :add_on), class: 'btn btn-outline-primary btn-sm'
+      = link_to 'New Charity Partner', new_admin_partner_path(type: :charity), class: 'btn btn-outline-primary btn-sm'
+      = link_to 'New Marketing Partner', new_admin_partner_path(type: :marketing), class: 'btn btn-outline-primary btn-sm'
+  = render 'search' unless search_disabled

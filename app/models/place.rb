@@ -58,6 +58,10 @@ class Place < ApplicationRecord
     approved_partner.present? && partner.charity_partner?
   end
 
+  def to_s
+    "Place: #{name}"
+  end
+
   private
 
   def slug_candidates

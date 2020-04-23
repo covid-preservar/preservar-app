@@ -1,47 +1,22 @@
 # frozen_string_literal: true
 module Admin
-  class VouchersController < Admin::ApplicationController
-    # Overwrite any of the RESTful controller actions to implement custom behavior
-    # For example, you may want to send an email after a foo is updated.
-    #
-    # def update
-    #   super
-    #   send_foo_updated_email(requested_resource)
-    # end
+  class VouchersController < Admin::ResourcefulController
 
-    # Override this method to specify custom lookup behavior.
-    # This will be used to set the resource for the `show`, `edit`, and `update`
-    # actions.
-    #
-    # def find_resource(param)
-    #   Foo.find_by!(slug: param)
-    # end
+    def index_columns
+      [
+        {attr: :id, label: 'ID', sort: :id},
+        {attr: :place, label: 'Place', sort: nil, formatter: -> (view, voucher) { view.link_to "Place: #{voucher.place.name}", [:admin, voucher.place] } },
+        {attr: :email, label: 'Email', sort: :email },
+        {attr: :value, label: 'Value', sort: :value},
+        {attr: :state, label: 'State', sort: :state, formatter: -> (view, voucher) { view.number_to_currency voucher.value, locale: :pt, precision: 0 }},
+        {attr: :created_at, label: 'Created At', sort: :created_at}
+      ]
+    end
 
-    # The result of this lookup will be available as `requested_resource`
+    protected
 
-    # Override this if you have certain roles that require a subset
-    # this will be used to set the records shown on the `index` action.
-    #
-    # def scoped_resource
-    #   if current_user.super_admin?
-    #     resource_class
-    #   else
-    #     resource_class.with_less_stuff
-    #   end
-    # end
-
-    # Override `resource_params` if you want to transform the submitted
-    # data before it's persisted. For example, the following would turn all
-    # empty values into nil values. It uses other APIs such as `resource_class`
-    # and `dashboard`:
-    #
-    # def resource_params
-    #   params.require(resource_class.model_name.param_key).
-    #     permit(dashboard.permitted_attributes).
-    #     transform_values { |value| value == "" ? nil : value }
-    # end
-
-    # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
-    # for more information
+    def permitted_params
+      super.permit!
+    end
   end
 end

@@ -1,0 +1,8 @@
+= simple_form_for @resource, url: upsert_action_link do |f|
+
+  = render partial: 'form_fields', locals: { f: f }
+
+  .form-group.d-flex.justify-content-end
+    = f.submit 'Save', class: 'btn btn-primary btn-sm', data: { disable_with: 'Saving...' }
+
+    = link_to 'Cancel', upsert_action_link, class: 'btn btn-secondary btn-sm ml-2'

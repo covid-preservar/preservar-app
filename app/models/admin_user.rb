@@ -5,4 +5,12 @@ class AdminUser < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :trackable
+
+  enum role: { disabled: 0,
+               basic_user: 1,
+               super_user: 99 }
+
+  def to_s
+    "Admin: <#{email}>"
+  end
 end

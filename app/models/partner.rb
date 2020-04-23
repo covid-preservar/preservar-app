@@ -89,4 +89,8 @@ class Partner < ApplicationRecord
   def requires_honor_check=(value)
     partner_properties['requires_honor_check'] = value == '1'
   end
+
+  def to_s
+    "#{self.class}: #{name}"
+  end
 end

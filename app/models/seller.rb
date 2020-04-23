@@ -9,6 +9,10 @@ class Seller < ApplicationRecord
   before_validation :sanitize_vat_id
   before_validation :normalize_iban
 
+  def to_s
+    "Seller: #{company_name}"
+  end
+
   private
 
   def sanitize_vat_id

@@ -1,0 +1,12 @@
+.alerts
+  - if flash[:notice].present?
+    .alert.alert-success.alert-dismissible.fade.show
+      = flash[:notice]
+      button.close type="button" data-dismiss="alert" aria-label="Close"
+        span aria-hidden="true" &times;
+
+  - if flash[:alert].present?
+    .alert.alert-danger.alert-dismissible.fade.show
+      = flash[:alert]
+      button.close type="button" data-dismiss="alert" aria-label="Close"
+        span aria-hidden="true" &times;
