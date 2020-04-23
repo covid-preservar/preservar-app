@@ -11,7 +11,7 @@ section.places-container.container-xl
       | Resultados
 
   .places-list.row
-    == render @places
+    == render partial: :place, collection: @places, cache: true
 
 section.container-xl.section#businesses
   .row.clearfix
