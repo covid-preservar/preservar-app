@@ -1,0 +1,46 @@
+- content_for :show_content
+  table.table.table-hover
+    tbody
+      - show_attributes.each do |attrib|
+        tr
+          td
+            strong = attrib[:label]
+          td
+            - if association = @resource_associations.find { |association| attrib[:attr] == association.foreign_key}
+              = link_to @resource.send(association.name)&.to_s, [:admin, @resource.send(association.name)]
+            - elsif attrib[:formatter].present?
+              = attrib[:formatter].call(self, @resource)
+            - else
+              = @resource.send attrib[:attr]
+
+  h3.mt-4.mb-2 Places
+
+  table.table.table-hover.table-striped
+    thead
+      th
+      th ID
+      th Name
+      th Category
+      th Area
+      th Published
+      th Created At
+      th Updated At
+    tbody
+      - @resource.places.each do |place|
+        tr
+          td
+            = link_to 'View', [:admin, place]
+          td
+            = place.id
+          td
+            = place.name
+          td
+            = place.category.name
+          td
+            = place.area
+          td
+            = place.published
+          td
+            = place.created_at
+          td
+            = place.updated_at

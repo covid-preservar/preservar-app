@@ -13,7 +13,7 @@ module Admin
     end
 
     def show_attributes
-      super.insert(1, {attr: :seller, label: 'Seller', formatter: -> (view, seller_user) { view.link_to "Seller: #{seller_user.seller}", [:admin, seller_user.seller] }})
+      super.insert(1, {attr: :seller, label: 'Seller', formatter: -> (view, seller_user) { view.link_to("Seller: #{seller_user.seller}", [:admin, seller_user.seller]) if seller_user.seller.present? }})
     end
 
     protected
