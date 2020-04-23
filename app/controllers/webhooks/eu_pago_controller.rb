@@ -49,7 +49,6 @@ class Webhooks::EuPagoController < ActionController::Base
 
       if voucher.partner.present? &&
          voucher.place.promo_limit_reached? &&
-         voucher.place.vouchers.paid.count >= voucher.partner.voucher_limit &&
          !voucher.place.partnership.limit_reached
 
         voucher.place.partnership.update limit_reached: true
