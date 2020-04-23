@@ -7,4 +7,5 @@
 - if Flipper.enabled?(:discounts)
   = f.input :has_discount
 = f.input :slug
-= f.input :main_photo
+= f.input :main_photo, validate: false
+= f.hidden_field :main_photo, value: f.object.cached_main_photo_data, id:nil
