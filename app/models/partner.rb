@@ -93,4 +93,16 @@ class Partner < ApplicationRecord
   def to_s
     "#{self.class}: #{name}"
   end
+
+  def self.inherited(subclass)
+    super
+
+    def subclass.model_name
+      super.tap do |name|
+        route_key = base_class.name.underscore
+        name.instance_variable_set(:@singular_route_key, route_key)
+        name.instance_variable_set(:@route_key, route_key.pluralize)
+      end
+    end
+  end
 end
