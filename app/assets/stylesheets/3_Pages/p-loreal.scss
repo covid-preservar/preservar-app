@@ -4,6 +4,26 @@
     align-items: flex-start;
     height: 14rem;
     padding-top: 1.5rem;
+
+    .secondary-cta {
+      margin-left: auto;
+      border: 0;
+      line-height: 1rem;
+      padding: 0;
+    }
+  
+    .header-right {
+      text-align: right;
+  
+      > * + * {
+        margin-left: 1.5rem;
+      }
+    }
+
+    .header-link {
+      font-weight: bold;
+      text-decoration: none;
+    }
   }
 
   .loreal-hero-img {
@@ -29,6 +49,9 @@
   .partner-top-brand {
     max-width: 40%;
     max-height: 136px;
+    position: absolute;
+    top: 7rem;
+    right: 1rem;
   }
 
   .partner-bottom-brand {
@@ -72,6 +95,18 @@
 
     #hero::before {
       bottom: 6rem;
+    }
+
+    .header-right {
+      margin-left: auto;
+    }
+
+    .navbar {
+      .secondary-cta {
+        border: 2px solid var(--color-main-blue);
+        line-height: 2.8rem;
+        padding: 0 1rem;
+      }
     }
   }
 

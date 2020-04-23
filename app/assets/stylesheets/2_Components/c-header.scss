@@ -10,15 +10,15 @@
   .header-right {
     margin-left: auto;
     text-align: right;
+
+    > * + * {
+      margin-left: 1.5rem;
+    }
   }
 
   .header-link {
     font-weight: bold;
     text-decoration: none;
-
-    & + .header-link {
-      margin-left: 1.5rem;
-    }
   }
 
   @media only screen and (max-width: 576px) {
@@ -31,10 +31,6 @@
     .header-link {
       font-size: calc(15rem / 16);
       line-height: 1rem;
-
-      & + .header-link {
-        margin-left: 1rem;
-      }
     }
   }
 }
@@ -81,10 +77,6 @@
     height: 2.5rem;
     line-height: 2.2rem;
   }
-
-  .header-link {
-    margin-right: 1rem;
-  }
 }
 
 #logo-small {
@@ -118,7 +110,6 @@
 
 
 @media only screen and (max-width: 1288px) {
-
   .content-page #header-main:before,
   .header-short:before {
     margin-left:  -10%;
@@ -163,7 +154,6 @@
       top: 1rem;
     }
   }
-
 }
 
 @include media-breakpoint-down(sm) {
@@ -186,6 +176,21 @@
 
     &:before {
       height: 100%;
+    }
+  }
+
+  .header {
+    padding-top: calc(var(--grid-outer-padding) / 2);
+  }
+
+  .header .header-right {
+    * {
+      line-height: 2.5rem;
+    }
+
+    > * + * {
+      margin-left: 1rem;
+      font-size: calc(14rem/16);
     }
   }
 }
