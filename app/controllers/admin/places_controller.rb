@@ -2,6 +2,7 @@
 module Admin
   class PlacesController < Admin::ResourcefulController
     before_action :find_place, only: %i[publish unpublish]
+    before_action :load_locations, only: %i[new edit create update]
 
     def index_columns
       [
@@ -48,5 +49,8 @@ module Admin
       super.permit!
     end
 
+    def load_locations
+      gon.locations = Location.grouped_areas
+    end
   end
 end

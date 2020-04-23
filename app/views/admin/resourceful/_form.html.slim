@@ -1,4 +1,4 @@
-= simple_form_for @resource, url: upsert_action_link do |f|
+= simple_form_for @resource, url: upsert_action_link, validate: true do |f|
 
   = render partial: 'form_fields', locals: { f: f }
 

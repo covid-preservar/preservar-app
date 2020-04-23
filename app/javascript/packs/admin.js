@@ -11,11 +11,18 @@ window.Rails = Rails;
 Rails.start();
 Turbolinks.start();
 
+import "@client-side-validations/client-side-validations";
+import "@client-side-validations/simple-form/dist/simple-form.bootstrap4";
+
 import Spinner from "../src/spinner";
 window.spinner = new Spinner();
 
 import Pikaday from 'pikaday'
 window.Pikaday = Pikaday;
+
+
+import PlaceForm from "../src/place_form";
+window.PlaceForm = PlaceForm;
 
 function setup() {
   $(".date_input").each(function () {
@@ -31,6 +38,10 @@ function setup() {
       });
     }
   });
+
+  if ($(".edit_place, #new_place").length > 0 && !window.place_form) {
+    window.place_form = new PlaceForm();
+  }
 }
 
 
