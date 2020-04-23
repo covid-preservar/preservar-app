@@ -21,7 +21,7 @@ module Admin
         {attr: :place, label: 'Place', formatter: -> (view, ps) { view.link_to "Place: #{ps.place.name}", [:admin, ps.place] } },
         {attr: :approved, label: 'Approved'},
         {attr: :limit_reached, label: 'Limit Reached'},
-        {attr: :partner_identifier, label: 'Partner Identifier', formatter: -> (view, ps) { view.link_to_if ps.partner_identifier.present?, "PartnerIdentifier: #{ps.partner_identifier.identifier}", [:admin, ps.partner_identifier] }},
+        {attr: :partner_identifier, label: 'Partner Identifier', formatter: -> (view, ps) { view.link_to("PartnerIdentifier: #{ps.partner_identifier.identifier}", [:admin, ps.partner_identifier]) if ps.partner_identifier.present? }},
         {attr: :created_at, label: 'Created At'},
         {attr: :updated_at, label: 'Updated At'}
       ]
