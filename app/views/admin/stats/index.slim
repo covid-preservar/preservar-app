@@ -50,11 +50,16 @@ section.stats_section
         - if partner&.target_value&.present?
           tr
             td
-              strong Valor
+              strong Valor dos bonus
             td
               => number_to_currency partner.target_progress, locale: :pt, precision: 0
               ' /
               = number_to_currency partner.target_value, locale: :pt, precision: 0
+          tr
+            td
+              strong Valor total (inc. bonus)
+            td
+              => number_to_currency partner.vouchers.paid.sum(:value) + partner.target_progress, locale: :pt, precision: 0
 
 section.stats_section
   h2.subtitle Voucher Stats
