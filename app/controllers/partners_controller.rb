@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class PartnersController < ApplicationController
-  skip_before_action :load_cities
   before_action :load_partner
   before_action :set_location
 
