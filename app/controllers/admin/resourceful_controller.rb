@@ -153,7 +153,7 @@ class Admin::ResourcefulController < Admin::BaseController
   end
 
   def sort_link(sort_attr)
-    polymorphic_path([:admin, kind], sort_attr: sort_attr)
+    polymorphic_path([:admin, kind], {q: sort_link_params, sort_attr: sort_attr})
   end
 
   def default_sort
@@ -187,6 +187,10 @@ class Admin::ResourcefulController < Admin::BaseController
   end
 
   private
+
+  def sort_link_params
+    params.require(:q).permit!
+  end
 
   def resource_not_found
     redirect_to search_link,
