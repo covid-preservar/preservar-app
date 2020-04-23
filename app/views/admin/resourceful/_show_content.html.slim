@@ -7,7 +7,7 @@
             strong = attrib[:label]
           td
             - if association = @resource_associations.find { |association| attrib[:attr] == association.foreign_key}
-              = link_to @resource.send(association.name)&.to_s, [:admin, @resource.send(association.name)]
+              = link_to_if @resource.send(association.name).present?, @resource.send(association.name)&.to_s, [:admin, @resource.send(association.name)]
             - elsif attrib[:formatter].present?
               = attrib[:formatter].call(self, @resource)
             - else
