@@ -56,24 +56,14 @@
           = number_to_currency @resource.min_value, locale: :pt, precision: 0
       tr
         td
-          strong Add On Value
+          strong Charity Value
         td
-          = number_to_currency @resource.add_on_value, locale: :pt, precision: 0
+          = number_to_currency @resource.charity_value, locale: :pt, precision: 0
       tr
         td
           strong Target Value
         td
           = number_to_currency @resource.target_value, locale: :pt, precision: 0
-      tr
-        td
-          strong Voucher Limit
-        td
-          = @resource.voucher_limit
-      tr
-        td
-          strong Date Limit
-        td
-          = @resource.date_limit
       tr
         td
           strong Requires Partner Id Code

@@ -43,5 +43,9 @@ module Admin
     def permitted_params
       super.permit!
     end
+
+    def process_params_for_upsert(params)
+      params.merge(type: (params[:type].classify + 'Partner'))
+    end
   end
 end
