@@ -61,14 +61,10 @@
     .row
       h2.col-sm-6.section-separator Seleciona o teu local favorito
 
-    - if @places.any?
-      .row
-        = render 'search_form'
+    .row
+      = render 'search_form'
 
-      .places-list.row
-        == render partial: :place, collection: @places, cache: true
-    - else
-      p Mais novidades brevemente, por favor volte mais tarde.
+    .places-list.row
 
   section.section#businesses
     .row.clearfix

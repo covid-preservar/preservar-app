@@ -2,16 +2,17 @@
 class PartnersController < ApplicationController
   skip_before_action :load_cities
   before_action :load_partner
+  before_action :set_location
 
   def index
-    @places = @partner.live_places.published
     @cities = @partner.live_places.published.pluck(:area).uniq.sort
 
     render @partner.slug
   end
 
   def search
-    search = PlaceSearch.new(partner: @partner, city: params[:city], name: params[:name])
+    @city = params[:city]
+    search = PlaceSearch.new(partner: @partner, city: @city, name: params[:name])
     @places = search.places
   end
 
