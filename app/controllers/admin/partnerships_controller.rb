@@ -17,7 +17,7 @@ module Admin
     def show_attributes
       [
         {attr: :id, label: 'ID'},
-        {attr: :partner, label: 'Partner', formatter: -> (view, ps) { view.link_to ps.partner, [:admin, ps.partner] } },
+        {attr: :partner, label: 'Partner', formatter: -> (view, ps) { view.link_to ps.partner, view.admin_partner_path(ps.partner) } },
         {attr: :place, label: 'Place', formatter: -> (view, ps) { view.link_to "Place: #{ps.place.name}", [:admin, ps.place] } },
         {attr: :approved, label: 'Approved'},
         {attr: :limit_reached, label: 'Limit Reached'},
@@ -30,6 +30,14 @@ module Admin
     def new
       super do
         @resource.place = Place.find(params[:place_id]) if params[:place_id].present?
+      end
+    end
+
+    def update
+      super do
+        if permitted_params[:partner_id_code].present?
+          @resource.partner_identifier = PartnerIdentifier.find_by(identifier: permitted_params[:partner_id_code])
+        end
       end
     end
 
