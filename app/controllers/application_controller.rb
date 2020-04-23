@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
   private
 
   def load_categories
-    @categories = Category.with_places
+    @categories = Category.with_places.order(name: :asc)
   end
 
   def load_cities
