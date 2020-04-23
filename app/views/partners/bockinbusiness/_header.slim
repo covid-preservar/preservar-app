@@ -5,10 +5,4 @@
         = inline_svg 'bockinbusiness/logo.svg'
       = inline_svg 'bockinbusiness/logo-sb.svg', class: 'd-none d-md-block partner-top-brand'
 
-      .header-right
-        = link_to 'Ajuda', 'http://ajuda.preserve.pt/', class: 'header-link', target: '_blank'
-        - if seller_user_signed_in?
-          = link_to 'A minha conta', seller_account_path, class: 'secondary-cta'
-        - else
-          = link_to 'Entrar', new_seller_user_session_path, class: 'header-link'
-          = link_to 'Registe o seu salão', new_partner_signup_path, class: 'secondary-cta'
+      = render partial:'partners/header_right', locals: {place_type: 'local'}

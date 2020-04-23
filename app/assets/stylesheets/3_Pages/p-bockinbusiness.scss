@@ -6,16 +6,17 @@
     padding-top: 1.5rem;
 
     .secondary-cta {
-      margin-left: auto;
       border: 0;
+      font-size: 1rem;
       line-height: 1rem;
+      margin-left: auto;
       padding: 0;
     }
-  
+
     .header-right {
-      text-align: right;
       padding-top: 1.5rem;
-  
+      text-align: right;
+
       > * + * {
         margin-left: 1.5rem;
       }
@@ -88,7 +89,7 @@
   @include media-breakpoint-up(sm) {
 
     .navbar {
-      height: 12rem;
+      height: 8rem;
     }
 
     #hero::before {
@@ -110,10 +111,11 @@
         line-height: 2.8rem;
         padding: 0 1rem;
       }
-    }
 
-    .header-right {
-      margin-left: auto;
+      .header-right {
+        margin-left: auto;
+        padding-top: 0;
+      }
     }
   }
 
