@@ -1,19 +1,18 @@
-- cache place do
-  a.place.col-12.col-sm-4.col-lg-3 href=place_url(place)
-    .place-img-wrapper
-      = image_tag place.photo_url(:small), class: 'place-img'
-      - if place.active_partner.present?
-        .partner-overlay
-          = image_tag place.partner.thumb_logo_url, class: 'partner-logo-thumb'
+a.place.col-12.col-sm-4.col-lg-3 href=place_url(place)
+  .place-img-wrapper
+    = image_tag place.photo_url(:small), class: 'place-img'
+    - if place.active_partner.present?
+      .partner-overlay
+        = image_tag place.partner.thumb_logo_url, class: 'partner-logo-thumb'
 
-    h3.place-header
-      span.place-name = place.name
-      - if Flipper.enabled?(:discounts) && place.has_discount?
-        .discount
-          => inline_svg 'icon-heart-small.svg'
-          span.discount-value 10%
+  h3.place-header
+    span.place-name = place.name
+    - if Flipper.enabled?(:discounts) && place.has_discount?
+      .discount
+        => inline_svg 'icon-heart-small.svg'
+        span.discount-value 10%
 
-    p.place-info
-      => place.category.name
-      ' &middot;
-      = place.area
+  p.place-info
+    => place.category.name
+    ' &middot;
+    = place.area
