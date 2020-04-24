@@ -48,6 +48,16 @@
     }
   }
 
+  .partner-register {
+    margin-top: -2rem;
+
+    .btn {
+      margin-top: 2rem;
+      border: 0;
+    }
+  }
+
+
   @include media-breakpoint-up(md) {
     .header-right {
       margin-left: auto;

@@ -44,18 +44,19 @@
           ' Precisas de ajuda? Lê as nossas
           => link_to 'Perguntas Frequentes', partner_faq_url, class: 'text-muted'
 
-  section.row.section.partner-register
-    .col-lg-7.mt-5
-    .col-lg-5.mt-5.col-12
-      p.partner-signup.mb-2 É cliente da Energia Simples? Registe-se aqui:
-      = link_to 'Registe o seu local', new_partner_signup_path, class: 'btn btn-primary', data:{turbolinks: false}
+
 
   section.places-container.section
     .row
-      h2.col-sm-6.section-separator Seleciona o teu local favorito
+      .col-12.col-lg-6.col-xl-6
+        h2.section-separator Salões aderentes
+        br
+        = render 'search_form'
 
-    .row
-      = render 'search_form'
+      .col-12.col-lg-5.offset-lg-1.partner-register.order-first.order-lg-last.mb-4
+        p.partner-signup
+          ' É cliente da Energia Simples? Registe-se aqui:
+        = link_to 'Registe o seu salão', new_partner_signup_path, class: 'btn btn-primary', data:{turbolinks: false}
 
     .places-list.row
 

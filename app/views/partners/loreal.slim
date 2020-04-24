@@ -49,21 +49,20 @@
       section.partner-bottom-brand.d-md-none
         = inline_svg 'loreal/partner-loreal-hashtag.svg'
 
-    section.row.section.partner-register
-      .col-lg-7.mt-5
-      .col-lg-5.mt-5.col-12
+  section.places-container.section
+    .row
+      .col-12.col-lg-6.col-xl-6
+
+        h2.section-separator Salões aderentes
+        br
+        = render 'search_form'
+
+      .col-12.col-lg-5.offset-lg-1.partner-register.order-first.order-lg-last.mb-4
         p.partner-signup
           ' É cliente da divisão de produtos profissionais
           span.nowrap> L´Oréal?
           ' Registe-se aqui
         = link_to 'Registe o seu salão', new_partner_signup_path, class: 'btn btn-primary', data:{turbolinks: false}
-
-  section.places-container.section
-    .row
-      h2.col-sm-6.section-separator Salões aderentes
-
-    .row
-      = render 'search_form'
 
     .places-list.row
 
