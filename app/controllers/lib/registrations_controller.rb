@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 class Lib::RegistrationsController < Devise::RegistrationsController
+  before_action :load_locations, only: %i[new create]
 
   def new
     if current_seller_user.blank?
       super do
-        gon.locations = Location.grouped_areas
-
         yield if block_given?
       end
     else
@@ -21,7 +20,6 @@ class Lib::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
-      gon.locations = Location.grouped_areas
       render :new
     end
   end

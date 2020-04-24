@@ -42,6 +42,12 @@
     }
   }
 
+  .search-form {
+    .select2-container {
+      flex: 1 1 auto !important;
+    }
+  }
+
   @include media-breakpoint-up(md) {
     .header-right {
       margin-left: auto;

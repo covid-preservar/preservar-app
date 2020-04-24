@@ -24,6 +24,10 @@ class Place < ApplicationRecord
 
   attr_accessor :district
 
+  def district
+    @district ||= Location.find_by(area: area)&.district
+  end
+
   def can_publish?
     !published && seller&.payment_api_key&.present? && main_photo.present?
   end
@@ -51,7 +55,7 @@ class Place < ApplicationRecord
   def promo_limit_reached?
     approved_partner.try(:voucher_limit).present? &&
     approved_partner.voucher_limit > 0 &&
-    vouchers.paid.count >= approved_partner.voucher_limit
+    vouchers.paid.where(partner: approved_partner).count >= approved_partner.voucher_limit
   end
 
   def has_charity_partner?
