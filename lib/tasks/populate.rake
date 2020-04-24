@@ -19,7 +19,7 @@ namespace :db do
       klass.reset_column_information
     end
 
-    AdminUser.create!(email: 'admin@example.com', password: 'secret', confirmed_at: Time.now.utc)
+    AdminUser.create!(email: 'admin@example.com', password: 'secret', confirmed_at: Time.now.utc, role: 99)
 
     place_hashes = [
       { name: 'Tasca do Chico', category_id: 1, area: 'Grande Lisboa' },

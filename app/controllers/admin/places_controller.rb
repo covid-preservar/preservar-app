@@ -49,6 +49,8 @@ module Admin
       super.permit!
     end
 
+    private
+
     def load_locations
       gon.locations = Location.grouped_areas
     end
