@@ -45,7 +45,7 @@ module Admin
 
     def after_upsert(type)
       if type == :create && @resource.persisted?
-        SellerCSVImport.perform_later resource.id
+        SellerCSVImport.perform_later @resource.id
       end
     end
 
