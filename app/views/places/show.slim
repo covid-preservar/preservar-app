@@ -28,33 +28,32 @@
     .col-sm-5.offset-sm-1.col-12.order-first.order-sm-last
       = image_tag @place.photo_url(:large), class:'hero-img'
 
-  section.place-share.section
-    .row
-      .col-md-6.col-12.share-block
-        h2.section-separator Partilhe com os seus amigos, para que possam apoiar também
-
+  section.place-share.row
+    .col-md-6.col-12.share-block
+      h2.section-separator Partilhe com os seus amigos, para que possam apoiar também
+      .share-buttons
         iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=#{place_url(@place)}&layout=button_count&size=large&width=110&height=28" style="border:none;overflow:hidden" width="110"
-        a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"  Tweet
+        a.twitter-share-button data-show-count="false" data-size="large" href="https://twitter.com/share?ref_src=twsrc%5Etfw"
         script async="" charset="utf-8" src="https://platform.twitter.com/widgets.js"
         span.btn.secondary-cta.btn-sm.js-mobileShare
           = inline_svg_tag 'iconic/share-boxed.svg', class:'iconic share'
           | Share
-        .input-group
-          .input-group-prepend
-            span.input-group-text 🔗
-          input.form-control disabled='true' type="text" value=place_url(@place)
+      .input-group
+        .input-group-prepend
+          span.input-group-text 🔗
+        input.form-control disabled='true' type="text" value=place_url(@place)
 
-      - if @place.has_charity_partner?
-        .col-md-5.offset-md-1.col-12.order-first.order-sm-last
-          p.charity-text
-            ' Por cada voucher
-            - if @place.approved_partner.min_value.present?
-              ' de valor igual ou superior a
-              => number_to_currency @place.approved_partner.min_value, locale: :pt, precision: 0
-            ' comprado a este local haverá um donativo de
-            => number_to_currency @place.approved_partner.charity_value, locale: :pt, precision: 0
-            | para uma instituição de saúde, cortesia da:
-          = image_tag @place.approved_partner.logo_url, class: 'partner-logo'
+    - if @place.has_charity_partner?
+      .col-md-5.offset-md-1.col-12.order-first.order-sm-last
+        p.charity-text
+          ' Por cada voucher
+          - if @place.approved_partner.min_value.present?
+            ' de valor igual ou superior a
+            => number_to_currency @place.approved_partner.min_value, locale: :pt, precision: 0
+          ' comprado a este local haverá um donativo de
+          => number_to_currency @place.approved_partner.charity_value, locale: :pt, precision: 0
+          | para uma instituição de saúde, cortesia da:
+        = image_tag @place.approved_partner.logo_url, class: 'partner-logo'
 
   == render 'other_places'
 
