@@ -65,6 +65,9 @@ class PartnerSellerSignupForm < SellerSignupForm
   def validate_partner_id
     if partner.requires_partner_id_code && partner_identifier.blank?
       errors.add(:partner_id_code, "inválido")
+    elsif partner_identifier&.vat_id&.present? &&
+          vat_id.sub('PT', '') != partner_identifier.vat_id
+      errors.add(:partner_id_code, "não corresponde ao NIF")
     end
   end
 

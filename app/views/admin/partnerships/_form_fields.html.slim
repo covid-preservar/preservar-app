@@ -1,15 +1,21 @@
 = f.association :place
-= f.input :partner_id, collection: Partner.all.map{|p| [p.name, p.id, {data: {type: p.type.underscore}}]}
+= f.input :partner_id, collection: Partner.all.map{|p| [p.name, p.id, {data: {slug: p.slug}}]}
 
-#marketing_partner.partner_fields style='display:none;'
+#loreal.partner_fields style='display:none;'
   = f.input :partner_id_code, label: "L'Oréal Client number"
 
-#add_on_partner.partner_fields style='display:none;'
+#bockinbusiness.partner_fields style='display:none;'
   = f.input :partner_type, collection: Partner.find(2).partner_properties['partner_types']&.invert&.sort, include_blank: true, label: 'Client Type'
   = f.input :partner_id_code, label: 'SuperBock client number (for direct clients)'
   = f.input :distributor_id, label: 'Distributor name (For distributor clients)'
   = f.input :limit_reached, as: :boolean
   = f.input :honor_check, as: :boolean, label: 'Superbock: Declaração de veracidade da info.'
+
+#energiasimples.partner_fields style='display:none;'
+  = f.input :partner_id_code, label:  'Código de Ponto de Entrega (CPE)',
+                              hint: 'Validar que corresponde ao NIF do comerciante. O backoffice **NÃO VALIDA** essa regra'
+  = f.input :limit_reached, as: :boolean
+  = f.input :honor_check, as: :boolean, label: 'Energiasimples: Declaração de veracidade da info.'
 
 = f.input :approved, as: :boolean
 
@@ -18,7 +24,7 @@
 
 javascript:
   $('#partnership_partner_id').change(ev => {
-    partner_type = $(ev.target).find('option:selected').data('type')
+    partner_type = $(ev.target).find('option:selected').data('slug')
 
     $('.partner_fields').hide();
     $(`#${partner_type}`).show();

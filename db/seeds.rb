@@ -388,12 +388,12 @@ sb.partner_properties["partner_types"]={"direct"=>"Directo com a Super Bock",
                                         "distributor"=>"Através de distribuidor"}
 sb.save!
 
-CharityPartner.create!(
+AddOnPartner.create!(
   name: "Energia Simples",
   slug: 'enegiasimples',
   min_value: 10,
   charity_value: 5,
-  target_value: 0,
+  add_on_value: 0,
   place_page_copy: 'Lorem place page copy',
   voucher_copy: 'Lorem voucher copy',
   requires_partner_id_code: true,
