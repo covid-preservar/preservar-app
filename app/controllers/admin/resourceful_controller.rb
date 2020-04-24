@@ -45,6 +45,7 @@ class Admin::ResourcefulController < Admin::BaseController
   def edit
     authorize! :edit, kind
     find_resource(params[:id])
+    yield if block_given?
     render :upsert
   end
 

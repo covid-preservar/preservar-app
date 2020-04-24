@@ -24,6 +24,10 @@ class Place < ApplicationRecord
 
   attr_accessor :district
 
+  def district
+    @district ||= Location.find_by(area: area)&.district
+  end
+
   def can_publish?
     !published && seller&.payment_api_key&.present? && main_photo.present?
   end
