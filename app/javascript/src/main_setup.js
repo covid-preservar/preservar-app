@@ -40,9 +40,10 @@ document.addEventListener('turbolinks:load', function (event) {
     });
   }
 
-  $(".select-input.city").select2({
-    theme: "bootstrap4",
+  $('.select-input.city').select2({
+    theme: 'bootstrap4',
     width: 'style',
-    data: gon.locations
+    data: gon.locations,
+    placeholder: 'Pesquisar local',
   });
 });
