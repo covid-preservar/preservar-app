@@ -7,7 +7,7 @@
   - if @show_back
     = link_to '&slarr; Voltar à pesquisa'.html_safe, request.referrer, class:'place-back'
   - else
-    = link_to '&slarr; Voltar ao início'.html_safe, root_path, class:'place-back'
+    = link_to '&slarr; Voltar ao início'.html_safe, :back, class:'place-back'
 
   .row
     .col-md-6.col-12
