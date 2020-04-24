@@ -39,4 +39,10 @@ document.addEventListener('turbolinks:load', function (event) {
       event.preventDefault();
     });
   }
+
+  $(".select-input.city").select2({
+    theme: "bootstrap4",
+    width: 'style',
+    data: gon.locations
+  });
 });

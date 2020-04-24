@@ -6,8 +6,9 @@
 @import 'tmp/hero';
 @import 'tmp/kicker';
 @import 'tmp/main';
-@import 'tmp/search_form';
 @import 'tmp/sellers/register';
+@import 'select2/dist/css/select2';
+@import '@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4';
 
 .container.flashes {
   margin-bottom: -3rem;

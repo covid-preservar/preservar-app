@@ -47,7 +47,11 @@ class ApplicationController < ActionController::Base
   end
 
   def load_cities
-    @cities = Place.published.distinct(:area).pluck(:area).sort
+    @cities = Location.grouped_areas_for_areas(Place.published.distinct(:area).select(:area))
+  end
+
+  def load_locations
+    gon.locations = Location.grouped_areas
   end
 
   def set_location

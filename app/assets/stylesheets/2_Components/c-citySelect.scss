@@ -1,0 +1,17 @@
+.select-input.city {
+
+  & + .select2-container {
+    height: 3rem;
+    line-height: 3rem;
+    margin-right: 1%;
+
+    .select2-selection {
+      height: 3rem !important;
+    }
+
+    .select2-selection__rendered {
+      line-height: 3rem;
+    }
+  }
+
+}
