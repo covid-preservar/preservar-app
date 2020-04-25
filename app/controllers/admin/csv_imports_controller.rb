@@ -15,6 +15,12 @@ module Admin
       end
     end
 
+    def create
+      super do
+        @resource.admin_user = current_admin_user
+      end
+    end
+
     def show_attributes
       [
         {attr: :id, label: 'ID' },
@@ -39,8 +45,7 @@ module Admin
 
     def after_upsert(type)
       if type == :create && @resource.persisted?
-        binding.pry
-        SellerCSVImport.perform_later resource.id
+        SellerCSVImport.perform_later @resource.id
       end
     end
 

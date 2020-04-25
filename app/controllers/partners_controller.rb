@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 class PartnersController < ApplicationController
-  skip_before_action :load_cities
-  before_action :load_partner
+  prepend_before_action :load_partner
   before_action :set_location
 
   def index
-    @cities = @partner.live_places.published.pluck(:area).uniq.sort
-
     render @partner.slug
   end
 
@@ -42,5 +39,9 @@ class PartnersController < ApplicationController
 
   def load_partner
     @partner = Partner.find_by(slug: request.subdomain)
+  end
+
+  def load_cities
+    @cities = Location.grouped_areas_for_areas(@partner.live_places.published.distinct(:area).select(:area))
   end
 end

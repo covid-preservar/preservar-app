@@ -17,4 +17,8 @@ class Location < ApplicationRecord
   def self.grouped_areas
     all.group_by(&:district).transform_values { |v| v.map(&:area) }
   end
+
+  def self.grouped_areas_for_areas(areas)
+    where(area: areas).group_by(&:district).transform_values { |v| v.map(&:area) }
+  end
 end

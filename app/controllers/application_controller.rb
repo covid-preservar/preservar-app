@@ -47,17 +47,22 @@ class ApplicationController < ActionController::Base
   end
 
   def load_cities
-    @cities = Place.published.distinct(:area).pluck(:area).sort
+    @cities = Location.grouped_areas_for_areas(Place.published.distinct(:area).select(:area))
+  end
+
+  def load_locations
+    gon.locations = Location.grouped_areas
   end
 
   def set_location
     location = request.location
     city = Location.find_location(location.city)&.area if location&.city.present?
     state = Location.find_location(location.state)&.area if location&.state.present?
+    all_cities = @cities.values.flatten
 
-    if city.present? && city.in?(@cities)
+    if city.present? && city.in?(all_cities)
       @city = city
-    elsif state.present? && state.in?(@cities)
+    elsif state.present? && state.in?(all_cities)
       @city = state
     else
       @city = nil

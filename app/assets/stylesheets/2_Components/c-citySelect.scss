@@ -1,0 +1,51 @@
+.select-input.city {
+
+  & + .select2-container {
+    height: 3rem;
+    line-height: 3rem;
+    margin-right: 1%;
+
+    .select2-selection {
+      appearance: none;
+      background: image-url('icon-arrow-down.svg') $white right .5rem center no-repeat;
+      border: 0;
+      border-radius: 0;
+      box-shadow: $input-box-shadow;
+      box-sizing: border-box;
+      height: 3rem !important;
+      line-height: 3rem;
+      outline: 0;
+      padding: 0 1rem;
+    }
+
+    .select2-selection__arrow {
+      display: none;
+    }
+
+    .select2-selection__rendered {
+      line-height: 3rem;
+      padding-left: 0;
+    }
+  }
+}
+
+
+.select2-container--bootstrap4 .select2-dropdown {
+  border: 0 ;
+  box-shadow: $input-box-shadow;
+  border-radius: 0;
+
+  .select2-search--dropdown {
+    padding: 0;
+  }
+
+  .select2-search__field {
+    box-shadow: none;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+  }
+
+  .select2-results__group {
+    color: var(--color-main-blue);
+    opacity: 0.5;
+  }
+}

@@ -28,9 +28,17 @@ class Admin::Ability
   end
 
   def apply_default_permissions
+    cannot :write, :all
     can :show, AdminUser, id: @user.id
     can :update, AdminUser, id: @user.id
-    cannot :write, :all
+  end
+
+  def apply_basic_user_permissions
+    can :read, :all
+  end
+
+  def apply_super_user_permissions
+    can :manage, :all
   end
 
   def apply_base_admin_permissions
@@ -49,13 +57,17 @@ class Admin::Ability
     cannot :destroy, SellerUser do |seller_user|
       seller_user.seller.present?
     end
-  end
 
-  def apply_basic_user_permissions
-  end
+    cannot :publish, Place do |place|
+      !place.can_publish?
+    end
 
-  def apply_super_user_permissions
-    can :manage, :all
-  end
+    cannot :unpublish, Place do |place|
+      !place.published?
+    end
 
+    cannot :resend, Voucher do |voucher|
+      !voucher.paid?
+    end
+  end
 end

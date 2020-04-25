@@ -13,6 +13,14 @@ module Admin
       ]
     end
 
+    def resend
+      find_resource(params[:id])
+      authorize! :resend, @resource
+
+      ApplicationMailer.voucher_email(@resource.id).deliver_later
+      redirect_to [:admin, @resource], notice: 'Resending voucher email.'
+    end
+
     protected
 
     def permitted_params

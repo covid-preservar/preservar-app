@@ -71,6 +71,20 @@
         margin-left: .5rem;
       }
     }
+
+    .select2-container {
+      height: 2.5rem;
+      line-height: 2.5rem;
+
+      .select2-selection {
+        height: 2.5rem !important;
+      }
+
+      .select2-selection__rendered {
+        line-height: 2.5rem;
+      }
+    }
+
   }
 
   .secondary-cta {

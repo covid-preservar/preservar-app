@@ -17,6 +17,8 @@ module Admin
     end
 
     def publish
+      authorize! :publish, @resource
+
       if @resource.can_publish?
 
         if @resource.published_at.nil?
@@ -31,6 +33,7 @@ module Admin
     end
 
     def unpublish
+      authorize! :unpublish, @resource
       @resource.update(published: false)
       redirect_to [:admin, @resource], notice: 'Place was unpublished'
     end
@@ -47,10 +50,6 @@ module Admin
 
     def permitted_params
       super.permit!
-    end
-
-    def load_locations
-      gon.locations = Location.grouped_areas
     end
   end
 end

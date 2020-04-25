@@ -45,6 +45,7 @@ class SellerUsers::PartnerRegistrationsController < Lib::RegistrationsController
                                         :partner_id_code,
                                         :partner_alt_id,
                                         :partner_type,
+                                        :accept_tos,
                                         :honor_check)
   end
 

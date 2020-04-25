@@ -1,9 +1,10 @@
 = f.input :email
-= f.input :role
 
-- if can? :manage, @resource
+- if can? :update, @resource
   = f.input :current_password if @resource.persisted?
   = f.input :password
   = f.input :password_confirmation
+
+- if can? :manage, @resource
   = f.input :role, as: :radio_buttons,
     collection: AdminUser.roles.keys.map{|role| [role.humanize, role]}.sort
