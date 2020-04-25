@@ -1,0 +1,97 @@
+- content_for :resource_actions do
+  - if can?(:resend, @resource)
+    = button_to 'Resend Voucher Email', resend_admin_voucher_path(@resource), class: "btn btn-warning btn-sm", method: :patch, data: {confirm: 'Are you sure you want to resend this voucher?'}
+
+- content_for :show_content
+  table.table.table-hover
+    tbody
+      tr
+        td
+          strong ID
+        td
+          = @resource.id
+      tr
+        td
+          strong State
+        td
+          = @resource.state
+      tr
+        td
+          strong Place
+        td
+          = link_to @resource.place, [:admin, @resource.place]
+      tr
+        td
+          strong Code
+        td
+          = @resource.code
+      tr
+        td
+          strong Email
+        td
+          = @resource.email
+      tr
+        td
+          strong Value
+        td
+          = number_to_currency @resource.value, locale: :pt, precision: 0
+      tr
+        td
+          strong Valid Until
+        td
+          = @resource.valid_until
+      tr
+        td
+          strong VAT ID
+        td
+          = @resource.vat_id
+      tr
+        td
+          strong Payment Completed At
+        td
+          = @resource.payment_completed_at
+      tr
+        td
+          strong Payment Method
+        td
+          = @resource.payment_method
+      tr
+        td
+          strong Payment Identifier
+        td
+          = @resource.payment_identifier
+      tr
+        td
+          strong Payment Phone
+        td
+          = @resource.payment_phone
+      tr
+        td
+          strong Partner
+        td
+          = link_to(@resource.partner, [:admin, @resource.partner]) if @resource.partner.present?
+      tr
+        td
+          strong Tracking Codes
+        td
+          = @resource.tracking_codes
+      tr
+        td
+          strong Discount Percent
+        td
+          = @resource.discount_percent
+      tr
+        td
+          strong Cookie Uuid
+        td
+          = @resource.cookie_uuid
+      tr
+        td
+          strong Created At
+        td
+          = @resource.created_at
+      tr
+        td
+          strong Updated At
+        td
+          = @resource.updated_at

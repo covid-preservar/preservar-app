@@ -1,11 +1,21 @@
 .admin {
+
   .navbar-brand {
     padding: 0;
 
     svg {
       width: 2.5rem;
     }
+
+    a {
+      text-decoration: none;
+    }
   }
+
+  .btn {
+    text-decoration: none;
+  }
+
   .stats_section {
     margin: 2rem 0;
   }
@@ -51,4 +61,7 @@
     }
   }
 
+  .page-link {
+    text-decoration: none;
+  }
 }

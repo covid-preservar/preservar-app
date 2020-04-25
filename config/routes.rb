@@ -96,7 +96,9 @@ Rails.application.routes.draw do
         end
       end
       resources :seller_users
-      resources :vouchers
+      resources :vouchers do
+        patch :resend, on: :member
+      end
 
       get 'stats', to: 'stats#index', as: :stats
       root to: "stats#index"
