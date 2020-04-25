@@ -20,6 +20,8 @@ import '@client-side-validations/simple-form/dist/simple-form.bootstrap4'
 import '../src/new_voucher_form';
 import '../src/smooth_scroll';
 import '../src/analytics';
+import select2 from 'select2';
+window.select2 = select2;
 
 import Spinner from '../src/spinner';
 window.spinner = new Spinner();
