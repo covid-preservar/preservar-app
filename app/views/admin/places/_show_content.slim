@@ -1,11 +1,11 @@
 - content_for :resource_actions do
-  - if @resource.partnership.present?
+  - if @resource.partnership.present? && can?(:edit, @resource.partnership)
     = link_to 'Edit partnership', edit_admin_partnership_path(@resource.partnership), class: 'btn btn-outline-primary btn-sm'
-  - else
+  - elsif can? :create, Partnership
     = link_to 'Add partnership', new_admin_partnership_path(place_id: @resource.id), class: 'btn btn-outline-primary btn-sm'
-  - if @resource.can_publish?
+  - if can? :publish, @resource
     = button_to 'Publish', publish_admin_place_path(@resource), class: "btn btn-outline-primary btn-sm", method: :patch
-  - if @resource.published?
+  - if can? :unpublish, @resource
     = button_to 'Unpublish', unpublish_admin_place_path(@resource), class: "btn btn-warning btn-sm", method: :patch
 
 - content_for :show_content
@@ -70,7 +70,7 @@
         td
           strong Partnership
         td
-          = @resource.partnership
+          = link_to(@resource.partnership, [:admin, @resource.partnership]) if @resource.partnership.present?
       tr
         td
           strong Has Discount
