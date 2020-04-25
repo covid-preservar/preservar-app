@@ -58,10 +58,11 @@ class ApplicationController < ActionController::Base
     location = request.location
     city = Location.find_location(location.city)&.area if location&.city.present?
     state = Location.find_location(location.state)&.area if location&.state.present?
+    all_cities = @cities.values.flatten
 
-    if city.present? && city.in?(@cities)
+    if city.present? && city.in?(all_cities)
       @city = city
-    elsif state.present? && state.in?(@cities)
+    elsif state.present? && state.in?(all_cities)
       @city = state
     else
       @city = nil
