@@ -2,6 +2,9 @@
   - if can?(:resend, @resource)
     = button_to 'Resend Voucher Email', resend_admin_voucher_path(@resource), class: "btn btn-warning btn-sm", method: :patch, data: {confirm: 'Are you sure you want to resend this voucher?'}
 
+  - if can?(:mark_refunded, @resource)
+    = button_to 'Mark as refunded', mark_refunded_admin_voucher_path(@resource), class: "btn btn-danger btn-sm", method: :patch, data: {confirm: 'Are you sure you want to mark this voucher as refunded?'}
+
 - content_for :show_content
   table.table.table-hover
     tbody
@@ -85,6 +88,16 @@
           strong Cookie Uuid
         td
           = @resource.cookie_uuid
+      tr
+        td
+          strong Redeemed At
+        td
+          = @resource.redeemed_at
+      tr
+        td
+          strong Refunded At
+        td
+          = @resource.refunded_at
       tr
         td
           strong Created At

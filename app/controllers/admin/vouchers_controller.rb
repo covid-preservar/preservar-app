@@ -21,6 +21,14 @@ module Admin
       redirect_to [:admin, @resource], notice: 'Resending voucher email.'
     end
 
+    def mark_refunded
+      find_resource(params[:id])
+      authorize! :mark_refunded, @resource
+
+      @resource.mark_refunded!
+      redirect_to [:admin, @resource], notice: 'Voucher was marked as refunded'
+    end
+
     protected
 
     def permitted_params

@@ -14,6 +14,6 @@ class CharityPartner < Partner
   end
 
   def target_progress
-    vouchers.paid.count * charity_value
+    vouchers.total_paid.count * charity_value
   end
 end
