@@ -1,8 +1,10 @@
 .form-row.mb-2
   = f.input :email_cont, label: 'Email', as: :string, wrapper_class: 'col'
   = f.input :place_name_cont, label: 'Place (name)', as: :string, wrapper_class: 'col'
+  = f.input :code_cont, label: 'Voucher Code', as: :string, wrapper_class: 'col'
 
 .form-row.mb-2
   = f.input :payment_identifier_cont, label: 'Payment Identifier', as: :string, wrapper_class: 'col'
   = f.input :partner_id_eq, label: 'Partner', as: :select, wrapper_class: 'col', collection: Partner.all
+
   = f.input :state_eq, label: 'State', as: :select, wrapper_class: 'col', collection: Voucher.aasm.states.map{|state| [state.human_name, state.name]}

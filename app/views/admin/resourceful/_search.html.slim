@@ -1,6 +1,7 @@
 section
   = search_form_for @q, url: search_link,
-    builder: SimpleForm::FormBuilder do |f|
+    builder: SimpleForm::FormBuilder,
+    defaults: { required: false } do |f|
 
     = hidden_field_tag :sort_attr, default_sort
     = render partial: 'search_filters', locals: { f: f }
