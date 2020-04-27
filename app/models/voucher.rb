@@ -7,7 +7,7 @@ class Voucher < ApplicationRecord
 
   aasm column: :state do
     state :created, initial: true
-    state :pending_payment, :paid, :redeemed
+    state :pending_payment, :paid, :redeemed, :refunded
 
     event :start_payment do
       transitions from: :created, to: :pending_payment, after: :generate_identifier
@@ -22,7 +22,11 @@ class Voucher < ApplicationRecord
     end
 
     event :redeemed do
-      transitions from: :paid, to: :redeemed
+      transitions from: :paid, to: :redeemed, after: -> { self.redeemed_at = Time.now }
+    end
+
+    event :mark_refunded do
+      transitions from: :paid, to: :refunded, after: -> { self.refunded_at = Time.now }
     end
   end
 
@@ -49,9 +53,10 @@ class Voucher < ApplicationRecord
 
   before_validation :set_discount, on: :create
 
-  scope :seller_visible, -> { where(state: %w[paid redeemed]) }
+  scope :seller_visible, -> { where(state: %w[paid redeemed refunded]) }
   scope :with_bonus, -> { where.not(partner_id: nil) }
   scope :not_paid, -> {  where.not(state: %w[paid redeemed]) }
+  scope :total_paid, -> {  where(state: %w[paid redeemed]) }
 
   attr_reader :custom_value
 
@@ -74,6 +79,8 @@ class Voucher < ApplicationRecord
       'Emitido'
     when 'Redeemed'
       'Utilizado'
+    when 'Refunded'
+      'Cancelado'
     end
   end
 

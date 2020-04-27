@@ -11,7 +11,7 @@ class Seller < ApplicationRecord
   before_validation :normalize_vat_id
 
   def to_s
-    "Seller: #{company_name}"
+    "Seller ##{id}: #{company_name}"
   end
 
   private

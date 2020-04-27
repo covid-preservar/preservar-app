@@ -1,5 +1,7 @@
 @import 'admin/variables';
 @import 'bootstrap/bootstrap-all';
 @import '2_Components/c-spinner';
-@import 'admin/vendor/pikaday';
+@import 'admin/vendor/pikaday.css';
+@import 'select2/dist/css/select2';
+@import '@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4';
 @import 'admin/admin';

@@ -9,9 +9,9 @@ p
 p
   ' Obrigado pelo seu apoio, que ajuda a ultrapassarmos este momento difícil.
 p
-  | Este voucher tem validade de 24 meses e pode usá-lo quando lhe for mais conveniente.
+  | Este vale tem validade de 24 meses e pode usá-lo quando lhe for mais conveniente.
 p
-  | Se indicou o seu NIF ao comprar este voucher, este foi comunicado ao estabelecimento para a emissão da factura.
+  | Se indicou o seu NIF ao comprar este vale, este foi comunicado ao estabelecimento para a emissão da factura.
 
 - if @voucher.partner.present?
   .content-block
@@ -20,10 +20,10 @@ p
       p = @voucher.partner.voucher_copy
 
 br
-h3 Detalhes do voucher
+h3 Detalhes do vale
 p
   strong
-    ' Número do voucher:
+    ' Número do vale:
     = @voucher.code
 
 table
@@ -83,9 +83,9 @@ table
 - if @voucher.has_add_on_partner?
   br
   p.muted
-    small Em caso de devolução do voucher, apenas o valor pago está sujeito a devolução.
+    small Em caso de devolução, apenas o valor pago está sujeito a devolução.
 
-h1 Como utilizar este voucher?
+h1 Como utilizar?
 p Simplesmente mostre este email no seu telemóvel. Também pode imprimir o email.
 
 h1 Precisa de ajuda?

@@ -69,5 +69,9 @@ class Admin::Ability
     cannot :resend, Voucher do |voucher|
       !voucher.paid?
     end
+
+    cannot :mark_refunded, Voucher do |voucher|
+      !voucher.paid?
+    end
   end
 end

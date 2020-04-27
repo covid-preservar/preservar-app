@@ -10,9 +10,9 @@ section.stats_section
         td
           strong Vouchers (# Vendidos / Valor Total)
         td
-          => Voucher.paid.count
+          => Voucher.total_paid.count
           ' /
-          = number_to_currency Voucher.paid.sum(:value), locale: :pt
+          = number_to_currency Voucher.total_paid.sum(:value), locale: :pt
       tr
         td
           strong Locais (Total / Publicados)
@@ -46,7 +46,7 @@ section.stats_section
           td
             strong Numero de vouchers
           td
-            = partner.vouchers.paid.count
+            = partner.vouchers.total_paid.count
         - if partner&.target_value&.present?
           tr
             td
@@ -59,7 +59,7 @@ section.stats_section
             td
               strong Valor total (inc. bonus)
             td
-              => number_to_currency partner.vouchers.paid.sum(:value) + partner.target_progress, locale: :pt, precision: 0
+              => number_to_currency partner.vouchers.total_paid.sum(:value) + partner.target_progress, locale: :pt, precision: 0
 
 section.stats_section
   h2.subtitle Voucher Stats
