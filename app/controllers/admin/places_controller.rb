@@ -51,5 +51,9 @@ module Admin
     def permitted_params
       super.permit!
     end
+
+    def load_locations
+      gon.locations = Location.grouped_areas
+    end
   end
 end
