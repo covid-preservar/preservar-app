@@ -1,0 +1,15 @@
+= f.input :email
+= f.association :place, collection: Place.all.map { |p| [p.to_s, p.id]}
+= f.association :partner
+= f.input :code
+= f.input :value
+= f.input :vat_id, label: 'VAT ID'
+= f.input :payment_method
+= f.input :payment_identifier
+= f.input :payment_phone
+
+javascript:
+  $('#voucher_place_id').select2({
+    theme: 'bootstrap4',
+    width: 'style'
+  });

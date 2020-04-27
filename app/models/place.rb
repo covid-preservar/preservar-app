@@ -63,7 +63,7 @@ class Place < ApplicationRecord
   end
 
   def to_s
-    "Place: #{name}"
+    "Place ##{id}: #{name}"
   end
 
   private
