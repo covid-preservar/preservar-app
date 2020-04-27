@@ -15,12 +15,12 @@ class ApplicationMailer < ActionMailer::Base
 
   def voucher_email(voucher_id)
     @voucher = Voucher.find(voucher_id)
-    mail to:@voucher.email, subject: 'Parabéns pelo apoio! Aqui está o seu voucher.'
+    mail to:@voucher.email, subject: 'Parabéns pelo apoio! Aqui está o seu vale.'
   end
 
   def seller_voucher_email(voucher_id)
     @voucher = Voucher.find(voucher_id)
-    mail to: @voucher.place.seller.seller_user.email, subject: "Preserve - Vendeu um voucher!"
+    mail to: @voucher.place.seller.seller_user.email, subject: "Preserve - Vendeu um vale!"
   end
 
   def seller_place_published_notification(place_id)
