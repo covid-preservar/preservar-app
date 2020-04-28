@@ -17,6 +17,12 @@ export default class PlaceForm {
         behavior: 'smooth'
       })
     }
+
+    if ($(".form-group-invalid").length > 0) {
+      $(".form-group-invalid")[0].scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   }
 }
 

@@ -57,4 +57,4 @@ section#register-form.section
                   label: 'Declaro que a informação prestada é verdadeira e que sou um cliente Energia Simples. Se a informação prestada for propositadamente errada, a Preserve.pt e a Energia Simples reservam-se ao direito de remover a sua aplicação desta iniciativa promocional e pode ser sujeito outras acções.'
 
         = f.input :accept_tos, as: :boolean, label: "Aceito os #{link_to 'Termos e Condições', tos_path, target: '_blank'} e #{link_to 'Politica de Privacidade', privacy_path, target: '_blank'}".html_safe
-        = f.button :submit, 'Registar', class: 'btn btn-primary', class: 'btn btn-primary'
+        = f.button :submit, 'Registar', class: 'btn btn-primary'
