@@ -73,8 +73,6 @@ main.container-xl.maincontent
             th Código
             th Validade
             th Valor
-            - if Flipper.enabled?(:discounts)
-              th Desconto
             th Email
             th NIF
             th Estado
@@ -89,9 +87,6 @@ main.container-xl.maincontent
                   = voucher.valid_until
                 td
                   = number_to_currency voucher.value, locale: :pt
-                - if Flipper.enabled?(:discounts)
-                  td
-                    = voucher.discount_percent.zero? ? '-' : "#{voucher.discount_percent}%"
                 td
                   = voucher.email
                 td

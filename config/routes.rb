@@ -60,14 +60,7 @@ Rails.application.routes.draw do
       resource :account, only: [:show] do
         put 'accept_new_terms'
       end
-      resources :places, except: [:index, :destroy] do
-        member do
-          get :enable_discount
-          post :confirm_discount
-          get :disable_discount
-          post :confirm_disable_discount
-        end
-      end
+      resources :places, except: [:index, :destroy]
 
     end
 

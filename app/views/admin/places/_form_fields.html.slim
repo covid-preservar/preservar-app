@@ -4,8 +4,6 @@
 = f.input :district, collection: Location.all_districts, input_html:{ id: 'district_select'}
 = f.input :area, collection: Location.for_district(f.object.district).map(&:area), selected: f.object.area, input_html:{ id: 'area_select'}
 = f.input :address
-- if Flipper.enabled?(:discounts)
-  = f.input :has_discount
 = f.input :slug
 = f.input :main_photo, validate: false
 = f.hidden_field :main_photo, value: f.object.cached_main_photo_data, id:nil

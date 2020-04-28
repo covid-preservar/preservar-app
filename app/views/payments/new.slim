@@ -34,10 +34,6 @@
         h3
           ' Valor:
           => number_to_currency @voucher.value, locale: :pt
-          - unless @voucher.discount_percent.zero?
-            ' +
-            = @voucher.discount_percent
-            | % de desconto
 
   .row
     .col-sm-12.col-md-6.col-lg-4#form-wrapper

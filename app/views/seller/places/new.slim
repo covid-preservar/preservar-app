@@ -16,8 +16,6 @@ main.container-xl.maincontent
         = f.input :address, hint: 'Rua e número', placeholder: 'Morada'
         = f.hidden_field :main_photo, value: @place.cached_main_photo_data, id:nil
         = f.input :main_photo, as: :file, hint: 'Formato JPG, max. 10Mb'
-        - if Flipper.enabled?(:discounts)
-          = f.input :has_discount, label: 'Oferece Descontos?', as: :radio_buttons, wrapper: :vertical_collection_inline
 
         = f.button :submit, 'Criar', class: 'btn btn-primary'
 

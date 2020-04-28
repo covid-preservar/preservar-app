@@ -32,22 +32,6 @@ class Seller::PlacesController < Seller::BaseController
     end
   end
 
-  def enable_discount
-  end
-
-  def confirm_discount
-    @place.update has_discount: true
-    redirect_to seller_place_path(@place)
-  end
-
-  def disable_discount
-  end
-
-  def confirm_disable_discount
-    @place.update has_discount: false
-    redirect_to seller_place_path(@place)
-  end
-
   private
 
   def load_place

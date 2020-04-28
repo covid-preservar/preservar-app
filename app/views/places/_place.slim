@@ -8,10 +8,6 @@
 
     h3.place-header
       span.place-name = place.name
-      - if Flipper.enabled?(:discounts) && place.has_discount?
-        .discount
-          => inline_svg 'icon-heart-small.svg'
-          span.discount-value 10%
 
     p.place-info
       => place.category.name
