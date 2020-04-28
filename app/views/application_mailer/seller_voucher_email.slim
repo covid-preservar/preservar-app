@@ -35,7 +35,7 @@ table
       td
         strong Valor do vale
       td
-        = number_to_currency @voucher.value + @voucher.partner.add_on_value, locale: :pt
+        = number_to_currency @voucher.face_value, locale: :pt
 
     tr
       td

@@ -10,7 +10,7 @@ class ApplicationMailerPreview < ActionMailer::Preview
   end
 
   def voucher_email
-    ApplicationMailer.voucher_email(Voucher.last.id)
+    ApplicationMailer.voucher_email(Voucher.paid.last.id)
   end
 
   def seller_voucher_email

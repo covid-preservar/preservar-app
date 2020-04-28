@@ -19,6 +19,12 @@ p
       = image_tag @voucher.partner.logo_url
       p = @voucher.partner.voucher_copy
 
+- if @voucher.has_mbway_bonus?
+  .content-block
+    .align-center
+      = image_tag 'logo-mbw-email.png', width: 300
+      p A MBWay oferece + €2 a este vale.
+
 br
 h3 Detalhes do vale
 p
@@ -64,7 +70,7 @@ table
       td
         strong Valor do vale
       td
-        = number_to_currency @voucher.value + @voucher.partner.add_on_value, locale: :pt
+        = number_to_currency @voucher.face_value, locale: :pt
 
     tr
       td
