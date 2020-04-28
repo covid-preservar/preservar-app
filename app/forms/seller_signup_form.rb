@@ -88,6 +88,7 @@ class SellerSignupForm
 
     ActiveRecord::Base.transaction do
       seller_user.save!
+      seller_user.accept_tos!
       seller.save!
       place.save!
       yield if block_given?
