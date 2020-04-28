@@ -12,10 +12,12 @@
                                       Voucher::PAYMENT_METHODS,
                                       :itself, :itself,
                                       item_wrapper_tag: nil,
-                                      checked: f.object.payment_method || 'MB' do |b|
+                                      checked: f.object.payment_method || 'MBW' do |b|
           = b.label class: "method method-#{b.object.downcase}"
             = b.radio_button class:'payment-method-radio'
             = image_tag "logo-#{b.object.downcase}.svg"
+            - if b.object == 'MBW' && @voucher.mbway_bonus_available? && mbway_bonus_active?
+              strong.mbway-bonus Receba 2€ extra
 
       = f.input :payment_phone, placeholder: '9xxxxxxxx'
       = f.submit 'Pagar', class: 'btn btn-primary'

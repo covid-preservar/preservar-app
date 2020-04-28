@@ -16,7 +16,7 @@
       - if @voucher.has_add_on_partner?
         h3.mt-4
           ' Valor do voucher:
-          => number_to_currency @voucher.value + @voucher.partner.add_on_value, locale: :pt
+          => number_to_currency @voucher.face_value, locale: :pt
         p.mt-2.d-flex.align-items-center
           = image_tag @voucher.partner.thumb_logo_url, class: 'partner-logo-thumb'
           small

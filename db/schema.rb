@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_113754) do
+ActiveRecord::Schema.define(version: 2020_04_28_113920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -197,6 +197,8 @@ ActiveRecord::Schema.define(version: 2020_04_28_113754) do
     t.bigint "partner_id"
     t.datetime "redeemed_at"
     t.datetime "refunded_at"
+    t.integer "mbway_bonus", default: 0
+    t.integer "add_on_bonus", default: 0
     t.index ["partner_id"], name: "index_vouchers_on_partner_id"
     t.index ["payment_identifier"], name: "index_vouchers_on_payment_identifier"
     t.index ["place_id"], name: "index_vouchers_on_place_id"

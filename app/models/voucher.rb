@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Voucher < ApplicationRecord
-  PAYMENT_METHODS = %w[MB MBW].freeze
+  PAYMENT_METHODS = %w[MBW MB].freeze
 
   include AASM
 
@@ -55,6 +55,8 @@ class Voucher < ApplicationRecord
   scope :not_paid, -> {  where.not(state: %w[paid redeemed]) }
   scope :total_paid, -> {  where(state: %w[paid redeemed]) }
 
+  before_validation :set_addon_bonus
+
   attr_reader :custom_value
 
   def custom_value=(val)
@@ -93,11 +95,24 @@ class Voucher < ApplicationRecord
     partner.present? && partner.add_on_partner?
   end
 
+  def face_value
+    value + add_on_bonus + mbway_bonus
+  end
+
+  def mbway_bonus_available?
+    value >= 20
+  end
+
+  def has_mbway_bonus?
+    mbway_bonus_available? && payment_method == 'MBW'
+  end
+
   private
 
   def finalize_voucher
     self.valid_until = Date.today + 24.months
     self.payment_completed_at = Time.now
+    self.mbway_bonus = 2 if has_mbway_bonus?
 
     # Ensure uniqueness
     loop do
@@ -118,5 +133,9 @@ class Voucher < ApplicationRecord
     if vat_id.present?
       errors.add(:vat_id, :invalid) unless Valvat.new(read_attribute(:vat_id)).valid_checksum?
     end
+  end
+
+  def set_addon_bonus
+    self.add_on_bonus = partner.add_on_value if has_add_on_partner?
   end
 end

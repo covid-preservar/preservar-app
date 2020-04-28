@@ -10,34 +10,33 @@ p
 table
   tbody
 
-    - if @voucher.has_add_on_partner?
-      tr
-        td
-          strong Valor pago
-        td
-          = number_to_currency @voucher.value, locale: :pt
+    tr
+      td
+        strong Valor pago
+      td
+        = number_to_currency @voucher.value, locale: :pt
 
+    - if @voucher.has_add_on_partner?
       tr
         td
           strong
             ' Oferta
             = @voucher.partner.name
         td
-          = number_to_currency @voucher.partner.add_on_value, locale: :pt
-
+          = number_to_currency @voucher.add_on_bonus, locale: :pt
+    - if @voucher.mbway_bonus > 0
       tr
         td
-          strong Valor Total
+          strong
+            ' Oferta MBWay
         td
-          = number_to_currency @voucher.value + @voucher.partner.add_on_value, locale: :pt
+          = number_to_currency @voucher.mbway_bonus, locale: :pt
+    tr
+      td
+        strong Valor do vale
+      td
+        = number_to_currency @voucher.value + @voucher.partner.add_on_value, locale: :pt
 
-    - else
-
-      tr
-        td
-          strong Valor
-        td
-          = number_to_currency @voucher.value, locale: :pt
     tr
       td
         strong Email do comprador
