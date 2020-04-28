@@ -1,5 +1,4 @@
 .places.show {
-
   .place-back {
     position: relative;
     top: -2rem;
@@ -28,27 +27,25 @@
         margin: 0;
       }
     }
-
   }
 
   .hero-text {
     h1 + p {
       line-height: 1.5;
-      opacity: .5;
+      opacity: 0.5;
     }
 
     .primary-cta {
       margin-top: 2rem;
 
       + .secondary-cta {
-        margin-left: .5rem;
+        margin-left: 0.5rem;
       }
     }
 
     .secondary-cta {
       margin-top: 2rem;
     }
-
   }
 
   .partner {
@@ -68,13 +65,9 @@
     }
   }
 
-  .charity-text {
+  .insurance-text {
     color: $blue;
-    margin-top: .25rem;
-  }
-
-  .partner-logo {
-    margin-top: 3rem;
+    margin-top: 0.25rem;
   }
 
   .new_voucher {
@@ -102,12 +95,12 @@
       padding-left: 0;
 
       + .form-check {
-        margin-left: .5rem;
+        margin-left: 0.5rem;
       }
     }
 
     .voucher-mb {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
     }
   }
 
@@ -167,7 +160,7 @@
     }
 
     &::before {
-      content: '€';
+      content: "€";
       left: 1rem;
       line-height: 3rem;
       position: absolute;
@@ -182,7 +175,6 @@
   }
 
   @include media-breakpoint-up(md) {
-
     .new_voucher {
       margin-left: 0;
       width: 100%;

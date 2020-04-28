@@ -29,7 +29,7 @@
       = image_tag @place.photo_url(:large), class:'hero-img'
 
   section.place-share.row
-    .col-md-6.col-12.share-block
+    .col-md-8.col-lg-6.col-12.share-block
       h2.section-separator Partilhe com os seus amigos, para que possam apoiar também
       .share-buttons
         iframe allow="encrypted-media" allowtransparency="true" frameborder="0" height="28" scrolling="no" src="https://www.facebook.com/plugins/share_button.php?href=#{place_url(@place)}&layout=button_count&size=large&width=110&height=28" style="border:none;overflow:hidden" width="110"
@@ -43,17 +43,15 @@
           span.input-group-text 🔗
         input.form-control disabled='true' type="text" value=place_url(@place)
 
-    - if @place.has_charity_partner?
-      .col-md-5.offset-md-1.col-12.order-first.order-sm-last
-        p.charity-text
-          ' Por cada voucher
-          - if @place.approved_partner.min_value.present?
-            ' de valor igual ou superior a
-            => number_to_currency @place.approved_partner.min_value, locale: :pt, precision: 0
-          ' comprado a este local haverá um donativo de
-          => number_to_currency @place.approved_partner.charity_value, locale: :pt, precision: 0
-          | para uma instituição de saúde, cortesia da:
-        = image_tag @place.approved_partner.logo_url, class: 'partner-logo'
+    .col-md-8.col-lg-6.col-12.order-first.order-lg-last.mb-4
+      p.insurance-text
+        strong
+          ' Para que compre sem preocupações, o valor do seu voucher está segurado por:
+      .insurance-logos
+        .insurance-logo.logo-ageas
+          = image_tag 'ageas/logo-ageas.png'
+        .insurance-logo.logo-keepwarranty
+          = image_tag 'ageas/logo-keepwarranty.png'
 
   == render 'other_places'
 
