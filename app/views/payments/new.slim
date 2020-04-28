@@ -9,33 +9,6 @@
 
 .container-xl
   .row
-    .col-12.col-xl-8.voucher-detail
-      h3
-        ' Local:
-        = @voucher.place.name
-      - if @voucher.has_add_on_partner?
-        h3.mt-4
-          ' Valor do voucher:
-          => number_to_currency @voucher.face_value, locale: :pt
-        p.mt-2.d-flex.align-items-center
-          = image_tag @voucher.partner.thumb_logo_url, class: 'partner-logo-thumb'
-          small
-            ' (Este voucher inclui uma oferta de
-            => number_to_currency @voucher.partner.add_on_value, locale: :pt, precision: 0
-            ' cortesia da
-            = @voucher.partner.name
-            | )
-
-        h3.mt-4
-          ' Valor a pagar:
-          => number_to_currency @voucher.value, locale: :pt
-
-      - else
-        h3
-          ' Valor:
-          => number_to_currency @voucher.value, locale: :pt
-
-  .row
     .col-sm-12.col-md-6.col-lg-4#form-wrapper
       = render 'form'
 
