@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 class Voucher < ApplicationRecord
   PAYMENT_METHODS = %w[MBW MB].freeze
+  MIN_MBWAY_VALUE = 20
+  BONUS_MBWAY_VALUE = 2
+  MBWAY_TARGET_VALUE = 5000
 
   include AASM
 
@@ -100,7 +103,7 @@ class Voucher < ApplicationRecord
   end
 
   def mbway_bonus_available?
-    value >= 20
+    value >= MIN_MBWAY_VALUE
   end
 
   def has_mbway_bonus?
@@ -112,7 +115,7 @@ class Voucher < ApplicationRecord
   def finalize_voucher
     self.valid_until = Date.today + 24.months
     self.payment_completed_at = Time.now
-    self.mbway_bonus = 2 if has_mbway_bonus?
+    self.mbway_bonus = BONUS_MBWAY_VALUE if has_mbway_bonus?
 
     # Ensure uniqueness
     loop do

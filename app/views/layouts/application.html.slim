@@ -37,6 +37,10 @@ html lang="#{I18n.locale}"
       .spinner-overlay
         .spinner
 
+    .mbway-banner
+      ' Todos os vouchers comprados por
+      => inline_svg 'logo-mbway-small'
+      | recebem 2€ extra de oferta
     = yield :header
     = render 'shared/flashes'
     = content_for?(:content) ? yield(:content) : yield

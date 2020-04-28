@@ -61,6 +61,27 @@ section.stats_section
             td
               => number_to_currency partner.vouchers.total_paid.sum(:value) + partner.target_progress, locale: :pt, precision: 0
 
+  p.subtitle MBWay
+  table.table
+    tbody
+      tr
+        td
+          strong Numero de vouchers
+        td
+          = Voucher.total_paid.where.not(mbway_bonus: 0).count
+      tr
+        td
+          strong Valor dos bonus
+        td
+          => number_to_currency Voucher.total_paid.sum(:mbway_bonus), locale: :pt, precision: 0
+          ' /
+          = number_to_currency Voucher::MBWAY_TARGET_VALUE, locale: :pt, precision: 0
+      tr
+        td
+          strong Valor total (inc. bonus)
+        td
+          => number_to_currency Voucher.total_paid.where.not(mbway_bonus: 0).sum(:value) + Voucher.total_paid.sum(:mbway_bonus), locale: :pt, precision: 0
+
 section.stats_section
   h2.subtitle Voucher Stats
   table.table

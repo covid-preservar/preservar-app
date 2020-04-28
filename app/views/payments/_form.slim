@@ -17,7 +17,7 @@
             = b.radio_button class:'payment-method-radio'
             = image_tag "logo-#{b.object.downcase}.svg"
             - if b.object == 'MBW' && @voucher.mbway_bonus_available? && mbway_bonus_active?
-              strong.mbway-bonus Receba 2€ extra
+              strong.mbway-bonus Receba #{Voucher::BONUS_MBWAY_VALUE}€ extra
 
       = f.input :payment_phone, placeholder: '9xxxxxxxx'
       = f.submit 'Pagar', class: 'btn btn-primary'
