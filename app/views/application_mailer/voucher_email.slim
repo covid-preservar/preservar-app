@@ -67,10 +67,6 @@ table
           strong Valor
         td
           = number_to_currency @voucher.value, locale: :pt
-          - unless @voucher.discount_percent.zero?
-            ' +
-            = @voucher.discount_percent
-            | % de desconto
     tr
       td
         strong Estabelecimento
@@ -87,6 +83,26 @@ table
 
 h1 Como utilizar?
 p Simplesmente mostre este email no seu telemóvel. Também pode imprimir o email.
+
+// if covered by insurance
+// TODO - update when integration is completed to include credentials
+h1 E se a empresa a quem comprei o voucher fechar?
+
+p Se até final de 2020, a empresa a quem comprou o voucher encerrar atividade, a Ageas Seguros irá devolver a totalidade do valor pago por si.
+
+p
+  ' Ao comprar este voucher, foi automaticamente criado um utilizador e uma apólice que pode consultar na aplicação
+  = link_to 'Keep Warranty', 'https://onelink.to/57tgwy'
+  | , dentro da pasta “Seguros”.
+p
+  | Registe-se agora, ou aguarde, que entretanto os seus dados de acesso à Keep Warranty serão enviados noutro e-mail.
+
+p Através da aplicação, pode não só consultar os detalhes da apólice associada ao seu voucher, mas, caso necessário, iniciar o processo de reclamação do valor devido.
+
+p
+  ' Nota: a devolução do valor está sujeita aos
+  => link_to 'Termos e Condições', tos_url
+  | desta campanha, conforme detalhado no site da plataforma preserve.pt na secção “Cobertura de pagamento”.
 
 h1 Precisa de ajuda?
 p
