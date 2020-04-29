@@ -62,6 +62,7 @@ Rails.application.routes.draw do
         put 'accept_new_terms'
       end
       resources :places, except: [:index, :destroy]
+      resources :vouchers, only: [:index]
 
     end
 

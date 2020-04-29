@@ -7,7 +7,13 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
 
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.ml-auto.mt-0
+
       li.nav-item
         = link_to 'Terminar sessão', destroy_seller_user_session_path, method: :delete, class: 'nav-link'
+
+      - if current_seller_user&.seller&.vouchers&.seller_visible&.any?
+        li.nav-item.mr-2
+          = link_to 'Os meus vouchers', seller_vouchers_path ,class:'btn btn-outline-primary'
+
       li.nav-item
         = link_to 'A minha conta', seller_account_path, class: 'btn btn-outline-primary'

@@ -5,6 +5,7 @@
   = render 'shared/footer_small'
 
 main.container-xl.maincontent
+
   .row
     .col-sm-12.col-md-8.col-xl-6.mb-5
       h3.mb-4.d-flex.justify-content-between.align-items-center
@@ -62,36 +63,3 @@ main.container-xl.maincontent
                 = place.published ? 'Publicado' : 'Em validação'
               td
                 = link_to 'Detalhes', seller_place_path(place), class:'btn btn-outline-primary btn-xs'
-  hr
-  .row.mt-4
-    .col-sm-12
-      h3.mb-4 Os meus vouchers
-      - if @seller.vouchers.seller_visible.any?
-        table.table
-          thead
-            th Local
-            th Código
-            th Validade
-            th Valor
-            th Email
-            th NIF
-            th Estado
-          tbody
-            - @seller.vouchers.seller_visible.each do |voucher|
-              tr
-                td
-                  = voucher.place.name
-                td
-                  = voucher.code
-                td
-                  = voucher.valid_until
-                td
-                  = number_to_currency voucher.value, locale: :pt
-                td
-                  = voucher.email
-                td
-                  = voucher.vat_id
-                td
-                  = voucher.human_state_name
-      - else
-        p Ainda não tem vouchers
