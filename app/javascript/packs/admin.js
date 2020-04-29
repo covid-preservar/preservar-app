@@ -20,6 +20,8 @@ window.spinner = new Spinner();
 import Pikaday from 'pikaday'
 window.Pikaday = Pikaday;
 
+import select2 from "select2";
+window.select2 = select2;
 
 import PlaceForm from "../src/place_form";
 window.PlaceForm = PlaceForm;

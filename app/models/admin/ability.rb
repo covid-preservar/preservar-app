@@ -31,6 +31,8 @@ class Admin::Ability
     cannot :write, :all
     can :show, AdminUser, id: @user.id
     can :update, AdminUser, id: @user.id
+    can :resend, Voucher
+    can :create, Partnership
   end
 
   def apply_basic_user_permissions
@@ -67,6 +69,10 @@ class Admin::Ability
     end
 
     cannot :resend, Voucher do |voucher|
+      !voucher.paid?
+    end
+
+    cannot :mark_refunded, Voucher do |voucher|
       !voucher.paid?
     end
   end

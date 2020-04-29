@@ -98,6 +98,7 @@ Rails.application.routes.draw do
       resources :seller_users
       resources :vouchers do
         patch :resend, on: :member
+        patch :mark_refunded, on: :member
       end
 
       get 'stats', to: 'stats#index', as: :stats

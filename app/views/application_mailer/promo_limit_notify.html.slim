@@ -17,7 +17,7 @@ table
       td
         strong Paid bonused vouchers
       td
-        = @place.vouchers.paid.with_bonus.count
+        = @place.vouchers.total_paid.with_bonus.count
     tr
       td
         strong Pending bonused vouchers

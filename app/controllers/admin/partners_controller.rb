@@ -14,7 +14,7 @@ module Admin
 
     def new
       super do
-        @resource = (params[:type].classify + 'Partner').constantize.new
+        @resource = params[:type].classify.constantize.new
       end
     end
 
@@ -42,6 +42,10 @@ module Admin
 
     def permitted_params
       super.permit!
+    end
+
+    def process_params_for_upsert(params)
+      params.merge(type: params[:type].classify)
     end
   end
 end

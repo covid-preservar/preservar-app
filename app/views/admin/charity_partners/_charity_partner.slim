@@ -6,12 +6,17 @@
         td
           strong Photo
         td
-          - if @resource.large_logo.present?
-            span Large
-            = image_tag @resource.logo_url, class:'partner-logo logo-lg'
-          - if @resource.small_logo.present?
-            span Small
-            = image_tag @resource.thumb_logo_url, class:'partner-logo logo-sm'
+          .d-flex.align-items-start
+            - if @resource.large_logo.present?
+              .logo.mr-5
+                span Large
+                br
+                = image_tag @resource.logo_url, class:'partner-logo logo-lg'
+            - if @resource.small_logo.present?
+              .logo
+                span Small
+                br
+                = image_tag @resource.thumb_logo_url, class:'partner-logo logo-sm'
       tr
         td
           strong ID
@@ -46,34 +51,19 @@
               li = link_to c.name, [:admin, c]
       tr
         td
-          strong Requires Partner Id Code
-        td
-          = @resource.requires_partner_id_code
-      tr
-        td
           strong Min Value
         td
           = number_to_currency @resource.min_value, locale: :pt, precision: 0
       tr
         td
-          strong Add On Value
+          strong Charity Value
         td
-          = number_to_currency @resource.add_on_value, locale: :pt, precision: 0
+          = number_to_currency @resource.charity_value, locale: :pt, precision: 0
       tr
         td
           strong Target Value
         td
           = number_to_currency @resource.target_value, locale: :pt, precision: 0
-      tr
-        td
-          strong Voucher Limit
-        td
-          = @resource.voucher_limit
-      tr
-        td
-          strong Date Limit
-        td
-          = @resource.date_limit
       tr
         td
           strong Requires Partner Id Code

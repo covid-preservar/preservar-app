@@ -8,9 +8,10 @@ class Seller < ApplicationRecord
 
   before_validation :sanitize_vat_id
   before_validation :normalize_iban
+  before_validation :normalize_vat_id
 
   def to_s
-    "Seller: #{company_name}"
+    "Seller ##{id}: #{company_name}"
   end
 
   private
@@ -21,5 +22,9 @@ class Seller < ApplicationRecord
 
   def normalize_iban
     self.iban = Ibandit::IBAN.new(self.iban).to_s(:formatted) if self.iban.present?
+  end
+
+  def normalize_vat_id
+    self.vat_id = self.vat_id.sub('PT', '')
   end
 end

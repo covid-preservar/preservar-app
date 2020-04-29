@@ -1,30 +1,10 @@
 .partners.bockinbusiness {
 
   .navbar {
-    align-items: flex-start;
     height: 10rem;
-    padding-top: 1.5rem;
-
-    .secondary-cta {
-      border: 0;
-      font-size: 1rem;
-      line-height: 1rem;
-      margin-left: auto;
-      padding: 0;
-    }
 
     .header-right {
       padding-top: 1.5rem;
-      text-align: right;
-
-      > * + * {
-        margin-left: 1.5rem;
-      }
-    }
-
-    .header-link {
-      font-weight: bold;
-      text-decoration: none;
     }
 
     & + .container-xl {
@@ -55,39 +35,11 @@
     text-align: center;
   }
 
-  .partner-progress-bg {
-    background-color: $progress-bg-color;
-    border: 0;
-    height: 4px;
-    margin-bottom: 1rem;
-    width: 100%;
-
-    .partner-progress-fg {
-      background-color: $blue;
-      height: 4px;
-    }
-  }
-
-  .partner-summary {
-    color: $gray-400;
-  }
-
-  .partner-register .btn {
-    margin-top: 2rem;
-    border: 0;
-  }
-
-  .partner-register .mt-5 {
-    margin-top: 0 !important;
-  }
-
   a.text-muted {
     text-decoration: underline;
   }
 
-
   @include media-breakpoint-up(sm) {
-
     .navbar {
       height: 8rem;
     }
@@ -97,7 +49,7 @@
     }
 
     .places-container {
-      margin-top: 6rem;
+      margin-top: 12rem;
     }
 
   }
@@ -106,27 +58,13 @@
     .navbar {
       height: 14rem;
 
-      .secondary-cta {
-        border: 2px solid var(--color-main-blue);
-        line-height: 2.8rem;
-        padding: 0 1rem;
-      }
-
       .header-right {
-        margin-left: auto;
         padding-top: 0;
       }
     }
   }
 
-  @include media-breakpoint-up(lg) {
-    .places-container {
-      margin-top: -7rem;
-    }
-  }
-
   @include media-breakpoint-up(xl) {
-
     #hero::before {
       bottom: 4rem;
     }

@@ -387,3 +387,15 @@ sb.partner_properties["partner_types"]={"direct"=>"Directo com a Super Bock",
                                         "not_client"=>"Não sou cliente Super bock",
                                         "distributor"=>"Através de distribuidor"}
 sb.save!
+
+AddOnPartner.create!(
+  name: "Energia Simples",
+  slug: 'enegiasimples',
+  min_value: 10,
+  add_on_value: 5,
+  target_value: 20000,
+  place_page_copy: 'Lorem place page copy',
+  voucher_copy: 'Lorem voucher copy',
+  requires_partner_id_code: true,
+  large_logo: Rack::Test::UploadedFile.new('spec/files/logo-es.svg', 'image/svg'),
+  small_logo: Rack::Test::UploadedFile.new('spec/files/tag-es.svg', 'image/svg'))

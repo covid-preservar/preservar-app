@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
     elsif state.present? && state.in?(all_cities)
       @city = state
     else
-      @city = nil
+      @city = 'Grande Lisboa'
     end
   end
 

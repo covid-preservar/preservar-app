@@ -50,5 +50,5 @@ section#register-form.section
           = f.input :company_registration_code, placeholder: '1111-2222-3333', validate: false, hint: 'Optativo para empresários em nome individual'
 
         = f.input :accept_tos, as: :boolean, label: "Aceito os #{link_to 'Termos e Condições', tos_path, target: '_blank'} e #{link_to 'Politica de Privacidade', privacy_path, target: '_blank'}".html_safe
-        = f.button :submit, 'Registar', class: 'btn btn-primary', class: 'btn btn-primary'
+        = f.button :submit, 'Registar', class: 'btn btn-primary'
 

@@ -1,10 +1,10 @@
-.col-12.col-sm-8.col-lg-6.col-xl-6.mt-4.search-form
-  = text_field_tag :name, @name , class: 'mr-sm-2 mb-2 mb-sm-0 flex-fill', placeholder: 'Nome'
+.search-form.mt-4
+  = text_field_tag :name, @name , class: 'mr-md-2 mb-2 mb-md-0 flex-fill', placeholder: 'Nome'
   = select_tag :city,
                 grouped_options_for_select(@cities, @city),
                 class: 'select-input city',
                 include_blank: 'Todo o país'
-  button#partner_search.primary-cta.flex-fill.mt-2.mt-sm-0 Pesquisar
+  button#partner_search.primary-cta.flex-fill.mt-2.mt-md-0 Pesquisar
 
   javascript:
     $('#partner_search').click(ev => {

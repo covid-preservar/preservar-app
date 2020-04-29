@@ -37,6 +37,6 @@ class Partnership < ApplicationRecord
   end
 
   def to_s
-    "Partnership #{id} — #{partner.name}"
+    "Partnership ##{id}: #{partner.name}"
   end
 end

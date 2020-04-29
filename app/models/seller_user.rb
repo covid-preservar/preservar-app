@@ -23,6 +23,6 @@ class SellerUser < ApplicationRecord
   end
 
   def to_s
-    "SellerUser <#{email}>"
+    "SellerUser ##{id}:<#{email}>"
   end
 end

@@ -10,11 +10,6 @@
   }
 
   @include media-breakpoint-down(sm) {
-    flex-wrap: wrap;
-
-    & > * {
-      flex: 1 0 100%;
-      margin-top: .5rem;
-    }
+    flex-direction: column;
   }
 }

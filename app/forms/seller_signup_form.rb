@@ -88,6 +88,7 @@ class SellerSignupForm
 
     ActiveRecord::Base.transaction do
       seller_user.save!
+      seller_user.accept_tos!
       seller.save!
       place.save!
       yield if block_given?
@@ -114,7 +115,7 @@ class SellerSignupForm
   end
 
   def validate_vat_id
-    to_validate = 'PT' + vat_id.tr('PT', '')
+    to_validate = 'PT' + vat_id.sub('PT', '')
     errors.add(:vat_id, :invalid_vat) unless Valvat.new(to_validate).valid_checksum?
   end
 

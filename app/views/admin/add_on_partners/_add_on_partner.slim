@@ -6,12 +6,17 @@
         td
           strong Photo
         td
-          - if @resource.large_logo.present?
-            span Large
-            = image_tag @resource.logo_url, class:'partner-logo logo-lg'
-          - if @resource.small_logo.present?
-            span Small
-            = image_tag @resource.thumb_logo_url, class:'partner-logo logo-sm'
+          .d-flex.align-items-start
+            - if @resource.large_logo.present?
+              .logo.mr-5
+                span Large
+                br
+                = image_tag @resource.logo_url, class:'partner-logo logo-lg'
+            - if @resource.small_logo.present?
+              .logo
+                span Small
+                br
+                = image_tag @resource.thumb_logo_url, class:'partner-logo logo-sm'
       tr
         td
           strong ID
@@ -44,11 +49,6 @@
           ul
             - @resource.restricted_categories&.map do |c|
               li = link_to c.name, [:admin, c]
-      tr
-        td
-          strong Requires Partner Id Code
-        td
-          = @resource.requires_partner_id_code
       tr
         td
           strong Min Value
