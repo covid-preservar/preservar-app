@@ -15,9 +15,13 @@
   br
   small
     ' Ao comprar, está a aceitar os
-    => link_to 'Termos e Condições', tos_path, target:'_blank'
+    => link_to 'Termos e Condições', tos_path, target:'_blank', class: 'text-underline'
     ' e a
-    => link_to 'Politica de Privacidade', privacy_path, target:'_blank'
-
+    => link_to 'Politica de Privacidade', privacy_path, target:'_blank', class: 'text-underline'
+    - if @voucher.mbway_bonus_available? && mbway_bonus_active?
+      br
+      ' Ao Pagar através de MBWay está a aceitar os
+      = link_to 'Termos da campanha', tos_mbway_path, target: '_blank', class: 'text-underline'
+    | .
   - if @voucher.has_charity_partner?
     p = @voucher.partner.voucher_copy
