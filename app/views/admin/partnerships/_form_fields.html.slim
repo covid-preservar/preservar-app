@@ -2,11 +2,13 @@
 = f.input :partner_id, collection: Partner.all.map{|p| [p.name, p.id, {data: {slug: p.slug}}]}
 
 #loreal.partner_fields style='display:none;'
-  = f.input :partner_id_code, label: "L'Oréal Client number"
+  = f.input :partner_id_code, label: "L'Oréal Client number",
+                              hint: 'O backoffice não valida a correcção deste código'
 
 #bockinbusiness.partner_fields style='display:none;'
   = f.input :partner_type, collection: Partner.find(2).partner_properties['partner_types']&.invert&.sort, include_blank: true, label: 'Client Type'
-  = f.input :partner_id_code, label: 'SuperBock client number (for direct clients)'
+  = f.input :partner_id_code, label: 'SuperBock client number (for direct clients)',
+                              hint: 'O backoffice não valida a correcção deste código'
   = f.input :distributor_id, label: 'Distributor name (For distributor clients)'
   = f.input :limit_reached, as: :boolean
   = f.input :honor_check, as: :boolean, label: 'Superbock: Declaração de veracidade da info.'
@@ -19,8 +21,6 @@
 
 = f.input :approved, as: :boolean
 
-
-= f.submit 'save'
 
 javascript:
   $('#partnership_partner_id').change(ev => {

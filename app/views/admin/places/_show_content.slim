@@ -1,7 +1,7 @@
 - content_for :resource_actions do
   - if @resource.partnership.present? && can?(:edit, @resource.partnership)
     = link_to 'Edit partnership', edit_admin_partnership_path(@resource.partnership), class: 'btn btn-outline-primary btn-sm'
-  - elsif can? :create, Partnership
+  - elsif !@resource.partnership.present? && can?(:create, Partnership)
     = link_to 'Add partnership', new_admin_partnership_path(place_id: @resource.id), class: 'btn btn-outline-primary btn-sm'
   - if can? :publish, @resource
     = button_to 'Publish', publish_admin_place_path(@resource), class: "btn btn-outline-primary btn-sm", method: :patch

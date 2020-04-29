@@ -32,6 +32,7 @@ class Admin::Ability
     can :show, AdminUser, id: @user.id
     can :update, AdminUser, id: @user.id
     can :resend, Voucher
+    can :create, Partnership
   end
 
   def apply_basic_user_permissions
