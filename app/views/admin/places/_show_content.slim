@@ -73,6 +73,11 @@
           = link_to(@resource.partnership, [:admin, @resource.partnership]) if @resource.partnership.present?
       tr
         td
+          strong Total insured amount
+        td
+          = number_to_currency @resource.vouchers.with_insurance.sum(:value), locale: :pt, precision: 0
+      tr
+        td
           strong Created At
         td
           = @resource.created_at
