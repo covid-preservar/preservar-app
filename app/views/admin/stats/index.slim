@@ -82,6 +82,22 @@ section.stats_section
         td
           => number_to_currency Voucher.total_paid.where.not(mbway_bonus: 0).sum(:value) + Voucher.total_paid.sum(:mbway_bonus), locale: :pt, precision: 0
 
+  p.subtitle Ageas
+  table.table
+    tbody
+      tr
+        td
+          strong Numero de vouchers segurados
+        td
+          = Voucher.with_insurance.count
+      tr
+        td
+          strong Valor segurado
+        td
+          => number_to_currency Voucher.with_insurance.sum(:value), locale: :pt, precision: 0
+          ' /
+          = number_to_currency Voucher::INSURANCE_TOTAL_LIMIT, locale: :pt, precision: 0
+
 section.stats_section
   h2.subtitle Voucher Stats
   table.table
