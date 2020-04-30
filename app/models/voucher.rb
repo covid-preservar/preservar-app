@@ -103,7 +103,8 @@ class Voucher < ApplicationRecord
   end
 
   def mbway_bonus_available?
-    value >= MIN_MBWAY_VALUE
+    value >= MIN_MBWAY_VALUE &&
+    Voucher.total_paid.sum(:mbway_bonus) < MBWAY_TARGET_VALUE
   end
 
   def has_mbway_bonus?
