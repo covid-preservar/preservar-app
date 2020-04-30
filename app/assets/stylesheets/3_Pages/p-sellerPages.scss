@@ -4,13 +4,6 @@
     height: 10rem;
   }
 
-  .discount {
-
-    .btn-xs {
-      float: right;
-    }
-  }
-
   .table {
     border-collapse: collapse;
   }
@@ -23,5 +16,21 @@
 
   .actions {
     margin-left: auto;
+  }
+
+  @media print {
+    footer,
+    .mbway-banner,
+    .navbar,
+    .btn {
+      display: none;
+    }
+
+    .table {
+      font-size: 12px;
+    }
+
+    @page { size: landscape; }
+
   }
 }

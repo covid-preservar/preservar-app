@@ -19,6 +19,12 @@ p
       = image_tag @voucher.partner.logo_url
       p = @voucher.partner.voucher_copy
 
+- if @voucher.has_mbway_bonus?
+  .content-block
+    .align-center
+      = image_tag 'logo-mbw-email.png', width: 300
+      p A MBWay oferece + €2 a este vale.
+
 br
 h3 Detalhes do vale
 p
@@ -39,38 +45,33 @@ table
         td = @voucher.vat_id
 
 
-    - if @voucher.has_add_on_partner?
-      tr
-        td
-          strong Valor pago
-        td
-          = number_to_currency @voucher.value, locale: :pt
+    tr
+      td
+        strong Valor pago
+      td
+        = number_to_currency @voucher.value, locale: :pt
 
+    - if @voucher.has_add_on_partner?
       tr
         td
           strong
             ' Oferta
             = @voucher.partner.name
         td
-          = number_to_currency @voucher.partner.add_on_value, locale: :pt
-
+          = number_to_currency @voucher.add_on_bonus, locale: :pt
+    - if @voucher.mbway_bonus > 0
       tr
         td
-          strong Valor Total
+          strong
+            ' Oferta MBWay
         td
-          = number_to_currency @voucher.value + @voucher.partner.add_on_value, locale: :pt
+          = number_to_currency @voucher.mbway_bonus, locale: :pt
+    tr
+      td
+        strong Valor do vale
+      td
+        = number_to_currency @voucher.face_value, locale: :pt
 
-    - else
-
-      tr
-        td
-          strong Valor
-        td
-          = number_to_currency @voucher.value, locale: :pt
-          - unless @voucher.discount_percent.zero?
-            ' +
-            = @voucher.discount_percent
-            | % de desconto
     tr
       td
         strong Estabelecimento
@@ -87,6 +88,26 @@ table
 
 h1 Como utilizar?
 p Simplesmente mostre este email no seu telemóvel. Também pode imprimir o email.
+
+// if covered by insurance
+// TODO - update when integration is completed to include credentials
+h1 E se a empresa a quem comprei o voucher fechar?
+
+p Se até final de 2020, a empresa a quem comprou o voucher encerrar atividade, a Ageas Seguros irá devolver a totalidade do valor pago por si.
+
+p
+  ' Ao comprar este voucher, foi automaticamente criado um utilizador e uma apólice que pode consultar na aplicação
+  = link_to 'Keep Warranty', 'https://onelink.to/57tgwy'
+  | , dentro da pasta “Seguros”.
+p
+  | Registe-se agora, ou aguarde, que entretanto os seus dados de acesso à Keep Warranty serão enviados noutro e-mail.
+
+p Através da aplicação, pode não só consultar os detalhes da apólice associada ao seu voucher, mas, caso necessário, iniciar o processo de reclamação do valor devido.
+
+p
+  ' Nota: a devolução do valor está sujeita aos
+  => link_to 'Termos e Condições', tos_url
+  | desta campanha, conforme detalhado no site da plataforma preserve.pt na secção “Cobertura de pagamento”.
 
 h1 Precisa de ajuda?
 p

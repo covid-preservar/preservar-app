@@ -13,6 +13,9 @@ class HomeController < ApplicationController
   def tos
   end
 
+  def tos_mbway
+  end
+
   def privacy
   end
 

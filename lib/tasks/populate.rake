@@ -66,8 +66,6 @@ namespace :db do
       PartnerIdentifier.create!(identifier: line.chomp, partner: partner)
     end
 
-    Flipper::Adapters::ActiveRecord::Feature.create key:'discounts'
-    Flipper.enable :discounts
   end
 end
 

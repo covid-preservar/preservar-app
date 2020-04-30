@@ -58,26 +58,6 @@
     white-space: nowrap;
   }
 
-  .discount {
-    align-items: center;
-    display: flex;
-    flex: 0;
-    justify-content: space-between;
-    margin-left: auto;
-    white-space: nowrap;
-
-    .discount-value {
-      color: $black;
-      font-size: .875rem;
-      opacity: .5;
-    }
-
-    svg {
-      margin-right: 5px;
-      width: 1rem;
-    }
-  }
-
   &:hover img {
     opacity: .5;
   }

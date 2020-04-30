@@ -37,6 +37,14 @@ html lang="#{I18n.locale}"
       .spinner-overlay
         .spinner
 
+    - if mbway_bonus_active?
+      .mbway-banner
+        ' Todos os vouchers comprados por
+        => inline_svg 'logo-mbway-small.svg'
+        ' recebem 2€ extra de oferta.
+        = link_to 'Termos aplicam-se', tos_mbway_path, target: '_blank', class: 'text-underline text-light'
+        | .
+
     = yield :header
     = render 'shared/flashes'
     = content_for?(:content) ? yield(:content) : yield

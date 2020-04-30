@@ -1,21 +1,46 @@
-= simple_form_for @voucher,
-                      url: voucher_payments_path(@voucher),
-                      method: :post, remote: true,
-                      html: {class:'voucher_payment'} do |f|
-      = f.input :email, label:'Email para receber o voucher', placeholder: 'Email'
-      = f.input :vat_id, label: 'NIF (Opcional)',
-                         hint: 'Se pretender que o comerciante emita factura',
-                         input_html: { value: @voucher.vat_id }
+= simple_form_for @voucher, url: voucher_payments_path(@voucher),
+                            method: :post, remote: true,
+                            html: {class:'voucher_payment'} do |f|
 
-      .payment-methods
-        = f.collection_radio_buttons :payment_method,
-                                      Voucher::PAYMENT_METHODS,
-                                      :itself, :itself,
-                                      item_wrapper_tag: nil,
-                                      checked: f.object.payment_method || 'MB' do |b|
-          = b.label class: "method method-#{b.object.downcase}"
-            = b.radio_button class:'payment-method-radio'
-            = image_tag "logo-#{b.object.downcase}.svg"
+  = f.input :email, label:'Email para receber o voucher', placeholder: 'Email'
+  = f.input :vat_id, label: 'NIF (Opcional)',
+                      hint: 'Se pretender que o comerciante emita factura',
+                      input_html: { value: @voucher.vat_id }
 
-      = f.input :payment_phone, placeholder: '9xxxxxxxx'
-      = f.submit 'Pagar', class: 'btn btn-primary'
+  .payment-methods
+    = f.collection_radio_buttons :payment_method,
+                                  Voucher::PAYMENT_METHODS,
+                                  :itself, :itself,
+                                  item_wrapper_tag: nil,
+                                  checked: f.object.payment_method || 'MBW' do |b|
+      = b.label class: "method method-#{b.object.downcase}"
+        = b.radio_button class:'payment-method-radio'
+        = image_tag "logo-#{b.object.downcase}.svg"
+        - if b.object == 'MBW' && @voucher.mbway_bonus_available? && mbway_bonus_active?
+          strong.mbway-bonus data-bonus=Voucher::BONUS_MBWAY_VALUE
+            | Receba #{Voucher::BONUS_MBWAY_VALUE}€ extra
+
+  = f.input :payment_phone, placeholder: '9xxxxxxxx'
+
+  h4.mt-4
+    ' Local:
+    = @voucher.place.name
+  h4.mt-2
+    ' Valor do voucher:
+    span#voucher_face_value data-face-value=@voucher.face_value
+      => number_to_currency @voucher.face_value, locale: :pt
+  - if @voucher.has_add_on_partner?
+    p.mt-2.d-flex.align-items-center
+      = image_tag @voucher.partner.thumb_logo_url, class: 'partner-logo-thumb'
+      small
+        ' (Este voucher inclui uma oferta de
+        => number_to_currency @voucher.partner.add_on_value, locale: :pt, precision: 0
+        ' cortesia da
+        = @voucher.partner.name
+        | )
+
+  h4.mt-2.mb-4
+    ' Valor a pagar:
+    => number_to_currency @voucher.value, locale: :pt
+
+  = f.submit 'Pagar', class: 'btn btn-primary'

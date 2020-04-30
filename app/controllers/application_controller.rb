@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   before_action :load_cities
   before_action :set_cookies, unless: -> { request.xhr? }
 
-
   if !Rails.env.development?
     rescue_from ActiveRecord::RecordNotFound,
                 ActionController::RoutingError,
@@ -39,6 +38,11 @@ class ApplicationController < ActionController::Base
       seller_account_path
     end
   end
+
+  def mbway_bonus_active?
+    Voucher.total_paid.sum(:mbway_bonus) < Voucher::MBWAY_TARGET_VALUE
+  end
+  helper_method :mbway_bonus_active?
 
   private
 

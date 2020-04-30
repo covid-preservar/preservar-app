@@ -73,11 +73,6 @@
           = link_to(@resource.partnership, [:admin, @resource.partnership]) if @resource.partnership.present?
       tr
         td
-          strong Has Discount
-        td
-          = @resource.has_discount
-      tr
-        td
           strong Created At
         td
           = @resource.created_at

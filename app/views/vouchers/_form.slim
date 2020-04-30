@@ -5,11 +5,6 @@
 
   h3 Apoie este local, seleccione o valor do voucher
 
-  - if Flipper.enabled?(:discounts) && @place.has_discount?
-    p.discount
-      = inline_svg 'icon-heart-small.svg'
-      span.discount-text Este local oferece 10% de desconto na compra de um voucher
-
   = f.input_field :place_id, as: :hidden
   = f.input :value, as: :radio_buttons, collection: Place::DEFAULT_EUR_VALUES, checked: (@voucher.value || 20), legend_tag: false
   = f.input :custom_value, as: :integer, label: false, placeholder: 'Outro valor', class: 'euro', wrapper_class:'euro', input_html: {min: 1}

@@ -22,7 +22,7 @@ class AddOnPartner < Partner
   end
 
   def target_progress
-    vouchers.total_paid.count * add_on_value
+    vouchers.total_paid.sum(:add_on_bonus)
   end
 
   def date_limit

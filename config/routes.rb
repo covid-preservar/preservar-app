@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     end
 
     get '/tos', to: 'home#tos', as: :tos
+    get '/tos_mbway', to: 'home#tos_mbway', as: :tos_mbway
     get '/privacy', to: 'home#privacy', as: :privacy
 
     devise_for :seller_users,
@@ -60,14 +61,8 @@ Rails.application.routes.draw do
       resource :account, only: [:show] do
         put 'accept_new_terms'
       end
-      resources :places, except: [:index, :destroy] do
-        member do
-          get :enable_discount
-          post :confirm_discount
-          get :disable_discount
-          post :confirm_disable_discount
-        end
-      end
+      resources :places, except: [:index, :destroy]
+      resources :vouchers, only: [:index]
 
     end
 
