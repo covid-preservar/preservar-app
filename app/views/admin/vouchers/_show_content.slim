@@ -90,6 +90,11 @@
           = link_to(@resource.partner, [:admin, @resource.partner]) if @resource.partner.present?
       tr
         td
+          strong Insurance Policy
+        td
+          = @resource.insurance_policy_number
+      tr
+        td
           strong Tracking Codes
         td
           = @resource.tracking_codes
