@@ -20,7 +20,7 @@ class InsurancePolicyService
       email: voucher.email,
       amount: voucher.value,
       retailer: voucher.place.name,
-      niff: voucher.place.seller.vat_id,
+      nif: voucher.place.seller.vat_id,
       purchase_date: voucher.payment_completed_at.to_date,
       expiry_date: DEFAULT_INSURANCE_EXPIRATION
     }
