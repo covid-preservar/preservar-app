@@ -115,8 +115,9 @@ class Voucher < ApplicationRecord
   end
 
   def can_insure?
-    Voucher.insurance_available? &&
+    self.paid? &&
     self.insurance_policy_number.blank? &&
+    Voucher.insurance_available? &&
     place.vouchers.with_insurance.sum(:value) < INSURANCE_PLACE_LIMIT
   end
 
