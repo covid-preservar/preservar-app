@@ -25,6 +25,6 @@ class Seller < ApplicationRecord
   end
 
   def normalize_vat_id
-    self.vat_id = self.vat_id.sub('PT', '')
+    self.vat_id = self.vat_id.sub(/PT/i, '')
   end
 end
