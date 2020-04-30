@@ -1,0 +1,21 @@
+.insurance-logos {
+  margin-top: 1rem;
+  display: flex;
+  background-color: $lightgrey;
+
+  .insurance-logo {
+
+    &.logo-ageas {
+      flex: 2;
+      margin-right: 1rem;
+    }
+
+    &.logo-keepwarranty {
+      flex: 3;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

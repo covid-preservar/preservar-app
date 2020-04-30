@@ -69,7 +69,7 @@
       .places-list.row.home-list
         == render @places
 
-  - cache [:press, ENV['HEROKU_SLUG_COMMIT']] do
+  - cache [:homepage_bottom, ENV['HEROKU_SLUG_COMMIT']] do
     section#press.section
       .row
         h2.col-12.section-separator Como visto em
@@ -109,7 +109,26 @@
             = image_tag 'partners/press-cmf.png', alt: 'CMF'
 
 
-  - cache [:businesses, ENV['HEROKU_SLUG_COMMIT']] do
+    section#press.section
+      .row
+        .col-lg-6.col-12
+          h2.section-separator Todos os vouchers estão segurados, fique sempre a ganhar
+          p
+            ' Com o apoio da
+            strong> Ageas
+            ' e da
+            strong KeepWarranty
+            ' , conseguimos garantir que, caso o pior aconteça, não perca o seu voucher.
+            => link_to 'Termos', tos_path, class:'text-underline'
+            | aplicam-se.
+        .col-md-8.offset-md-2.col-lg-6.offset-lg-0.col-12
+          .insurance-logos.mt-5
+            .insurance-logo.logo-ageas
+              = image_tag 'ageas/logo-ageas.png'
+            .insurance-logo.logo-keepwarranty
+              = image_tag 'ageas/logo-keepwarranty.png'
+
+
     section#businesses.section
       .row
         .col-12.col-md-8.col-lg-6
