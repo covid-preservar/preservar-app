@@ -13,13 +13,15 @@
     display: none; // Safari and Chrome
   }
 
+  .place-img {
+    height: auto;
+  }
+
   .place {
     max-width: 240px;
   }
 
-  .place-img {
-    height: auto;
-  }
+
 }
 
 .press-wrapper {
@@ -86,12 +88,32 @@
   }
 }
 
-@include media-breakpoint-down(lg) {
+// @include media-breakpoint-down(lg) {
+//   .places-list.home-list {
+//     margin: 1rem 0;
+//     flex-wrap: wrap;
+
+//     .place {
+//       flex: 0 0 15rem;
+
+//       &:first-child {
+//         margin-left: -1rem;
+//       }
+//     }
+//   }
+
+//   .press-wrapper .col-4 {
+//     flex: 0 0 11.5rem;
+//   }
+// }
+
+@include media-breakpoint-up(md) {
   .places-list.home-list {
     margin: 1rem 0;
 
     .place {
-      flex: 0 0 15rem;
+      flex: 0 0 25%;
+      max-width: 25%;
 
       &:first-child {
         margin-left: -1rem;
@@ -112,12 +134,12 @@
   }
 
   .places-list.home-list {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     width: auto;
     justify-content: space-between;
 
     .place {
-      max-width: none;
+      max-width: 25%;
     }
   }
 
