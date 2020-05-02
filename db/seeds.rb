@@ -226,7 +226,8 @@ LOCATIONS = {
     'Lousada',
     'Marco de Canaveses',
     'Paços de Ferreira',
-    'Penafiel'
+    'Penafiel',
+    'Paredes'
   ],
   'Santarém' => [
     'Abrantes',
@@ -352,7 +353,7 @@ Location.create(district: 'Porto',
                 area: 'Grande Porto',
                 aliases: [
                   'Gondomar', 'Maia', 'Matosinhos',
-                  'Paredes', 'Porto', 'Póvoa de Varzim',
+                  'Porto', 'Póvoa de Varzim',
                   'Santo Tirso', 'Trofa',
                   'Valongo', 'Vila do Conde',
                   'Vila Nova de Gaia'
