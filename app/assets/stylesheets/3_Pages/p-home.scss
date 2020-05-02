@@ -88,25 +88,6 @@
   }
 }
 
-// @include media-breakpoint-down(lg) {
-//   .places-list.home-list {
-//     margin: 1rem 0;
-//     flex-wrap: wrap;
-
-//     .place {
-//       flex: 0 0 15rem;
-
-//       &:first-child {
-//         margin-left: -1rem;
-//       }
-//     }
-//   }
-
-//   .press-wrapper .col-4 {
-//     flex: 0 0 11.5rem;
-//   }
-// }
-
 @include media-breakpoint-up(md) {
   .places-list.home-list {
     margin: 1rem 0;

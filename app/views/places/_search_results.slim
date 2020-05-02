@@ -1,3 +1,3 @@
 .places-list.row
-  = render(@places) || "Sem resultados"
+  == render partial: :place, collection: @places, cache: true
 = paginate @places, params: {city: @city, category: @category&.id}, window: 1, outer_window: 1, remote: true

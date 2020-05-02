@@ -1,2 +1,4 @@
+window.scrollTo({top: $('.places-container').offset().top - 20, behavior: "smooth"});
 $('#search-results').html('<%= j(render 'search_results')%>');
 window.spinner.stop();
+

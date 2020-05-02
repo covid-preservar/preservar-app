@@ -11,13 +11,5 @@
       top: 8rem;
       width: 100px;
     }
-
-    @media only screen and (max-width: 576px) {
-      margin-top: 0;
-
-      .row:first-child {
-        display: none;
-      }
-    }
   }
 }
