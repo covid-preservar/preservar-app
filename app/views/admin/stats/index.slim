@@ -95,8 +95,6 @@ section.stats_section
           strong Valor segurado
         td
           => number_to_currency Voucher.with_insurance.sum(:value), locale: :pt, precision: 0
-          ' /
-          = number_to_currency Voucher::INSURANCE_TOTAL_LIMIT, locale: :pt, precision: 0
 
 section.stats_section
   h2.subtitle Voucher Stats
