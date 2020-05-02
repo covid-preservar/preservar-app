@@ -5,6 +5,7 @@ class Voucher < ApplicationRecord
   BONUS_MBWAY_VALUE = 2
   MBWAY_TARGET_VALUE = 5000
   INSURANCE_PLACE_LIMIT = 500
+  INSURANCE_TOTAL_LIMIT = 50000
 
   include AASM
 
@@ -116,7 +117,12 @@ class Voucher < ApplicationRecord
   def can_insure?
     self.paid? &&
     self.insurance_policy_number.blank? &&
+    Voucher.insurance_available? &&
     place.vouchers.with_insurance.sum(:value) < INSURANCE_PLACE_LIMIT
+  end
+
+  def self.insurance_available?
+    self.with_insurance.sum(:value) < INSURANCE_TOTAL_LIMIT
   end
 
   private
