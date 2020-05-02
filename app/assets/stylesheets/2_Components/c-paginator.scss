@@ -1,0 +1,9 @@
+.pagination {
+  .current {
+    background-color: var(--color-main-blue);
+
+    a {
+      color: $white;
+    }
+  }
+}
