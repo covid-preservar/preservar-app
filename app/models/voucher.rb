@@ -4,6 +4,8 @@ class Voucher < ApplicationRecord
   MIN_MBWAY_VALUE = 20
   BONUS_MBWAY_VALUE = 2
   MBWAY_TARGET_VALUE = 5000
+  INSURANCE_PLACE_LIMIT = 500
+  INSURANCE_TOTAL_LIMIT = 50000
 
   include AASM
 
@@ -57,6 +59,7 @@ class Voucher < ApplicationRecord
   scope :with_bonus, -> { where.not(partner_id: nil) }
   scope :not_paid, -> {  where.not(state: %w[paid redeemed]) }
   scope :total_paid, -> {  where(state: %w[paid redeemed]) }
+  scope :with_insurance, -> {  where.not(insurance_policy_number: nil) }
 
   before_validation :set_addon_bonus
 
@@ -109,6 +112,17 @@ class Voucher < ApplicationRecord
 
   def has_mbway_bonus?
     mbway_bonus_available? && payment_method == 'MBW'
+  end
+
+  def can_insure?
+    self.paid? &&
+    self.insurance_policy_number.blank? &&
+    Voucher.insurance_available? &&
+    place.vouchers.with_insurance.sum(:value) < INSURANCE_PLACE_LIMIT
+  end
+
+  def self.insurance_available?
+    self.with_insurance.sum(:value) < INSURANCE_TOTAL_LIMIT
   end
 
   private

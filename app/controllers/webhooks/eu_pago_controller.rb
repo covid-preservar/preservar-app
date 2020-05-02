@@ -44,16 +44,8 @@ class Webhooks::EuPagoController < ActionController::Base
     if voucher.pending_payment?
       notification.update status: 'ok'
       voucher.payment_success!
-      ApplicationMailer.voucher_email(voucher.id).deliver_later
-      ApplicationMailer.seller_voucher_email(voucher.id).deliver_later
 
-      if voucher.partner.present? &&
-         voucher.place.promo_limit_reached? &&
-         !voucher.place.partnership.limit_reached
-
-        voucher.place.partnership.update limit_reached: true
-        ApplicationMailer.promo_limit_notify(voucher.place.id).deliver_later
-      end
+      VoucherPaymentCompleteJob.perform_later(voucher.id)
     else
       notification.update status: "voucher_state_was_#{voucher.state}"
       render(status: :unprocessable_entity, plain: 'Voucher state does not allow this operation') and return

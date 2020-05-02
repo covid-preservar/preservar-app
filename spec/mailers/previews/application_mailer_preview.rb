@@ -28,4 +28,9 @@ class ApplicationMailerPreview < ActionMailer::Preview
   def promo_limit_notify
     ApplicationMailer.promo_limit_notify(AddOnPartner.last.vouchers.last.place_id)
   end
+
+  #### TEMP
+  def followup_insurance_email
+    ApplicationMailer.followup_insurance_email(Voucher.last.id)
+  end
 end

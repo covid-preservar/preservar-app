@@ -1,0 +1,24 @@
+h1 A sua conta Keep Warranty foi criada
+
+p
+  | Aqui estão os seus dados de conta Keep Warranty:
+p
+  strong> Utilizador:
+  = @voucher.email
+  br
+  strong> Password provisória:
+  = @voucher.insurance_temp_password
+  br
+  p Nota: ao entrar a primeira vez na aplicação, deve alterar a sua password.
+
+p Através da aplicação, pode não só consultar os detalhes da apólice associada ao seu voucher, mas, caso necessário, iniciar o processo de reclamação do valor devido.
+
+p
+  ' Nota: a devolução do valor está sujeita aos
+  => link_to 'Termos e Condições', tos_url
+  | desta campanha, conforme detalhado no site da plataforma preserve.pt na secção “Cobertura de pagamento”.
+
+h1 Precisa de ajuda?
+p
+ ' Envie um e-mail para
+ = mail_to 'info@preserve.pt'

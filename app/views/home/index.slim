@@ -61,6 +61,26 @@
         h3 Parabéns, contribuiu para sua economia local!
         p Contribuiu para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
 
+    section.section
+      .row
+        .col-lg-6.col-12
+          h2.section-separator Todos os vouchers estão segurados, fique sempre a ganhar
+          p
+            ' Com o apoio da
+            strong> Ageas
+            ' e da
+            strong KeepWarranty
+            ' , conseguimos garantir que, caso o pior aconteça, não perca o seu voucher.
+            => link_to 'Termos', tos_path, class:'text-underline'
+            | aplicam-se.
+        .col-md-8.offset-md-2.col-lg-6.offset-lg-0.col-12
+          .insurance-logos.mt-5
+            .insurance-logo.logo-ageas
+              = inline_svg 'ageas/logo-ageas.svg'
+            .insurance-logo.logo-keepwarranty
+              = inline_svg 'ageas/logo-keepwarranty.svg'
+
+
   - cache @places do
     section.places-container.section
       .row
@@ -107,27 +127,6 @@
         .col-4.col-lg-2
           .press-logo
             = image_tag 'partners/press-cmf.png', alt: 'CMF'
-
-
-    section#press.section
-      .row
-        .col-lg-6.col-12
-          h2.section-separator Todos os vouchers estão segurados, fique sempre a ganhar
-          p
-            ' Com o apoio da
-            strong> Ageas
-            ' e da
-            strong KeepWarranty
-            ' , conseguimos garantir que, caso o pior aconteça, não perca o seu voucher.
-            => link_to 'Termos', tos_path, class:'text-underline'
-            | aplicam-se.
-        .col-md-8.offset-md-2.col-lg-6.offset-lg-0.col-12
-          .insurance-logos.mt-5
-            .insurance-logo.logo-ageas
-              = image_tag 'ageas/logo-ageas.png'
-            .insurance-logo.logo-keepwarranty
-              = image_tag 'ageas/logo-keepwarranty.png'
-
 
     section#businesses.section
       .row
