@@ -370,7 +370,7 @@ MarketingPartner.create!(
   slug: 'loreal',
   place_page_copy: 'Lorem place page copy',
   voucher_copy: 'Lorem voucher copy',
-  large_logo: Rack::Test::UploadedFile.new('spec/files/logo-loreal.svg', 'image/svg'),
+  large_logo: Rack::Test::UploadedFile.new('spec/files/logo-loreal.png', 'image/png'),
   small_logo: Rack::Test::UploadedFile.new('spec/files/tag-loreal.svg', 'image/svg'))
 
 sb = AddOnPartner.create!(
@@ -381,7 +381,7 @@ sb = AddOnPartner.create!(
   target_value: 20000,
   place_page_copy: 'Lorem place page copy',
   voucher_copy: 'Lorem voucher copy',
-  large_logo: Rack::Test::UploadedFile.new('spec/files/logo-sb.svg', 'image/svg'),
+  large_logo: Rack::Test::UploadedFile.new('spec/files/logo-sb.png', 'image/png'),
   small_logo: Rack::Test::UploadedFile.new('spec/files/tag-sb.svg', 'image/svg'))
 
 sb.partner_properties["partner_types"]={"direct"=>"Directo com a Super Bock",
@@ -398,5 +398,5 @@ AddOnPartner.create!(
   place_page_copy: 'Lorem place page copy',
   voucher_copy: 'Lorem voucher copy',
   requires_partner_id_code: true,
-  large_logo: Rack::Test::UploadedFile.new('spec/files/logo-es.svg', 'image/svg'),
+  large_logo: Rack::Test::UploadedFile.new('spec/files/logo-es.png', 'image/png'),
   small_logo: Rack::Test::UploadedFile.new('spec/files/tag-es.svg', 'image/svg'))
