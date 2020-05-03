@@ -1,18 +1,15 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
+nav.navbar.navbar-expand-md.navbar-light.bg-light
   a.navbar-brand href='/'
     = inline_svg 'logo-small.svg'
 
-  button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-    span class="navbar-toggler-icon"
-
-  #navbarSupportedContent.collapse.navbar-collapse
+  #navbarContent.collapse.navbar-collapse.show
     ul.navbar-nav.ml-auto.mt-0
 
       li.nav-item
         = link_to 'Terminar sessão', destroy_seller_user_session_path, method: :delete, class: 'nav-link'
 
       - if current_seller_user&.seller&.vouchers&.seller_visible&.any?
-        li.nav-item.mr-2
+        li.nav-item.mr-md-2.mb-2.mb-md-0
           = link_to 'Os meus vouchers', seller_vouchers_path ,class:'btn btn-outline-primary'
 
       li.nav-item

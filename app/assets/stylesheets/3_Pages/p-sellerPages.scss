@@ -18,6 +18,23 @@
     margin-left: auto;
   }
 
+
+  // Workaround for mobile navbar issues with jquery3.5.0
+  @include media-breakpoint-down(md) {
+    .navbar-nav {
+      text-align: right;
+    }
+
+    .navbar {
+      align-items: start;
+    }
+
+    .navbar-collapse {
+      flex-basis: auto;
+    }
+  }
+
+
   @media print {
     footer,
     .mbway-banner,
@@ -33,4 +50,6 @@
     @page { size: landscape; }
 
   }
+
+
 }
