@@ -6,7 +6,7 @@ class PartnerLogoUploader < BaseUploader
   Attacher.validate do
     validate_max_size 1 * 1024 * 1024, message: 'demasiado grande (max. 1 MB)'
     # Docs recommend validating both MIME and extension
-    validate_mime_type_inclusion %w[image/svg+xml], message: 'tem que ser formato SVG'
-    validate_extension_inclusion %w[svg], message: 'tem que ser formato SVG'
+    validate_mime_type_inclusion %w[image/svg+xml image/png], message: 'tem que ser formato SVG ou PNG'
+    validate_extension_inclusion %w[svg png], message: 'tem que ser formato SVG ou PNG'
   end
 end

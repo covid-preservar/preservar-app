@@ -351,3 +351,8 @@ hr {
 img {
   margin-bottom: 15px;
 }
+
+.partner-logo {
+  max-width: 300px;
+  max-height: 150px;
+}

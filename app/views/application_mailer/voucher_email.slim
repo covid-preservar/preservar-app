@@ -16,7 +16,7 @@ p
 - if @voucher.partner.present?
   .content-block
     .align-center
-      = image_tag @voucher.partner.logo_url
+      = image_tag @voucher.partner.logo_url, class: 'partner-logo'
       p = @voucher.partner.voucher_copy
 
 - if @voucher.has_mbway_bonus?
