@@ -18,6 +18,21 @@
     margin-left: auto;
   }
 
+  &.vouchers.index {
+    @include media-breakpoint-down(md) {
+      .table .button_to .btn-sm {
+        width: 100px;
+        white-space: pre-wrap;
+        overflow: hidden;
+        height: auto;
+      }
+    }
+  }
+
+  .voucher-redeemed,
+  .voucher-refunded {
+    opacity: .5;
+  }
 
   // Workaround for mobile navbar issues with jquery3.5.0
   @include media-breakpoint-down(md) {

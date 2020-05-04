@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     when AdminUser
       admin_root_path
     when SellerUser
-      seller_account_path
+      seller_vouchers_path
     end
   end
 

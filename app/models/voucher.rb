@@ -82,9 +82,9 @@ class Voucher < ApplicationRecord
     case state
     when 'paid'
       'Emitido'
-    when 'Redeemed'
+    when 'redeemed'
       'Utilizado'
-    when 'Refunded'
+    when 'refunded'
       'Cancelado'
     end
   end
@@ -124,6 +124,26 @@ class Voucher < ApplicationRecord
 
   def self.insurance_available?
     self.with_insurance.sum(:value) < INSURANCE_TOTAL_LIMIT
+  end
+
+  def redeem_with_value!(uvalue)
+    if uvalue < self.face_value
+      new_voucher = self.dup
+      new_voucher.value = self.face_value - uvalue
+      new_voucher.used_value = 0
+      new_voucher.mbway_bonus = 0
+      new_voucher.add_on_bonus = 0
+      new_voucher.partner = nil
+    end
+
+    self.used_value = uvalue
+
+    self.class.transaction do
+      self.redeem!
+      new_voucher.save! if new_voucher.present?
+    end
+
+    return new_voucher.presence
   end
 
   private

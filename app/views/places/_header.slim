@@ -1,12 +1,15 @@
 nav.header.navbar.container-xl.header-short
   a#logo-small href="/"
-  = render 'shared/search_form'
 
   .header-right
     = link_to 'Ajuda', 'http://ajuda.preserve.pt/', class: 'header-link', target: '_blank'
     - if seller_user_signed_in?
       = link_to 'Terminar sessão', destroy_seller_user_session_path, method: :delete, class: 'header-link'
-      = link_to 'A minha conta', seller_account_path, class: 'secondary-cta'
+      br.d-inline.d-sm-none
+      = link_to 'Os meus vouchers', seller_vouchers_path ,class:'header-link secondary-cta'
+      = link_to 'A minha conta', seller_account_path, class: 'header-link secondary-cta'
     - else
       = link_to 'Entrar', new_seller_user_session_path, class: 'header-link'
       = link_to 'Submeter local', new_seller_user_registration_path, class: 'secondary-cta'
+
+  = render 'shared/search_form'

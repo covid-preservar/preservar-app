@@ -10,7 +10,7 @@ nav.navbar.navbar-expand-md.navbar-light.bg-light
 
       - if current_seller_user&.seller&.vouchers&.seller_visible&.any?
         li.nav-item.mr-md-2.mb-2.mb-md-0
-          = link_to 'Os meus vouchers', seller_vouchers_path ,class:'btn btn-outline-primary'
+          = link_to 'Os meus vouchers', seller_vouchers_path, class:'nav-link'
 
       li.nav-item
-        = link_to 'A minha conta', seller_account_path, class: 'btn btn-outline-primary'
+        = link_to 'A minha conta', seller_account_path, class: 'nav-link'
