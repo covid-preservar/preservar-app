@@ -1,4 +1,6 @@
-window.scrollTo({top: $('.places-container').offset().top - 20, behavior: "smooth"});
+<% if params[:page].present? %>
+  window.scrollTo({top: $('.places-container').offset().top - 20, behavior: "smooth"});
+<% end %>
 $('#search-results').html('<%= j(render 'search_results')%>');
 window.spinner.stop();
 

@@ -1,0 +1,77 @@
+- title "Cosmenatura"
+- set_meta_tags description: 'Compra um voucher para usares em serviços e produtos na reabertura do teu salão preferido, e junta-te ao movimento #ApoiaOTeuSalão nas redes sociais. Os salões recebem o dinheiro imediatamente, ajudando-os nesta fase difícil em que não têm rendimentos, e nos primeiros tempos limitativos da reabertura.',
+                og: { title: 'Preserve salões L’Oreal, contribua para a sua economia local',
+                      site_name: :site,
+                      url: 'https://cosmenatura.preserve.pt',
+                      image: 'https://assets.preserve.pt/social/banner-loreal.jpg' },
+                twitter: { title: 'Preserve salões L’Oreal, contribua para a sua economia local',
+                           image: 'https://assets.preserve.pt/social/banner-loreal.jpg' }
+
+= render "partners/#{@partner.slug}/header"
+
+.container-xl
+
+  - cache [:cosme_home, ENV['HEROKU_SLUG_COMMIT']] do
+
+    section#hero.row
+      .col-sm-6.col-12
+        .hero-text
+          h2 Ajuda os salões e os cabeleireiros a recuperar deste desafio da COVID-19.
+          p
+            | Compra um voucher para usares em serviços e produtos na reabertura do teu salão preferido, e junta-te ao movimento #ApoiaOTeuSalão nas redes sociais. Os salões recebem o dinheiro imediatamente, ajudando-os nesta fase difícil em que não têm rendimentos, e nos primeiros tempos limitativos da reabertura.
+          p
+            | Por cada voucher que comprares, tens um desconto de 5€ e ainda recebes um link para plantares uma árvore de oferta com certificado, ajudando à reflorestação do planeta. Os salões aderentes receberão uma oferta da Cosmenatura, em produtos profissionais Lisap Milano ou Paul Mitchell, por cada voucher utilizado.
+
+          p
+            | As comunidades locais precisam dos seus salões e agora os salões precisam da sua comunidade local mais do que nunca!
+
+        .hero-bottom-images
+          = image_tag 'cosmenatura/logo-partner-hisap.svg', class:'cosmenatura-brands'
+          = image_tag 'cosmenatura/logo-partner-paulmitchell.svg', class:'cosmenatura-brands'
+          = image_tag 'cosmenatura/logo-partners-teatree-onemilliontrees.svg', class:'cosmenatura-brands'
+          = image_tag 'cosmenatura/logo-partner-reforestaction.svg', class:'cosmenatura-brands'
+
+      .col-md-5.offset-md-1.d-none.d-md-block
+        = image_tag 'cosmenatura/hero-cn.jpg', class:'cosmenatura-hero-img'
+
+    #how-it-works-facts.row
+      .col-sm-4.col-12.fact
+        = image_tag 'icon-voucher.svg', alt: 'Voucher'
+        h3 Compre um voucher para usar no futuro
+        p Os vouchers são válidos durante 24 meses e podem ser utilizados em qualquer altura.
+      .col-sm-4.col-12.fact
+        = image_tag 'icon-money.svg', alt: 'Money'
+        h3 O salão recebe o dinheiro imediatamente
+        p O dinheiro é transferido diretamente de si para a conta do salão. Todos os pagamentos estão protegidos contra fraude e todos os locais foram verificados manualmente.
+      .col-sm-4.col-12.fact
+        = image_tag 'icon-heart.svg', alt: 'Heart'
+        h3 Parabéns, contribuiu para sua economia local!
+        p Contribuiu para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
+
+  section.places-container.section
+    .row
+      .col-12.col-lg-6.col-xl-6
+
+        h2.section-separator Salões aderentes
+        br
+        = render 'search_form'
+
+      .col-12.col-lg-5.offset-lg-1.partner-register.order-first.order-lg-last.mb-4
+        p.partner-signup
+          ' É cliente da Cosmenatura?
+        = link_to 'Registe o seu salão', new_partner_signup_path, class: 'btn btn-primary', data:{turbolinks: false}
+
+    #search-results
+
+  section.section#businesses
+    .row.clearfix
+      h2.col-12.col-md-8.col-lg-6.section-separator Não encontra o seu local favorito?
+    = link_to 'Pesquise outros locais em preserve.pt', root_url, class: 'primary-cta'
+
+  section.row.section
+    .col-12.col-sm-6
+      p
+        small.text-muted
+          ' O Parceiro não será responsável pelo não cumprimento das suas obrigações, se esse incumprimento tiver sido causado ou resultar de um evento de força maior. A Preserve e a Cosmenatura não são responsáveis, não tem controlo, nem prestam qualquer garantia sobre a prestação dos Serviços prestados pelos Parceiros, bem como sobre a qualidade, pontualidade ou qualquer outro aspeto relacionado com os aqueles (mais informações nos
+          = link_to 'Termos e Condições', partner_tos_path
+          | ).

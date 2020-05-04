@@ -28,7 +28,7 @@ class PartnerSellerSignupForm < SellerSignupForm
 
   def save
     if partner.restricted_categories&.length == 1
-      place.category = partner.restricted_categories.first
+      self.category_id = place.category = partner.restricted_categories.first
     end
 
     set_partnership_properties

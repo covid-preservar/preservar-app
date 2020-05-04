@@ -16,10 +16,10 @@ section#register-form.section
           - if @form.respond_to?(:partner) && @form.partner.restricted_categories.present?
             - if @form.partner.restricted_categories.length == 1
               = f.input :category, readonly: true,
-                                  validate: false,
-                                  label: 'Categoria',
-                                  input_html: { value: @form.partner.restricted_categories.first.name,
-                                                name: nil}
+                                   validate: false,
+                                   label: 'Categoria',
+                                   input_html: { value: @form.partner.restricted_categories.first.name,
+                                                 name: nil}
             - else
               = f.input :category_id, collection: @form.partner.restricted_categories
 
