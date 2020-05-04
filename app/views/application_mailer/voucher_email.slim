@@ -19,7 +19,7 @@ p
       = image_tag @voucher.partner.logo_url, class: 'partner-logo'
       p = @voucher.partner.voucher_copy
 
-- if @voucher.has_mbway_bonus?
+- unless @voucher.mbway_bonus.zero?
   .content-block
     .align-center
       = image_tag 'logo-mbw-email.png', width: 300

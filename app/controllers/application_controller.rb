@@ -40,6 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   def mbway_bonus_active?
+    Date.today <= Date.new(2020,5,6) &&
     Voucher.total_paid.sum(:mbway_bonus) < Voucher::MBWAY_TARGET_VALUE
   end
   helper_method :mbway_bonus_active?
