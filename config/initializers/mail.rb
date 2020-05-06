@@ -12,11 +12,15 @@ if Rails.env.production?
     ActionMailer::Base.delivery_method = :smtp
 
   else
-    Mailjet.configure do |config|
-        config.api_key = ENV["MAILJET_API_KEY"]
-        config.secret_key = ENV["MAILJET_SECRET_KEY"]
-        config.api_version = "v3.1"
-    end
-    ActionMailer::Base.delivery_method = :mailjet_api
+    ActionMailer::Base.smtp_settings = {
+          user_name: ENV['SENDGRID_USER'],
+          password: ENV['SENDGRID_PASSWORD'],
+          address: 'smtp.sendgrid.net',
+          port: 465,
+          authentication: :plain,
+          enable_starttls_auto: true
+    }
+
+    ActionMailer::Base.delivery_method = :smtp
   end
 end
