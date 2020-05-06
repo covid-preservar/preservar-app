@@ -44,7 +44,6 @@ table
           strong NIF
         td = @voucher.vat_id
 
-
     tr
       td
         strong Valor pago
@@ -85,6 +84,16 @@ table
   br
   p.muted
     small Em caso de devolução, apenas o valor pago está sujeito a devolução.
+
+- if @voucher.partner.present? && @voucher.partner.slug == 'cosmenatura'
+  .content-block
+
+    = image_tag 'cosmenatura/dia-da-terra.jpg'
+    p
+      ' Além de ajudares o teu salão, podes plantar uma árvore grátis para criar uma mudança positiva no ambiente e comunidades espalhadas pelo mundo. Ganha um certificado, ajudando a Tea Tree e a Reforest’Action a chegar a 1 milhão de árvores plantadas, clicando no botão
+      br
+      .btn.align-center
+        a href='https://bit.ly/cosmenaturapreserve' PLANTAR UMA ÁRVORE COM O CÓDIGO TEATREE2020
 
 h1 Como utilizar?
 p Simplesmente mostre este email no seu telemóvel. Também pode imprimir o email.

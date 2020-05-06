@@ -1,0 +1,6 @@
+- content_for :header do
+  nav.navbar.container-xl
+    = link_to '/' do
+      = inline_svg 'cosmenatura/logo-cosmenatura.svg'
+
+    = render partial:'partners/header_right', locals: {place_type: 'salão'}

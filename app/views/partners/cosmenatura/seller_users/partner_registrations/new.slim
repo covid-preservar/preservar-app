@@ -1,0 +1,21 @@
+= render "partners/#{@partner.slug}/header"
+
+section#hero.row
+  .col-sm-6.col-12
+    .hero-text
+      h1 O seu salão está encerrado devido ao Covid-19?
+      h2 Venda vouchers aos seus clientes, seja pago imediatamente e prepare o seu regresso
+      p Esta plataforma gratuita permite-lhe vender vouchers de serviços profissionais aos seus clientes preferidos, para que o possam apoiar nesta altura mais difícil. Dinamize os serviços do seu salão, para poder retribuir o gesto aos seus clientes da forma que merecem, assim que for possível. É fácil registar, aproveite esta oportunidade.
+
+    .hero-bottom-images
+      = image_tag 'cosmenatura/logo-partner-hisap.svg', class:'cosmenatura-brands'
+      = image_tag 'cosmenatura/logo-partner-paulmitchell.svg', class:'cosmenatura-brands'
+      = image_tag 'cosmenatura/logo-partners-teatree-onemilliontrees.svg', class:'cosmenatura-brands'
+      = image_tag 'cosmenatura/logo-partner-reforestaction.svg', class:'cosmenatura-brands'
+
+  .col-sm-6.col-lg-5.offset-lg-1.col-12
+    = image_tag 'cosmenatura/hero-cn.jpg', class:'loreal-hero-img'
+
+== render 'seller_users/registrations/how_it_works'
+
+== render 'sign_up_form', url: partner_signup_path
