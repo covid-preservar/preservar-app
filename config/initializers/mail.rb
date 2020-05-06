@@ -13,12 +13,14 @@ if Rails.env.production?
 
   else
     ActionMailer::Base.smtp_settings = {
-          user_name: ENV['SENDGRID_USER'],
-          password: ENV['SENDGRID_PASSWORD'],
-          address: 'smtp.sendgrid.net',
-          port: 465,
-          authentication: :plain,
-          enable_starttls_auto: true
+      user_name: ENV['SENDGRID_USER'],
+      password: ENV['SENDGRID_PASSWORD'],
+      address: 'smtp.sendgrid.net',
+      port: 465,
+      authentication: :plain,
+      enable_starttls_auto: true,
+      ssl: true,
+      tls: true
     }
 
     ActionMailer::Base.delivery_method = :smtp
