@@ -1,8 +1,8 @@
-nav.header.navbar.container-xl
+nav.header.container-xl
   .row
-    .col-2
+    .col-3.col-md-2
       a#logo href="/"
-    .header-right.col-10
+    .header-right.col-9.col-md-10
       = link_to 'Ajuda', 'http://ajuda.preserve.pt/', class: 'header-link', target: '_blank'
       - if seller_user_signed_in?
         = link_to 'Terminar sessão', destroy_seller_user_session_path, method: :delete, class: 'header-link'

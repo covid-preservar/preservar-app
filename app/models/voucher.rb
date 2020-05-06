@@ -134,16 +134,26 @@ class Voucher < ApplicationRecord
       new_voucher.mbway_bonus = 0
       new_voucher.add_on_bonus = 0
       new_voucher.partner = nil
+      new_voucher.generate_code
     end
 
     self.used_value = uvalue
-
     self.class.transaction do
-      self.redeem!
+      self.redeemed!
       new_voucher.save! if new_voucher.present?
     end
 
     return new_voucher.presence
+  end
+
+  protected
+
+  def generate_code
+    # Ensure uniqueness
+    loop do
+      self.code = SecureRandom.hex(3).upcase
+      break unless self.class.where(code: self.code).exists?
+    end
   end
 
   private
@@ -153,11 +163,7 @@ class Voucher < ApplicationRecord
     self.payment_completed_at = Time.now
     self.mbway_bonus = BONUS_MBWAY_VALUE if has_mbway_bonus?
 
-    # Ensure uniqueness
-    loop do
-      self.code = SecureRandom.hex(3).upcase
-      break unless self.class.where(code: self.code).exists?
-    end
+    generate_code
   end
 
   def generate_identifier

@@ -48,9 +48,19 @@ pt:
         partner_type: Tipo de cliente
         partner_alt_id: Distribuidor
         honor_check: Declaração
+      voucher_redeem_form:
+         used_value: 'Valor'
+    errors:
+      models:
+        voucher_redeem_form:
+          attributes:
+            used_value:
+              greater_than: 'mínimo €1'
+              less_than_or_equal_to: 'máximo €%{count}'
+
   errors:
     messages:
-        invalid_vat: 'é inválido'
+      invalid_vat: 'é inválido'
 
 
   views:

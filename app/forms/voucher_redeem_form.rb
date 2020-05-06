@@ -10,13 +10,13 @@ class VoucherRedeemForm
 
   def initialize(attributes = {})
     super(attributes.reject { |_, v| v.blank? })
-    @used_value ||= voucher.face_value
+    @used_value = voucher.face_value if attributes[:used_value].nil?
   end
 
   def save
     return false unless valid?
 
-    @new_voucher = voucher.redeem_with_value!(used_value)
+    @new_voucher = voucher.redeem_with_value!(used_value.to_i)
 
     if @new_voucher.present?
       ApplicationMailer.remainder_voucher_email(@new_voucher.id).deliver_later
@@ -25,9 +25,4 @@ class VoucherRedeemForm
     true
   end
 
-  private
-
-  def validate_used_value_limits
-
-  end
 end
