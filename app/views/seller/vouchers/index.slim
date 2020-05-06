@@ -6,60 +6,61 @@
 
 main.container-fluid.maincontent
   .row
-    .col-12.col-lg-6
-      h3.mb-2
+    .col-12.col-lg-4
+      h2.mb-2
         ' Os meus vouchers
-        = link_to 'Imprimir lista', 'javascript: window.print()', class: 'btn btn-outline-primary btn-sm'
-    .col-12.col-lg-6
-      h4 Pesquisar
-      = search_form_for @q, url: seller_vouchers_path,
-        builder: SimpleForm::FormBuilder,
-        defaults: { required: false } do |f|
+    .col-12.col-lg-8
+      .d-flex.align-items-baseline
+        = search_form_for @q, url: seller_vouchers_path,
+          builder: SimpleForm::FormBuilder,
+          defaults: { required: false },
+          html: { class:'flex-grow-1' } do |f|
 
-        .form-row.mb-2
-          = f.input :code_cont, placeholder: 'Código', wrapper: :inline_form, wrapper_class: 'form-group col-md-6'
-          = f.input :email_cont, placeholder: 'Email', wrapper: :inline_form, wrapper_class: 'form-group col-md-6', as: :string
+          .form-row.mb-0.align-items-center
+            = f.input :code_cont, placeholder: 'Pesquisar código voucher', wrapper: :inline_form, wrapper_class: 'form-group mb-0 col-md-8'
+            .form-group.col-md-4.mb-0.mt-2.mt-md-0.text-right.text-md-left
+              = f.submit value: 'Pesquisar', class: 'btn btn-outline-primary btn-sm mr-2'
+              = link_to 'Limpar', request.path, class: 'btn btn-outline-secondary btn-sm'
+        = link_to 'Imprimir lista', 'javascript: window.print()', class: 'btn btn-primary btn-sm ml-auto d-none d-md-block'
 
-        .actions.d-flex.justify-content-end
-          = f.submit value: 'Pesquisar', class: 'btn btn-outline-primary btn-sm mr-2'
-          = link_to 'Limpar', request.path, class: 'btn btn-outline-secondary btn-sm'
   .row.mt-4
-    .col-12.overflow-auto
+    .col-12
 
       table.table
         thead
-          th
           - if current_seller_user.seller.places.count > 1
             th Local
           th Código
+          th.d-none.d-md-table-cell Validade
+          th.d-none.d-md-table-cell Email
+          th.d-none.d-md-table-cell NIF
+          th.text-muted.d-none.d-md-table-cell Valor Pago
+          th.text-muted.d-none.d-md-table-cell Valor Bonus
           th Valor Total
-          th Validade
-          th.text-muted Valor Pago
-          th.text-muted Valor Bonus
-          th Email
-          th NIF
+          th
         tbody
           - @vouchers.seller_visible.each do |voucher|
             tr class="voucher-#{voucher.state}"
-              td
-                - if voucher.paid?
-                  = link_to 'Marcar como usado', redeem_seller_voucher_path(voucher), remote:true, class:'btn btn-outline-primary btn-sm'
-                - else
-                  button.btn.btn-outline-primary.btn-sm disabled=true = voucher.human_state_name
+
               - if current_seller_user.seller.places.count > 1
                 td
                   = voucher.place.name
               td
                 = voucher.code
+              td.text-nowrap.d-none.d-md-table-cell
+                = voucher.valid_until
+              td.d-none.d-md-table-cell
+                = voucher.email
+              td.d-none.d-md-table-cell
+                = voucher.vat_id
+              td.text-muted.text-nowrap.d-none.d-md-table-cell
+                = number_to_currency voucher.value, locale: :pt
+              td.text-muted.text-nowrap.d-none.d-md-table-cell
+                = number_to_currency voucher.add_on_bonus + voucher.mbway_bonus, locale: :pt
               td.text-nowrap
                 = number_to_currency voucher.face_value, locale: :pt
-              td.text-nowrap
-                = voucher.valid_until
-              td.text-muted.text-nowrap
-                = number_to_currency voucher.value, locale: :pt
-              td.text-muted.text-nowrap
-                = number_to_currency voucher.add_on_bonus + voucher.mbway_bonus, locale: :pt
               td
-                = voucher.email
-              td
-                = voucher.vat_id
+                - if voucher.paid?
+                  = link_to 'Marcar como usado', redeem_seller_voucher_path(voucher), remote:true, class:'btn btn-outline-primary btn-sm'
+                - else
+                  button.btn.btn-outline-primary.btn-sm disabled=true = voucher.human_state_name

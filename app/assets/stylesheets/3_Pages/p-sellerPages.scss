@@ -1,11 +1,33 @@
 .seller-area {
 
+  .navbar {
+    padding-bottom: 0;
+
+    .navbar-brand {
+      position: absolute;
+    }
+  }
+
+  .nav-link {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+
+    &.active {
+      border-bottom: 2px solid $blue;
+      font-weight: bold;
+    }
+  }
+
   .img-preview {
     height: 10rem;
   }
 
   .table {
     border-collapse: collapse;
+
+    td {
+      vertical-align: middle;
+    }
   }
 
   .place_header {
@@ -20,8 +42,8 @@
 
   &.vouchers.index {
     @include media-breakpoint-down(md) {
-      .table .button_to .btn-sm {
-        width: 100px;
+      .table .btn-sm {
+        width: 80px;
         white-space: pre-wrap;
         overflow: hidden;
         height: auto;
@@ -49,6 +71,17 @@
     }
   }
 
+  @include media-breakpoint-up(md) {
+    .navbar {
+      .navbar-brand {
+        position: static;
+      }
+    }
+  }
+
+  .mbway-banner {
+    display: none;
+  }
 
   @media print {
     footer,
