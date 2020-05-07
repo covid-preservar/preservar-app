@@ -28,6 +28,13 @@
     td {
       vertical-align: middle;
     }
+
+    .btn-sm {
+      width: 80px;
+      white-space: pre-wrap;
+      overflow: hidden;
+      height: auto;
+    }
   }
 
   .place_header {
@@ -38,17 +45,6 @@
 
   .actions {
     margin-left: auto;
-  }
-
-  &.vouchers.index {
-    @include media-breakpoint-down(md) {
-      .table .btn-sm {
-        width: 80px;
-        white-space: pre-wrap;
-        overflow: hidden;
-        height: auto;
-      }
-    }
   }
 
   .voucher-redeemed,

@@ -83,7 +83,7 @@ class Voucher < ApplicationRecord
     when 'paid'
       'Emitido'
     when 'redeemed'
-      'Utilizado'
+      'Usado'
     when 'refunded'
       'Cancelado'
     end
