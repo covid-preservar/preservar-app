@@ -64,6 +64,10 @@ class Place < ApplicationRecord
     approved_partner.present? && partner.charity_partner?
   end
 
+  def insurance_available?
+    vouchers.with_insurance.sum(:value) < Voucher::INSURANCE_PLACE_LIMIT
+  end
+
   def to_s
     "Place ##{id}: #{name}"
   end

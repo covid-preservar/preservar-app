@@ -50,6 +50,7 @@ gem 'rollbar'
 gem 'shrine'
 gem 'sidekiq', '~> 6.0.0'
 gem 'sidekiq-cron'
+gem 'sidekiq-throttled'
 gem 'slim-rails'
 gem 'valvat'
 
