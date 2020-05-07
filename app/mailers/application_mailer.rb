@@ -18,11 +18,12 @@ class ApplicationMailer < ActionMailer::Base
     mail to:@voucher.email, subject: 'Parabéns pelo apoio! Aqui está o seu vale.'
   end
 
-  def remainder_voucher_email(voucher_id)
-    @voucher = Voucher.find(voucher_id)
-    mail to:@voucher.email, subject: 'TODO - subject line'
-  end
+  def remainder_voucher_email(new_voucher_id:, original_voucher_id:)
+    @new_voucher = Voucher.find(new_voucher_id)
+    @original_voucher = Voucher.find(original_voucher_id)
 
+    mail to:@new_voucher.email, subject: 'Aqui está o seu vale'
+  end
 
   def seller_voucher_email(voucher_id)
     @voucher = Voucher.find(voucher_id)

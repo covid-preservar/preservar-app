@@ -19,7 +19,7 @@ class VoucherRedeemForm
     @new_voucher = voucher.redeem_with_value!(used_value.to_i)
 
     if @new_voucher.present?
-      ApplicationMailer.remainder_voucher_email(@new_voucher.id).deliver_later
+      ApplicationMailer.remainder_voucher_email(new_voucher_id: @new_voucher.id, original_voucher_id: voucher.id).deliver_later
     end
 
     true
