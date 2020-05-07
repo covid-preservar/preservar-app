@@ -33,8 +33,7 @@ class ApplicationMailerPreview < ActionMailer::Preview
     ApplicationMailer.remainder_voucher_email(new_voucher_id: Voucher.paid.last.id, original_voucher_id: Voucher.paid.first.id)
   end
 
-  #### TEMP
-  def followup_insurance_email
-    ApplicationMailer.followup_insurance_email(Voucher.last.id)
+  def seller_promo_limit_notify
+    ApplicationMailer.seller_promo_limit_notify(Place.last.id)
   end
 end

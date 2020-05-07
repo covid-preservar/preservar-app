@@ -43,15 +43,16 @@
           span.input-group-text 🔗
         input.form-control disabled='true' type="text" value=place_url(@place)
 
-    .col-md-8.col-lg-6.col-12.order-first.order-lg-last.mb-4
-      p.insurance-text
-        strong
-          ' Para que compre sem preocupações, o valor do seu voucher está segurado por:
-      .insurance-logos
-        .insurance-logo.logo-ageas
-          = inline_svg 'ageas/logo-ageas.svg'
-        .insurance-logo.logo-keepwarranty
-          = inline_svg 'ageas/logo-keepwarranty.svg'
+    - if @place.insurance_available?
+      .col-md-8.col-lg-6.col-12.order-first.order-lg-last.mb-4
+        p.insurance-text
+          strong
+            ' Para que compre sem preocupações, o valor do seu voucher está segurado por:
+        .insurance-logos
+          .insurance-logo.logo-ageas
+            = inline_svg 'ageas/logo-ageas.svg'
+          .insurance-logo.logo-keepwarranty
+            = inline_svg 'ageas/logo-keepwarranty.svg'
 
   == render 'other_places'
 

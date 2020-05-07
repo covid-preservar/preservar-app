@@ -1,5 +1,9 @@
 # frozen_string_literal: true
-class VoucherPaymentCompleteJob < ApplicationJob
+class VoucherPaymentCompleteJob
+  include Sidekiq::Worker
+  include Sidekiq::Throttled::Worker
+
+  sidekiq_throttle({concurrency: { limit: 1 }})
 
   def perform(voucher_id)
     @voucher = Voucher.find(voucher_id)
@@ -20,6 +24,7 @@ class VoucherPaymentCompleteJob < ApplicationJob
 
       @voucher.place.partnership.update limit_reached: true
       ApplicationMailer.promo_limit_notify(@voucher.place.id).deliver_later
+      ApplicationMailer.seller_promo_limit_notify(@voucher.place.id).deliver_later
     end
   end
 end

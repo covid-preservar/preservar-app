@@ -45,7 +45,7 @@ class Webhooks::EuPagoController < ActionController::Base
       notification.update status: 'ok'
       voucher.payment_success!
 
-      VoucherPaymentCompleteJob.perform_later(voucher.id)
+      VoucherPaymentCompleteJob.perform_async(voucher.id)
     else
       notification.update status: "voucher_state_was_#{voucher.state}"
       render(status: :unprocessable_entity, plain: 'Voucher state does not allow this operation') and return
