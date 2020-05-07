@@ -38,9 +38,9 @@ class ApplicationMailer < ActionMailer::Base
     mail to: AdminUser.all.map(&:email), subject: "[Preserve] Bonused voucher limit reached"
   end
 
-  #### TEMP
-  def followup_insurance_email(voucher_id)
-    @voucher = Voucher.find voucher_id
-    mail to:@voucher.email, subject: 'Dados de conta Keep Warranty'
+  def seller_promo_limit_notify(place_id)
+    @place = Place.find(place_id)
+    mail to: @place.seller.seller_user.email, subject: 'Atingiu o limite máximo de ofertas da Super Bock'
   end
+
 end

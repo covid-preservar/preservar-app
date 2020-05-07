@@ -1,0 +1,25 @@
+
+h1
+  ' Olá
+  = @place.seller.contact_name
+  | ,
+
+p
+  ' Acabou de atingir o limite máximo de ofertas da Super Bock no seu local
+  strong = @place.name
+  | . Isto quer dizer que vouchers vendidos a partir de agora não vão incluir a oferta.
+  br
+  ' No entanto, pode continuar a vender vouchers como normalmente.
+p
+  ' Este limite foi imposto pela Super Bock e faz parte dos
+  => link_to 'termos e condições', 'https://bockinbusiness.preserve.pt/tos'
+  | da campanha.
+p
+  ' Aproveitamos também para dizer que o pagamento das ofertas irá ser feito separadamente do pagamento dos vouchers, directamente para a sua conta.
+p
+  ' Esperamos que tenhamos ajudado e que venda muitos mais vouchers!
+
+h1 Precisa de ajuda?
+p
+ ' Envie um e-mail para
+ = mail_to 'info@preserve.pt'

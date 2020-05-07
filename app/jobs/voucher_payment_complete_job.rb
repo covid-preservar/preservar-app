@@ -24,6 +24,7 @@ class VoucherPaymentCompleteJob
 
       @voucher.place.partnership.update limit_reached: true
       ApplicationMailer.promo_limit_notify(@voucher.place.id).deliver_later
+      ApplicationMailer.seller_promo_limit_notify(@voucher.place.id).deliver_later
     end
   end
 end
