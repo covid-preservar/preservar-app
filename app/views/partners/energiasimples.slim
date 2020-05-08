@@ -10,37 +10,52 @@
 = render "partners/#{@partner.slug}/header"
 
 .container-xl
-  - cache [:energiasimples_home, ENV['HEROKU_SLUG_COMMIT']] do
+  - cache [:energiasimples_home, @partner.active?, ENV['HEROKU_SLUG_COMMIT']] do
 
     section#hero.row
       .col-sm-6.col-12
         .hero-text
-          h2 Preserve o seu futuro com a Energia Simples
-          p
-            | Ajuda a ajudar. Começa já o regresso à normalidade e compra já um Voucher para a tua loja favorita. Restaurante ou pastelaria, hotel ou cafetaria, faz já o pagamento e ajuda aqueles que, neste momento, têm de ter as portas fechadas. Adianta o teu futuro.
-          p
-            | As lojas que neste momento têm de manter as suas portas fechadas estão também a ser afetadas por esta crise. A Energia Simples permite-te adquirires já um voucher num valor à tua escolha que pode ser utilizado mal estas lojas possam abrir.
-          p
-            | Se for cliente Energia Simples, nós adicionamos 5 € à tua compra, que irá diretamente para o comerciante.
+          - if @partner.active?
+            h2 Preserve o seu futuro com a Energia Simples
+            p
+              | Ajuda a ajudar. Começa já o regresso à normalidade e compra já um Voucher para a tua loja favorita. Restaurante ou pastelaria, hotel ou cafetaria, faz já o pagamento e ajuda aqueles que, neste momento, têm de ter as portas fechadas. Adianta o teu futuro.
+            p
+              | As lojas que neste momento têm de manter as suas portas fechadas estão também a ser afetadas por esta crise. A Energia Simples permite-te adquirires já um voucher num valor à tua escolha que pode ser utilizado mal estas lojas possam abrir.
+            p
+              | Se for cliente Energia Simples, nós adicionamos 5 € à tua compra, que irá diretamente para o comerciante.
+          - else
+            h2 Esta oferta já terminou, no entanto pode continuar a comprar vouchers como normalmente
+
+            p
+              | Obrigado a todos que participaram nesta campanha.
+              br
+              | Apesar da oferta ter terminado, os teus lugares preferidos ainda precisam de ajuda e continuam a vender vouchers.
+
+            p.text-center.mt-5
+              = link_to 'Ir para a página principal', root_url, class: 'btn btn-primary btn-lg'
 
       .col-sm-6.col-lg-5.offset-lg-1.col-12.d-none.d-sm-block
         = image_tag 'energiasimples/hero.jpg', class:'energiasimples-hero-img'
 
-    #how-it-works-facts.row
-      .col-sm-4.col-12.fact
-        = image_tag 'icon-voucher.svg', alt: 'Voucher'
-        h3 Compra um voucher para usar no futuro
-        p Os vouchers são válidos durante 24 meses e podem ser utilizados em qualquer altura.
-      .col-sm-4.col-12.fact
-        = image_tag 'icon-money.svg', alt: 'Money'
-        h3 O local recebe o dinheiro imediatamente
-        p O dinheiro é transferido diretamente de si para a conta do local. Todos os pagamentos estão protegidos contra fraude e todos os locais foram verificados manualmente.
-      .col-sm-4.col-12.fact
-        = image_tag 'icon-heart.svg', alt: 'Heart'
-        h3 Parabéns, contribuiste para tua economia local!
-        p Contribuiste para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
+    - if @partner.active?
 
-  section.places-container.section
+      #how-it-works-facts.row
+        .col-sm-4.col-12.fact
+          = image_tag 'icon-voucher.svg', alt: 'Voucher'
+          h3 Compra um voucher para usar no futuro
+          p Os vouchers são válidos durante 24 meses e podem ser utilizados em qualquer altura.
+        .col-sm-4.col-12.fact
+          = image_tag 'icon-money.svg', alt: 'Money'
+          h3 O local recebe o dinheiro imediatamente
+          p O dinheiro é transferido diretamente de si para a conta do local. Todos os pagamentos estão protegidos contra fraude e todos os locais foram verificados manualmente.
+        .col-sm-4.col-12.fact
+          = image_tag 'icon-heart.svg', alt: 'Heart'
+          h3 Parabéns, contribuiste para tua economia local!
+          p Contribuiste para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
+
+  - if @partner.active?
+
+    section.places-container.section
     .row
       .col-12.col-lg-6.col-xl-6
         h2.section-separator Locais aderentes
@@ -54,17 +69,17 @@
 
     .places-list.row
 
-  section.section#businesses
-    .row.clearfix
-      h2.col-12.col-md-8.col-lg-6.section-separator Não encontra o seu local favorito?
-    = link_to 'Pesquise outros locais em preserve.pt', root_url, class: 'primary-cta'
+    section.section#businesses
+      .row.clearfix
+        h2.col-12.col-md-8.col-lg-6.section-separator Não encontra o seu local favorito?
+      = link_to 'Pesquise outros locais em preserve.pt', root_url, class: 'primary-cta'
 
-  section.row.section
-    .col-12.col-sm-6
-      p
-        small
-          ' O Parceiro não será responsável pelo não cumprimento das suas obrigações, se esse incumprimento tiver sido causado ou resultar de um evento de força maior. A Preserve e a Energia Simples não são responsáveis, não tem controlo, nem prestam qualquer garantia sobre a prestação dos Serviços prestados pelos Parceiros, bem como sobre a qualidade, pontualidade ou qualquer outro aspeto relacionado com os aqueles (mais informações nos
-          => link_to 'Termos e Condições', partner_tos_path, class: 'text-muted'
-          | ).
-      p
-        small Adicionalmente, a Energia Simples disponibiliza o restante valor ao cliente em fatura.
+    section.row.section
+      .col-12.col-sm-6
+        p
+          small
+            ' O Parceiro não será responsável pelo não cumprimento das suas obrigações, se esse incumprimento tiver sido causado ou resultar de um evento de força maior. A Preserve e a Energia Simples não são responsáveis, não tem controlo, nem prestam qualquer garantia sobre a prestação dos Serviços prestados pelos Parceiros, bem como sobre a qualidade, pontualidade ou qualquer outro aspeto relacionado com os aqueles (mais informações nos
+            => link_to 'Termos e Condições', partner_tos_path, class: 'text-muted'
+            | ).
+        p
+          small Adicionalmente, a Energia Simples disponibiliza o restante valor ao cliente em fatura.

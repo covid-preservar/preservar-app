@@ -32,7 +32,7 @@ class PartnersController < ApplicationController
   protected
 
   def body_class
-    "#{super} #{@partner.slug}"
+    "#{super} #{@partner.slug} #{@partner.active? ? 'active' : 'inactive'}"
   end
 
   private
