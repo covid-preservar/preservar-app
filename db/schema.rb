@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_105354) do
+ActiveRecord::Schema.define(version: 2020_05_06_103640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -201,6 +201,7 @@ ActiveRecord::Schema.define(version: 2020_04_30_105354) do
     t.integer "add_on_bonus", default: 0
     t.string "insurance_policy_number"
     t.string "insurance_temp_password"
+    t.integer "used_value", default: 0
     t.index ["partner_id"], name: "index_vouchers_on_partner_id"
     t.index ["payment_identifier"], name: "index_vouchers_on_payment_identifier"
     t.index ["place_id"], name: "index_vouchers_on_place_id"

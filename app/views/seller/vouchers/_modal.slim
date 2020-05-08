@@ -1,0 +1,20 @@
+.modal.fade#redeemModal data-backdrop="static"
+  .modal role="dialog" tabindex="-1"
+    .modal-dialog.modal-dialog-scrollable.modal-lg role="document"
+      .modal-content
+        .modal-header
+          h4.modal-title Utilizar Voucher
+          button.close type="button" data-dismiss="modal" aria-label="Close"
+          span aria-hidden="true" &times;
+        = simple_form_for @form, url: seller_voucher_url(@form.voucher), method: :patch, remote: true do |f|
+          .modal-body
+            p
+              small
+                | Caso o cliente não tenha utilizado o valor total, introduza o que foi gasto.
+                br
+                | Nesse caso, será gerado um novo voucher com o valor remanescente.
+            br
+            = f.input :used_value, label: 'Valor Utilizado', as: :integer, input_html: {max: @form.voucher.face_value}
+          .modal-footer
+            button.btn.btn-outline-secondary.btn-sm type="button" data-dismiss="modal" Cancelar
+            = f.submit 'Marcar como usado', class: 'btn btn-primary btn-sm'
