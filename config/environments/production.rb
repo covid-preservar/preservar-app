@@ -70,7 +70,7 @@ Rails.application.configure do
   config.active_job.queue_adapter = :sidekiq
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.asset_host = ENV.fetch('HOSTNAME')
+  config.action_mailer.asset_host = "https://#{ENV.fetch('HOSTNAME')}"
   config.action_mailer.default_url_options = { host: ENV.fetch('HOSTNAME') }
   Rails.application.routes.default_url_options = { host: ENV.fetch('HOSTNAME') }
 
