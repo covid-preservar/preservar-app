@@ -1,8 +1,11 @@
-nav.header.navbar.container-xl.header-short
+nav.header.container-xl.header-short
   .row
-    .col-3.col-md-2
+    .col-2.col-md-2.col-lg-1
       a#logo-small href="/"
-    .col-9.col-md-10
+    .col-12.col-lg-6.order-last.order-lg-2
+      = render 'shared/search_form'
+
+    .col-10.col-lg-5.order-2.order-lg-last
 
       .header-right
         = link_to 'Ajuda', 'http://ajuda.preserve.pt/', class: 'header-link', target: '_blank'
@@ -15,4 +18,3 @@ nav.header.navbar.container-xl.header-short
           = link_to 'Entrar', new_seller_user_session_path, class: 'header-link'
           = link_to 'Submeter local', new_seller_user_registration_path, class: 'secondary-cta'
 
-  = render 'shared/search_form'

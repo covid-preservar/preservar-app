@@ -64,8 +64,8 @@
 
     input, select {
       display: inline-block;
-      height: 2.5rem;
-      line-height: 2.5rem;
+      height: 2.5rem !important;
+      line-height: 2.5rem !important;
 
       & > * + * {
         margin-left: .5rem;
