@@ -1,0 +1,8 @@
+$('#redeemModal').remove();
+$('.modal-backdrop').remove();
+$('body').append('<%= j(render partial:"modal")%>');
+$('#redeemModal').modal();
+$("#redeemModal").on('shown.bs.modal', function () {
+    $("#redeemModal .modal").css('display', 'block');
+})
+window.spinner.stop();

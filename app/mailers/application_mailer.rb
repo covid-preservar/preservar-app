@@ -18,6 +18,13 @@ class ApplicationMailer < ActionMailer::Base
     mail to:@voucher.email, subject: 'Parabéns pelo apoio! Aqui está o seu vale.'
   end
 
+  def remainder_voucher_email(new_voucher_id:, original_voucher_id:)
+    @new_voucher = Voucher.find(new_voucher_id)
+    @original_voucher = Voucher.find(original_voucher_id)
+
+    mail to:@new_voucher.email, subject: 'Aqui está o seu vale'
+  end
+
   def seller_voucher_email(voucher_id)
     @voucher = Voucher.find(voucher_id)
     mail to: @voucher.place.seller.seller_user.email, subject: "Preserve - Vendeu um vale!"
@@ -42,5 +49,4 @@ class ApplicationMailer < ActionMailer::Base
     @place = Place.find(place_id)
     mail to: @place.seller.seller_user.email, subject: 'Atingiu o limite máximo de ofertas da Super Bock'
   end
-
 end

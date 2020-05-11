@@ -29,6 +29,10 @@ class ApplicationMailerPreview < ActionMailer::Preview
     ApplicationMailer.promo_limit_notify(AddOnPartner.last.vouchers.last.place_id)
   end
 
+  def remainder_voucher_email
+    ApplicationMailer.remainder_voucher_email(new_voucher_id: Voucher.paid.last.id, original_voucher_id: Voucher.paid.first.id)
+  end
+
   def seller_promo_limit_notify
     ApplicationMailer.seller_promo_limit_notify(Place.last.id)
   end

@@ -1,11 +1,40 @@
 .seller-area {
 
+  .navbar {
+    padding-bottom: 0;
+
+    .navbar-brand {
+      position: absolute;
+    }
+  }
+
+  .nav-link {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+
+    &.active {
+      border-bottom: 2px solid $blue;
+      font-weight: bold;
+    }
+  }
+
   .img-preview {
     height: 10rem;
   }
 
   .table {
     border-collapse: collapse;
+
+    td {
+      vertical-align: middle;
+    }
+
+    .btn-sm {
+      width: 80px;
+      white-space: pre-wrap;
+      overflow: hidden;
+      height: auto;
+    }
   }
 
   .place_header {
@@ -18,6 +47,10 @@
     margin-left: auto;
   }
 
+  .voucher-redeemed,
+  .voucher-refunded {
+    opacity: .5;
+  }
 
   // Workaround for mobile navbar issues with jquery3.5.0
   @include media-breakpoint-down(md) {
@@ -34,6 +67,17 @@
     }
   }
 
+  @include media-breakpoint-up(md) {
+    .navbar {
+      .navbar-brand {
+        position: static;
+      }
+    }
+  }
+
+  .mbway-banner {
+    display: none;
+  }
 
   @media print {
     footer,

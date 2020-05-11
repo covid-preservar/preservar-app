@@ -1,12 +1,20 @@
-nav.header.navbar.container-xl.header-short
-  a#logo-small href="/"
-  = render 'shared/search_form'
+nav.header.container-xl.header-short
+  .row
+    .col-2.col-md-2.col-lg-1
+      a#logo-small href="/"
+    .col-12.col-lg-6.order-last.order-lg-2
+      = render 'shared/search_form'
 
-  .header-right
-    = link_to 'Ajuda', 'http://ajuda.preserve.pt/', class: 'header-link', target: '_blank'
-    - if seller_user_signed_in?
-      = link_to 'Terminar sessão', destroy_seller_user_session_path, method: :delete, class: 'header-link'
-      = link_to 'A minha conta', seller_account_path, class: 'secondary-cta'
-    - else
-      = link_to 'Entrar', new_seller_user_session_path, class: 'header-link'
-      = link_to 'Submeter local', new_seller_user_registration_path, class: 'secondary-cta'
+    .col-10.col-lg-5.order-2.order-lg-last
+
+      .header-right
+        = link_to 'Ajuda', 'http://ajuda.preserve.pt/', class: 'header-link', target: '_blank'
+        - if seller_user_signed_in?
+          = link_to 'Terminar sessão', destroy_seller_user_session_path, method: :delete, class: 'header-link'
+          br.d-inline.d-sm-none
+          = link_to 'Vouchers', seller_vouchers_path ,class:'header-link secondary-cta'
+          = link_to 'Editar conta', seller_account_path, class: 'header-link secondary-cta'
+        - else
+          = link_to 'Entrar', new_seller_user_session_path, class: 'header-link'
+          = link_to 'Submeter local', new_seller_user_registration_path, class: 'secondary-cta'
+

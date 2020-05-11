@@ -1,114 +1,118 @@
-.form-control {
-  appearance: none;
-  background-color: $white;
-  border: 0;
-  border-radius: 0;
-  box-shadow: $input-box-shadow;
-  box-sizing: border-box;
-  height: 3rem;
-  line-height: 3rem;
-  outline: 0;
-  padding: 0 1rem;
-}
+body:not(.seller-area) {
 
-select {
-  background: image-url('icon-arrow-down.svg') $white right .5rem center no-repeat;
-}
+  .form-control {
+    appearance: none;
+    background-color: $white;
+    border: 0;
+    border-radius: 0;
+    box-shadow: $input-box-shadow;
+    box-sizing: border-box;
+    height: 3rem;
+    line-height: 3rem;
+    outline: 0;
+    padding: 0 1rem;
+  }
 
-input[type='text']:not(.form-control),
-input[type='search']:not(.form-control),
-select:not(.form-control) {
-  appearance: none;
-  background-color: $white;
-  border: 0;
-  border-radius: 0;
-  box-shadow: $input-box-shadow;
-  box-sizing: border-box;
-  height: 3rem;
-  line-height: 3rem;
-  outline: 0;
-  padding: 0 1rem;
-}
+  select {
+    background: image-url('icon-arrow-down.svg') $white right .5rem center no-repeat;
+  }
 
-::placeholder {
-  color: $black;
-  opacity: .3;
-}
+  input[type='text']:not(.form-control),
+  input[type='search']:not(.form-control),
+  select:not(.form-control) {
+    appearance: none;
+    background-color: $white;
+    border: 0;
+    border-radius: 0;
+    box-shadow: $input-box-shadow;
+    box-sizing: border-box;
+    height: 3rem;
+    line-height: 3rem;
+    outline: 0;
+    padding: 0 1rem;
+  }
 
-.primary-cta {
-  background: var(--color-main-blue);
-  border: 0;
-  border-radius: 0;
-  color: $white;
-  display: inline-block;
-  font-size: calc(17rem / 16);
-  font-weight: bold;
-  line-height: 3rem;
-  outline: 0;
-  padding: 0 1rem;
-  text-decoration: none;
-  vertical-align: bottom;
+  ::placeholder {
+    color: $black;
+    opacity: .3;
+  }
 
-  &:active,
-  &:focus,
-  &:hover {
-    background: $primary-cta-hover-bg;
+  .primary-cta {
+    background: var(--color-main-blue);
+    border: 0;
+    border-radius: 0;
     color: $white;
-    cursor: pointer;
+    display: inline-block;
+    font-size: calc(17rem / 16);
+    font-weight: bold;
+    line-height: 3rem;
+    outline: 0;
+    padding: 0 1rem;
     text-decoration: none;
-  }
+    vertical-align: bottom;
 
-  &:active,
-  &:focus {
-    box-shadow: $btn-active-box-shadow;
-  }
-}
+    &:active,
+    &:focus,
+    &:hover {
+      background: $primary-cta-hover-bg;
+      color: $white;
+      cursor: pointer;
+      text-decoration: none;
+    }
 
-.btn-primary {
-  font-size: calc(17rem / 16);
-  font-weight: bold;
-  line-height: 3rem;
-  padding: 0 1rem;
-  text-decoration: none;
-  vertical-align: bottom;
-
-  &:focus,
-  &:hover {
-    background-color: $primary-cta-hover-bg;
-    color: $white;
-    cursor: pointer;
-  }
-
-  &:focus {
-    box-shadow: $btn-focus-box-shadow;
-  }
-
-  &:not(:disabled):not(.disabled):active {
-    background-color: $primary-cta-hover-bg;
-
+    &:active,
     &:focus {
       box-shadow: $btn-active-box-shadow;
     }
   }
-}
 
-.secondary-cta {
-  border: 2px solid var(--color-main-blue);
-  box-sizing: border-box;
-  color: var(--color-main-blue);
-  display: inline-block;
-  font-size: calc(17rem / 16);
-  font-weight: bold;
-  height: 3rem;
-  line-height: 2.8rem;
-  padding: 0 1rem;
-  text-decoration: none;
+  .btn-primary {
+    font-size: calc(17rem / 16);
+    font-weight: bold;
+    line-height: 3rem;
+    padding: 0 1rem;
+    text-decoration: none;
+    vertical-align: bottom;
 
-  &:hover {
-    background: var(--color-light-blue);
+    &:focus,
+    &:hover {
+      background-color: $primary-cta-hover-bg;
+      color: $white;
+      cursor: pointer;
+    }
+
+    &:focus {
+      box-shadow: $btn-focus-box-shadow;
+    }
+
+    &:not(:disabled):not(.disabled):active {
+      background-color: $primary-cta-hover-bg;
+
+      &:focus {
+        box-shadow: $btn-active-box-shadow;
+      }
+    }
   }
-}
 
-.form-check-label a {
-  text-decoration: underline;
+  .secondary-cta {
+    border: 2px solid var(--color-main-blue);
+    box-sizing: border-box;
+    color: var(--color-main-blue);
+    display: inline-block;
+    font-size: calc(17rem / 16);
+    font-weight: bold;
+    height: 3rem;
+    line-height: 2.8rem;
+    padding: 0 1rem;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--color-light-blue);
+    }
+  }
+
+  .form-check-label a {
+    text-decoration: underline;
+  }
+
 }

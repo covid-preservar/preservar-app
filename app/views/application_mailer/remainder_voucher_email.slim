@@ -1,0 +1,48 @@
+h1
+  | Olá, aqui vai um novo vale com a diferença
+
+p
+  ' Utilizou
+  strong => number_to_currency @original_voucher.used_value, locale: :pt
+  ' do total de
+  strong => number_to_currency @original_voucher.face_value, locale: :pt
+  ' do seu vale número
+  strong = @original_voucher.code
+  | . Emitimos um novo vale com a diferença de valor. Este vale substitui o vale original.
+br
+h3 Detalhes do vale
+p
+  strong
+    ' Número do vale:
+    = @new_voucher.code
+
+table
+  tbody
+    tr
+      td
+        strong Email
+      td = @new_voucher.email
+
+    tr
+      td
+        strong Valor do vale
+      td
+        = number_to_currency @new_voucher.face_value, locale: :pt
+
+    tr
+      td
+        strong Estabelecimento
+      td = @new_voucher.place.name
+    tr
+      td
+        strong Validade
+      td = @new_voucher.valid_until
+
+
+h1 Como utilizar?
+p Simplesmente mostre este email no seu telemóvel. Também pode imprimir o email.
+
+h1 Precisa de ajuda?
+p
+ ' Envie um e-mail para
+ = mail_to 'info@preserve.pt'
