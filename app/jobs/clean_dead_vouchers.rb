@@ -6,6 +6,6 @@ class CleanDeadVouchers < ApplicationJob
     Voucher.created.where('updated_at < ?', 1.day.ago).delete_all
 
     # Vouchers in a "pending_payment" state for more than 2 days are dead
-    Voucher.pending_payment.where('updated_at < ?', 2.days.ago).delete_all
+    Voucher.pending_payment.where('updated_at < ?', 3.days.ago).delete_all
   end
 end
