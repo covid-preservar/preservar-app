@@ -34,6 +34,12 @@
     }
   }
 
+  &.inactive {
+    .navbar {
+      height: 10rem;
+    }
+  }
+
   .header-right {
     text-align: right;
 
