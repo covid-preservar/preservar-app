@@ -1,11 +1,15 @@
 - cache [:footer_small, ENV['HEROKU_SLUG_COMMIT']] do
   footer.footer-small.container-xl
     .row
-      .col-md-6.col-12
+      .col-lg-6.col-4
         = image_tag 'logo.svg', alt: 'Preserve', height: '80px'
-      .col-md-6.col-12
-          => link_to 'Termos e Condições', tos_path
+      .col-lg-6.col-8.text-right.text-md-left
+        => link_to 'Termos e Condições', tos_path
+        br.d-sm-none
+        span.d-none.d-sm-inline
           '  &middot;
-          => link_to 'Politica de Privacidade', privacy_path
+        => link_to 'Politica de Privacidade', privacy_path
+        br.d-md-none
+        span.d-none.d-md-inline
           '  &middot;
-          = mail_to 'info@preserve.pt'
+        = mail_to 'info@preserve.pt'

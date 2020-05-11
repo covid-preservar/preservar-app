@@ -22,9 +22,9 @@
   }
 
   @media only screen and (max-width: 576px) {
-    .secondary-cta {
+    .secondary-cta.header-link {
       border: 0;
-      line-height: 1rem;
+      height: auto;
       padding: 0;
     }
 
@@ -64,8 +64,8 @@
 
     input, select {
       display: inline-block;
-      height: 2.5rem;
-      line-height: 2.5rem;
+      height: 2.5rem !important;
+      line-height: 2.5rem !important;
 
       & > * + * {
         margin-left: .5rem;
@@ -162,11 +162,6 @@
       }
     }
 
-    .header-right {
-      position: absolute;
-      right: 1rem;
-      top: 1rem;
-    }
   }
 }
 
@@ -179,10 +174,6 @@
     margin-right: -50vw;
     right: 50%;
     width: 100vw;
-  }
-
-  .sellers.show .header-short .search-form  {
-    display: none;
   }
 
   .header-short {
@@ -204,7 +195,6 @@
 
     > * + * {
       margin-left: 1rem;
-      font-size: calc(14rem/16);
     }
   }
 }

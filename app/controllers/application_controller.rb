@@ -35,12 +35,12 @@ class ApplicationController < ActionController::Base
     when AdminUser
       admin_root_path
     when SellerUser
-      seller_account_path
+      seller_vouchers_path
     end
   end
 
   def mbway_bonus_active?
-    Date.today <= Date.new(2020,5,11) &&
+    Date.today <= Date.new(2020,5,18) &&
     Voucher.total_paid.sum(:mbway_bonus) < Voucher::MBWAY_TARGET_VALUE
   end
   helper_method :mbway_bonus_active?

@@ -82,9 +82,9 @@ class Voucher < ApplicationRecord
     case state
     when 'paid'
       'Emitido'
-    when 'Redeemed'
-      'Utilizado'
-    when 'Refunded'
+    when 'redeemed'
+      'Usado'
+    when 'refunded'
       'Cancelado'
     end
   end
@@ -106,7 +106,7 @@ class Voucher < ApplicationRecord
   end
 
   def mbway_bonus_available?
-    Date.today <= Date.new(2020,5,11) &&
+    Date.today <= Date.new(2020,5,18) &&
     value >= MIN_MBWAY_VALUE &&
     Voucher.total_paid.sum(:mbway_bonus) < MBWAY_TARGET_VALUE
   end
@@ -126,6 +126,36 @@ class Voucher < ApplicationRecord
     self.with_insurance.sum(:value) < INSURANCE_TOTAL_LIMIT
   end
 
+  def redeem_with_value!(uvalue)
+    if uvalue < self.face_value
+      new_voucher = self.dup
+      new_voucher.value = self.face_value - uvalue
+      new_voucher.used_value = 0
+      new_voucher.mbway_bonus = 0
+      new_voucher.add_on_bonus = 0
+      new_voucher.partner = nil
+      new_voucher.generate_code
+    end
+
+    self.used_value = uvalue
+    self.class.transaction do
+      self.redeemed!
+      new_voucher.save! if new_voucher.present?
+    end
+
+    return new_voucher.presence
+  end
+
+  protected
+
+  def generate_code
+    # Ensure uniqueness
+    loop do
+      self.code = SecureRandom.hex(3).upcase
+      break unless self.class.where(code: self.code).exists?
+    end
+  end
+
   private
 
   def finalize_voucher
@@ -133,11 +163,7 @@ class Voucher < ApplicationRecord
     self.payment_completed_at = Time.now
     self.mbway_bonus = BONUS_MBWAY_VALUE if has_mbway_bonus?
 
-    # Ensure uniqueness
-    loop do
-      self.code = SecureRandom.hex(3).upcase
-      break unless self.class.where(code: self.code).exists?
-    end
+    generate_code
   end
 
   def generate_identifier

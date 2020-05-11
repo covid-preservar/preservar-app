@@ -1,7 +1,8 @@
 .header-right
   = link_to 'Ajuda', 'http://ajuda.preserve.pt/', class: 'header-link', target: '_blank'
   - if seller_user_signed_in?
-    = link_to 'A minha conta', seller_account_path, class: 'secondary-cta'
+    br.d-inline.d-sm-none
+    = link_to 'Os meus vouchers', seller_vouchers_path, class: 'header-link secondary-cta'
   - else
     = link_to 'Entrar', new_seller_user_session_path, class: 'header-link'
     = link_to "Registe o seu #{place_type}", new_partner_signup_path, class: 'secondary-cta'
