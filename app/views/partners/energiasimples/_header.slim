@@ -3,4 +3,5 @@
     = link_to '/' do
       = inline_svg 'energiasimples/logo-es.svg'
 
-    = render partial:'partners/header_right', locals: {place_type: 'local'}
+    - if @partner.active?
+      = render partial:'partners/header_right', locals: {place_type: 'local'}

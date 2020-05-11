@@ -4,4 +4,5 @@
       = inline_svg 'bockinbusiness/logo.svg'
     = image_tag 'bockinbusiness/logo-sb.svg', class: 'd-none d-md-block partner-top-brand'
 
-    = render partial:'partners/header_right', locals: {place_type: 'local'}
+    - if @partner.active?
+      = render partial:'partners/header_right', locals: {place_type: 'local'}

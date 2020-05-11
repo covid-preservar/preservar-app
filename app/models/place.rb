@@ -65,6 +65,7 @@ class Place < ApplicationRecord
   end
 
   def insurance_available?
+    Voucher.insurance_available? &&
     vouchers.with_insurance.sum(:value) < Voucher::INSURANCE_PLACE_LIMIT
   end
 

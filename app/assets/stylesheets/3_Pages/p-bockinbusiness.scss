@@ -39,6 +39,16 @@
     text-decoration: underline;
   }
 
+  &.inactive {
+    .partner-top-brand {
+      position: static;
+    }
+
+    .navbar {
+      height: 8rem;
+    }
+  }
+
   @include media-breakpoint-up(sm) {
     .navbar {
       height: 8rem;
