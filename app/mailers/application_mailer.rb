@@ -49,4 +49,12 @@ class ApplicationMailer < ActionMailer::Base
     @place = Place.find(place_id)
     mail to: @place.seller.seller_user.email, subject: 'Atingiu o limite máximo de ofertas da Super Bock'
   end
+
+  ### TEMP
+
+  def voucher_gained_bonus(voucher_id)
+    @voucher = Voucher.find(voucher_id)
+    mail to:@voucher.email, subject: 'A Super Bock oferece um bónus de 5€ no seu vale!'
+  end
+
 end

@@ -36,4 +36,11 @@ class ApplicationMailerPreview < ActionMailer::Preview
   def seller_promo_limit_notify
     ApplicationMailer.seller_promo_limit_notify(Place.last.id)
   end
+
+
+  ### TEMP
+
+  def voucher_gained_bonus
+    ApplicationMailer.voucher_gained_bonus(AddOnPartner.first.vouchers.paid.last.id)
+  end
 end
