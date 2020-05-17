@@ -3,6 +3,9 @@ class SellerUsers::PartnerRegistrationsController < Lib::RegistrationsController
 
   def new
     @partner = Partner.find_by(slug: request.subdomain)
+
+    redirect_to(root_path) and return unless @partner.active?
+
     prepend_view_path "#{Rails.root}/app/views/partners/#{@partner.slug}"
 
     super do
