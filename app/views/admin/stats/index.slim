@@ -1,6 +1,4 @@
-header.mt-4
-  h1
-    | Stats
+= render 'tabs'
 
 section.stats_section
   h2.subtitle Totais
@@ -86,30 +84,3 @@ section.stats_section
           ' /
           = number_to_currency Voucher::INSURANCE_TOTAL_LIMIT, locale: :pt, precision: 0
 
-section.stats_section
-  h2.subtitle Voucher Stats
-  table.table
-    thead
-      th Date
-      th Vouchers Paid
-      th Amount
-    tbody
-      - @voucher_stats.reverse_each do |day, stats|
-        tr
-          td = day
-          td = stats.first
-          td = number_to_currency stats.last, locale: :pt
-
-section.stats_section
-  h2.subtitle Seller Stats
-  table.table
-    thead
-      th Date
-      th Sellers
-      th Published
-    tbody
-      - @seller_stats.reverse_each do |day, stats|
-        tr
-          td = day
-          td = stats.first
-          td = stats.last

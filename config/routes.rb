@@ -99,6 +99,8 @@ Rails.application.routes.draw do
       end
 
       get 'stats', to: 'stats#index', as: :stats
+      get 'stats/vouchers', to: 'stats#vouchers', as: :voucher_stats
+      get 'stats/sellers', to: 'stats#sellers', as: :seller_stats
       root to: "stats#index"
     end
   end

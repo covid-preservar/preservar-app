@@ -1,0 +1,11 @@
+header.mt-4.mb-4
+  h1
+    | Stats
+
+ul.nav.nav-tabs
+  li.nav-item
+    a.nav-link href=admin_stats_path class=('active' if current_page?(admin_stats_path)) Overview
+  li.nav-item
+    a.nav-link href=admin_voucher_stats_path class=('active' if current_page?(admin_voucher_stats_path)) Vouchers
+  li.nav-item
+    a.nav-link href=admin_seller_stats_path class=('active' if current_page?(admin_seller_stats_path)) Sellers

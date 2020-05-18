@@ -1,0 +1,16 @@
+
+= render 'tabs'
+
+section.stats_section
+  h2.subtitle Seller Stats
+  table.table
+    thead
+      th Date
+      th Sellers
+      th Published
+    tbody
+      - @seller_stats.reverse_each do |day, stats|
+        tr
+          td = day
+          td = stats.first
+          td = stats.last
