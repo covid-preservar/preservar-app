@@ -18,6 +18,10 @@
 
   .stats_section {
     margin: 2rem 0;
+
+    tbody th {
+      width: 60%;
+    }
   }
 
   .subtitle {

@@ -16,7 +16,7 @@ class VoucherRedeemForm
   def save
     return false unless valid?
 
-    @new_voucher = voucher.redeem_with_value!(used_value.to_i)
+    @new_voucher = voucher.redeem_with_value!(used_value.to_f)
 
     if @new_voucher.present?
       ApplicationMailer.remainder_voucher_email(new_voucher_id: @new_voucher.id, original_voucher_id: voucher.id).deliver_later

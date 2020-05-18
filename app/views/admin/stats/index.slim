@@ -7,23 +7,20 @@ section.stats_section
   table.table
     tbody
       tr
-        td
-          strong Vouchers (# Vendidos / Valor Total)
+        th Vouchers (# Vendidos / Valor Total)
         td
           => Voucher.total_paid.count
           ' /
           = number_to_currency Voucher.total_paid.sum(:value), locale: :pt
       tr
-        td
-          strong Locais (Total / Publicados)
+        th Locais (Total / Publicados)
         td
           => Place.count
           ' /
           = Place.published.count
 
       tr
-        td
-          strong Comerciantes (Total / Publicados)
+        th Comerciantes (Total / Publicados)
         td
           => Seller.count
           ' /
@@ -36,28 +33,24 @@ section.stats_section
     table.table
       tbody
         tr
-          td
-            strong Locais (Total / Publicados)
+          th Locais (Total / Publicados)
           td
             => partner.places.published.count
             ' /
             = partner.places.count
         tr
-          td
-            strong Numero de vouchers
+          th Numero de vouchers
           td
             = partner.vouchers.total_paid.count
         - if partner&.target_value&.present?
           tr
-            td
-              strong Valor dos bonus
+            th Valor dos bonus
             td
               => number_to_currency partner.target_progress, locale: :pt, precision: 0
               ' /
               = number_to_currency partner.target_value, locale: :pt, precision: 0
           tr
-            td
-              strong Valor total (inc. bonus)
+            th Valor total (inc. bonus)
             td
               => number_to_currency partner.vouchers.total_paid.sum(:value) + partner.target_progress, locale: :pt, precision: 0
 
@@ -65,20 +58,17 @@ section.stats_section
   table.table
     tbody
       tr
-        td
-          strong Numero de vouchers
+        th Numero de vouchers
         td
           = Voucher.total_paid.where.not(mbway_bonus: 0).count
       tr
-        td
-          strong Valor dos bonus
+        th Valor dos bonus
         td
           => number_to_currency Voucher.total_paid.sum(:mbway_bonus), locale: :pt, precision: 0
           ' /
           = number_to_currency Voucher::MBWAY_TARGET_VALUE, locale: :pt, precision: 0
       tr
-        td
-          strong Valor total (inc. bonus)
+        th Valor total (inc. bonus)
         td
           => number_to_currency Voucher.total_paid.where.not(mbway_bonus: 0).sum(:value) + Voucher.total_paid.sum(:mbway_bonus), locale: :pt, precision: 0
 
@@ -86,13 +76,11 @@ section.stats_section
   table.table
     tbody
       tr
-        td
-          strong Numero de vouchers segurados
+        th Numero de vouchers segurados
         td
           = Voucher.with_insurance.count
       tr
-        td
-          strong Valor segurado
+        th Valor segurado
         td
           => number_to_currency Voucher.with_insurance.sum(:value), locale: :pt, precision: 0
           ' /

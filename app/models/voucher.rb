@@ -42,9 +42,14 @@ class Voucher < ApplicationRecord
   validates :value, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 200 }
   validates :custom_value, numericality: {
                             greater_than_or_equal_to: ->(instance) { instance.partner.min_value },
-                            less_than_or_equal_to: 200,
                             allow_nil: true
                            }, if: -> { partner.present? && partner.min_value.present? }
+
+  validates :custom_value, numericality: {
+                            less_than_or_equal_to: 200,
+                            allow_nil: true,
+                            only_integer: true }
+
 
   validates :payment_method, presence: true,
                              inclusion: { in: PAYMENT_METHODS },

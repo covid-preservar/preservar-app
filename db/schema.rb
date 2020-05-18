@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_103640) do
+ActiveRecord::Schema.define(version: 2020_05_18_130110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -180,7 +180,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_103640) do
 
   create_table "vouchers", force: :cascade do |t|
     t.string "code"
-    t.integer "value"
+    t.decimal "value", precision: 5, scale: 2
     t.bigint "place_id"
     t.string "state"
     t.datetime "created_at", precision: 6, null: false
@@ -201,7 +201,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_103640) do
     t.integer "add_on_bonus", default: 0
     t.string "insurance_policy_number"
     t.string "insurance_temp_password"
-    t.integer "used_value", default: 0
+    t.decimal "used_value", precision: 5, scale: 2, default: "0.0"
     t.index ["partner_id"], name: "index_vouchers_on_partner_id"
     t.index ["payment_identifier"], name: "index_vouchers_on_payment_identifier"
     t.index ["place_id"], name: "index_vouchers_on_place_id"
