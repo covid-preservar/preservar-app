@@ -7,7 +7,11 @@ module Admin
     def vouchers
       voucher_counts = Voucher.for_stats.group_by_day(:payment_completed_at).count
       voucher_values = Voucher.for_stats.group_by_day(:payment_completed_at).sum(:value)
+      voucher_used_values = Voucher.redeemed.group_by_day(:redeemed_at).sum(:used_value)
+      voucher_used_counts = Voucher.redeemed.group_by_day(:redeemed_at).count
       @voucher_stats = voucher_counts.merge(voucher_values){|_, count, val| [count, val]}
+      @voucher_used_stats = voucher_used_counts.merge(voucher_used_values){|_, count, val| [count, val]}
+
     end
 
     def sellers

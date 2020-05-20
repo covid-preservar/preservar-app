@@ -20,6 +20,11 @@
           = @resource.state
       tr
         td
+          strong Is remainder voucher?
+        td
+          = @resource.is_remainder
+      tr
+        td
           strong Place
         td
           = link_to @resource.place, [:admin, @resource.place]
@@ -53,6 +58,11 @@
           strong Face Value (Total)
         td
           = number_to_currency @resource.face_value, locale: :pt, precision: 0
+      tr
+        td
+          strong Used Value
+        td
+          = number_to_currency @resource.used_value, locale: :pt, precision: 0
       tr
         td
           strong Valid Until

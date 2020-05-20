@@ -23,7 +23,12 @@ section.stats_section
           => Seller.count
           ' /
           = Seller.where(id: Place.published.select(:seller_id)).distinct.count
-
+      tr
+        th Vouchers Utilizados
+        td
+          => Voucher.redeemed.count
+          ' /
+          = number_to_currency Voucher.redeemed.sum(:used_value), locale: :pt
 section.stats_section
   h2.subtitle Partner stats
   - Partner.all.each do |partner|
