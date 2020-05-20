@@ -5,8 +5,8 @@ module Admin
     end
 
     def vouchers
-      voucher_counts = Voucher.total_paid.group_by_day(:payment_completed_at).count
-      voucher_values = Voucher.total_paid.group_by_day(:payment_completed_at).sum(:value)
+      voucher_counts = Voucher.for_stats.group_by_day(:payment_completed_at).count
+      voucher_values = Voucher.for_stats.group_by_day(:payment_completed_at).sum(:value)
       @voucher_stats = voucher_counts.merge(voucher_values){|_, count, val| [count, val]}
     end
 

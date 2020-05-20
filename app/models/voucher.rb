@@ -64,7 +64,8 @@ class Voucher < ApplicationRecord
   scope :with_bonus, -> { where.not(partner_id: nil) }
   scope :not_paid, -> {  where.not(state: %w[paid redeemed]) }
   scope :total_paid, -> {  where(state: %w[paid redeemed]) }
-  scope :with_insurance, -> {  where.not(insurance_policy_number: nil) }
+  scope :with_insurance, -> {  where.not(insurance_policy_number: nil).where(is_remainder: false) }
+  scope :for_stats, -> { total_paid.where(is_remainder: false)}
 
   before_validation :set_addon_bonus
 
@@ -139,6 +140,7 @@ class Voucher < ApplicationRecord
       new_voucher.mbway_bonus = 0
       new_voucher.add_on_bonus = 0
       new_voucher.partner = nil
+      new_voucher.is_remainder = true
       new_voucher.generate_code
     end
 

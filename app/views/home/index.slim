@@ -32,10 +32,10 @@
               h2 = Place.published.count
               p Locais
             article.stat
-              h2 = Voucher.total_paid.count
+              h2 = Voucher.for_stats.count
               p Vouchers vendidos
             article.stat
-              h2 = number_to_currency Voucher.total_paid.sum(:value), locale: :pt, precision: 0
+              h2 = number_to_currency Voucher.for_stats.sum(:value), locale: :pt, precision: 0
               p Angariados
   - cache [:how_it_works, ENV['HEROKU_SLUG_COMMIT']] do
     section#how-it-works.section

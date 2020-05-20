@@ -7,9 +7,9 @@ section.stats_section
       tr
         th Vouchers (# Vendidos / Valor Total)
         td
-          => Voucher.total_paid.count
+          => Voucher.for_stats.count
           ' /
-          = number_to_currency Voucher.total_paid.sum(:value), locale: :pt
+          = number_to_currency Voucher.for_stats.sum(:value), locale: :pt
       tr
         th Locais (Total / Publicados)
         td
@@ -39,7 +39,7 @@ section.stats_section
         tr
           th Numero de vouchers
           td
-            = partner.vouchers.total_paid.count
+            = partner.vouchers.for_stats.count
         - if partner&.target_value&.present?
           tr
             th Valor dos bonus
@@ -50,7 +50,7 @@ section.stats_section
           tr
             th Valor total (inc. bonus)
             td
-              => number_to_currency partner.vouchers.total_paid.sum(:value) + partner.target_progress, locale: :pt, precision: 0
+              => number_to_currency partner.vouchers.for_stats.sum(:value) + partner.target_progress, locale: :pt, precision: 0
 
   p.subtitle MBWay
   table.table
@@ -58,17 +58,17 @@ section.stats_section
       tr
         th Numero de vouchers
         td
-          = Voucher.total_paid.where.not(mbway_bonus: 0).count
+          = Voucher.for_stats.where.not(mbway_bonus: 0).count
       tr
         th Valor dos bonus
         td
-          => number_to_currency Voucher.total_paid.sum(:mbway_bonus), locale: :pt, precision: 0
+          => number_to_currency Voucher.for_stats.sum(:mbway_bonus), locale: :pt, precision: 0
           ' /
           = number_to_currency Voucher::MBWAY_TARGET_VALUE, locale: :pt, precision: 0
       tr
         th Valor total (inc. bonus)
         td
-          => number_to_currency Voucher.total_paid.where.not(mbway_bonus: 0).sum(:value) + Voucher.total_paid.sum(:mbway_bonus), locale: :pt, precision: 0
+          => number_to_currency Voucher.for_stats.where.not(mbway_bonus: 0).sum(:value) + Voucher.for_stats.sum(:mbway_bonus), locale: :pt, precision: 0
 
   p.subtitle Ageas
   table.table
