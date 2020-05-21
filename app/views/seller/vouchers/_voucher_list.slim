@@ -1,6 +1,5 @@
 table.table
   thead
-    th.d-xl-none
     - if current_seller_user.seller.places.count > 1
       th.d-none.d-lg-table-cell Local
       th.d-none.d-lg-table-cell Área
@@ -12,15 +11,14 @@ table.table
     th.text-muted.d-none.d-xl-table-cell Valor Bonus
     th.text-nowrap Valor Total
     th
+    th.d-xl-none
   tbody
     - if @vouchers.none?
       td.text-center colspan=9 Sem resultados
     - else
       - @vouchers.each do |voucher|
         tr.collapsed class="voucher-#{voucher.state}" data-toggle="collapse" data-target="#v_#{voucher.id}"
-          td.text-nowrap.d-xl-none.p-2
-            | Info
-            = inline_svg 'down.svg', class:'collapse-icon'
+
           - if current_seller_user.seller.places.count > 1
             td.d-none.d-md-table-cell
               = voucher.place.name
@@ -45,11 +43,15 @@ table.table
               = link_to 'Usar', redeem_seller_voucher_path(voucher), remote:true, class:'btn btn-outline-primary btn-sm'
             - else
               button.btn.btn-outline-primary.btn-sm disable
+          td.text-nowrap.d-xl-none.p-2
+            | Info
+            = inline_svg 'down.svg', class:'collapse-icon'
         tr.d-xl-none.collapse id="v_#{voucher.id}"
-          td colspan=8
+          td.d-none.d-md-table-cell
+          td colspan=7
             .d-flex.flex-column.flex-md-row.row
               - if current_seller_user.seller.places.count > 1
-                .d-md-none.d-flex.flex-column.mb-3.pr-4.col-12
+                .d-md-none.mb-3.pr-4.col-12
                   .d-flex.justify-content-between
                     strong> Local:
                     = voucher.place.name
