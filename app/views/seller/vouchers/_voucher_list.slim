@@ -47,8 +47,7 @@ table.table
             | Info
             = inline_svg 'down.svg', class:'collapse-icon'
         tr.d-xl-none.collapse id="v_#{voucher.id}"
-          td.d-none.d-md-table-cell
-          td colspan=7
+          td colspan=8
             .d-flex.flex-column.flex-md-row.row
               - if current_seller_user.seller.places.count > 1
                 .d-md-none.mb-3.pr-4.col-12
