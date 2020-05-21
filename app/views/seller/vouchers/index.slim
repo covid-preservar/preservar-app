@@ -18,55 +18,15 @@ main.container-fluid.maincontent
 
           .d-flex.align-items-center
             = f.input :code_cont, placeholder: 'Pesquisar código voucher', wrapper: :inline_form, wrapper_class: 'flex-grow-1'
-            = f.submit value: 'Pesquisar', class: 'btn btn-outline-primary btn-sm mr-2 ml-2'
+            = f.submit value: 'Pesquisar', class: 'btn btn-outline-primary btn-sm ml-2'
             - if params[:q].present?
-              = link_to 'Limpar', request.path, class: 'btn btn-outline-secondary btn-sm'
+              = link_to 'Limpar', request.path, class: 'btn btn-outline-secondary btn-sm ml-2'
             = link_to 'Imprimir lista', '', class: 'btn btn-primary btn-sm ml-2 d-none d-md-block', id:'js-printBtn'
 
   .row.mt-4
     .col-12
       - if current_seller_user.seller.vouchers.seller_visible.any?
-        table.table
-          thead
-            - if current_seller_user.seller.places.count > 1
-              th Local
-            th Código
-            th.d-none.d-md-table-cell Validade
-            th.d-none.d-md-table-cell Email
-            th.d-none.d-md-table-cell NIF
-            th.text-muted.d-none.d-md-table-cell Valor Pago
-            th.text-muted.d-none.d-md-table-cell Valor Bonus
-            th.text-nowrap Valor Total
-            th
-          tbody
-            - if @vouchers.none?
-              td.text-center colspan=9 Sem resultados
-            - else
-              - @vouchers.seller_visible.each do |voucher|
-                tr class="voucher-#{voucher.state}"
-
-                  - if current_seller_user.seller.places.count > 1
-                    td
-                      = voucher.place.name
-                  td
-                    = voucher.code
-                  td.text-nowrap.d-none.d-md-table-cell
-                    = voucher.valid_until
-                  td.d-none.d-md-table-cell
-                    = voucher.email
-                  td.d-none.d-md-table-cell
-                    = voucher.vat_id
-                  td.text-muted.text-nowrap.d-none.d-md-table-cell
-                    = number_to_currency voucher.value, locale: :pt
-                  td.text-muted.text-nowrap.d-none.d-md-table-cell
-                    = number_to_currency voucher.add_on_bonus + voucher.mbway_bonus, locale: :pt
-                  td.text-nowrap
-                    = number_to_currency voucher.face_value, locale: :pt
-                  td
-                    - if voucher.paid?
-                      = link_to 'Usar', redeem_seller_voucher_path(voucher), remote:true, class:'btn btn-outline-primary btn-sm'
-                    - else
-                      button.btn.btn-outline-primary.btn-sm disabled=true = voucher.human_state_name
+        = render 'voucher_list'
       - else
         p.text-center Ainda não tem vouchers
 

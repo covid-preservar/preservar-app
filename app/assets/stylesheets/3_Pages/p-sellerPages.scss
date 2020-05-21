@@ -35,6 +35,28 @@
       overflow: hidden;
       height: auto;
     }
+
+    .email {
+      @include media-breakpoint-down(sm) {
+        max-width: 12rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      @include media-breakpoint-up(lg) {
+        max-width: 14rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .collapse-icon {
+      transition: transform .2s;
+    }
+
+    .collapsed .collapse-icon {
+      transform: rotate(-90deg);
+    }
+
   }
 
   .place_header {
@@ -83,6 +105,7 @@
     footer,
     .mbway-banner,
     .navbar,
+    .collapse,
     .btn {
       display: none;
     }
@@ -93,6 +116,9 @@
 
     @page { size: landscape; }
 
+    .d-none {
+      display: table-cell !important;
+    }
   }
 
 

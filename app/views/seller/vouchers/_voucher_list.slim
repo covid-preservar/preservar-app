@@ -1,0 +1,77 @@
+table.table
+  thead
+    th.d-xl-none
+    - if current_seller_user.seller.places.count > 1
+      th.d-none.d-lg-table-cell Local
+      th.d-none.d-lg-table-cell Área
+    th Código
+    th.d-none.d-lg-table-cell Validade
+    th.d-none.d-xl-table-cell Email
+    th.d-none.d-lg-table-cell NIF
+    th.text-muted.d-none.d-xl-table-cell Valor Pago
+    th.text-muted.d-none.d-xl-table-cell Valor Bonus
+    th.text-nowrap Valor Total
+    th
+  tbody
+    - if @vouchers.none?
+      td.text-center colspan=9 Sem resultados
+    - else
+      - @vouchers.each do |voucher|
+        tr.collapsed class="voucher-#{voucher.state}" data-toggle="collapse" data-target="#v_#{voucher.id}"
+          td.text-nowrap.d-xl-none.p-2
+            | Info
+            = inline_svg 'down.svg', class:'collapse-icon'
+          - if current_seller_user.seller.places.count > 1
+            td.d-none.d-md-table-cell
+              = voucher.place.name
+            td.d-none.d-md-table-cell
+              = voucher.place.area
+          td
+            = voucher.code
+          td.text-nowrap.d-none.d-lg-table-cell
+            = voucher.valid_until
+          td.d-none.d-xl-table-cell
+            = voucher.email
+          td.d-none.d-lg-table-cell
+            = voucher.vat_id
+          td.text-muted.text-nowrap.d-none.d-xl-table-cell
+            = number_to_currency voucher.value, locale: :pt
+          td.text-muted.text-nowrap.d-none.d-xl-table-cell
+            = number_to_currency voucher.add_on_bonus + voucher.mbway_bonus, locale: :pt
+          td.text-nowrap
+            = number_to_currency voucher.face_value, locale: :pt
+          td
+            - if voucher.paid?
+              = link_to 'Usar', redeem_seller_voucher_path(voucher), remote:true, class:'btn btn-outline-primary btn-sm'
+            - else
+              button.btn.btn-outline-primary.btn-sm disable
+        tr.d-xl-none.collapse id="v_#{voucher.id}"
+          td colspan=8
+            .d-flex.flex-column.flex-md-row.row
+              - if current_seller_user.seller.places.count > 1
+                .d-md-none.d-flex.flex-column.mb-3.pr-4.col-12
+                  .d-flex.justify-content-between
+                    strong> Local:
+                    = voucher.place.name
+                  .d-flex.justify-content-between
+                    strong> Area:
+                    = voucher.place.area
+              .d-flex.flex-column.pr-4.col-md-8.col-lg-6
+                .text-nowrap.mr-lg-4.d-flex.justify-content-between
+                  strong> Email:
+                  = voucher.email
+                .text-nowrap.mr-lg-4.d-flex.justify-content-between
+                  strong> Validade:
+                  = voucher.valid_until
+                .text-nowrap.mr-lg-4.d-flex.justify-content-between
+                  strong> Valor Pago:
+                  = number_to_currency voucher.value, locale: :pt
+                .text-nowrap.mr-lg-4.d-flex.justify-content-between
+                  strong> Valor Bonus:
+                  = number_to_currency voucher.add_on_bonus + voucher.mbway_bonus, locale: :pt
+                .d-md-none.text-nowrap.mr-lg-4.d-flex.justify-content-between
+                  strong> Valor Total:
+                  = number_to_currency voucher.face_value, locale: :pt
+                .d-lg-none.text-nowrap.mr-lg-4.d-flex.justify-content-between
+                  strong> NIF:
+                  = voucher.vat_id
