@@ -14,7 +14,7 @@ if Rails.env.production?
   else
     ActionMailer::Base.smtp_settings = {
       :port           => 587,
-      :address        => smtp.eu.mailgun.org,
+      :address        => 'smtp.eu.mailgun.org',
       :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
       :password       => ENV['MAILGUN_SMTP_PASSWORD'],
       :domain         => 'preserve.pt',
