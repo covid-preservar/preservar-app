@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_20_095426) do
+ActiveRecord::Schema.define(version: 2020_05_22_160433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_05_20_095426) do
     t.jsonb "file_data"
     t.jsonb "processing_errors", default: {}
     t.integer "state", default: 0
+    t.integer "published_place_ids", default: [], array: true
     t.index ["admin_user_id"], name: "index_csv_imports_on_admin_user_id"
   end
 

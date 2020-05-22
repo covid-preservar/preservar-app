@@ -41,7 +41,7 @@ class SellerCSVImport < ApplicationJob
     import.processing_errors[:no_key_lines] = no_key_lines
     import.processing_errors[:dup_key_lines] = dup_key_lines
     import.processing_errors[:publish_failed_ids] = publish_failed_ids
-    import.processing_errors[:published_ids] = published_ids
+    import.published_place_ids = published_ids
 
     import.save
 

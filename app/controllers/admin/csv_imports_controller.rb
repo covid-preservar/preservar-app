@@ -31,7 +31,7 @@ module Admin
         {attr: :no_key_lines_count, label: 'No Key Lines Count' },
         {attr: :dup_key_lines_count, label: 'Dup Key Lines Count' },
         {attr: :publish_failed_ids, label: 'Publish Failed Ids' },
-        {attr: :published_ids, label: 'Published Ids' },
+        {attr: :published_place_ids, label: 'Published Ids' },
         {attr: :state, label: 'State' }
       ]
 

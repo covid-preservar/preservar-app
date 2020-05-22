@@ -27,12 +27,8 @@ class CSVImport < ApplicationRecord
     processing_errors['publish_failed_ids']
   end
 
-  def published_ids
-    processing_errors['published_ids']
-  end
-
   def published_places
-    Place.where(id: published_ids)
+    Place.where(id: published_place_ids)
   end
 
   def failed_publish_places
