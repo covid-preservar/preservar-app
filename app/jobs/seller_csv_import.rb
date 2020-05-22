@@ -42,10 +42,11 @@ class SellerCSVImport < ApplicationJob
     import.processing_errors[:dup_key_lines] = dup_key_lines
     import.processing_errors[:publish_failed_ids] = publish_failed_ids
     import.published_place_ids = published_ids
+    import.published_place_ids = published_ids
 
     import.save
 
-    import.processing_errors.present? ? import.errored! : import.done!
+    import.processing_errors.values.any?(&:present?) ? import.errored! : import.done!
 
     ApplicationMailer.csv_import_notification(import.id).deliver_later
   end
