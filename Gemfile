@@ -8,7 +8,7 @@ ruby '2.6.6'
 gem 'rails', '~> 6.0.2'
 gem 'pg'
 
-gem 'puma', '~> 4.3.3'
+gem 'puma', '~> 4.3.5'
 gem 'sassc-rails', '~> 2.1.0'
 gem 'autoprefixer-rails'
 gem 'webpacker', '~> 4.0'
