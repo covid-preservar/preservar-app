@@ -11,16 +11,17 @@
     .row
       .col-md-7.col-lg-7.col-12
         .hero-text
-          h1.hero-wrapper
-            | Preserve o seu
-            br
-            .hero-ticker
-              - @spinner_categories.each do |c|
-                span = c
-            br
-            | favorito
-          p Compre um voucher para usar em qualquer altura, e ajude a sua economia local a sobreviver ao COVID-19
-          = render 'shared/search_form'
+          - if Flipper.enabled?(:selling)
+            h1.hero-wrapper
+              | Preserve o seu
+              br
+              .hero-ticker
+                - @spinner_categories.each do |c|
+                  span = c
+              br
+              | favorito
+            p Compre um voucher para usar em qualquer altura, e ajude a sua economia local a sobreviver ao COVID-19
+            = render 'shared/search_form'
 
       .col-md-5.col-lg-5.d-none.d-md-block
         = image_tag 'hero-img.jpg', alt:'Pessoa', class:'hero-img'
@@ -81,13 +82,14 @@
               = inline_svg 'ageas/logo-keepwarranty.svg'
 
 
-  - cache @places do
-    section.places-container.section
-      .row
-        h2.col-12.section-separator Quem recebe o seu apoio
+  - if Flipper.enabled?(:selling)
+    - cache @places do
+      section.places-container.section
+        .row
+          h2.col-12.section-separator Quem recebe o seu apoio
 
-      .places-list.row.home-list
-        == render @places
+        .places-list.row.home-list
+          == render @places
 
   - cache [:homepage_bottom, ENV['HEROKU_SLUG_COMMIT']] do
     section#press.section
@@ -128,18 +130,20 @@
           .press-logo
             = image_tag 'partners/press-cmf.png', alt: 'CMF'
 
-    section#businesses.section
+    - if Flipper.enabled?(:selling)
+      section#businesses.section
+        .row
+          .col-12.col-md-8.col-lg-6
+            h2.section-separator Tem um estabelecimento? Comece a vender vouchers hoje.
+            = link_to 'Submeta o seu local', new_seller_user_registration_path, class: 'primary-cta'
+
+
+  - if Flipper.enabled?(:selling)
+    section#kicker.section
       .row
         .col-12.col-md-8.col-lg-6
-          h2.section-separator Tem um estabelecimento? Comece a vender vouchers hoje.
-          = link_to 'Submeta o seu local', new_seller_user_registration_path, class: 'primary-cta'
-
-
-  section#kicker.section
-    .row
-      .col-12.col-md-8.col-lg-6
-        h2.section-separator
-          ' Está à espera de quê?
-          br
-          | Preserve o seu sítio preferido agora
-        = render 'shared/search_form'
+          h2.section-separator
+            ' Está à espera de quê?
+            br
+            | Preserve o seu sítio preferido agora
+          = render 'shared/search_form'

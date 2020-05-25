@@ -4,10 +4,14 @@ class PartnersController < ApplicationController
   before_action :set_location
 
   def index
+    redirect_to(root_url) and return unless Flipper.enabled?(:selling)
+
     render @partner.slug
   end
 
   def search
+    redirect_to(root_url) and return unless Flipper.enabled?(:selling)
+
     @city = params[:city]
     search = PlaceSearch.new(partner: @partner, city: @city, name: params[:name], page: params[:page])
     @places = search.places
