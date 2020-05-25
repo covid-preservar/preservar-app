@@ -8,10 +8,14 @@ class Seller::PlacesController < Seller::BaseController
   end
 
   def new
+    redirect_to(seller_account_url) and return unless Flipper.enabled?(:registration)
+
     @place = current_seller_user.seller.places.build
   end
 
   def create
+    redirect_to(seller_account_url) and return unless Flipper.enabled?(:registration)
+
     @place = current_seller_user.seller.places.build(place_params)
 
     if @place.save

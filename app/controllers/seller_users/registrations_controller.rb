@@ -2,12 +2,16 @@
 class SellerUsers::RegistrationsController < Lib::RegistrationsController
 
   def new
+    redirect_to(root_url) and return unless Flipper.enabled?(:registration)
+
     super do
       @form = SellerSignupForm.new(seller_user: resource)
     end
   end
 
   def create
+    redirect_to(root_url) and return unless Flipper.enabled?(:registration)
+
     @form = SellerSignupForm.new(signup_params)
     super
   end

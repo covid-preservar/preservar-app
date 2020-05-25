@@ -11,5 +11,5 @@ nav.header.container-xl
         = link_to 'Editar conta', seller_account_path, class: 'header-link secondary-cta'
       - else
         = link_to 'Entrar', new_seller_user_session_path, class: 'header-link'
-        - if request.path == root_path
+        - if request.path == root_path && Flipper.enabled?(:registration)
           = link_to 'Submeter local', new_seller_user_registration_path, class: 'header-link secondary-cta'
