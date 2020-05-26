@@ -16,5 +16,6 @@ nav.header.container-xl.header-short
           = link_to 'Editar conta', seller_account_path, class: 'header-link secondary-cta'
         - else
           = link_to 'Entrar', new_seller_user_session_path, class: 'header-link'
-          = link_to 'Submeter local', new_seller_user_registration_path, class: 'secondary-cta'
+          /!
+            = link_to 'Submeter local', new_seller_user_registration_path, class: 'secondary-cta'
 
