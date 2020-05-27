@@ -2,6 +2,8 @@
 class SellerUsers::PartnerRegistrationsController < Lib::RegistrationsController
 
   def new
+    redirect_to(root_url) and return unless Flipper.enabled?(:registration)
+
     @partner = Partner.find_by(slug: request.subdomain)
 
     redirect_to(root_path) and return unless @partner.active?
@@ -15,6 +17,8 @@ class SellerUsers::PartnerRegistrationsController < Lib::RegistrationsController
   end
 
   def create
+    redirect_to(root_url) and return unless Flipper.enabled?(:registration)
+
     @partner = Partner.find_by(slug: request.subdomain)
     prepend_view_path "#{Rails.root}/app/views/partners/#{@partner.slug}"
     @form = PartnerSellerSignupForm.new(signup_params.merge(partner: @partner))

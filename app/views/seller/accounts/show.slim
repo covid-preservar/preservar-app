@@ -45,9 +45,10 @@ main.container-xl.maincontent
                   = inline_svg_tag 'iconic/question-mark.svg', class:'iconic question'
 
     .col-sm-12.col-md-8.col-xl-6
-      h3.mb-4.d-flex.justify-content-between.align-items-center
+      h3.mb-4.d-flex.justify-content-between.align-items-center style='height: 33px;'
         | Os meus locais
-        = link_to 'Adicionar local', new_seller_place_path, class:'btn btn-outline-primary btn-sm'
+        - if Flipper.enabled?(:registration)
+          = link_to 'Adicionar local', new_seller_place_path, class:'btn btn-outline-primary btn-sm'
 
       table.table
         thead

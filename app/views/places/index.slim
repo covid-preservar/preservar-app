@@ -12,7 +12,9 @@ section.places-container.container-xl
 
   #search-results
     = render 'search_results'
-section.container-xl.section#businesses
-  .row.clearfix
-    h2.col-12.col-md-8.col-lg-6.section-separator Não encontra o seu local favorito? Partilhe a página de submissão com eles
-  = link_to 'Submeter local', new_seller_user_registration_path, class: 'primary-cta'
+
+- if Flipper.enabled?(:registration)
+  section.container-xl.section#businesses
+    .row.clearfix
+      h2.col-12.col-md-8.col-lg-6.section-separator Não encontra o seu local favorito? Partilhe a página de submissão com eles
+    = link_to 'Submeter local', new_seller_user_registration_path, class: 'primary-cta'
