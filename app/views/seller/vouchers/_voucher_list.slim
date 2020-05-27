@@ -42,7 +42,7 @@ table.table
             - if voucher.paid?
               = link_to 'Usar', redeem_seller_voucher_path(voucher), remote:true, class:'btn btn-outline-primary btn-sm'
             - else
-              button.btn.btn-outline-primary.btn-sm disable
+              button.btn.btn-outline-primary.btn-sm disabled=true = voucher.human_state_name
           td.text-nowrap.d-xl-none.p-2
             | Info
             = inline_svg 'down.svg', class:'collapse-icon'
