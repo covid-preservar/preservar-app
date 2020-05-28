@@ -112,7 +112,7 @@ class Voucher < ApplicationRecord
   end
 
   def mbway_bonus_available?
-    Date.today <= Date.new(2020,5,31) &&
+    Date.today <= Date.new(2020,6,14) &&
     value >= MIN_MBWAY_VALUE &&
     Voucher.total_paid.sum(:mbway_bonus) < MBWAY_TARGET_VALUE
   end
