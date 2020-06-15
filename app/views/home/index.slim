@@ -22,6 +22,14 @@
               | favorito
             p Compre um voucher para usar em qualquer altura, e ajude a sua economia local a sobreviver ao COVID-19
             = render 'shared/search_form'
+          - else
+            h1.hero-wrapper Obrigado a todos
+            p Devido ao Covid-19, todo o comércio local teve que fechar a portas, criando grandes dificuldades financeiras aos mesmos. A Preserve nasceu para ajudar estes locais, dando a possibilidade a estes de venderem vouchers aos seus clientes, gerando receitas imediatas.
+            p Estamos profundamente agradecidos pela adesão em massa a esta iniciativa. Devido ao grande apoio do público, milhares de negócios reabriram as portas após o estado de emergência.
+            p Obrigado.
+
+            div.hero-login
+              p É comerciante e quer validar os seus vouchers? #{link_to 'Clique aqui', new_seller_user_session_path}
 
       .col-md-5.col-lg-5.d-none.d-md-block
         = image_tag 'hero-img.jpg', alt:'Pessoa', class:'hero-img'
@@ -42,9 +50,14 @@
     section#how-it-works.section
       #how-it-works-brief.row
         .col-12.col-md-6
-          h2.section-separator Os seus locais preferidos precisam de ajuda
-          p Por causa do Covid-19, os seus locais preferidos estão de portas fechadas. A maioria não vai aguentar mais de 1-2 meses sem clientes e vão ter de tomar decisões drásticas, como despedir o pessoal, ou abrir falência.
-          p Pode ajudar.
+          - if Flipper.enabled?(:selling)
+            h2.section-separator Os seus locais preferidos precisam de ajuda
+            p Por causa do Covid-19, os seus locais preferidos estão de portas fechadas. A maioria não vai aguentar mais de 1-2 meses sem clientes e vão ter de tomar decisões drásticas, como despedir o pessoal, ou abrir falência.
+            p Pode ajudar.
+          - else
+            h2.section-separator Como funcionava a Preserve?
+            p Por causa do Covid-19, os seus locais preferidos estiveram de portas fechadas. A maioria não conseguiria aguentar mais de 1-2 meses sem clientes e tiveram de tomar decisões drásticas, como despedir o pessoal, ou abrir falência.
+            p Devido ao seu apoio, muitos deles conseguiram reabrir as portas.
         .col-md-6.d-none.d-md-block
           = image_tag 'help.svg', alt: 'Hug'
 
