@@ -2,6 +2,8 @@
 class VouchersController < ApplicationController
 
   def create
+    redirect_to(root_url) and return unless Flipper.enabled?(:selling)
+
     @voucher = Voucher.new(voucher_params.merge(cookie_uuid: SecureRandom.uuid))
 
     if @voucher.place.active_partner.present?

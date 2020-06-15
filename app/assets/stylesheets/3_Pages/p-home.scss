@@ -24,6 +24,18 @@
 
 }
 
+.hero-login {
+  margin-top: 2rem;
+
+  p {
+    opacity: 0.5;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
 .press-wrapper {
   display: flex;
   flex-direction: row;

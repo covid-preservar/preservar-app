@@ -3,6 +3,8 @@ class PlacesController < ApplicationController
   before_action :load_place_and_ensure_canonical_url, only: [:show]
 
   def index
+    redirect_to(root_url) and return unless Flipper.enabled?(:selling)
+
     @city = params[:city]
 
     search = PlaceSearch.new(category: params[:category], city: @city, page: params[:page])
@@ -29,8 +31,9 @@ class PlacesController < ApplicationController
   private
 
   def load_place_and_ensure_canonical_url
-    @place = Place.published.includes([:category]).friendly.find(params[:id])
+    redirect_to(root_url) and return unless Flipper.enabled?(:selling)
 
+    @place = Place.published.includes([:category]).friendly.find(params[:id])
     redirect_to(place_url(@place)) and return if place_url(@place) != request.url
   end
 end

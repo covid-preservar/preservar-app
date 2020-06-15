@@ -32,6 +32,8 @@ class PaymentsController < ApplicationController
   end
 
   def load_and_check_voucher
+    redirect_to(root_url) and return unless Flipper.enabled?(:selling)
+
     @voucher = Voucher.find(params[:voucher_id] || params[:id])
 
     unless cookies.encrypted[:uuid] == @voucher.cookie_uuid
