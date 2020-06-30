@@ -12,6 +12,7 @@ module Admin
       @voucher_stats = voucher_counts.merge(voucher_values){|_, count, val| [count, val]}
       @voucher_used_stats = voucher_used_counts.merge(voucher_used_values){|_, count, val| [count, val]}
 
+      @dates = (@voucher_stats.keys + @voucher_used_stats.keys).uniq
     end
 
     def sellers

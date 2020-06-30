@@ -64,8 +64,9 @@ class Voucher < ApplicationRecord
   scope :with_bonus, -> { where.not(partner_id: nil) }
   scope :not_paid, -> {  where.not(state: %w[paid redeemed]) }
   scope :total_paid, -> {  where(state: %w[paid redeemed]) }
-  scope :with_insurance, -> {  where.not(insurance_policy_number: nil).where(is_remainder: false) }
-  scope :for_stats, -> { total_paid.where(is_remainder: false)}
+  scope :with_insurance, -> {  where.not(insurance_policy_number: nil).not_remainder }
+  scope :for_stats, -> { total_paid.not_remainder }
+  scope :not_remainder, -> { where(is_remainder: false)}
 
   before_validation :set_addon_bonus
 

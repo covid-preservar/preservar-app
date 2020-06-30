@@ -10,11 +10,11 @@ section.stats_section
       th Vouchers Used
       th Amount
     tbody
-      - @voucher_stats.reverse_each do |day, stats|
+      - @dates.reverse_each do |day|
         tr
           td = day
-          td = stats.first
-          td = number_to_currency stats.last, locale: :pt
-          td = @voucher_used_stats[day]&.first
-          td = number_to_currency(@voucher_used_stats[day].last, locale: :pt) if @voucher_used_stats[day].present?
+          td = @voucher_stats[day]&.first || '—'
+          td = number_to_currency(@voucher_stats[day]&.last, locale: :pt) || '—'
+          td = @voucher_used_stats[day]&.first || '—'
+          td = number_to_currency(@voucher_used_stats[day]&.last, locale: :pt) || '—'
 
