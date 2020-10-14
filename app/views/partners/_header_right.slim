@@ -1,5 +1,5 @@
 .header-right
-  = link_to 'Ajuda', 'http://ajuda.preserve.pt/', class: 'header-link', target: '_blank'
+  = link_to 'Ajuda', 'mailto:info@preserve.pt', class: 'header-link', target: '_blank'
   - if seller_user_signed_in?
     br.d-inline.d-sm-none
     = link_to 'Os meus vouchers', seller_vouchers_path, class: 'header-link secondary-cta'

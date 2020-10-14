@@ -3,7 +3,7 @@ nav.header.container-xl
     .col-3.col-md-2
       a#logo href="/"
     .header-right.col-9.col-md-10
-      = link_to 'Ajuda', 'http://ajuda.preserve.pt/', class: 'header-link', target: '_blank'
+      = link_to 'Ajuda', 'mailto:info@preserve.pt', class: 'header-link', target: '_blank'
       - if seller_user_signed_in?
         = link_to 'Terminar sessão', destroy_seller_user_session_path, method: :delete, class: 'header-link'
         br.d-inline.d-sm-none
