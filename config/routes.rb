@@ -56,19 +56,17 @@ Rails.application.routes.draw do
                              sessions: 'seller_users/sessions'},
               path_names: { sign_up: 'registo' }
 
-
     namespace :seller do
       resource :account, only: [:show] do
-        put 'accept_new_terms'
+        put :accept_new_terms
+        get :republish, on: :member
       end
       resources :places, except: [:index, :destroy]
       resources :vouchers, only: [:index, :update] do
-        get 'redeem', on: :member
+        get :redeem, on: :member
       end
-
     end
 
-    # TEMP - Until the seller login area is built
     get '/comerciante/bem-vindo', to: 'places#register_success', as: :register_success
 
     namespace :webhooks do
@@ -104,7 +102,6 @@ Rails.application.routes.draw do
       root to: "stats#index"
     end
   end
-
 
   authenticate :admin_user do
     require 'sidekiq/web'

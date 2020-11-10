@@ -7,6 +7,6 @@
 
   - if flash[:alert].present?
     .alert.alert-danger.alert-dismissible.fade.show
-      = flash[:alert]
+      = simple_format flash[:alert]
       button.close type="button" data-dismiss="alert" aria-label="Close"
         span aria-hidden="true" &times;

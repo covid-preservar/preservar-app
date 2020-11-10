@@ -58,6 +58,7 @@ class Voucher < ApplicationRecord
   validates :payment_identifier, presence: true, if: :pending_payment?
   validates :payment_phone, format: { with: /\A\d{9}\z/ }, if: :requires_phone?
 
+  validate :place_is_published, on: :create
   validate :valid_vat_id
 
   scope :seller_visible, -> { where(state: %w[paid redeemed refunded]) }
@@ -190,5 +191,9 @@ class Voucher < ApplicationRecord
 
   def set_addon_bonus
     self.add_on_bonus = partner.add_on_value if has_add_on_partner?
+  end
+
+  def place_is_published
+    errors.add(:place_id, :invalid) unless place.published?
   end
 end

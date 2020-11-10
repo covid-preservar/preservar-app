@@ -7,6 +7,7 @@ class SellerUser < ApplicationRecord
 
   has_one :seller, dependent: :restrict_with_exception
   has_many :places, through: :seller
+  has_many :signin_tokens, dependent: :destroy
 
 
   def accept_tos!
