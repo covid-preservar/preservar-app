@@ -33,7 +33,7 @@ class Partner < ApplicationRecord
   end
 
   def active?
-    true
+    published
   end
 
   def restricted_category_id

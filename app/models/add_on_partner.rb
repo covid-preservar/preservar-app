@@ -34,6 +34,7 @@ class AddOnPartner < Partner
   end
 
   def active?
+    super &&
     (target_value.zero? || (target_progress < target_value)) &&
     ((date_limit.present? && Date.today <= date_limit) || date_limit.nil?)
   end

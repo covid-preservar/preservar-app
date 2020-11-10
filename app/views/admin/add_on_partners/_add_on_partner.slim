@@ -19,6 +19,11 @@
                 = image_tag @resource.thumb_logo_url, class:'partner-logo logo-sm'
       tr
         td
+          strong Published?
+        td
+          = @resource.published
+      tr
+        td
           strong ID
         td
           = @resource.id

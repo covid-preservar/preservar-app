@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_160433) do
+ActiveRecord::Schema.define(version: 2020_11_10_123730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2020_05_22_160433) do
     t.jsonb "partner_properties", default: {}, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "published", default: false
   end
 
   create_table "partnerships", force: :cascade do |t|
@@ -177,6 +178,16 @@ ActiveRecord::Schema.define(version: 2020_05_22_160433) do
     t.string "iban"
     t.string "company_registration_code"
     t.index ["seller_user_id"], name: "index_sellers_on_seller_user_id"
+  end
+
+  create_table "signin_tokens", force: :cascade do |t|
+    t.bigint "seller_user_id"
+    t.datetime "expires_at", null: false
+    t.string "encrypted_uuid", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["encrypted_uuid"], name: "index_signin_tokens_on_encrypted_uuid"
+    t.index ["seller_user_id"], name: "index_signin_tokens_on_seller_user_id"
   end
 
   create_table "vouchers", force: :cascade do |t|
