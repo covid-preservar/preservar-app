@@ -123,17 +123,6 @@ class Voucher < ApplicationRecord
     mbway_bonus_available? && payment_method == 'MBW'
   end
 
-  def can_insure?
-    self.paid? &&
-    self.insurance_policy_number.blank? &&
-    place.vouchers.with_insurance.sum(:value) + self.value <= INSURANCE_PLACE_LIMIT &&
-    Voucher.with_insurance.sum(:value) + self.value <= INSURANCE_TOTAL_LIMIT
-  end
-
-  def self.insurance_available?
-    self.with_insurance.sum(:value) < INSURANCE_TOTAL_LIMIT
-  end
-
   def redeem_with_value!(uvalue)
     if uvalue < self.face_value
       new_voucher = self.dup

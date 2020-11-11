@@ -9,8 +9,6 @@ class VoucherPaymentCompleteJob
     @voucher = Voucher.find(voucher_id)
     check_partner_limit
 
-    InsurancePolicyService.new(@voucher).create_policy if @voucher.can_insure?
-
     ApplicationMailer.voucher_email(@voucher.id).deliver_later
     ApplicationMailer.seller_voucher_email(@voucher.id).deliver_later
   end

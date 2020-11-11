@@ -38,7 +38,7 @@
         - cache @stats_cache do
           section.hero-stats.clearfix
             article.stat
-              h2 = Place.published.count
+              h2 = Place.ever_published.count
               p Locais
             article.stat
               h2 = Voucher.for_stats.count
@@ -74,26 +74,6 @@
         = image_tag 'icon-heart.svg', alt: 'Heart'
         h3 Parabéns, contribuiu para sua economia local!
         p Contribuiu para que os seus sítios preferidos sobrevivam e consigam pôr comida na mesa das suas famílias.
-
-    section.section
-      .row
-        .col-lg-6.col-12
-          h2.section-separator Os seus vouchers têm seguro!
-          p
-            ' Com o apoio da
-            strong> Ageas
-            ' e da
-            strong KeepWarranty
-            ' , conseguimos garantir que, caso o pior aconteça, não perca o seu voucher.
-            => link_to 'Termos', tos_path, class:'text-underline'
-            | aplicam-se.
-        .col-md-8.offset-md-2.col-lg-6.offset-lg-0.col-12
-          .insurance-logos.mt-5
-            .insurance-logo.logo-ageas
-              = inline_svg 'ageas/logo-ageas.svg'
-            .insurance-logo.logo-keepwarranty
-              = inline_svg 'ageas/logo-keepwarranty.svg'
-
 
   - if Flipper.enabled?(:selling)
     - cache @places do

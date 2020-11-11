@@ -19,6 +19,7 @@ class Place < ApplicationRecord
 
   scope :sorted, -> { order(name: :asc) }
   scope :published, -> { where(published: true) }
+  scope :ever_published, -> { where.not(published_at: nil) }
 
   default_scope -> { includes(:partnership, :partner, :category) }
 
@@ -62,11 +63,6 @@ class Place < ApplicationRecord
 
   def has_charity_partner?
     approved_partner.present? && partner.charity_partner?
-  end
-
-  def insurance_available?
-    Voucher.insurance_available? &&
-    vouchers.with_insurance.sum(:value) < Voucher::INSURANCE_PLACE_LIMIT
   end
 
   def to_s
