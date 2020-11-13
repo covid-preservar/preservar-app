@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
   end
 
   def referrer_present?(referrer)
-    referrer.present? && URI(referrer.strip).host != ENV['HOSTNAME']
+    referrer.present? && URI(Addressable::URI.escape(referrer.strip)).host != ENV['HOSTNAME']
   end
 
   def clean_tracking_cookies
