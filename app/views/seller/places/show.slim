@@ -13,6 +13,8 @@ main.container-xl.maincontent
       h2.place_header
         = @place.name
         .actions
+          - if @place.can_publish?
+            = button_to 'Publicar', publish_seller_place_path(@place), form_class: 'btn', class: 'btn btn-outline-primary btn-sm', method: :patch
           = link_to 'Editar', edit_seller_place_path(@place), class: 'btn btn-outline-primary btn-sm'
 
       table.table

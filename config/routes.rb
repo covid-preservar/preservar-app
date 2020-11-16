@@ -61,7 +61,9 @@ Rails.application.routes.draw do
         put :accept_new_terms
         get :republish, on: :member
       end
-      resources :places, except: [:index, :destroy]
+      resources :places, except: [:index, :destroy] do
+        patch :publish, on: :member
+      end
       resources :vouchers, only: [:index, :update] do
         get :redeem, on: :member
       end

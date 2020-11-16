@@ -36,6 +36,15 @@ class Seller::PlacesController < Seller::BaseController
     end
   end
 
+  def publish
+    if @place.can_publish?
+      @place.update(published: true, published_at: Time.now)
+      redirect_to seller_place_path(@place), notice: 'Este local foi publicado'
+    else
+      redirect_to seller_place_path(@place), alert: 'Não é possivel publicar este local. Por favor contacte-nos'
+    end
+  end
+
   private
 
   def load_place
