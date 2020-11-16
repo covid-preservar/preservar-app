@@ -15,6 +15,10 @@ class ApplicationMailer < ActionMailer::Base
 
   def voucher_email(voucher_id)
     @voucher = Voucher.find(voucher_id)
+
+    # pdf = VoucherPDFWriter.new(@voucher).create_pdf_tempfile
+    # attachments[pdf.basename.to_s] = open(pdf).read
+
     mail to:@voucher.email, subject: 'Parabéns pelo apoio! Aqui está o seu vale.'
   end
 
