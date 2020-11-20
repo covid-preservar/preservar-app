@@ -1,8 +1,13 @@
 class VoucherPDFWriter
-include Prawn::View
+  include Prawn::View
 
   def initialize(voucher)
     @voucher = voucher
+    font_families.update('GangsterGrotesk' => {
+      normal: Rails.root.join('app/assets/fonts/GangsterGrotesk-Regular.otf'),
+      light: Rails.root.join('app/assets/fonts/GangsterGrotesk-Light.otf'),
+      bold: Rails.root.join('app/assets/fonts/GangsterGrotesk-Bold.otf')
+    })
   end
 
   def document
@@ -30,7 +35,7 @@ include Prawn::View
 
   def header
     move_down 100
-    font('Helvetica', size: 40) do
+    font('GangsterGrotesk', size: 40) do
       fill_color '00093C'
       bounding_box([25, cursor], width:  bounds.right - 75) do
         text "Voucher"
@@ -41,7 +46,7 @@ include Prawn::View
 
   def details
     move_down 50
-    font('Helvetica', size: 20) do
+    font('GangsterGrotesk', size: 20) do
       fill_color '00093C'
       bounding_box([25, cursor], width:  bounds.right - 75) do
         text "Número do voucher: #{@voucher.code}"
@@ -49,7 +54,7 @@ include Prawn::View
     end
 
     move_down 20
-    font('Helvetica', size: 16) do
+    font('GangsterGrotesk', size: 16) do
       fill_color '00093C'
       bounding_box([25, cursor], width:  bounds.right - 75) do
         pad(10) { text("Email: #{@voucher.email}") }
