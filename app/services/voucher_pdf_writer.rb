@@ -1,5 +1,6 @@
 class VoucherPDFWriter
   include Prawn::View
+  include ActionView::Helpers::NumberHelper
 
   def initialize(voucher)
     @voucher = voucher
@@ -15,7 +16,7 @@ class VoucherPDFWriter
   end
 
   def create_pdf_tempfile
-    logo
+    decoration
     header
     details
     filename = Rails.root.join("tmp/voucher_#{@voucher.code}.pdf")
@@ -24,41 +25,47 @@ class VoucherPDFWriter
     filename
   end
 
-  def logo
+  def decoration
     canvas do
-      rectangle [0, bounds.top], bounds.right * 0.8, bounds.top / 2
-      fill_color 'EFF5FF'
-      fill
-      image Rails.root.join('app/assets/images/logo-mail.png'), position: 50, vposition: 50, width: 100
+      rectangle [bounds.left + 20, bounds.top - 20], bounds.right - 40, bounds.top - 40
+      stroke_color '122675'
+      line_width 2
+      stroke
+      image Rails.root.join('app/assets/images/logo-pdf.png'), position: 50, vposition: 50, width: 120
+      image Rails.root.join('app/assets/images/email-illustration.png'), at: [bounds.right-162, 162], width: 142
     end
   end
 
   def header
-    move_down 100
-    font('GangsterGrotesk', size: 40) do
-      fill_color '00093C'
-      bounding_box([25, cursor], width:  bounds.right - 75) do
-        text "Voucher"
-        text @voucher.place.name
-      end
-    end
+    print_text("<b>#{number_to_currency(@voucher.value, locale: :pt, strip_insignificant_zeros: true)}</b>", 54, 100)
+    print_text("Para gastar na", 20, 0, "A0A8C8")
+    print_text("<b>#{@voucher.place.name}</b>", 26, 0)
   end
 
   def details
-    move_down 50
-    font('GangsterGrotesk', size: 20) do
-      fill_color '00093C'
-      bounding_box([25, cursor], width:  bounds.right - 75) do
-        text "Número do voucher: #{@voucher.code}"
-      end
-    end
+    print_text("Esta prenda é especial. Mas porquê?\n" \
+    "O comércio local está a passar uma crise sem precedentes. Este voucher, já pago por quem lhe ofereceu, contribuiu para que o comércio local sobreviva a esta crise sem precedentes.\n" \
+    "Agora, desfrute deste voucher sabendo que contribuiu para algo muito maior que nós todos.\n\n" \
+    "Obrigado!", 14, 50)
 
-    move_down 20
-    font('GangsterGrotesk', size: 16) do
-      fill_color '00093C'
-      bounding_box([25, cursor], width:  bounds.right - 75) do
-        pad(10) { text("Email: #{@voucher.email}") }
-        text "Validade: #{@voucher.valid_until}"
+    print_text("Usar este voucher é simples: mostre-o no momento de pagamento.", 14, 50)
+
+    print_text("Código: <b>#{@voucher.code}</b>", 13, 0)
+    print_text("Validade: <b>#{@voucher.valid_until}</b>", 13, 0)
+
+    print_text("Mais informações em <b>www.preserve.pt</b>", 10, 40)
+  end
+
+
+
+  private
+
+  def print_text(text, size, margin_top, color = "122675")
+    move_down margin_top
+    font('GangsterGrotesk', size: size) do
+      fill_color '122675'
+      bounding_box([180, cursor], width:  bounds.right - 200) do
+        text text, inline_format: true
       end
     end
   end
