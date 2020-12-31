@@ -56,7 +56,7 @@ Bundler/OrderedGems:
 
   #### new
 
-  Layout/SpaceBeforeBrackets:
+Layout/SpaceBeforeBrackets:
   Enabled: true
 Lint/AmbiguousAssignment:
   Enabled: true
