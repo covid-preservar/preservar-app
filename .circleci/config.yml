@@ -16,7 +16,7 @@ jobs:
         environment:
           POSTGRES_USER: preservar-app
           POSTGRES_DB: preservar_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: "password"
     steps:
       - checkout
 
