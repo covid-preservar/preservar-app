@@ -32,7 +32,7 @@ class Partnership < ApplicationRecord
     partner_identifier&.identifier
   end
 
-  def partner_id_code=(value)
+  def partner_id_code=(_)
     self.partner_identifier = partner.partner_identifiers.find_by(identifier: partner_id_code)
   end
 

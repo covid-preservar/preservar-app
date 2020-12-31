@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 class CSVImport < ApplicationRecord
   include CSVUploader::Attachment.new(:file)
 
-  enum state: [ :pending, :processing, :errored, :done ]
+  enum state: %i[pending processing errored done]
 
   belongs_to :admin_user
 

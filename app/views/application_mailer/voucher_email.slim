@@ -52,7 +52,7 @@ table
       td
         = number_to_currency @voucher.value, locale: :pt
 
-    - if @voucher.has_add_on_partner?
+    - if @voucher.add_on_partner?
       tr
         td
           strong
@@ -82,7 +82,7 @@ table
         strong Validade
       td = @voucher.valid_until
 
-- if @voucher.has_add_on_partner?
+- if @voucher.add_on_partner?
   br
   p.muted
     small Em caso de devolução, apenas o valor pago está sujeito a devolução.

@@ -9,7 +9,6 @@ class SellerUser < ApplicationRecord
   has_many :places, through: :seller
   has_many :signin_tokens, dependent: :destroy
 
-
   def accept_tos!
     update!(
       privacy_policy_version_consented_to: ENV.fetch('PRIVACY_POLICY_VERSION'),

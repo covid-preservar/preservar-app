@@ -4,11 +4,11 @@ module Admin
 
     def index_columns
       [
-        {attr: :id, label: 'ID', sort: :id},
-        {attr: :email, label: 'Email', sort: :email},
-        {attr: :role, label: 'Role', sort: :role},
-        {attr: :created_at, label: 'Created At', sort: :created_at},
-        {attr: :updated_at, label: 'Updated At', sort: :updated_at}
+        { attr: :id, label: 'ID', sort: :id },
+        { attr: :email, label: 'Email', sort: :email },
+        { attr: :role, label: 'Role', sort: :role },
+        { attr: :created_at, label: 'Created At', sort: :created_at },
+        { attr: :updated_at, label: 'Updated At', sort: :updated_at }
       ]
     end
 
@@ -19,7 +19,9 @@ module Admin
       if permitted_params[:password].present?
         success = @resource.update_with_password(permitted_params)
       else
-        success = @resource.update(permitted_params.except(:password, :password_confirmation, :current_password))
+        success = @resource.update(permitted_params.except(:password,
+                                                           :password_confirmation,
+                                                           :current_password))
       end
 
       if success

@@ -13,7 +13,7 @@ class SigninToken < ApplicationRecord
   def self.get_from_uuid(dashless_uuid)
     encrypted_search = BCrypt::Engine.hash_secret(dashless_uuid, ENV['SIGNIN_TOKEN_SALT'])
 
-    self.find_by_encrypted_uuid(encrypted_search)
+    find_by_encrypted_uuid(encrypted_search)
   end
 
   def expired?

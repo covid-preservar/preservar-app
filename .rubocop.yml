@@ -20,13 +20,13 @@ Layout/EmptyLineAfterMagicComment:
 Naming/AccessorMethodName:
   Enabled: false
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
 
 Style/RescueModifier:
   Enabled: false
 
-Lint/EndAlignment:
+Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
 
 Metrics/MethodLength:

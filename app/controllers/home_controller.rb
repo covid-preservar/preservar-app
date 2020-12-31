@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   def index
     if Flipper.enabled?(:selling)
       @spinner_categories = %w[Restaurante Café Cabeleireiro Museu Teatro]
-      @places = Place.published.includes(:category).order("RANDOM()").limit(4)
+      @places = Place.published.includes(:category).order('RANDOM()').limit(4)
     end
 
     @stats_cache = [Place.published.maximum(:updated_at), Voucher.for_stats.maximum(:payment_completed_at)]
@@ -16,9 +16,6 @@ class HomeController < ApplicationController
   end
 
   def tos_mbway
-  end
-
-  def privacy
   end
 
   def privacy

@@ -17,14 +17,14 @@ class Seller < ApplicationRecord
   private
 
   def sanitize_vat_id
-    self.vat_id.tr!(' ', '')
+    vat_id.tr!(' ', '')
   end
 
   def normalize_iban
-    self.iban = Ibandit::IBAN.new(self.iban).to_s(:formatted) if self.iban.present?
+    self.iban = Ibandit::IBAN.new(iban).to_s(:formatted) if iban.present?
   end
 
   def normalize_vat_id
-    self.vat_id = self.vat_id.sub(/PT/i, '')
+    self.vat_id = vat_id.sub(/PT/i, '')
   end
 end

@@ -2,7 +2,7 @@
 class CSVUploader < Shrine
   plugin :default_storage, store: :csv_store
 
-  def generate_location(io, record: nil, **context)
+  def generate_location(io, record: nil, **_)
     [record&.id || 'cache', io.original_filename].join('/')
   end
 

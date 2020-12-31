@@ -6,8 +6,8 @@ class Partner < ApplicationRecord
 
   has_many :partnerships, inverse_of: :partner, dependent: :destroy
   has_many :places, through: :partnerships, inverse_of: :partner
-  has_many :live_partnerships, -> { where(approved: true, limit_reached: false)}, class_name:'Partnership'
-  has_many :live_places, through: :live_partnerships, class_name:'Place', source: :place
+  has_many :live_partnerships, -> { where(approved: true, limit_reached: false) }, class_name: 'Partnership'
+  has_many :live_places, through: :live_partnerships, class_name: 'Place', source: :place
 
   has_many :vouchers
   has_many :partner_identifiers
@@ -65,9 +65,9 @@ class Partner < ApplicationRecord
   end
 
   def restricted_categories
-    if partner_properties['restricted_category_ids'].present?
-      Category.where(id: partner_properties['restricted_category_ids'])
-    end
+    return unless partner_properties['restricted_category_ids'].present?
+
+    Category.where(id: partner_properties['restricted_category_ids'])
   end
 
   def restricted_categories=(categories)

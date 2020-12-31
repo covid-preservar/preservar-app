@@ -23,5 +23,5 @@
       ' Ao Pagar através de MBWay está a aceitar os
       = link_to 'Termos da campanha', tos_mbway_path, target: '_blank', class: 'text-underline'
     | .
-  - if @voucher.has_charity_partner?
+  - if @voucher.charity_partner?
     p = @voucher.partner.voucher_copy

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class PlaceSearch
 
   attr_accessor :category, :city, :partner, :name
@@ -31,7 +32,7 @@ class PlaceSearch
 
   def title
     if category.nil? && city.nil?
-      "Todos os locais"
+      'Todos os locais'
     else
       "#{category&.name_plural || 'Locais'} em #{city.presence || 'todo o país'}"
     end

@@ -6,7 +6,7 @@ class VoucherRedeemForm
   attr_accessor :used_value, :voucher, :new_voucher
 
   validates :used_value, numericality: { greater_than: 0,
-                                         less_than_or_equal_to: ->(form) { form.voucher.face_value }}
+                                         less_than_or_equal_to: ->(form) { form.voucher.face_value } }
 
   def initialize(attributes = {})
     super(attributes.reject { |_, v| v.blank? })
@@ -24,5 +24,4 @@ class VoucherRedeemForm
 
     true
   end
-
 end

@@ -23,5 +23,4 @@ class Lib::RegistrationsController < Devise::RegistrationsController
       render :new
     end
   end
-
 end

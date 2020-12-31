@@ -37,7 +37,6 @@ class ApplicationMailerPreview < ActionMailer::Preview
     ApplicationMailer.seller_promo_limit_notify(Place.last.id)
   end
 
-
   ### TEMP
 
   def voucher_gained_bonus

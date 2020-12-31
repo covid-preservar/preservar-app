@@ -115,7 +115,7 @@ class SellerSignupForm
   end
 
   def validate_vat_id
-    to_validate = 'PT' + vat_id.sub('PT', '')
+    to_validate = "PT#{vat_id.sub('PT', '')}"
     errors.add(:vat_id, :invalid_vat) unless Valvat.new(to_validate).valid_checksum?
   end
 

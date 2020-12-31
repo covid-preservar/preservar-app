@@ -1,15 +1,14 @@
-
 # frozen_string_literal: true
 module Admin
   class PartnersController < Admin::ResourcefulController
     def index_columns
       [
-        {attr: :id, label: 'ID', sort: :id},
-        {attr: :name, label: 'Name', sort: :name},
-        {attr: :published, label: 'Published', sort: :published},
-        {attr: :slug, label: 'Slug', sort: :slug},
-        {attr: :created_at, label: 'Created At', sort: :created_at},
-        {attr: :updated_at, label: 'Updated At', sort: :updated_at}
+        { attr: :id, label: 'ID', sort: :id },
+        { attr: :name, label: 'Name', sort: :name },
+        { attr: :published, label: 'Published', sort: :published },
+        { attr: :slug, label: 'Slug', sort: :slug },
+        { attr: :created_at, label: 'Created At', sort: :created_at },
+        { attr: :updated_at, label: 'Updated At', sort: :updated_at }
       ]
     end
 

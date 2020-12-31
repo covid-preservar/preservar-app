@@ -6,9 +6,7 @@ class VouchersController < ApplicationController
 
     @voucher = Voucher.new(voucher_params.merge(cookie_uuid: SecureRandom.uuid))
 
-    if @voucher.place.active_partner.present?
-      @voucher.partner = @voucher.place.active_partner
-    end
+    @voucher.partner = @voucher.place.active_partner.presence
 
     if @voucher.save
       @voucher.update_tracking(tracking_codes)
@@ -28,7 +26,7 @@ class VouchersController < ApplicationController
 
   def tracking_codes
     codes = {}
-    cookies.each do |key, value|
+    cookies.each do |key, _|
       codes[key] = cookies.signed[key] if key.starts_with?('utm_')
     end
 

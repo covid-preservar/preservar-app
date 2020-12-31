@@ -55,5 +55,4 @@ class SellerUsers::PartnerRegistrationsController < Lib::RegistrationsController
                                         :accept_tos,
                                         :honor_check)
   end
-
 end

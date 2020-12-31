@@ -11,6 +11,7 @@ class SellerCSVImport < ApplicationJob
   def perform(import_id)
     import = CSVImport.find(import_id)
     return unless import.pending?
+
     require 'csv'
 
     @bad_vat_lines = []
@@ -23,17 +24,17 @@ class SellerCSVImport < ApplicationJob
 
     import.processing!
     file = import.file_url
-    content = Net::HTTP.get(URI.parse file).force_encoding("UTF-8")
+    content = Net::HTTP.get(URI.parse(file)).force_encoding('UTF-8')
 
     CSV.parse(content, headers: true).each do |line|
 
       seller = Seller.find_by(id: line['seller_id'])
 
-      if check_line(line, seller)
-        seller.payment_api_key = line['api_key']
-        seller.save!
-        publish_places(seller)
-      end
+      next unless check_line(line, seller)
+
+      seller.payment_api_key = line['api_key']
+      seller.save!
+      publish_places(seller)
     end
 
     import.processing_errors[:bad_vat_lines] = bad_vat_lines

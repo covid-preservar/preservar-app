@@ -29,7 +29,7 @@
     ' Valor do voucher:
     span#voucher_face_value data-face-value=@voucher.face_value
       => number_to_currency @voucher.face_value, locale: :pt
-  - if @voucher.has_add_on_partner?
+  - if @voucher.add_on_partner?
     p.mt-2.d-flex.align-items-center
       = image_tag @voucher.partner.thumb_logo_url, class: 'partner-logo-thumb'
       small

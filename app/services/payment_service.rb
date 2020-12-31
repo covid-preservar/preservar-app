@@ -38,7 +38,7 @@ class PaymentService
   private
 
   def process_mb
-    url = ENDPOINT + '/multibanco/create'
+    url = "#{ENDPOINT}/multibanco/create"
 
     params = build_mb_params
     result = RestClient.post url, params
@@ -52,7 +52,7 @@ class PaymentService
   end
 
   def process_mbw
-    url = ENDPOINT + '/mbway/create'
+    url = "#{ENDPOINT}/mbway/create"
     params = build_mbw_params
 
     result = RestClient.post url, params

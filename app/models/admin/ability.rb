@@ -1,10 +1,10 @@
+# frozen_string_literal: true
 class Admin::Ability
   include CanCan::Ability
 
   def initialize(user)
     @user = user
     alias_action :create, :update, :destroy, :to => :write
-
 
     if @user.disabled?
       disabled_admin_user_permissions

@@ -5,6 +5,6 @@ class PartnerIdentifier < ApplicationRecord
   has_many :partnerships
 
   def mark_used!
-    self.update! last_used_at: Time.now, use_count: self.use_count + 1
+    update! last_used_at: Time.now, use_count: use_count + 1
   end
 end

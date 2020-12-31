@@ -6,13 +6,13 @@ module Admin
 
     def index_columns
       [
-        {attr: :id, label: 'ID', sort: :id},
-        {attr: :name, label: 'Name', sort: :name},
-        {attr: :category, label: 'Category', sort: nil, formatter: -> (view, place) { view.link_to place.category.name, [:admin, place.category] } },
-        {attr: :area, label: 'Area', sort: :area},
-        {attr: :published, label: 'Published', sort: :published},
-        {attr: :created_at, label: 'Created At', sort: :created_at},
-        {attr: :updated_at, label: 'Updated At', sort: :updated_at}
+        { attr: :id, label: 'ID', sort: :id },
+        { attr: :name, label: 'Name', sort: :name },
+        { attr: :category, label: 'Category', sort: nil, formatter: ->(view, place) { view.link_to place.category.name, [:admin, place.category] }  },
+        { attr: :area, label: 'Area', sort: :area },
+        { attr: :published, label: 'Published', sort: :published },
+        { attr: :created_at, label: 'Created At', sort: :created_at },
+        { attr: :updated_at, label: 'Updated At', sort: :updated_at }
       ]
     end
 
