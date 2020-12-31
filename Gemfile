@@ -11,7 +11,7 @@ gem 'pg'
 gem 'puma', '~> 5.0.4'
 gem 'sassc-rails', '~> 2.1.0'
 gem 'autoprefixer-rails'
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 5.2'
 gem 'turbolinks', '~> 5'
 # gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
