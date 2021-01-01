@@ -63,7 +63,7 @@ gem 'client_side_validations-simple_form'
 group :production do
   gem 'cloudflare-rails'
   gem 'dalli'
-  gem 'scout_apm', '~> 4.0.0', github:'zokioki/scout_apm_ruby', branch: 'ruby-3-compatibility'
+  gem 'scout_apm'
 end
 
 group :development, :test do
