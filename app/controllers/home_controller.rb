@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class HomeController < ApplicationController
-  after_action :intercom_shutdown, only: [:index]
   before_action :set_location
 
   def index
@@ -22,11 +21,5 @@ class HomeController < ApplicationController
   end
 
   def privacy
-  end
-
-  protected
-
-  def intercom_shutdown
-    IntercomRails::ShutdownHelper.intercom_shutdown(session, cookies)
   end
 end
