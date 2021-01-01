@@ -8,7 +8,7 @@ ruby '3.0.0'
 gem 'rails', '~> 6.1.0'
 gem 'pg'
 
-gem 'puma', '~> 5.0.4'
+gem 'puma', '~> 5.1.0'
 gem 'sassc-rails', '~> 2.1.0'
 gem 'autoprefixer-rails'
 gem 'webpacker', '~> 4.0'
@@ -63,7 +63,7 @@ gem 'client_side_validations-simple_form'
 group :production do
   gem 'cloudflare-rails'
   gem 'dalli'
-  gem 'scout_apm'
+  gem 'scout_apm', '~> 4.0.0', github:'zokioki/scout_apm_ruby', branch: 'ruby-3-compatibility'
 end
 
 group :development, :test do
@@ -72,7 +72,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'image_optim_pack'
   gem 'pry-byebug'
-  gem 'rspec-rails', '~> 3.9.0'
+  gem 'rspec-rails', '~> 4.0.0'
 end
 
 group :development do
