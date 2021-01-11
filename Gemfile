@@ -8,7 +8,7 @@ ruby '3.0.0'
 gem 'rails', '~> 6.1.0'
 gem 'pg'
 
-gem 'puma', '~> 5.0.4'
+gem 'puma', '~> 5.1.0'
 gem 'sassc-rails', '~> 2.1.0'
 gem 'autoprefixer-rails'
 gem 'webpacker', '~> 5.2'
@@ -34,10 +34,10 @@ gem 'ibandit'
 gem 'image_optim'
 gem 'image_processing', '~> 1.0'
 gem 'inline_svg'
-gem 'intercom-rails'
 gem 'kaminari'
 gem 'maxminddb'
 gem 'meta-tags'
+gem 'nokogiri', '>= 1.11.0.rc4'
 gem 'premailer-rails'
 gem 'pry'
 gem 'pry-rails'
@@ -63,7 +63,7 @@ gem 'client_side_validations-simple_form'
 group :production do
   gem 'cloudflare-rails'
   gem 'dalli'
-  gem 'scout_apm'
+  gem 'scout_apm', github:'scoutapp/scout_apm_ruby', branch: 'ruby-3'
 end
 
 group :development, :test do
@@ -72,7 +72,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'image_optim_pack'
   gem 'pry-byebug'
-  gem 'rspec-rails', '~> 3.9.0'
+  gem 'rspec-rails', '~> 4.0.0'
 end
 
 group :development do
