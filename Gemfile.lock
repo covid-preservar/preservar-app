@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/scoutapp/scout_apm_ruby.git
+  revision: 4178e2b5298aeb2255ad7544d6d85ae7f9fcd4d8
+  branch: ruby-3
+  specs:
+    scout_apm (4.0.0)
+      parser
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -417,8 +425,6 @@ GEM
       nokogiri (>= 1.8.1)
       nori (~> 2.4)
       wasabi (~> 3.4)
-    scout_apm (2.6.10)
-      parser
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -567,7 +573,7 @@ DEPENDENCIES
   rspec-sidekiq
   rubocop
   sassc-rails (~> 2.1.0)
-  scout_apm
+  scout_apm!
   selenium-webdriver
   shrine
   sidekiq (~> 6.1.0)
