@@ -5,7 +5,7 @@ class Voucher < ApplicationRecord
   BONUS_MBWAY_VALUE = 2
   MBWAY_TARGET_VALUE = 5000
   INSURANCE_PLACE_LIMIT = 500
-  INSURANCE_TOTAL_LIMIT = 50000
+  INSURANCE_TOTAL_LIMIT = 50_000
 
   include AASM
 
@@ -41,14 +41,15 @@ class Voucher < ApplicationRecord
   validates :email, format: { with: Devise.email_regexp }, if: :pending_payment?
   validates :value, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 200 }
   validates :custom_value, numericality: {
-                            greater_than_or_equal_to: ->(instance) { instance.partner.min_value },
-                            allow_nil: true
+                             greater_than_or_equal_to: ->(instance) { instance.partner.min_value },
+                             allow_nil: true
                            }, if: -> { partner.present? && partner.min_value.present? }
 
   validates :custom_value, numericality: {
-                            less_than_or_equal_to: 200,
-                            allow_nil: true,
-                            only_integer: true }
+                             less_than_or_equal_to: 200,
+                             allow_nil: true,
+                             only_integer: true
+                           }
 
 
   validates :payment_method, presence: true,
@@ -63,11 +64,11 @@ class Voucher < ApplicationRecord
 
   scope :seller_visible, -> { where(state: %w[paid redeemed refunded]) }
   scope :with_bonus, -> { where.not(partner_id: nil) }
-  scope :not_paid, -> {  where.not(state: %w[paid redeemed]) }
-  scope :total_paid, -> {  where(state: %w[paid redeemed]) }
-  scope :with_insurance, -> {  where.not(insurance_policy_number: nil).not_remainder }
+  scope :not_paid, -> { where.not(state: %w[paid redeemed]) }
+  scope :total_paid, -> { where(state: %w[paid redeemed]) }
+  scope :with_insurance, -> { where.not(insurance_policy_number: nil).not_remainder }
   scope :for_stats, -> { total_paid.not_remainder }
-  scope :not_remainder, -> { where(is_remainder: false)}
+  scope :not_remainder, -> { where(is_remainder: false) }
 
   before_validation :set_addon_bonus
 
@@ -98,14 +99,14 @@ class Voucher < ApplicationRecord
   end
 
   def update_tracking(codes)
-    self.update_columns tracking_codes: codes
+    update_columns tracking_codes: codes
   end
 
-  def has_charity_partner?
+  def charity_partner?
     partner.present? && partner.charity_partner?
   end
 
-  def has_add_on_partner?
+  def add_on_partner?
     partner.present? && partner.add_on_partner?
   end
 
@@ -114,19 +115,19 @@ class Voucher < ApplicationRecord
   end
 
   def mbway_bonus_available?
-    Date.today <= Date.new(2020,6,14) &&
+    Date.today <= Date.new(2020, 6, 14) &&
     value >= MIN_MBWAY_VALUE &&
     Voucher.total_paid.sum(:mbway_bonus) < MBWAY_TARGET_VALUE
   end
 
-  def has_mbway_bonus?
+  def mbway_bonus?
     mbway_bonus_available? && payment_method == 'MBW'
   end
 
   def redeem_with_value!(uvalue)
-    if uvalue < self.face_value
+    if uvalue < face_value
       new_voucher = self.dup
-      new_voucher.value = self.face_value - uvalue
+      new_voucher.value = face_value - uvalue
       new_voucher.used_value = 0
       new_voucher.mbway_bonus = 0
       new_voucher.add_on_bonus = 0
@@ -137,11 +138,11 @@ class Voucher < ApplicationRecord
 
     self.used_value = uvalue
     self.class.transaction do
-      self.redeemed!
+      redeemed!
       new_voucher.save! if new_voucher.present?
     end
 
-    return new_voucher.presence
+    new_voucher.presence
   end
 
   protected
@@ -150,7 +151,7 @@ class Voucher < ApplicationRecord
     # Ensure uniqueness
     loop do
       self.code = SecureRandom.hex(3).upcase
-      break unless self.class.where(code: self.code).exists?
+      break unless self.class.where(code: code).exists?
     end
   end
 
@@ -159,7 +160,7 @@ class Voucher < ApplicationRecord
   def finalize_voucher
     self.valid_until = Date.today + 24.months
     self.payment_completed_at = Time.now
-    self.mbway_bonus = BONUS_MBWAY_VALUE if has_mbway_bonus?
+    self.mbway_bonus = BONUS_MBWAY_VALUE if mbway_bonus?
 
     generate_code
   end
@@ -173,13 +174,13 @@ class Voucher < ApplicationRecord
   end
 
   def valid_vat_id
-    if vat_id.present?
-      errors.add(:vat_id, :invalid) unless Valvat.new(read_attribute(:vat_id)).valid_checksum?
+    if vat_id.present? && !Valvat.new(read_attribute(:vat_id)).valid_checksum?
+      errors.add(:vat_id, :invalid)
     end
   end
 
   def set_addon_bonus
-    self.add_on_bonus = partner.add_on_value if has_add_on_partner?
+    self.add_on_bonus = partner.add_on_value if add_on_partner?
   end
 
   def place_is_published

@@ -25,7 +25,7 @@ class Place < ApplicationRecord
 
   paginates_per 30
 
-  attr_accessor :district
+  attr_writer :district
 
   def district
     @district ||= Location.find_by(area: area)&.district
@@ -38,7 +38,7 @@ class Place < ApplicationRecord
   def photo_url(size)
     # fallback to original to handle the gap between upload
     # and derivative generation
-    main_photo_url(size , public: true) || main_photo_url(public: true)
+    main_photo_url(size, public: true) || main_photo_url(public: true)
   end
 
   attr_reader :partner_id
@@ -57,12 +57,8 @@ class Place < ApplicationRecord
 
   def promo_limit_reached?
     approved_partner.try(:voucher_limit).present? &&
-    approved_partner.voucher_limit > 0 &&
+    approved_partner.voucher_limit.positive? &&
     vouchers.total_paid.where(partner: approved_partner).count >= approved_partner.voucher_limit
-  end
-
-  def has_charity_partner?
-    approved_partner.present? && partner.charity_partner?
   end
 
   def to_s

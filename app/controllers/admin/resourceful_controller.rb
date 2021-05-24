@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 class Admin::ResourcefulController < Admin::BaseController
-  before_action :load_attributes, except: [:index, :destroy]
+  before_action :load_attributes, except: %i[index destroy]
+
   helper_method :index_columns, :kind, :kind_human_name,
                 :resource_link, :new_resource_link, :search_link,
                 :upsert_action_link, :edit_resource_link, :sort_link,
                 :default_sort, :show_attributes
+
   rescue_from ActiveRecord::RecordNotFound, with: :resource_not_found
 
   def index
@@ -105,30 +107,16 @@ class Admin::ResourcefulController < Admin::BaseController
   end
 
   def index_columns
-    attribs = ['id'] + (kind.column_names.reject{|c| c.ends_with?('password')}.sort - %w[id created_at updated_at])
-
-    attribs << 'created_at' if kind.column_names.include?('created_at')
-    attribs << 'updated_at' if kind.column_names.include?('updated_at')
-
-    attribs.map { |col|
-      {attr: col, label: col.titleize, sort: col}
-    }
+    default_columns.map { |col| { attr: col, label: col.titleize, sort: col }}
   end
 
   def show_attributes
-    attribs = ['id'] + (kind.column_names.reject{|c| c.ends_with?('password')}.sort - %w[id created_at updated_at])
-
-    attribs << 'created_at' if @resource.respond_to?(:created_at)
-    attribs << 'updated_at' if @resource.respond_to?(:updated_at)
-
-    attribs.map { |col|
-      {attr: col, label: col.titleize}
-    }
+    default_columns.map { |col| { attr: col, label: col.titleize }}
   end
 
   def kind
     # Try to guess resource kind from controller name
-    @kind_cache ||= self.class.name.demodulize.sub('Controller', '').singularize.constantize
+    @kind ||= self.class.name.demodulize.sub('Controller', '').singularize.constantize
   end
 
   def kind_human_name
@@ -145,8 +133,8 @@ class Admin::ResourcefulController < Admin::BaseController
 
   def load_attributes
     @resource_associations = kind.reflect_on_all_associations(:belongs_to)
-    resource_attributes = (kind.attribute_names.sort - %w(id created_at updated_at encrypted_password) - @resource_associations.map(&:foreign_key))
-    @resource_attributes_types = resource_attributes.map {|n| [n.to_sym, kind.type_for_attribute(n).type]}.to_h
+    resource_attributes = (attribute_columns - @resource_associations.map(&:foreign_key))
+    @resource_attributes_types = resource_attributes.map { |n| [n.to_sym, kind.type_for_attribute(n).type] }.to_h
   end
 
   def resource_link(resource)
@@ -154,7 +142,7 @@ class Admin::ResourcefulController < Admin::BaseController
   end
 
   def sort_link(sort_attr)
-    polymorphic_path([:admin, kind], {q: sort_link_params, sort_attr: sort_attr})
+    polymorphic_path([:admin, kind], { q: sort_link_params, sort_attr: sort_attr })
   end
 
   def default_sort
@@ -188,6 +176,18 @@ class Admin::ResourcefulController < Admin::BaseController
   end
 
   private
+
+  def attribute_columns
+    sanitized_columns - %w[id created_at updated_at]
+  end
+
+  def default_columns
+    ['id'] + attribute_columns + kind.column_names.select { |c| c.in? %w[created_at updated_at] }
+  end
+
+  def sanitized_columns
+    kind.column_names.reject { |c| c.ends_with?('password') }.sort
+  end
 
   def sort_link_params
     params.require(:q).permit! if params[:q].present?

@@ -1,11 +1,13 @@
+# frozen_string_literal: true
 module Admin
   class CSVImportsController < Admin::ResourcefulController
 
     def index_columns
       [
-        {attr: :id, label: 'ID', sort: :id},
-        {attr: :admin_user, label: 'AdminUser', sort: :admin_user_id, formatter: -> (view, record) { record.admin_user }},
-        {attr: :state, label: 'State', sort: :state}
+        { attr: :id, label: 'ID', sort: :id },
+        { attr: :admin_user, label: 'AdminUser', sort: :admin_user_id,
+                             formatter: ->(_, record) { record.admin_user } },
+        { attr: :state, label: 'State', sort: :state }
       ]
     end
 
@@ -23,18 +25,17 @@ module Admin
 
     def show_attributes
       [
-        {attr: :id, label: 'ID' },
-        {attr: :admin_user, label: 'Admin User' },
-        {attr: :file_data, label: 'File Data' },
-        {attr: :bad_vat_lines_count, label: 'Bad Vat Lines Count' },
-        {attr: :not_found_lines_count, label: 'Not Found Lines Count' },
-        {attr: :no_key_lines_count, label: 'No Key Lines Count' },
-        {attr: :dup_key_lines_count, label: 'Dup Key Lines Count' },
-        {attr: :publish_failed_ids, label: 'Publish Failed Ids' },
-        {attr: :published_place_ids, label: 'Published Ids' },
-        {attr: :state, label: 'State' }
+        { attr: :id, label: 'ID' },
+        { attr: :admin_user, label: 'Admin User' },
+        { attr: :file_data, label: 'File Data' },
+        { attr: :bad_vat_lines_count, label: 'Bad Vat Lines Count' },
+        { attr: :not_found_lines_count, label: 'Not Found Lines Count' },
+        { attr: :no_key_lines_count, label: 'No Key Lines Count' },
+        { attr: :dup_key_lines_count, label: 'Dup Key Lines Count' },
+        { attr: :publish_failed_ids, label: 'Publish Failed Ids' },
+        { attr: :published_place_ids, label: 'Published Ids' },
+        { attr: :state, label: 'State' }
       ]
-
     end
 
     protected
@@ -44,9 +45,7 @@ module Admin
     end
 
     def after_upsert(type)
-      if type == :create && @resource.persisted?
-        SellerCSVImport.perform_later @resource.id
-      end
+      SellerCSVImport.perform_later(@resource.id) if type == :create && @resource.persisted?
     end
 
     def permitted_params

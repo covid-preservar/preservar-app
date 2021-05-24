@@ -2,16 +2,16 @@
 class ApplicationController < ActionController::Base
   # Simple HTTP auth to keep users from
   # accidentaly using the test app and bots from indexing it
-  http_basic_authenticate_with name: ENV["HTTP_USER"],
-                               password: ENV["HTTP_PASSWORD"],
-                               if: -> { ENV["HTTP_AUTH"].present? }
+  http_basic_authenticate_with name: ENV['HTTP_USER'],
+                               password: ENV['HTTP_PASSWORD'],
+                               if: -> { ENV['HTTP_AUTH'].present? }
 
   before_action :set_locale
   before_action :load_categories
   before_action :load_cities
   before_action :set_cookies, unless: -> { request.xhr? }
 
-  if !Rails.env.development?
+  unless Rails.env.development?
     rescue_from ActiveRecord::RecordNotFound,
                 ActionController::RoutingError,
                 ActionController::UnknownFormat,
@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   end
 
   def mbway_bonus_active?
-    Date.today <= Date.new(2020,6,14) &&
+    Date.today <= Date.new(2020, 6, 14) &&
     Voucher.total_paid.sum(:mbway_bonus) < Voucher::MBWAY_TARGET_VALUE
   end
   helper_method :mbway_bonus_active?
@@ -76,22 +76,22 @@ class ApplicationController < ActionController::Base
 
   def handle_404(exception)
     logger.warn("#{exception.class}: #{exception.message}")
-    render file: "public/404.html", layout:nil, status: 404
+    render file: 'public/404.html', layout: nil, status: 404
   end
 
   def set_cookies
     referrer = get_http_referrer
-    if has_tracking_codes?(params) || referrer_present?(referrer)
-      clean_tracking_cookies()
-      load_tracking_cookies(params, referrer)
-    end
+    return unless tracking_codes?(params) || referrer_present?(referrer)
+
+    clean_tracking_cookies
+    load_tracking_cookies(params, referrer)
   end
 
   def get_http_referrer
     request.referrer.try(:strip).try(:[], 0...3000)
   end
 
-  def has_tracking_codes?(params)
+  def tracking_codes?(params)
     params.keys.any? { |k| k.start_with?('utm_') }
   end
 
@@ -112,9 +112,7 @@ class ApplicationController < ActionController::Base
     cookies.signed[:referrer] = { value: referrer, expires: expires } if referrer_present?(referrer)
 
     params.each do |key, value|
-      if key.starts_with?('utm_')
-        cookies.signed[key] = { value: value, expires: expires }
-      end
+      cookies.signed[key] = { value: value, expires: expires } if key.starts_with?('utm_')
     end
   end
 end

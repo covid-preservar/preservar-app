@@ -38,7 +38,7 @@ namespace :db do
   private
 
   def with_config
-    yield Rails.application.class.parent_name.underscore,
+    yield Rails.application.class.module_parent_name.underscore,
       ActiveRecord::Base.connection_config[:host],
       ActiveRecord::Base.connection_config[:port],
       ActiveRecord::Base.connection_config[:database]

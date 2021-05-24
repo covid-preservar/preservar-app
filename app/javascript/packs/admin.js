@@ -23,9 +23,6 @@ window.Pikaday = Pikaday;
 import select2 from "select2";
 window.select2 = select2;
 
-import PlaceForm from "../src/place_form";
-window.PlaceForm = PlaceForm;
-
 function setup() {
   $(".date_input").each(function () {
     if (!this.picker) {
@@ -41,9 +38,6 @@ function setup() {
     }
   });
 
-  if ($(".edit_place, #new_place").length > 0 && !window.place_form) {
-    window.place_form = new PlaceForm();
-  }
 }
 
 

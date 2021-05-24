@@ -3,7 +3,7 @@ class Seller::VouchersController < Seller::BaseController
 
   def index
     base_scope = current_seller_user.seller.vouchers.seller_visible
-    params[:q].reject!{|k,v| v.blank?} if params[:q].present?
+    params[:q].reject! { |_,v| v.blank? } if params[:q].present?
     @q = base_scope.ransack(params[:q])
     @vouchers = params[:q].present? ? @q.result.order(:state) : base_scope.all.order(:state)
   end

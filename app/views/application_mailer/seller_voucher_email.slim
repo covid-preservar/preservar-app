@@ -16,7 +16,7 @@ table
       td
         = number_to_currency @voucher.value, locale: :pt
 
-    - if @voucher.has_add_on_partner?
+    - if @voucher.add_on_partner?
       tr
         td
           strong

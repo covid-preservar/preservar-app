@@ -4,19 +4,19 @@ jobs:
   build:
     working_directory: ~/preserva-app
     docker:
-      - image: circleci/ruby:2.7.2-node-browsers
+      - image: circleci/ruby:3.0.1-node-browsers
         environment:
           RAILS_ENV: test
           HOSTNAME: localhost
           PGHOST: localhost
           PGUSER: preservar-app
-          BUNDLER_VERSION: 2.0.1
+          BUNDLER_VERSION: 2.2.4
           PARALLEL_WORKERS: 1
-      - image: circleci/postgres:10.6
+      - image: circleci/postgres:12.5
         environment:
           POSTGRES_USER: preservar-app
           POSTGRES_DB: preservar_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: "password"
     steps:
       - checkout
 

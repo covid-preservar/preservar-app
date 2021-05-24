@@ -3,7 +3,7 @@ class VoucherPaymentCompleteJob
   include Sidekiq::Worker
   include Sidekiq::Throttled::Worker
 
-  sidekiq_throttle({concurrency: { limit: 1 }})
+  sidekiq_throttle(concurrency: { limit: 1 })
 
   def perform(voucher_id)
     @voucher = Voucher.find(voucher_id)

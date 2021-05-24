@@ -48,26 +48,26 @@ class PartnerSellerSignupForm < SellerSignupForm
     when 'distributor'
       validate_distributor_partner_id
     when 'not_client'
-      errors.add(:partner_type, "inválido")
+      errors.add(:partner_type, 'inválido')
     else
       validate_partner_id
     end
   end
 
   def validate_direct_partner_id
-    errors.add(:partner_id_code, "inválido") if partner_identifier.blank?
+    errors.add(:partner_id_code, 'inválido') if partner_identifier.blank?
   end
 
   def validate_distributor_partner_id
-    errors.add(:partner_alt_id, "inválido") if partner_alt_id.blank?
+    errors.add(:partner_alt_id, 'inválido') if partner_alt_id.blank?
   end
 
   def validate_partner_id
     if partner.requires_partner_id_code && partner_identifier.blank?
-      errors.add(:partner_id_code, "inválido")
+      errors.add(:partner_id_code, 'inválido')
     elsif partner_identifier&.vat_id&.present? &&
           vat_id.sub('PT', '') != partner_identifier.vat_id
-      errors.add(:partner_id_code, "não corresponde ao NIF")
+      errors.add(:partner_id_code, 'não corresponde ao NIF')
     end
   end
 

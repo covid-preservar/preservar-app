@@ -3,11 +3,10 @@ class Admin::BaseController < ActionController::Base
   before_action :authenticate_admin_user!
   before_action :set_locale
   before_action :set_view_path
-  skip_after_action :intercom_rails_auto_include
 
-  layout "admin"
+  layout 'admin'
 
-  if !Rails.env.development?
+  unless Rails.env.development?
     rescue_from ActiveRecord::RecordNotFound,
                 ActionController::RoutingError,
                 ActionController::UnknownFormat,
@@ -19,7 +18,7 @@ class Admin::BaseController < ActionController::Base
 
   def handle_unauthorized
     if current_admin_user.nil? || current_admin_user.disabled?
-      render :file => "public/404.html", status: 403
+      render file: 'public/404.html', status: 403
     else
       redirect_to admin_root_path, alert: 'Permission denied'
     end
@@ -47,7 +46,7 @@ class Admin::BaseController < ActionController::Base
   end
 
   def set_view_path
-    prepend_view_path "app/views/admin"
+    prepend_view_path 'app/views/admin'
     prepend_view_path "app/views/#{controller_path}"
   end
 end

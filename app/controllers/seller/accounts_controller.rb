@@ -16,7 +16,7 @@ class Seller::AccountsController < Seller::BaseController
     @seller = current_seller_user.seller
     errors = []
     # Only republish places that were previously published
-    to_republish = @seller.places.where(published: false).where.not(published_at:nil)
+    to_republish = @seller.places.where(published: false).where.not(published_at: nil)
 
     redirect_to(seller_account_path) and return if to_republish.empty?
 
