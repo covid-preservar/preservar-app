@@ -9,6 +9,7 @@ html lang="#{I18n.locale}"
     meta name='viewport' content="initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
 
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    script async=true defer=true src="https://backspace.eco/b.js"
 
   body class="#{body_class} #{yield (:body_class)} devise"
     = render 'admin/navbar'
