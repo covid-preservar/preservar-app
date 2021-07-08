@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.1'
+ruby '3.0.2'
 
 gem 'rails', '~> 6.1.0'
 gem 'pg'
@@ -49,7 +49,7 @@ gem 'rest-client'
 gem 'rexml'
 gem 'rollbar'
 gem 'shrine'
-gem 'sidekiq', '~> 6.1.0'
+gem 'sidekiq', '~> 6.2.0'
 gem 'sidekiq-cron'
 gem 'sidekiq-throttled'
 gem 'slim-rails'
@@ -72,7 +72,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'image_optim_pack'
   gem 'pry-byebug'
-  gem 'rspec-rails', '~> 4.0.0'
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 group :development do
