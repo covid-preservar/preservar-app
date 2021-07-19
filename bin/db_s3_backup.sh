@@ -18,11 +18,17 @@ if [[ -z "$DB_S3_BUCKET_PATH" ]]; then
   exit 1
 fi
 
-#install aws-cli
-curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
-unzip awscli-bundle.zip
-chmod +x ./awscli-bundle/install
-./awscli-bundle/install -i /tmp/aws
+echo "Installing AWS cli"
+AWS_CLI_URL="https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
+BUILD_DIR="/app"
+INSTALL_DIR="/app/.awscli"
+TMP_DIR=$(mktemp -d)
+
+curl --silent --show-error --fail -o "${TMP_DIR}/awscliv2.zip" "${AWS_CLI_URL}"
+unzip -qq -d "${TMP_DIR}" "${TMP_DIR}/awscliv2.zip"
+mkdir -p "${BUILD_DIR}/.awscli"
+"${TMP_DIR}/aws/install" --install-dir "${INSTALL_DIR}/aws-cli" --bin-dir "${INSTALL_DIR}/bin"
+rm -rf "${TMP_DIR}"
 
 BACKUP_FILE_NAME="$(date +"%Y-%m-%d-%H-%M")-$APP-$DATABASE.dump"
 
@@ -35,7 +41,7 @@ if [[ -z "$NOGZIP" ]]; then
   FINAL_FILE_NAME=$BACKUP_FILE_NAME.gz
 fi
 
-/tmp/aws/bin/aws s3 cp $FINAL_FILE_NAME s3://$DB_S3_BUCKET_PATH/$APP/$DATABASE/$FINAL_FILE_NAME
+.awscli/bin/aws s3 cp $FINAL_FILE_NAME s3://$DB_S3_BUCKET_PATH/$APP/$DATABASE/$FINAL_FILE_NAME
 
 echo "backup $FINAL_FILE_NAME complete"
 
