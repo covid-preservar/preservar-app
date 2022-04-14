@@ -5,7 +5,7 @@ jobs:
   build:
     working_directory: ~/preserva-app
     docker:
-      - image: cimg/ruby:3.0.3-browsers
+      - image: cimg/ruby:3.0.4-browsers
         environment:
           RAILS_ENV: test
           HOSTNAME: localhost
