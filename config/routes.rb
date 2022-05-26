@@ -50,10 +50,10 @@ Rails.application.routes.draw do
     get '/tos_mbway', to: 'home#tos_mbway', as: :tos_mbway
     get '/privacy', to: 'home#privacy', as: :privacy
 
-    devise_for :seller_users,
-              path: 'comerciante',
-              controllers: { registrations: 'seller_users/registrations'},
-              path_names: { sign_up: 'registo' }
+    # devise_for :seller_users,
+    #           path: 'comerciante',
+    #           controllers: { registrations: 'seller_users/registrations'},
+    #           path_names: { sign_up: 'registo' }
 
     namespace :seller do
       resource :account, only: [:show] do

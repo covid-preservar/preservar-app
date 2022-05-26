@@ -4,12 +4,12 @@ nav.header.container-xl
       a#logo href="/"
     .header-right.col-9.col-md-10
       = link_to 'Ajuda', 'mailto:info@preserve.pt', class: 'header-link', target: '_blank'
-      - if seller_user_signed_in?
-        = link_to 'Terminar sessão', destroy_seller_user_session_path, method: :delete, class: 'header-link'
-        br.d-inline.d-sm-none
-        = link_to 'Vouchers', seller_vouchers_path, class: 'header-link secondary-cta'
-        = link_to 'Editar conta', seller_account_path, class: 'header-link secondary-cta'
-      - else
-        = link_to 'Entrar', new_seller_user_session_path, class: 'header-link'
-        - if request.path == root_path && Flipper.enabled?(:registration)
-          = link_to 'Submeter local', new_seller_user_registration_path, class: 'header-link secondary-cta'
+      / - if seller_user_signed_in?
+      /   = link_to 'Terminar sessão', destroy_seller_user_session_path, method: :delete, class: 'header-link'
+      /   br.d-inline.d-sm-none
+      /   = link_to 'Vouchers', seller_vouchers_path, class: 'header-link secondary-cta'
+      /   = link_to 'Editar conta', seller_account_path, class: 'header-link secondary-cta'
+      / - else
+      /   = link_to 'Entrar', new_seller_user_session_path, class: 'header-link'
+      /   - if request.path == root_path && Flipper.enabled?(:registration)
+      /     = link_to 'Submeter local', new_seller_user_registration_path, class: 'header-link secondary-cta'
