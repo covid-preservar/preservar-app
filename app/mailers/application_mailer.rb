@@ -30,6 +30,13 @@ class ApplicationMailer < ActionMailer::Base
     mail to: @voucher.place.seller.seller_user.email, subject: 'Preserve - Vendeu um vale!'
   end
 
+  def seller_shutdown_email(seller_id)
+    @seller = Seller.find(seller_id)
+
+    @vouchers = @seller.vouchers.paid.where('valid_until > CURRENT_DATE')
+    mail to: @seller.seller_user.email, subject: 'Preserve - Vendeu um vale!'
+  end
+
   def seller_place_published_notification(place_id)
     @place = Place.find(place_id)
     mail to: @place.seller.seller_user.email, subject: 'Preserve - Publicámos o seu local!'

@@ -17,6 +17,11 @@ class ApplicationMailerPreview < ActionMailer::Preview
     ApplicationMailer.seller_voucher_email(Voucher.last.id)
   end
 
+  def seller_shutdown_email
+    place = Voucher.paid.where('valid_until > CURRENT_DATE').first.place
+    ApplicationMailer.seller_shutdown_email(place.seller_id)
+  end
+
   def seller_place_published_notification
     ApplicationMailer.seller_place_published_notification(Place.first.id)
   end

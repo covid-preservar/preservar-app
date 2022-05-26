@@ -1,0 +1,58 @@
+h3 Olá,
+
+p
+  ' Passados mais de 2 anos do primeiro confinamento, está na altura de dar por concluida a missão da Preserve.
+  br
+  ' Mantivemos o site a funcionar para facilitar a validação dos vouchers vendidos,
+  ' mas chega a altura de desactivar o site.
+p &nbsp;
+
+h3 Vouchers por utilizar
+
+p
+  ' A vossa empresa tem alguns vouchers emitidos que estão ainda por utilizar,
+  ' e que ainda estão válidos à data de hoje,
+  strong = "#{Date.today.day} de Maio de 2022:"
+
+table
+  thead style='text-align: left;'
+    th Local
+    th Número do voucher
+    th Valor do vale
+    th Validade
+  tbody
+    - @vouchers.each do |v|
+      tr
+        td = v.place.name
+        td
+          strong = v.code
+        td = number_to_currency v.face_value, locale: :pt
+        td = v.valid_until
+      tr
+        td
+        td colspan=2
+          strong Comprador:
+          br
+          =< v.email
+          - if v.add_on_partner?
+            br
+            strong
+              ' Oferta
+              = v.partner.name
+              br
+            = number_to_currency v.add_on_bonus, locale: :pt
+          - if v.mbway_bonus > 0
+            br
+            strong Oferta MBWay:
+            =< number_to_currency v.mbway_bonus, locale: :pt
+
+hr
+p
+  | Obrigado,
+  br
+  | A equipa Preserve
+p
+ strong Precisa de ajuda?
+ br
+ ' Envie um e-mail para
+ = mail_to 'info@preserve.pt'
