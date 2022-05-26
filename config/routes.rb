@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   # redirect herokuapp (in production only)
-  if Rails.env.production? && !ENV.fetch('HOSTNAME').ends_with?('herokuapp.com')
-    constraints(host: "#{ENV.fetch('HEROKU_APP_NAME') { 'preserve-prod' }}.herokuapp.com") do
-      get '/', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}")
-      get '*path', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}/%{path}")
-    end
-  end
+  # if Rails.env.production? && !ENV.fetch('HOSTNAME').ends_with?('herokuapp.com')
+  #   constraints(host: "#{ENV.fetch('HEROKU_APP_NAME') { 'preserve-prod' }}.herokuapp.com") do
+  #     get '/', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}")
+  #     get '*path', to: redirect("https://#{ENV.fetch('HOSTNAME') { 'preserve.pt' }}/%{path}")
+  #   end
+  # end
 
   # Partner subdomains
   constraints(->(req){ req.subdomain.present? && Subdomains::Partner.matches?(req) }) do
